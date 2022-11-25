@@ -13,17 +13,18 @@
   <PropertyGroup Label="Globals">
     <ProjectName>CIE202-project</ProjectName>
     <ProjectGuid>{1AC3DDD7-FDDE-487E-A2A4-52A8FCF7BDB9}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
@@ -166,7 +167,9 @@
     <ClCompile Include="GUI\GUI.cpp" />
     <ClCompile Include="controller.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="opAddOval.cpp" />
     <ClCompile Include="operations\opAddRect.cpp" />
+    <ClCompile Include="Oval.cpp" />
     <ClCompile Include="Shapes\Graph.cpp" />
     <ClCompile Include="Shapes\Shape.cpp" />
     <ClCompile Include="Shapes\Rect.cpp" />
@@ -195,8 +198,10 @@
     <ClInclude Include="GUI\GUI.h" />
     <ClInclude Include="controller.h" />
     <ClInclude Include="DEFS.h" />
+    <ClInclude Include="opAddOval.h" />
     <ClInclude Include="operations\opAddRect.h" />
     <ClInclude Include="operations\operation.h" />
+    <ClInclude Include="Oval.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Shapes\Graph.h" />
     <ClInclude Include="Shapes\Shape.h" />

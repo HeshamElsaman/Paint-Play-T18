@@ -39,6 +39,7 @@ class GUI
 		//If you want to change the menu icons order, change the order here
 		ICON_RECT,		//Recangle icon in menu
 		ICON_CIRC,		//Circle icon in menu
+		ICON_OVAL,
 
 		//TODO: Add more icons names here
 
@@ -103,6 +104,7 @@ public:
 
 	// -- shapes Drawing functions
 	void DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo) const;  //Draw a rectangle
+	void DrawOval(Point P1, Point P2, GfxInfo RectGfxInfo) const;
 
 	///Make similar functions for drawing all other shapes.
 

@@ -89,6 +89,7 @@ operationType GUI::GetUseroperation() const
 			{
 			case ICON_RECT: return DRAW_RECT;
 			case ICON_CIRC: return DRAW_CIRC;
+			case ICON_OVAL: return DRAW_OVAL;
 			case ICON_EXIT: return EXIT;
 
 			default: return EMPTY;	//A click on empty place in desgin toolbar
@@ -158,6 +159,7 @@ void GUI::CreateDrawToolBar()
 	string MenuIconImages[DRAW_ICON_COUNT];
 	MenuIconImages[ICON_RECT] = "images\\MenuIcons\\Menu_Rect.jpg";
 	MenuIconImages[ICON_CIRC] = "images\\MenuIcons\\Menu_Circ.jpg";
+	MenuIconImages[ICON_OVAL] = "images\\MenuIcons\\Oval.jpg";
 	MenuIconImages[ICON_EXIT] = "images\\MenuIcons\\Menu_Exit.jpg";
 
 	//TODO: Prepare images for each menu icon and add it to the list
@@ -244,6 +246,45 @@ void GUI::DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo) const
 	pWind->DrawRectangle(P1.x, P1.y, P2.x, P2.y, style);
 
 }
+void GUI::DrawOval(Point P1, Point P2, GfxInfo OvalGfxInfo) const
+{
+	color DrawingClr;
+	if (OvalGfxInfo.isSelected)	//shape is selected
+		DrawingClr = HighlightColor; //shape should be drawn highlighted
+	else
+		DrawingClr = OvalGfxInfo.DrawClr;
+
+	pWind->SetPen(DrawingClr, OvalGfxInfo.BorderWdth);	//Set Drawing color & width
+
+	drawstyle style;
+	if (OvalGfxInfo.isFilled)
+	{
+		style = FILLED;
+		pWind->SetBrush(OvalGfxInfo.FillClr);
+	}
+	else
+		style = FRAME;
+	if (P2.x < P1.x) {
+		Point temp1 = P1;
+		Point temp2 = P2;
+		P1.x = temp2.x;
+		P2.x = temp1.x;
+	}
+
+	if (P2.y < P1.y) {
+		Point temp1 = P1;
+		Point temp2 = P2;
+		P1.y = temp2.y;
+		P2.y = temp1.y;
+	}
+	int ovality = 100;
+	pWind->DrawArc(P1.x-ovality, P1.y, P2.x + ovality, P2.y, 0, 90, style);
+	pWind->DrawArc(P1.x, P1.y, P2.x, P2.y, 90, 180, style);
+	pWind->DrawArc(P1.x, P1.y, P2.x, P2.y, 180, 270, style);
+	pWind->DrawArc(P1.x-ovality, P1.y, P2.x+ovality, P2.y, 270, 360, style);
+
+}
+
 
 
 //////////////////////////////////////////////////////////////////////////////////////////

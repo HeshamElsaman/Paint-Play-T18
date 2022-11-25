@@ -123,6 +123,12 @@
     <ClCompile Include="Shapes\Graph.cpp">
       <Filter>Shapes&amp;Graph</Filter>
     </ClCompile>
+    <ClCompile Include="Oval.cpp">
+      <Filter>Shapes&amp;Graph</Filter>
+    </ClCompile>
+    <ClCompile Include="opAddOval.cpp">
+      <Filter>Operations</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="controller.h" />
@@ -206,6 +212,12 @@
       <Filter>Shapes&amp;Graph</Filter>
     </ClInclude>
     <ClInclude Include="resource.h" />
+    <ClInclude Include="Oval.h">
+      <Filter>Shapes&amp;Graph</Filter>
+    </ClInclude>
+    <ClInclude Include="opAddOval.h">
+      <Filter>Operations</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Operations">
