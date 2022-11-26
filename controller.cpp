@@ -1,6 +1,6 @@
 #include "controller.h"
-#include "operations\opAddRect.h"
-#include "opAddOval.h"
+#include "Operations\opAddRect.h"
+#include "Operations\opAddOval.h"
 
 
 //Constructor

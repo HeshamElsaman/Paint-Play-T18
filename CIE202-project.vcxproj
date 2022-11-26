@@ -167,10 +167,10 @@
     <ClCompile Include="GUI\GUI.cpp" />
     <ClCompile Include="controller.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="opAddOval.cpp" />
+    <ClCompile Include="Operations\opAddOval.cpp" />
     <ClCompile Include="operations\opAddRect.cpp" />
-    <ClCompile Include="Oval.cpp" />
     <ClCompile Include="Shapes&amp;Graph\Graph.cpp" />
+    <ClCompile Include="Shapes&amp;Graph\Oval.cpp" />
     <ClCompile Include="Shapes&amp;Graph\Rect.cpp" />
     <ClCompile Include="Shapes&amp;Graph\Shape.cpp" />
   </ItemGroup>
@@ -198,12 +198,12 @@
     <ClInclude Include="GUI\GUI.h" />
     <ClInclude Include="controller.h" />
     <ClInclude Include="DEFS.h" />
-    <ClInclude Include="opAddOval.h" />
+    <ClInclude Include="Operations\opAddOval.h" />
     <ClInclude Include="operations\opAddRect.h" />
     <ClInclude Include="operations\operation.h" />
-    <ClInclude Include="Oval.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Shapes&amp;Graph\Graph.h" />
+    <ClInclude Include="Shapes&amp;Graph\Oval.h" />
     <ClInclude Include="Shapes&amp;Graph\Rect.h" />
     <ClInclude Include="Shapes&amp;Graph\Shape.h" />
   </ItemGroup>
