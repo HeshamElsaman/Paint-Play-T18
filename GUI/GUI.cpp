@@ -87,12 +87,28 @@ operationType GUI::GetUseroperation() const
 
 			switch (ClickedIconOrder)
 			{
-			case ICON_RECT: return DRAW_RECT;
-			case ICON_CIRC: return DRAW_CIRC;
-			case ICON_OVAL: return DRAW_OVAL;
-			case ICON_EXIT: return EXIT;
+			case ICON_RECT:
+				return DRAW_RECT;
+			
+			case ICON_CIRC:
+				return DRAW_CIRC;
+			
+			case ICON_OVAL:
+				return DRAW_OVAL;
+			
+		/*	case ICON_FILLCLRPLT:
+			////color palette shall pop up
+			Graph *pGR = pControl->getGraph();
+		//	An (if) condition should be implemented here as following,
+			if (pGR->GetShape()) { return CHNG_FILL_CLR; }
+			else { return CHNG_GEN_FILL_CLR; }
+		*/		
 
-			default: return EMPTY;	//A click on empty place in desgin toolbar
+			case ICON_EXIT:
+				return EXIT;
+
+			default:
+				return EMPTY;	//A click on empty place in desgin toolbar
 			}
 		}
 
@@ -115,6 +131,12 @@ operationType GUI::GetUseroperation() const
 
 }
 ////////////////////////////////////////////////////
+void GUI::setCrntFillColor(color clr) //set current filling color
+{
+	FillColor = clr;
+}
+////////////////////////////////////////////////////
+
 
 
 
@@ -218,6 +240,13 @@ color GUI::getCrntFillColor() const	//get current filling color
 int GUI::getCrntPenWidth() const		//get current pen width
 {
 	return PenWidth;
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////
+
+window* GUI::GetWindow() const
+{
+	return pWind;
 }
 
 //======================================================================================//

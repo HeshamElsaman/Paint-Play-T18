@@ -169,6 +169,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Operations\opAddOval.cpp" />
     <ClCompile Include="operations\opAddRect.cpp" />
+    <ClCompile Include="Operations\opChngGenFillClr.cpp" />
     <ClCompile Include="Shapes&amp;Graph\Graph.cpp" />
     <ClCompile Include="Shapes&amp;Graph\Oval.cpp" />
     <ClCompile Include="Shapes&amp;Graph\Rect.cpp" />
@@ -200,6 +201,7 @@
     <ClInclude Include="DEFS.h" />
     <ClInclude Include="Operations\opAddOval.h" />
     <ClInclude Include="operations\opAddRect.h" />
+    <ClInclude Include="Operations\opChngGenFillClr.h" />
     <ClInclude Include="operations\operation.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Shapes&amp;Graph\Graph.h" />

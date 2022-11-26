@@ -1,6 +1,7 @@
 #include "controller.h"
 #include "Operations\opAddRect.h"
 #include "Operations\opAddOval.h"
+#include "Operations\opChngGenFillClr.h"
 
 
 //Constructor
@@ -37,6 +38,10 @@ operation* controller::createOperation(operationType OpType)
 
 		case DRAW_OVAL:
 			pOp = new opAddOval(this);
+			break;
+
+		case CHNG_GEN_FILL_CLR:
+			pOp = new opChngGenFillClr(this);
 			break;
 
 		case EXIT:
