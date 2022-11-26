@@ -170,9 +170,9 @@
     <ClCompile Include="opAddOval.cpp" />
     <ClCompile Include="operations\opAddRect.cpp" />
     <ClCompile Include="Oval.cpp" />
-    <ClCompile Include="Shapes\Graph.cpp" />
-    <ClCompile Include="Shapes\Shape.cpp" />
-    <ClCompile Include="Shapes\Rect.cpp" />
+    <ClCompile Include="Shapes&amp;Graph\Graph.cpp" />
+    <ClCompile Include="Shapes&amp;Graph\Rect.cpp" />
+    <ClCompile Include="Shapes&amp;Graph\Shape.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h" />
@@ -203,9 +203,9 @@
     <ClInclude Include="operations\operation.h" />
     <ClInclude Include="Oval.h" />
     <ClInclude Include="resource.h" />
-    <ClInclude Include="Shapes\Graph.h" />
-    <ClInclude Include="Shapes\Shape.h" />
-    <ClInclude Include="Shapes\Rect.h" />
+    <ClInclude Include="Shapes&amp;Graph\Graph.h" />
+    <ClInclude Include="Shapes&amp;Graph\Rect.h" />
+    <ClInclude Include="Shapes&amp;Graph\Shape.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="CIE202-project.rc" />

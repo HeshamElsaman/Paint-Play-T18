@@ -1,7 +1,7 @@
 #pragma once
 
 #include "DEFS.h"
-#include "Shapes\Graph.h"
+#include "Shapes&Graph\Graph.h"
 #include "GUI\GUI.h"
 
 class operation; //forward declaration
