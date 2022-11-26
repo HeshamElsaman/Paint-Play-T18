@@ -12,6 +12,8 @@ enum operationType //The operations supported (you can add more if needed)
 	DRAW_OVAL,		//Draw Oval
 	CHNG_DRAW_CLR,	//Change the drawing color
 	CHNG_FILL_CLR,	//Change the filling color
+	CHNG_GEN_DRAW_CLR,	//Change the general drawing color
+	CHNG_GEN_FILL_CLR,	//Change the general filling color
 	CHNG_BK_CLR,	//Change background color
 	DEL,			//Delete a shape(s)
 	MOVE,			//Move a shape(s)
