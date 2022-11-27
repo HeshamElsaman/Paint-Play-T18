@@ -1,6 +1,5 @@
 #include "opChngGenFillClr.h"
 
-//#include color palette definition if needed (I guess it will be needed)
 
 #include "../controller.h"
 
