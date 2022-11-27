@@ -94,15 +94,7 @@ operationType GUI::GetUseroperation() const
 				return DRAW_CIRC;
 			
 			case ICON_OVAL:
-				return DRAW_OVAL;
-			
-		/*	case ICON_FILLCLRPLT:
-			////color palette shall pop up
-			Graph *pGR = pControl->getGraph();
-		//	An (if) condition should be implemented here as following,
-			if (pGR->GetShape()) { return CHNG_FILL_CLR; }
-			else { return CHNG_GEN_FILL_CLR; }
-		*/		
+				return DRAW_OVAL;		
 
 			case ICON_EXIT:
 				return EXIT;
@@ -244,10 +236,7 @@ int GUI::getCrntPenWidth() const		//get current pen width
 
 //////////////////////////////////////////////////////////////////////////////////////////
 
-window* GUI::GetWindow() const
-{
-	return pWind;
-}
+
 
 //======================================================================================//
 //								shapes Drawing Functions								//
