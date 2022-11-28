@@ -40,6 +40,7 @@ class GUI
 		ICON_RECT,		//Recangle icon in menu
 		ICON_CIRC,		//Circle icon in menu
 		ICON_OVAL,
+		ICON_POLY,
 
 		//TODO: Add more icons names here
 
@@ -90,6 +91,7 @@ public:
 
 	// Input Functions  ---------------------------
 	void GetPointClicked(int& x, int& y) const;//Get coordinate where user clicks
+	int GetClickType(int x, int y) const;
 	string GetSrting() const;	 //Returns a string entered by the user
 	operationType GetUseroperation() const; //Read the user click and map to an operation
 	void setCrntFillColor(color); //set current filling color
@@ -106,6 +108,7 @@ public:
 	// -- shapes Drawing functions
 	void DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo) const;  //Draw a rectangle
 	void DrawOval(Point P1, Point P2, GfxInfo RectGfxInfo) const;
+	void DrawPolygon(Point* verts, int vertn, GfxInfo PolygonGfxInfo) const;
 
 	///Make similar functions for drawing all other shapes.
 

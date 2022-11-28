@@ -43,6 +43,12 @@ void GUI::GetPointClicked(int& x, int& y) const
 {
 	pWind->WaitMouseClick(x, y);	//Wait for mouse click
 }
+/////////////////////////////////////////////////////////////////////////////////////////
+int GUI::GetClickType(int x, int y) const
+{
+	return int(pWind->WaitMouseClick(x, y));
+}
+/////////////////////////////////////////////////////////////////////////////////////////
 
 string GUI::GetSrting() const
 {
@@ -94,7 +100,10 @@ operationType GUI::GetUseroperation() const
 				return DRAW_CIRC;
 			
 			case ICON_OVAL:
-				return DRAW_OVAL;		
+				return DRAW_OVAL;
+
+			case ICON_POLY:
+				return DRAW_POLY;
 
 			case ICON_EXIT:
 				return EXIT;
@@ -174,6 +183,7 @@ void GUI::CreateDrawToolBar()
 	MenuIconImages[ICON_RECT] = "images\\MenuIcons\\Menu_Rect.jpg";
 	MenuIconImages[ICON_CIRC] = "images\\MenuIcons\\Menu_Circ.jpg";
 	MenuIconImages[ICON_OVAL] = "images\\MenuIcons\\Oval.jpg";
+	MenuIconImages[ICON_POLY] = "images\\MenuIcons\\Menu_Polygon.jpg";
 	MenuIconImages[ICON_EXIT] = "images\\MenuIcons\\Menu_Exit.jpg";
 
 	//TODO: Prepare images for each menu icon and add it to the list
@@ -302,7 +312,37 @@ void GUI::DrawOval(Point P1, Point P2, GfxInfo OvalGfxInfo) const
 	pWind->DrawArc(P1.x-ovality, P1.y, P2.x+ovality, P2.y, 270, 360, style);
 
 }
+//////////////////////////////////////////////////////////////////////////////////////////
+void GUI::DrawPolygon(Point* verts, int vertn, GfxInfo PolygonGfxInfo) const
+{
+	color DrawingClr;
+	if (PolygonGfxInfo.isSelected)	//shape is selected
+		DrawingClr = HighlightColor; //shape should be drawn highlighted
+	else
+		DrawingClr = PolygonGfxInfo.DrawClr;
 
+	pWind->SetPen(DrawingClr, PolygonGfxInfo.BorderWdth);	//Set Drawing color & width
+
+	drawstyle style;
+	if (PolygonGfxInfo.isFilled)
+	{
+		style = FILLED;
+		pWind->SetBrush(PolygonGfxInfo.FillClr);
+	}
+	else
+		style = FRAME;
+	int* X = new int[vertn];
+	int* Y = new int[vertn];
+	for (int i = 0; i < vertn; i++) {
+		X[i] = verts[i].x;
+		Y[i] = verts[i].y;
+	}
+
+	pWind->DrawPolygon(X, Y, vertn, style);
+	delete[] X; delete[] Y;
+	X = nullptr; Y = nullptr;
+
+}
 
 
 //////////////////////////////////////////////////////////////////////////////////////////
