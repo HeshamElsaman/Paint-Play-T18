@@ -187,6 +187,7 @@ void GUI::CreateDrawToolBar()
 	MenuIconImages[ICON_CIRC] = "images\\MenuIcons\\Menu_Circ.jpg";
 	MenuIconImages[ICON_OVAL] = "images\\MenuIcons\\Oval.jpg";
 	MenuIconImages[ICON_POLY] = "images\\MenuIcons\\Menu_Polygon.jpg";
+	MenuIconImages[ICON_REGPOLY] = "images\\MenuIcons\\Menu_RegPolygon.jpg";
 	MenuIconImages[ICON_EXIT] = "images\\MenuIcons\\Menu_Exit.jpg";
 
 	//TODO: Prepare images for each menu icon and add it to the list
@@ -345,6 +346,36 @@ void GUI::DrawPolygon(Point* verts, int vertn, GfxInfo PolygonGfxInfo) const
 	delete[] X; delete[] Y;
 	X = nullptr; Y = nullptr;
 
+}
+//////////////////////////////////////////////////////////////////////////////////////////
+void GUI::DrawRegPolygon(Point* verts, int vertn, GfxInfo RegPolygonGfxInfo) const
+{
+	color DrawingClr;
+	if (RegPolygonGfxInfo.isSelected)	//shape is selected
+		DrawingClr = HighlightColor; //shape should be drawn highlighted
+	else
+		DrawingClr = RegPolygonGfxInfo.DrawClr;
+
+	pWind->SetPen(DrawingClr, RegPolygonGfxInfo.BorderWdth);	//Set Drawing color & width
+
+	drawstyle style;
+	if (RegPolygonGfxInfo.isFilled)
+	{
+		style = FILLED;
+		pWind->SetBrush(RegPolygonGfxInfo.FillClr);
+	}
+	else
+		style = FRAME;
+	int* X = new int[vertn];
+	int* Y = new int[vertn];
+	for (int i = 0; i < vertn; i++) {
+		X[i] = verts[i].x;
+		Y[i] = verts[i].y;
+	}
+
+	pWind->DrawPolygon(X, Y, vertn, style);
+	delete[] X; delete[] Y;
+	X = nullptr; Y = nullptr;
 }
 
 

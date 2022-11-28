@@ -20,7 +20,7 @@ void opAddPolygon::Execute()
 	//getting the number of successive clicks
 	int click = 0;
 	int z = 0, p = 0;
-	pUI->PrintMessage("New Polygon: Specigy the number of vertices using right clicks followed by a left click");
+	pUI->PrintMessage("New Polygon: Specify the number of vertices using RightClicks followed by a LeftClick");
 	do
 	{
 		click = pUI->GetClickType(z, p);

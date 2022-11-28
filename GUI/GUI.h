@@ -110,6 +110,7 @@ public:
 	void DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo) const;  //Draw a rectangle
 	void DrawOval(Point P1, Point P2, GfxInfo RectGfxInfo) const;
 	void DrawPolygon(Point* verts, int vertn, GfxInfo PolygonGfxInfo) const;
+	void DrawRegPolygon(Point* verts, int vertn, GfxInfo RegPolygonGfxInfo) const;
 
 	///Make similar functions for drawing all other shapes.
 
