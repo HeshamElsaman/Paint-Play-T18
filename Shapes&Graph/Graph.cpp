@@ -32,6 +32,10 @@ void Graph::Draw(GUI* pUI) const
 
 shape* Graph::Getshape(int x, int y) const
 {
+	/*for (int i =0;i<shapesList.size();i++)
+		if (shapesList[i].*/
+		
+
 	//If a shape is found return a pointer to it.
 	//if this point (x,y) does not belong to any shape return NULL
 

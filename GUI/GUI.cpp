@@ -309,11 +309,9 @@ void GUI::DrawOval(Point P1, Point P2, GfxInfo OvalGfxInfo) const
 		P1.y = temp2.y;
 		P2.y = temp1.y;
 	}
-	int ovality = 100;
-	pWind->DrawArc(P1.x-ovality, P1.y, P2.x + ovality, P2.y, 0, 90, style);
-	pWind->DrawArc(P1.x, P1.y, P2.x, P2.y, 90, 180, style);
-	pWind->DrawArc(P1.x, P1.y, P2.x, P2.y, 180, 270, style);
-	pWind->DrawArc(P1.x-ovality, P1.y, P2.x+ovality, P2.y, 270, 360, style);
+	
+	pWind->DrawArc(P1.x, P1.y, P2.x, P2.y, 0, 180, style);
+	pWind->DrawArc(P1.x, P1.y, P2.x, P2.y, 180, 360, style);
 
 }
 //////////////////////////////////////////////////////////////////////////////////////////
