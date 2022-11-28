@@ -105,6 +105,9 @@ operationType GUI::GetUseroperation() const
 			case ICON_POLY:
 				return DRAW_POLY;
 
+			case ICON_REGPOLY:
+				return DRAW_REGPOLY;
+
 			case ICON_EXIT:
 				return EXIT;
 

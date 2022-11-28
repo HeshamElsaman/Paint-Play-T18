@@ -41,6 +41,7 @@ class GUI
 		ICON_CIRC,		//Circle icon in menu
 		ICON_OVAL,
 		ICON_POLY,
+		ICON_REGPOLY,
 
 		//TODO: Add more icons names here
 
