@@ -132,6 +132,12 @@
     <ClCompile Include="Operations\opChngGenFillClr.cpp">
       <Filter>Operations</Filter>
     </ClCompile>
+    <ClCompile Include="Operations\opAddPolygon.cpp">
+      <Filter>Operations</Filter>
+    </ClCompile>
+    <ClCompile Include="Shapes&amp;Graph\Polygon.cpp">
+      <Filter>Shapes&amp;Graph</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="controller.h" />
@@ -223,6 +229,12 @@
     </ClInclude>
     <ClInclude Include="Operations\opChngGenFillClr.h">
       <Filter>Operations</Filter>
+    </ClInclude>
+    <ClInclude Include="Operations\opAddPolygon.h">
+      <Filter>Operations</Filter>
+    </ClInclude>
+    <ClInclude Include="Shapes&amp;Graph\Polygon.h">
+      <Filter>Shapes&amp;Graph</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
