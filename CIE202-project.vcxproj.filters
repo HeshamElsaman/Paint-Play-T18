@@ -144,6 +144,9 @@
     <ClCompile Include="Shapes&amp;Graph\RegPolygon.cpp">
       <Filter>Shapes&amp;Graph</Filter>
     </ClCompile>
+    <ClCompile Include="Operations\opDeleteShape.cpp">
+      <Filter>Operations</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="controller.h" />
@@ -247,6 +250,9 @@
     </ClInclude>
     <ClInclude Include="Shapes&amp;Graph\RegPolygon.h">
       <Filter>Shapes&amp;Graph</Filter>
+    </ClInclude>
+    <ClInclude Include="Operations\opDeleteShape.h">
+      <Filter>Operations</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

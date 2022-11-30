@@ -25,8 +25,12 @@ void Graph::Addshape(shape* pShp)
 void Graph::Draw(GUI* pUI) const
 {
 	pUI->ClearDrawArea();
+	
 	for (auto shapePointer : shapesList)
-		shapePointer->Draw(pUI);
+	{	
+		if (!(shapePointer->IsDeleted()))
+			shapePointer->Draw(pUI);
+	}
 }
 
 
