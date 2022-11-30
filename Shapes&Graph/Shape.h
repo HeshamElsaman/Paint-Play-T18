@@ -18,6 +18,9 @@ public:
 	void SetSelected(bool s);	//select/unselect the shape
 	bool IsSelected() const;	//check whether fig is selected
 
+	void SetDeleted(bool s);	//delete/restore the shape
+	bool IsDeleted() const;	//check whether fig is deleted
+
 	virtual void Draw(GUI* pUI) const  = 0 ;		//Draw the shape
 	
 	void ChngDrawClr(color Dclr);	//changes the shape's drawing color

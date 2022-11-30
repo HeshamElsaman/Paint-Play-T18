@@ -11,6 +11,16 @@ void shape::SetSelected(bool s)
 bool shape::IsSelected() const
 {	return ShpGfxInfo.isSelected; }
 
+void shape::SetDeleted(bool s)
+{
+	ShpGfxInfo.isDeleted = s;
+}
+
+bool shape::IsDeleted() const
+{
+	return ShpGfxInfo.isDeleted;
+}
+
 void shape::ChngDrawClr(color Dclr)
 {	ShpGfxInfo.DrawClr = Dclr; }
 
