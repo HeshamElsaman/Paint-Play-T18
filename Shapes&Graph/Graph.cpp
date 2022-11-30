@@ -48,3 +48,9 @@ shape* Graph::Getshape(int x, int y) const
 
 	return nullptr;
 }
+
+
+shape* Graph::GetSelectedShape() const
+{
+	return selectedShape;
+}
