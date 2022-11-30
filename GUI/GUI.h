@@ -44,6 +44,7 @@ class GUI
 		ICON_POLY,
 		ICON_REGPOLY,
 
+		ICON_DEL,
 		//TODO: Add more icons names here
 
 		ICON_EXIT,		//Exit icon
