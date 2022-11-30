@@ -13,9 +13,5 @@ opDeleteShape::~opDeleteShape()
 void opDeleteShape::Execute()
 {
 	Graph* pGr = pControl->getGraph();
-	shape* shp = pGr->GetSelectedShape();
-	//Delete the Shape
-	if (shp) {
-		shp->SetDeleted(true);
-	}
+	pGr->DeleteSelectedShapes();
 }

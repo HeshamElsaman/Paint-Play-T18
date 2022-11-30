@@ -54,3 +54,18 @@ shape* Graph::GetSelectedShape() const
 {
 	return selectedShape;
 }
+
+
+void Graph::DeleteSelectedShapes()
+{
+	for (shape* shapePointer : shapesList)
+	{
+		if (!(shapePointer->IsDeleted()))
+		{
+			if(shapePointer->IsSelected())
+			{
+				shapePointer->SetDeleted(true);
+			}
+		}
+	}
+}
