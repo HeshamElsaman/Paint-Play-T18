@@ -5,8 +5,8 @@ GUI::GUI()
 	//Initialize user interface parameters
 	InterfaceMode = MODE_DRAW;
 
-	width = 1300;
-	height = 700;
+	width = 1000;
+	height = 400;
 	wx = 5;
 	wy = 5;
 
@@ -113,6 +113,8 @@ operationType GUI::GetUseroperation()
 
 			case ICON_DEL:
 				return DEL;
+			case ICON_Pallete:
+				return Pallete;
 
 			case ICON_EXIT:
 				return EXIT;

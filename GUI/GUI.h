@@ -43,6 +43,7 @@ class GUI
 		ICON_OVAL,
 		ICON_POLY,
 		ICON_REGPOLY,
+		ICON_Pallete,
 
 		ICON_DEL,
 		//TODO: Add more icons names here

@@ -4,6 +4,7 @@
 #include "Operations\opAddPolygon.h"
 #include "Operations\opAddRegPolygon.h"
 #include "Operations\opChngGenFillClr.h"
+#include "Operations\opPallete.h"
 
 
 //Constructor
@@ -52,6 +53,10 @@ operation* controller::createOperation(operationType OpType)
 
 		case CHNG_GEN_FILL_CLR:
 			pOp = new opChngGenFillClr(this);
+			break;
+
+		case Pallete:
+			pOp = new opPallete(this);
 			break;
 
 		case EXIT:
