@@ -20,7 +20,7 @@ struct GfxInfo	//Graphical info common for all shapes (you may add more members)
 	bool isFilled;	//shape Filled or not
 	int BorderWdth;	//Width of shape borders
 	bool isSelected;	//true if the shape is selected.
-	bool isDeleted;		//true if the shape is deleted
+	bool isDeleted = false;		//true if the shape is deleted
 };
 
 
@@ -85,7 +85,7 @@ class GUI
 	/// Add more members if needed
 
 
-
+	Point opLastPointClicked;
 	window* pWind;
 
 public:
@@ -96,7 +96,7 @@ public:
 	void GetPointClicked(int& x, int& y) const;//Get coordinate where user clicks
 	int GetClickType(int x, int y) const;
 	string GetSrting() const;	 //Returns a string entered by the user
-	operationType GetUseroperation() const; //Read the user click and map to an operation
+	operationType GetUseroperation(); //Read the user click and map to an operation
 	void setCrntFillColor(color); //set current filling color
 
 	// Output Functions  ---------------------------

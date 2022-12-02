@@ -75,11 +75,14 @@ string GUI::GetSrting() const
 }
 
 //This function reads the position where the user clicks to determine the desired operation
-operationType GUI::GetUseroperation() const
+operationType GUI::GetUseroperation()
 {
 	int x, y;
 	pWind->WaitMouseClick(x, y);	//Get the coordinates of the user click
-
+	
+	opLastPointClicked.x = x;
+	opLastPointClicked.y = y;
+	
 	if (InterfaceMode == MODE_DRAW)	//GUI in the DRAW mode
 	{
 		//[1] If user clicks on the Toolbar
