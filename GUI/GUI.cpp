@@ -193,8 +193,8 @@ void GUI::Colorpallete()
 
 color GUI::GetPickedColor(const int iX, const int iY)
 {
-	DrawColor = ptrPallete->GetColor(iX, iY);
-	return 1;
+	PickedColor = ptrPallete->GetColor(iX, iY);
+	return PickedColor;
 }
 
 void GUI::CreateStatusBar() const
