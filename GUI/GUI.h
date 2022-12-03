@@ -39,11 +39,13 @@ class GUI
 		//Note: Icons are ordered here as they appear in menu
 		//If you want to change the menu icons order, change the order here
 		ICON_RECT,		//Recangle icon in menu
+		ICON_LINE,
+		ICON_SQUARE,
 		ICON_CIRC,		//Circle icon in menu
 		ICON_OVAL,
 		ICON_POLY,
 		ICON_REGPOLY,
-		ICON_Pallete,
+		ICON_Palette,
 
 		ICON_DEL,
 		//TODO: Add more icons names here
@@ -81,6 +83,7 @@ class GUI
 	color MsgColor;			//Messages color
 	color BkGrndColor;		//Background color
 	color StatusBarColor;	//Status bar color
+	color PickedColor;		// Picked color from the pallete
 	int PenWidth;			//width of the pen that draws shapes
 
 	/// Add more members if needed
@@ -88,13 +91,18 @@ class GUI
 
 	Point opLastPointClicked;
 	window* pWind;
+	window* ptrPallete; // pointer for color pallete window only
+
+	
 
 public:
 
 	GUI();
 
 	// Input Functions  ---------------------------
-	void GetPointClicked(int& x, int& y) const;//Get coordinate where user clicks
+	void GetPointClicked(int& x, int& y) const;
+	void GetSmallWindPointClicked(int& x, int& y) const;
+	//Get coordinate where user clicks
 	int GetClickType(int x, int y) const;
 	string GetSrting() const;	 //Returns a string entered by the user
 	operationType GetUseroperation(); //Read the user click and map to an operation
@@ -108,14 +116,22 @@ public:
 
 	void ClearStatusBar() const;	//Clears the status bar
 	void ClearDrawArea() const;	//Clears the drawing area
-
+	void Colorpallete() ;
 	// -- shapes Drawing functions
 	void DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo) const;  //Draw a rectangle
+	void DrawSquare(Point P1, Point P2,Point P3, GfxInfo SquareGfxInfo) const;  //Draw a square
 	void DrawOval(Point P1, Point P2, GfxInfo RectGfxInfo) const;
+	void DrawLine(Point P1, Point P2, GfxInfo LineGfxInfo) const;  //Draw a line
+	void Drawcircle(Point P1, Point P2, GfxInfo circleGfxInfo) const;  //Draw a circle
 	void DrawPolygon(Point* verts, int vertn, GfxInfo PolygonGfxInfo) const;
 	void DrawRegPolygon(Point* verts, int vertn, GfxInfo RegPolygonGfxInfo) const;
 
+
 	///Make similar functions for drawing all other shapes.
+	
+	color GetPickedColor(const int iX, const int iY);
+	
+	void SetPickedColor();
 
 	void PrintMessage(string msg) const;	//Print a message on Status bar
 

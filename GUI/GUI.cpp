@@ -1,4 +1,5 @@
 #include "GUI.h"
+#include <iostream>
 
 GUI::GUI()
 {
@@ -22,6 +23,7 @@ GUI::GUI()
 	HighlightColor = MAGENTA;	//This color should NOT be used to draw shapes. use if for highlight only
 	StatusBarColor = LIGHTSEAGREEN;
 	PenWidth = 3;	//default width of the shapes frames
+	
 
 
 	//Create the output window
@@ -31,6 +33,7 @@ GUI::GUI()
 
 	CreateDrawToolBar();
 	CreateStatusBar();
+
 }
 
 
@@ -42,6 +45,10 @@ GUI::GUI()
 void GUI::GetPointClicked(int& x, int& y) const
 {
 	pWind->WaitMouseClick(x, y);	//Wait for mouse click
+}
+void GUI::GetSmallWindPointClicked(int& x, int& y) const // for color palette window only 
+{
+	ptrPallete->WaitMouseClick(x, y);	//Wait for mouse click
 }
 /////////////////////////////////////////////////////////////////////////////////////////
 int GUI::GetClickType(int x, int y) const
@@ -98,6 +105,12 @@ operationType GUI::GetUseroperation()
 			{
 			case ICON_RECT:
 				return DRAW_RECT;
+
+			case ICON_LINE:
+				return DRAW_LINE;
+
+			case ICON_SQUARE:
+				return DRAW_SQR;
 			
 			case ICON_CIRC:
 				return DRAW_CIRC;
@@ -113,7 +126,8 @@ operationType GUI::GetUseroperation()
 
 			case ICON_DEL:
 				return DEL;
-			case ICON_Pallete:
+
+			case ICON_Palette:
 				return Pallete;
 
 			case ICON_EXIT:
@@ -164,7 +178,25 @@ window* GUI::CreateWind(int w, int h, int x, int y) const
 	pW->DrawRectangle(0, ToolBarHeight, w, h);
 	return pW;
 }
-//////////////////////////////////////////////////////////////////////////////////////////
+
+void GUI::Colorpallete() 
+{
+	ptrPallete = CreateWind(400, 300, 200, 90);
+	ptrPallete->SetBrush(RED);
+	ptrPallete->ChangeTitle("Color pallete");
+	//ptrPallete->GetHeight();
+	//ptrPallete->GetWidth();
+	ptrPallete->DrawImage("Menu_Colorpallete.jpg", 50,50);
+	ptrPallete->SetBuffering(0);
+	ptrPallete->SetWaitClose(true);
+}
+
+color GUI::GetPickedColor(const int iX, const int iY)
+{
+	DrawColor = ptrPallete->GetColor(iX, iY);
+	return 1;
+}
+
 void GUI::CreateStatusBar() const
 {
 	pWind->SetPen(StatusBarColor, 1);
@@ -192,18 +224,23 @@ void GUI::CreateDrawToolBar()
 	//reoder them in UI_Info.h ==> enum DrawMenuIcon
 	string MenuIconImages[DRAW_ICON_COUNT];
 	MenuIconImages[ICON_RECT] = "images\\MenuIcons\\DrawMenu\\Menu_Rect.jpg";
+	MenuIconImages[ICON_LINE] = "images\\MenuIcons\\DrawMenu\\Menu_Line.jpg";
+	MenuIconImages[ICON_SQUARE] = "images\\MenuIcons\\DrawMenu\\Menu_Square.jpg";
 	MenuIconImages[ICON_CIRC] = "images\\MenuIcons\\DrawMenu\\Menu_Circ.jpg";
 	MenuIconImages[ICON_OVAL] = "images\\MenuIcons\\DrawMenu\\Oval.jpg";
 	MenuIconImages[ICON_POLY] = "images\\MenuIcons\\DrawMenu\\Menu_Polygon.jpg";
 	MenuIconImages[ICON_REGPOLY] = "images\\MenuIcons\\DrawMenu\\Menu_RegPolygon.jpg";
 	MenuIconImages[ICON_DEL] = "images\\MenuIcons\\DrawMenu\\Menu_Delete.jpg";
+	MenuIconImages[ICON_Palette] = "images\\MenuIcons\\DrawMenu\\Menu_ColorPalette.jpg";
 	MenuIconImages[ICON_EXIT] = "images\\MenuIcons\\DrawMenu\\Menu_Exit.jpg";
 
 	//TODO: Prepare images for each menu icon and add it to the list
 
 	//Draw menu icon one image at a time
-	for (int i = 0; i < DRAW_ICON_COUNT; i++)
+	for (int i = 0; i < DRAW_ICON_COUNT; i++) {
 		pWind->DrawImage(MenuIconImages[i], i * MenuIconWidth, 0, MenuIconWidth, ToolBarHeight);
+		
+	}
 
 
 
@@ -287,6 +324,98 @@ void GUI::DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo) const
 	pWind->DrawRectangle(P1.x, P1.y, P2.x, P2.y, style);
 
 }
+
+//Drawing square by manpiulating a rectangle 
+void GUI::DrawSquare(Point P1, Point P2, Point P3, GfxInfo SquareGfxInfo) const
+{
+	color DrawingClr;
+	if (SquareGfxInfo.isSelected)	//shape is selected
+		DrawingClr = HighlightColor; //shape should be drawn highlighted
+	else
+		DrawingClr = SquareGfxInfo.DrawClr;
+
+	pWind->SetPen(DrawingClr, SquareGfxInfo.BorderWdth);	//Set Drawing color & width
+
+	drawstyle style;
+	if (SquareGfxInfo.isFilled)
+	{
+		style = FILLED;
+		pWind->SetBrush(SquareGfxInfo.FillClr);
+	}
+	else
+		style = FRAME;
+	int SideLength = pow((pow((P2.x - P1.x), 2) + pow((P2.y - P1.y), 2)), 0.5);
+	P1.x = P3.x + (SideLength / 2);
+	P1.y = P3.y + (SideLength / 2);
+	P2.x = abs((SideLength / 2) - P3.x);
+	P2.y =  abs((SideLength / 2)-P3.y);
+	
+	/*int y_side_length = abs(P2.y - P1.y);
+	int x_side_length = abs(P2.x - P1.x);
+	bool sideL = y_side_length > x_side_length;
+	switch (sideL) {
+	case 1:
+		P2.x = P1.x + y_side_length;
+		P2.y = P1.y + y_side_length;
+		break;
+	case 0:
+		P2.x = P1.x + x_side_length;
+		P2.y = P1.y + x_side_length;
+		break;
+
+
+	}*/
+	;
+	pWind->DrawRectangle(P1.x, P1.y, P2.x, P2.y, style);
+}
+
+////////////////////////////////////////////////////////////////
+void GUI::DrawLine(Point P1, Point P2, GfxInfo LineGfxInfo) const
+{
+	color DrawingClr;
+	if (LineGfxInfo.isSelected)	//shape is selected
+		DrawingClr = HighlightColor; //shape should be drawn highlighted
+	else
+		DrawingClr = LineGfxInfo.DrawClr;
+
+	pWind->SetPen(DrawingClr, LineGfxInfo.BorderWdth);	//Set Drawing color & width
+
+	drawstyle style;
+	if (LineGfxInfo.isFilled)
+	{
+		style = FILLED;
+		pWind->SetBrush(LineGfxInfo.FillClr);
+	}
+	else
+		style = FRAME;
+
+	pWind->DrawLine(P1.x, P1.y, P2.x, P2.y, style);
+
+}
+///////////////////////////////////////////////////////////
+void GUI::Drawcircle(Point P1, Point P2, GfxInfo circleGfxInfo) const
+{
+	color DrawingClr;
+	if (circleGfxInfo.isSelected)	//shape is selected
+		DrawingClr = HighlightColor; //shape should be drawn highlighted
+	else
+		DrawingClr = circleGfxInfo.DrawClr;
+
+	pWind->SetPen(DrawingClr, circleGfxInfo.BorderWdth);	//Set Drawing color & width
+
+	drawstyle style;
+	if (circleGfxInfo.isFilled)
+	{
+		style = FILLED;
+		pWind->SetBrush(circleGfxInfo.FillClr);
+	}
+	else
+		style = FRAME;
+	int radius = sqrt(pow(P1.x - P2.x, 2) + pow(P1.y - P2.y, 2));
+	pWind->DrawCircle(P1.x, P1.y, radius, style);
+
+}
+////////////////////////////////////////////////////////
 void GUI::DrawOval(Point P1, Point P2, GfxInfo OvalGfxInfo) const
 {
 	color DrawingClr;
@@ -390,5 +519,6 @@ void GUI::DrawRegPolygon(Point* verts, int vertn, GfxInfo RegPolygonGfxInfo) con
 GUI::~GUI()
 {
 	delete pWind;
+	delete ptrPallete;
 }
 
