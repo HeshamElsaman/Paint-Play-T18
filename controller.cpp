@@ -1,10 +1,13 @@
 #include "controller.h"
 #include "Operations\opAddRect.h"
 #include "Operations\opAddOval.h"
+#include "Operations\opAddLine.h"
+#include "Operations\opAddSquare.h"
+#include "Operations\opAddCircle.h"
 #include "Operations\opAddPolygon.h"
 #include "Operations\opAddRegPolygon.h"
 #include "Operations\opChngGenFillClr.h"
-#include "Operations\opPallete.h"
+#include "Operations\opPalette.h"
 
 
 //Constructor
@@ -35,8 +38,15 @@ operation* controller::createOperation(operationType OpType)
 			pOp = new opAddRect(this);
 			break;
 
+		case DRAW_SQR:
+			pOp = new opAddSquare(this);
+			break;
+
 		case DRAW_LINE:
-			///create AddLineoperation here
+			pOp = new opAddLINE(this);
+			break;
+		case DRAW_CIRC:
+			pOp = new opAddCircle(this);
 			break;
 
 		case DRAW_OVAL:
@@ -56,7 +66,7 @@ operation* controller::createOperation(operationType OpType)
 			break;
 
 		case Pallete:
-			pOp = new opPallete(this);
+			pOp = new opPalette(this);
 			break;
 
 		case EXIT:

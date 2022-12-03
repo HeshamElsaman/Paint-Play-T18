@@ -167,18 +167,25 @@
     <ClCompile Include="GUI\GUI.cpp" />
     <ClCompile Include="controller.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Operations\opAddCircle.cpp" />
+    <ClCompile Include="Operations\opAddLINE.cpp" />
     <ClCompile Include="Operations\opAddOval.cpp" />
     <ClCompile Include="Operations\opAddPolygon.cpp" />
     <ClCompile Include="operations\opAddRect.cpp" />
     <ClCompile Include="Operations\opAddRegPolygon.cpp" />
+    <ClCompile Include="Operations\opAddSquare.cpp" />
     <ClCompile Include="Operations\opChngGenFillClr.cpp" />
     <ClCompile Include="Operations\opDeleteShape.cpp" />
+    <ClCompile Include="Operations\opPalette.cpp" />
+    <ClCompile Include="Shapes&amp;Graph\Circle.cpp" />
     <ClCompile Include="Shapes&amp;Graph\Graph.cpp" />
+    <ClCompile Include="Shapes&amp;Graph\Line.cpp" />
     <ClCompile Include="Shapes&amp;Graph\Oval.cpp" />
     <ClCompile Include="Shapes&amp;Graph\Polygon.cpp" />
     <ClCompile Include="Shapes&amp;Graph\Rect.cpp" />
     <ClCompile Include="Shapes&amp;Graph\RegPolygon.cpp" />
     <ClCompile Include="Shapes&amp;Graph\Shape.cpp" />
+    <ClCompile Include="Shapes&amp;Graph\Square.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h" />
@@ -204,20 +211,27 @@
     <ClInclude Include="GUI\GUI.h" />
     <ClInclude Include="controller.h" />
     <ClInclude Include="DEFS.h" />
+    <ClInclude Include="Operations\opAddCircle.h" />
+    <ClInclude Include="Operations\opAddLINE.h" />
     <ClInclude Include="Operations\opAddOval.h" />
     <ClInclude Include="Operations\opAddPolygon.h" />
     <ClInclude Include="operations\opAddRect.h" />
     <ClInclude Include="Operations\opAddRegPolygon.h" />
+    <ClInclude Include="Operations\opAddSquare.h" />
     <ClInclude Include="Operations\opChngGenFillClr.h" />
     <ClInclude Include="Operations\opDeleteShape.h" />
     <ClInclude Include="operations\operation.h" />
+    <ClInclude Include="Operations\opPalette.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="Shapes&amp;Graph\Circle.h" />
     <ClInclude Include="Shapes&amp;Graph\Graph.h" />
+    <ClInclude Include="Shapes&amp;Graph\Line.h" />
     <ClInclude Include="Shapes&amp;Graph\Oval.h" />
     <ClInclude Include="Shapes&amp;Graph\Polygon.h" />
     <ClInclude Include="Shapes&amp;Graph\Rect.h" />
     <ClInclude Include="Shapes&amp;Graph\RegPolygon.h" />
     <ClInclude Include="Shapes&amp;Graph\Shape.h" />
+    <ClInclude Include="Shapes&amp;Graph\Square.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="CIE202-project.rc" />
