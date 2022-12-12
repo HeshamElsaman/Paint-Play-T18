@@ -46,6 +46,11 @@ void GUI::GetPointClicked(int& x, int& y) const
 {
 	pWind->WaitMouseClick(x, y);	//Wait for mouse click
 }
+void GUI::GetOpLastPointClicked(int& x, int& y) const
+{
+	x = opLastPointClicked.x;
+	y = opLastPointClicked.y;
+}
 void GUI::GetSmallWindPointClicked(int& x, int& y) const // for color palette window only 
 {
 	ptrPallete->WaitMouseClick(x, y);	//Wait for mouse click
@@ -326,7 +331,7 @@ void GUI::DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo) const
 }
 
 //Drawing square by manpiulating a rectangle 
-void GUI::DrawSquare(Point P1, Point P2, Point P3, GfxInfo SquareGfxInfo) const
+void GUI::DrawSquare(Point P1, Point P2,/* Point P3,*/ GfxInfo SquareGfxInfo) const
 {
 	color DrawingClr;
 	if (SquareGfxInfo.isSelected)	//shape is selected
@@ -344,11 +349,11 @@ void GUI::DrawSquare(Point P1, Point P2, Point P3, GfxInfo SquareGfxInfo) const
 	}
 	else
 		style = FRAME;
-	int SideLength = pow((pow((P2.x - P1.x), 2) + pow((P2.y - P1.y), 2)), 0.5);
+	/*int SideLength = pow((pow((P2.x - P1.x), 2) + pow((P2.y - P1.y), 2)), 0.5);
 	P1.x = P3.x + (SideLength / 2);
 	P1.y = P3.y + (SideLength / 2);
 	P2.x = abs((SideLength / 2) - P3.x);
-	P2.y =  abs((SideLength / 2)-P3.y);
+	P2.y =  abs((SideLength / 2)-P3.y);*/
 	
 	/*int y_side_length = abs(P2.y - P1.y);
 	int x_side_length = abs(P2.x - P1.x);

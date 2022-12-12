@@ -101,6 +101,7 @@ public:
 
 	// Input Functions  ---------------------------
 	void GetPointClicked(int& x, int& y) const;
+	void GetOpLastPointClicked(int& x, int& y) const;
 	void GetSmallWindPointClicked(int& x, int& y) const;
 	//Get coordinate where user clicks
 	int GetClickType(int x, int y) const;
@@ -119,7 +120,7 @@ public:
 	void Colorpallete() ;
 	// -- shapes Drawing functions
 	void DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo) const;  //Draw a rectangle
-	void DrawSquare(Point P1, Point P2,Point P3, GfxInfo SquareGfxInfo) const;  //Draw a square
+	void DrawSquare(Point P1, Point P2,/*Point P3,*/ GfxInfo SquareGfxInfo) const;  //Draw a square
 	void DrawOval(Point P1, Point P2, GfxInfo RectGfxInfo) const;
 	void DrawLine(Point P1, Point P2, GfxInfo LineGfxInfo) const;  //Draw a line
 	void Drawcircle(Point P1, Point P2, GfxInfo circleGfxInfo) const;  //Draw a circle
