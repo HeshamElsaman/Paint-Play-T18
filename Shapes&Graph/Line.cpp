@@ -24,7 +24,7 @@ bool Line::isInside(int X, int Y)
 	int Ymax= (Corner1.y > Corner2.y) ? Corner1.y : Corner2.y;
 	if (X >= Xmin && X <= Xmax && Y<=Ymax && Y>=Ymin)
 	{
-		if (Y >= m * X + b+20 || Y >= m * X + b - 20)
+		if (Y <= m * X + b + (ShpGfxInfo.BorderWdth)+10 && Y >= m * X + b - (ShpGfxInfo.BorderWdth)-10)
 			return true;
 		return false;
 	}
