@@ -36,8 +36,11 @@ void Graph::Draw(GUI* pUI) const
 
 shape* Graph::Getshape(int x, int y) const
 {
-	/*for (int i =0;i<shapesList.size();i++)
-		if (shapesList[i].*/
+	for (int i = 0;i<shapesList.size();i++)
+		if (shapesList[i]->isInside(x, y))
+		{
+			return shapesList[i];
+		}
 		
 
 	//If a shape is found return a pointer to it.
@@ -54,7 +57,10 @@ shape* Graph::GetSelectedShape() const
 {
 	return selectedShape;
 }
-
+void Graph::SetSelectedShape(shape* shp)
+{
+	selectedShape = shp;
+}
 
 void Graph::DeleteSelectedShapes()
 {
