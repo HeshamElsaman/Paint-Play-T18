@@ -51,14 +51,18 @@ void opAddSquare::Execute()
 	SquareGfxInfo.isFilled = false;	//default is not filled
 	SquareGfxInfo.isSelected = false;	//defualt is not selected
 
-
-	//Create a circle with the above parameters
-	Square *S=new Square(P1, P2, P3, SquareGfxInfo);
+	int SideLength = pow((pow((P2.x - P1.x), 2) + pow((P2.y - P1.y), 2)), 0.5);
+	P1.x = P3.x + (SideLength / 2);
+	P1.y = P3.y + (SideLength / 2);
+	P2.x = abs((SideLength / 2) - P3.x);
+	P2.y = abs((SideLength / 2) - P3.y);
+	//Create a square with the above parameters
+	Square *S=new Square(P1, P2, /*P3,*/ SquareGfxInfo);
 
 	//Get a pointer to the graph
 	Graph* pGr = pControl->getGraph();
 
-	//Add the circle to the list of shapes
+	//Add the square to the list of shapes
 	pGr->Addshape(S);
 
 }
