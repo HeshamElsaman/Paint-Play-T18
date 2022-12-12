@@ -8,6 +8,7 @@
 #include "Operations\opAddRegPolygon.h"
 #include "Operations\opChngGenFillClr.h"
 #include "Operations\opPalette.h"
+#include "Operations/Select.h"
 
 
 //Constructor
@@ -68,6 +69,8 @@ operation* controller::createOperation(operationType OpType)
 		case Pallete:
 			pOp = new opPalette(this);
 			break;
+		case DRAWING_AREA:
+			pOp = new opSelect(this);
 
 		case EXIT:
 			///create Exitoperation here

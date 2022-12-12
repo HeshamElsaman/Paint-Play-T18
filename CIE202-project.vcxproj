@@ -177,6 +177,7 @@
     <ClCompile Include="Operations\opChngGenFillClr.cpp" />
     <ClCompile Include="Operations\opDeleteShape.cpp" />
     <ClCompile Include="Operations\opPalette.cpp" />
+    <ClCompile Include="Operations\Select.cpp" />
     <ClCompile Include="Shapes&amp;Graph\Circle.cpp" />
     <ClCompile Include="Shapes&amp;Graph\Graph.cpp" />
     <ClCompile Include="Shapes&amp;Graph\Line.cpp" />
@@ -222,6 +223,7 @@
     <ClInclude Include="Operations\opDeleteShape.h" />
     <ClInclude Include="operations\operation.h" />
     <ClInclude Include="Operations\opPalette.h" />
+    <ClInclude Include="Operations\Select.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Shapes&amp;Graph\Circle.h" />
     <ClInclude Include="Shapes&amp;Graph\Graph.h" />
