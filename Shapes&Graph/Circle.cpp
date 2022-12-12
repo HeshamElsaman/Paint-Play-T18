@@ -17,3 +17,10 @@ void Circle::Draw(GUI* pUI) const
 
 
 }
+bool Circle::isInside(int X, int Y)
+{
+	double radius=pow((pow((Corner2.x - Corner1.x), 2) + pow((Corner2.y - Corner1.y), 2)), 0.5);
+	if (pow((pow((X - Corner1.x), 2) + pow((Y - Corner1.y), 2)), 0.5) <= radius)
+		return true;
+	return false;
+}

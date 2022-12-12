@@ -11,5 +11,6 @@ public:
 	PolyGon(Point*, int, GfxInfo shapeGfxInfo);
 	virtual ~PolyGon();
 	virtual void Draw(GUI* pUI) const;
+	bool isInside(int X, int Y) {};
 };
 
