@@ -10,6 +10,6 @@ public:
 	Oval(Point, Point, GfxInfo shapeGfxInfo);
 	virtual ~Oval();
 	virtual void Draw(GUI* pUI) const;
-	bool isInside(int X, int Y) { return 0; };
+	bool isInside(int X, int Y) ;
 };
 

@@ -439,22 +439,22 @@ void GUI::DrawOval(Point P1, Point P2, GfxInfo OvalGfxInfo) const
 	}
 	else
 		style = FRAME;
-	if (P2.x < P1.x) {
-		Point temp1 = P1;
-		Point temp2 = P2;
-		P1.x = temp2.x;
-		P2.x = temp1.x;
-	}
+	//if (P2.x < P1.x) {
+	//	Point temp1 = P1;
+	//	Point temp2 = P2;
+	//	P1.x = temp2.x;
+	//	P2.x = temp1.x;
+	//}
 
-	if (P2.y < P1.y) {
-		Point temp1 = P1;
-		Point temp2 = P2;
-		P1.y = temp2.y;
-		P2.y = temp1.y;
-	}
-	
-	pWind->DrawArc(P1.x, P1.y, P2.x, P2.y, 0, 180, style);
-	pWind->DrawArc(P1.x, P1.y, P2.x, P2.y, 180, 360, style);
+	//if (P2.y < P1.y) {
+	//	Point temp1 = P1;
+	//	Point temp2 = P2;
+	//	P1.y = temp2.y;
+	//	P2.y = temp1.y;
+	//}
+	pWind->DrawEllipse(P1.x, P1.y, P2.x, P2.y, style);
+	/*pWind->DrawArc(P1.x, P1.y, P2.x, P2.y, 0, 180, style);
+	pWind->DrawArc(P1.x, P1.y, P2.x, P2.y, 180, 360, style);*/
 
 }
 //////////////////////////////////////////////////////////////////////////////////////////
