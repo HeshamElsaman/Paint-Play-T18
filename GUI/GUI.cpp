@@ -116,6 +116,9 @@ operationType GUI::GetUseroperation()
 
 			case ICON_SQUARE:
 				return DRAW_SQR;
+
+			case ICON_TRI:
+				return DRAW_TRI;
 			
 			case ICON_CIRC:
 				return DRAW_CIRC;
@@ -231,6 +234,7 @@ void GUI::CreateDrawToolBar()
 	MenuIconImages[ICON_RECT] = "images\\MenuIcons\\DrawMenu\\Menu_Rect.jpg";
 	MenuIconImages[ICON_LINE] = "images\\MenuIcons\\DrawMenu\\Menu_Line.jpg";
 	MenuIconImages[ICON_SQUARE] = "images\\MenuIcons\\DrawMenu\\Menu_Square.jpg";
+	MenuIconImages[ICON_TRI] = "images\\MenuIcons\\DrawMenu\\Menu_Triangle.jpg";
 	MenuIconImages[ICON_CIRC] = "images\\MenuIcons\\DrawMenu\\Menu_Circ.jpg";
 	MenuIconImages[ICON_OVAL] = "images\\MenuIcons\\DrawMenu\\Oval.jpg";
 	MenuIconImages[ICON_POLY] = "images\\MenuIcons\\DrawMenu\\Menu_Polygon.jpg";
@@ -374,6 +378,31 @@ void GUI::DrawSquare(Point P1, Point P2,/* Point P3,*/ GfxInfo SquareGfxInfo) co
 	pWind->DrawRectangle(P1.x, P1.y, P2.x, P2.y, style);
 }
 
+////////////////////////////////////////////////////////////////
+void GUI::DrawTriangle(Point P1, Point P2, Point P3, GfxInfo TriangleGfxInfo) const
+{
+	color DrawingClr;
+	if (TriangleGfxInfo.isSelected)	//shape is selected
+		DrawingClr = HighlightColor; //shape should be drawn highlighted
+	else
+		DrawingClr = TriangleGfxInfo.DrawClr;
+
+	pWind->SetPen(DrawingClr, TriangleGfxInfo.BorderWdth);	//Set Drawing color & width
+
+	drawstyle style;
+	if (TriangleGfxInfo.isFilled)
+	{
+		style = FILLED;
+		pWind->SetBrush(TriangleGfxInfo.FillClr);
+	}
+	else
+		style = FRAME;
+	
+
+
+	pWind->DrawTriangle(P1.x, P1.y, P2.x, P2.y, P3.x, P3.y, style);
+	
+}
 ////////////////////////////////////////////////////////////////
 void GUI::DrawLine(Point P1, Point P2, GfxInfo LineGfxInfo) const
 {

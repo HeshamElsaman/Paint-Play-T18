@@ -42,6 +42,7 @@ class GUI
 		ICON_LINE,
 		ICON_SQUARE,
 		ICON_CIRC,		//Circle icon in menu
+		ICON_TRI,
 		ICON_OVAL,
 		ICON_POLY,
 		ICON_REGPOLY,
@@ -121,6 +122,7 @@ public:
 	// -- shapes Drawing functions
 	void DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo) const;  //Draw a rectangle
 	void DrawSquare(Point P1, Point P2,/*Point P3,*/ GfxInfo SquareGfxInfo) const;  //Draw a square
+	void DrawTriangle(Point P1, Point P2, Point P3, GfxInfo TriangleGfxInfo) const;
 	void DrawOval(Point P1, Point P2, GfxInfo RectGfxInfo) const;
 	void DrawLine(Point P1, Point P2, GfxInfo LineGfxInfo) const;  //Draw a line
 	void Drawcircle(Point P1, Point P2, GfxInfo circleGfxInfo) const;  //Draw a circle

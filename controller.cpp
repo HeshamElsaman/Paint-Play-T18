@@ -2,6 +2,7 @@
 #include "Operations\opAddRect.h"
 #include "Operations\opAddOval.h"
 #include "Operations\opAddLine.h"
+#include "Operations\opAddTriangle.h"
 #include "Operations\opAddSquare.h"
 #include "Operations\opAddCircle.h"
 #include "Operations\opAddPolygon.h"
@@ -41,6 +42,10 @@ operation* controller::createOperation(operationType OpType)
 
 		case DRAW_SQR:
 			pOp = new opAddSquare(this);
+			break;
+
+		case DRAW_TRI:
+			pOp = new opAddTriangle(this);
 			break;
 
 		case DRAW_LINE:
