@@ -10,6 +10,7 @@ enum operationType //The operations supported (you can add more if needed)
 	DRAW_SQR,
 	DRAW_TRI,		//Draw Triangle
 	DRAW_CIRC,		//Draw Circle
+	DRAW_SQR,		//Draw square
 	DRAW_OVAL,		//Draw Oval
 	DRAW_POLY,		//Draw Irregular Polygon
 	DRAW_REGPOLY,	//Draw Regular Polygon
