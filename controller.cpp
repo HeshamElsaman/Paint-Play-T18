@@ -4,7 +4,7 @@
 #include "Operations\opAddPolygon.h"
 #include "Operations\opAddRegPolygon.h"
 #include "Operations\opChngGenFillClr.h"
-#include "Operations\opPallete.h"
+#include "Operations\opPalette.h"
 
 
 //Constructor
@@ -56,7 +56,7 @@ operation* controller::createOperation(operationType OpType)
 			break;
 
 		case Pallete:
-			pOp = new opPallete(this);
+			pOp = new opPalette(this);
 			break;
 
 		case EXIT:
