@@ -47,6 +47,7 @@ void opChngFillClr::Execute()
 		}
 		else
 		{
+			pUI->setFillStatus(true);
 			pUI->setCrntFillColor(CLR);
 		}
 	}
