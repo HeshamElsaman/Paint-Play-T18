@@ -48,7 +48,7 @@ void opAddPolygon::Execute()
 		PolygonGfxInfo.BorderWdth = pUI->getCrntPenWidth();
 
 
-		PolygonGfxInfo.isFilled = false;	//default is not filled
+		PolygonGfxInfo.isFilled = true;	//default is not filled
 		PolygonGfxInfo.isSelected = false;	//defualt is not selected
 
 
