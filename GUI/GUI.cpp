@@ -129,6 +129,9 @@ operationType GUI::GetUseroperation()
 			case ICON_REGPOLY:
 				return DRAW_REGPOLY;
 
+			case ICON_CPC:
+				return CHNG_DRAW_CLR;
+
 			case ICON_DEL:
 				return DEL;
 
@@ -258,6 +261,7 @@ void GUI::CreateDrawToolBar()
 	MenuIconImages[ICON_REGPOLY] = "images\\MenuIcons\\DrawMenu\\Menu_RegPolygon.jpg";
 	MenuIconImages[ICON_DEL] = "images\\MenuIcons\\DrawMenu\\Menu_Delete.jpg";
 	MenuIconImages[ICON_CFC] = "images\\MenuIcons\\DrawMenu\\Menu_FillColor.jpg";
+	MenuIconImages[ICON_CPC] = "images\\MenuIcons\\DrawMenu\\Menu_PenColor.jpg";
 	MenuIconImages[ICON_EXIT] = "images\\MenuIcons\\DrawMenu\\Menu_Exit.jpg";
 
 	//TODO: Prepare images for each menu icon and add it to the list

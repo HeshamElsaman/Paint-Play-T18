@@ -47,7 +47,7 @@ class GUI
 		ICON_POLY,
 		ICON_REGPOLY,
 		ICON_CFC,
-		
+		ICON_CPC,
 
 		ICON_DEL,
 		//TODO: Add more icons names here
