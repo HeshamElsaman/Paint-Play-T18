@@ -21,6 +21,7 @@ bool Oval::isInside(int X,int Y)
 	double axis1 = (Corner1.x - Corner2.x)/2.0;
 	double axis2 = (Corner1.y - Corner2.y)/2.0;
 	double relation = pow((X - cent_x), 2.0) / pow(axis1, 2.0) + pow((Y - cent_y), 2.0) / pow(axis2, 2.0);
+	if (relation <= 1)
 	if (relation <=1)
 		return true;
 	return false;

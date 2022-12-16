@@ -22,6 +22,9 @@ public:
 	shape* GetSelectedShape() const;		//Returns a pointer to the currently selected shape
 	void SetSelectedShape(shape*) ;
 	void DeleteSelectedShapes();
+	void ChangeFillClr(color);
+	void SetSelectedFillState(bool);
+	bool ShapeListStateSelected() const;
 
 
 	void Save(ofstream& outfile);	//Save all shapes to a file

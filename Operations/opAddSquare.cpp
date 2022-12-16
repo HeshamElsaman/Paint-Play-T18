@@ -48,7 +48,7 @@ void opAddSquare::Execute()
 	SquareGfxInfo.BorderWdth = pUI->getCrntPenWidth();
 
 
-	SquareGfxInfo.isFilled = false;	//default is not filled
+	SquareGfxInfo.isFilled = pUI->GetFillStatus();	//default is not filled
 	SquareGfxInfo.isSelected = false;	//defualt is not selected
 
 	int SideLength = pow((pow((P2.x - P1.x), 2) + pow((P2.y - P1.y), 2)), 0.5);

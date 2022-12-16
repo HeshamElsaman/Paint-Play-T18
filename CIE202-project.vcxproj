@@ -174,9 +174,9 @@
     <ClCompile Include="operations\opAddRect.cpp" />
     <ClCompile Include="Operations\opAddRegPolygon.cpp" />
     <ClCompile Include="Operations\opAddSquare.cpp" />
-    <ClCompile Include="Operations\opChngGenFillClr.cpp" />
+    <ClCompile Include="Operations\opAddTriangle.cpp" />
+    <ClCompile Include="Operations\opChngFillClr.cpp" />
     <ClCompile Include="Operations\opDeleteShape.cpp" />
-    <ClCompile Include="Operations\opPalette.cpp" />
     <ClCompile Include="Operations\Select.cpp" />
     <ClCompile Include="Shapes&amp;Graph\Circle.cpp" />
     <ClCompile Include="Shapes&amp;Graph\Graph.cpp" />
@@ -187,6 +187,7 @@
     <ClCompile Include="Shapes&amp;Graph\RegPolygon.cpp" />
     <ClCompile Include="Shapes&amp;Graph\Shape.cpp" />
     <ClCompile Include="Shapes&amp;Graph\Square.cpp" />
+    <ClCompile Include="Shapes&amp;Graph\Triangle.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h" />
@@ -219,10 +220,10 @@
     <ClInclude Include="operations\opAddRect.h" />
     <ClInclude Include="Operations\opAddRegPolygon.h" />
     <ClInclude Include="Operations\opAddSquare.h" />
-    <ClInclude Include="Operations\opChngGenFillClr.h" />
+    <ClInclude Include="Operations\opAddTriangle.h" />
+    <ClInclude Include="Operations\opChngFillClr.h" />
     <ClInclude Include="Operations\opDeleteShape.h" />
     <ClInclude Include="operations\operation.h" />
-    <ClInclude Include="Operations\opPalette.h" />
     <ClInclude Include="Operations\Select.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Shapes&amp;Graph\Circle.h" />
@@ -234,6 +235,7 @@
     <ClInclude Include="Shapes&amp;Graph\RegPolygon.h" />
     <ClInclude Include="Shapes&amp;Graph\Shape.h" />
     <ClInclude Include="Shapes&amp;Graph\Square.h" />
+    <ClInclude Include="Shapes&amp;Graph\Triangle.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="CIE202-project.rc" />

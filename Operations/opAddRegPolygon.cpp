@@ -90,7 +90,7 @@ void opAddRegPolygon::Execute()
 		RegPolygonGfxInfo.BorderWdth = pUI->getCrntPenWidth();
 
 
-		RegPolygonGfxInfo.isFilled = false;	//default is not filled
+		RegPolygonGfxInfo.isFilled = pUI->GetFillStatus();	//default is not filled
 		RegPolygonGfxInfo.isSelected = false;	//defualt is not selected
 
 

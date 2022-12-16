@@ -37,7 +37,7 @@ void Graph::Draw(GUI* pUI) const
 shape* Graph::Getshape(int x, int y) const
 {
 	for (int i = shapesList.size()-1;i>=0;i--)
-		if (shapesList[i]->isInside(x, y))
+		if (shapesList[i]->isInside(x, y) && !(shapesList[i]->IsDeleted()))
 		{
 			return shapesList[i];
 		}
@@ -64,14 +64,62 @@ void Graph::SetSelectedShape(shape* shp)
 
 void Graph::DeleteSelectedShapes()
 {
-	for (shape* shapePointer : shapesList)
+	if (!(shapesList.empty()))
 	{
-		if (!(shapePointer->IsDeleted()))
+		for (shape* shapePointer : shapesList)
 		{
-			if(shapePointer->IsSelected())
+			if (!(shapePointer->IsDeleted()))
 			{
-				shapePointer->SetDeleted(true);
+				if (shapePointer->IsSelected())
+				{
+					shapePointer->SetDeleted(true);
+					//shapePointer->SetSelected(false);
+				}
 			}
 		}
 	}
+	
+}
+
+void Graph::ChangeFillClr(color clr)
+{
+	if (!(shapesList.empty()))
+	{
+		for (shape* shapePointer : shapesList)
+		{
+			if (shapePointer->IsSelected() && !(shapePointer->IsDeleted()))
+			{
+				shapePointer->ChngFillClr(clr);
+			}
+		}
+	}
+}
+
+void Graph::SetSelectedFillState(bool stat)
+{
+	if (!(shapesList.empty()))
+	{
+		for (shape* shapePointer : shapesList)
+		{
+			if (shapePointer->IsSelected() && !(shapePointer->IsDeleted()))
+			{
+				shapePointer->SetFilled(stat);
+			}
+		}
+	}
+}
+
+bool Graph::ShapeListStateSelected() const
+{
+	if (!(shapesList.empty()))
+	{
+		for (shape* shapePointer : shapesList)
+		{
+			if (shapePointer->IsSelected())
+			{
+				return true;
+			}
+		}
+	}
+	return false;
 }

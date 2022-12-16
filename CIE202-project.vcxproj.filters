@@ -129,7 +129,7 @@
     <ClCompile Include="Operations\opAddOval.cpp">
       <Filter>Operations</Filter>
     </ClCompile>
-    <ClCompile Include="Operations\opChngGenFillClr.cpp">
+    <ClCompile Include="Operations\opChngFillClr.cpp">
       <Filter>Operations</Filter>
     </ClCompile>
     <ClCompile Include="Operations\opAddPolygon.cpp">
@@ -145,9 +145,6 @@
       <Filter>Shapes&amp;Graph</Filter>
     </ClCompile>
     <ClCompile Include="Operations\opDeleteShape.cpp">
-      <Filter>Operations</Filter>
-    </ClCompile>
-    <ClCompile Include="Operations\opPalette.cpp">
       <Filter>Operations</Filter>
     </ClCompile>
     <ClCompile Include="Operations\opAddCircle.cpp">
@@ -169,6 +166,12 @@
       <Filter>Shapes&amp;Graph</Filter>
     </ClCompile>
     <ClCompile Include="Operations\Select.cpp">
+      <Filter>Operations</Filter>
+    </ClCompile>
+    <ClCompile Include="Shapes&amp;Graph\Triangle.cpp">
+      <Filter>Shapes&amp;Graph</Filter>
+    </ClCompile>
+    <ClCompile Include="Operations\opAddTriangle.cpp">
       <Filter>Operations</Filter>
     </ClCompile>
   </ItemGroup>
@@ -260,7 +263,7 @@
     <ClInclude Include="Operations\opAddOval.h">
       <Filter>Operations</Filter>
     </ClInclude>
-    <ClInclude Include="Operations\opChngGenFillClr.h">
+    <ClInclude Include="Operations\opChngFillClr.h">
       <Filter>Operations</Filter>
     </ClInclude>
     <ClInclude Include="Operations\opAddPolygon.h">
@@ -276,9 +279,6 @@
       <Filter>Shapes&amp;Graph</Filter>
     </ClInclude>
     <ClInclude Include="Operations\opDeleteShape.h">
-      <Filter>Operations</Filter>
-    </ClInclude>
-    <ClInclude Include="Operations\opPalette.h">
       <Filter>Operations</Filter>
     </ClInclude>
     <ClInclude Include="Shapes&amp;Graph\Circle.h">
@@ -300,6 +300,12 @@
       <Filter>Shapes&amp;Graph</Filter>
     </ClInclude>
     <ClInclude Include="Operations\Select.h">
+      <Filter>Operations</Filter>
+    </ClInclude>
+    <ClInclude Include="Shapes&amp;Graph\Triangle.h">
+      <Filter>Shapes&amp;Graph</Filter>
+    </ClInclude>
+    <ClInclude Include="Operations\opAddTriangle.h">
       <Filter>Operations</Filter>
     </ClInclude>
   </ItemGroup>

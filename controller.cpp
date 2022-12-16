@@ -1,14 +1,15 @@
 #include "controller.h"
-#include "Operations\opAddRect.h"
-#include "Operations\opAddOval.h"
-#include "Operations\opAddLine.h"
-#include "Operations\opAddSquare.h"
-#include "Operations\opAddCircle.h"
-#include "Operations\opAddPolygon.h"
-#include "Operations\opAddRegPolygon.h"
-#include "Operations\opChngGenFillClr.h"
-#include "Operations\opPalette.h"
+#include "Operations/opAddRect.h"
+#include "Operations/opAddOval.h"
+#include "Operations/opAddLine.h"
+#include "Operations/opAddTriangle.h"
+#include "Operations/opAddSquare.h"
+#include "Operations/opAddCircle.h"
+#include "Operations/opAddPolygon.h"
+#include "Operations/opAddRegPolygon.h"
 #include "Operations/Select.h"
+#include "Operations/opChngFillClr.h"
+#include "Operations/opDeleteShape.h"
 
 
 //Constructor
@@ -43,6 +44,10 @@ operation* controller::createOperation(operationType OpType)
 			pOp = new opAddSquare(this);
 			break;
 
+		case DRAW_TRI:
+			pOp = new opAddTriangle(this);
+			break;
+
 		case DRAW_LINE:
 			pOp = new opAddLINE(this);
 			break;
@@ -62,13 +67,14 @@ operation* controller::createOperation(operationType OpType)
 			pOp = new opAddRegPolygon(this);
 			break;
 
-		case CHNG_GEN_FILL_CLR:
-			pOp = new opChngGenFillClr(this);
+		case CHNG_FILL_CLR:
+			pOp = new opChngFillClr(this);
 			break;
 
-		case Pallete:
-			pOp = new opPalette(this);
+		case DEL:
+			pOp = new opDeleteShape(this);
 			break;
+
 		case DRAWING_AREA:
 			pOp = new opSelect(this);
 

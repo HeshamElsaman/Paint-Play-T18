@@ -24,6 +24,7 @@ void opSelect::Execute()
 	{
 		if (shape2)
 			shape2->SetSelected(false);
+		pGr->SetSelectedShape(nullptr);
 	}
 	
 	
