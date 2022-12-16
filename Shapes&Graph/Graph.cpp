@@ -37,7 +37,7 @@ void Graph::Draw(GUI* pUI) const
 shape* Graph::Getshape(int x, int y) const
 {
 	for (int i = shapesList.size()-1;i>=0;i--)
-		if (shapesList[i]->isInside(x, y))
+		if (shapesList[i]->isInside(x, y) && !(shapesList[i]->IsDeleted()))
 		{
 			return shapesList[i];
 		}

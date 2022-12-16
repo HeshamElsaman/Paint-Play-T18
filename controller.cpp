@@ -1,14 +1,15 @@
 #include "controller.h"
-#include "Operations\opAddRect.h"
-#include "Operations\opAddOval.h"
-#include "Operations\opAddLine.h"
-#include "Operations\opAddTriangle.h"
-#include "Operations\opAddSquare.h"
-#include "Operations\opAddCircle.h"
-#include "Operations\opAddPolygon.h"
-#include "Operations\opAddRegPolygon.h"
-#include "Operations\opChngFillClr.h"
-#include "Operations\Select.h"
+#include "Operations/opAddRect.h"
+#include "Operations/opAddOval.h"
+#include "Operations/opAddLine.h"
+#include "Operations/opAddTriangle.h"
+#include "Operations/opAddSquare.h"
+#include "Operations/opAddCircle.h"
+#include "Operations/opAddPolygon.h"
+#include "Operations/opAddRegPolygon.h"
+#include "Operations/Select.h"
+#include "Operations/opChngFillClr.h"
+#include "Operations/opDeleteShape.h"
 
 
 //Constructor
@@ -68,6 +69,10 @@ operation* controller::createOperation(operationType OpType)
 
 		case CHNG_FILL_CLR:
 			pOp = new opChngFillClr(this);
+			break;
+
+		case DEL:
+			pOp = new opDeleteShape(this);
 			break;
 
 		case DRAWING_AREA:
