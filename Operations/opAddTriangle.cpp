@@ -53,7 +53,7 @@ void opAddTriangle::Execute()
 	TriangleGfxInfo.BorderWdth = pUI->getCrntPenWidth();
 
 
-	TriangleGfxInfo.isFilled = true;	//default is not filled
+	TriangleGfxInfo.isFilled = pUI->GetFillStatus();	//default is not filled
 	TriangleGfxInfo.isSelected = false;	//defualt is not selected
 
 

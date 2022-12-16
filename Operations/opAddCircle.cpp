@@ -42,7 +42,7 @@ void opAddCircle::Execute()
 	circleGfxInfo.BorderWdth = pUI->getCrntPenWidth();
 
 
-	circleGfxInfo.isFilled = true;	//default is not filled
+	circleGfxInfo.isFilled = pUI->GetFillStatus();	//default is not filled
 	circleGfxInfo.isSelected = false;	//defualt is not selected
 
 

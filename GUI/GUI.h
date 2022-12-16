@@ -81,6 +81,7 @@ class GUI
 
 	color DrawColor;		//Drawing color
 	color FillColor;		//Filling color
+	bool FillStatus = false; //General Fill Status
 	color HighlightColor;	//Highlighting color
 	color MsgColor;			//Messages color
 	color BkGrndColor;		//Background color
@@ -105,7 +106,7 @@ public:
 	// Input Functions  ---------------------------
 	void GetPointClicked(int& x, int& y) const;
 	void GetOpLastPointClicked(int& x, int& y) const;
-	
+	bool GetFillStatus() const;
 	//Get coordinate where user clicks
 	int GetClickType(int x, int y) const;
 	string GetSrting() const;	 //Returns a string entered by the user
@@ -113,6 +114,7 @@ public:
 	void GetPalettePointClicked(int& x, int& y) const;
 	void GetPaletteColorClicked(int x, int y, color&) const;
 	void setCrntFillColor(color); //set current filling color
+	void setFillStatus(bool);
 
 	// Output Functions  ---------------------------
 	window* CreateWind(int, int, int, int) const; //creates the application window

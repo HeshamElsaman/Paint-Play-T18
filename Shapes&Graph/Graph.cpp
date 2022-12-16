@@ -95,6 +95,20 @@ void Graph::ChangeFillClr(color clr)
 	}
 }
 
+void Graph::SetSelectedFillState(bool stat)
+{
+	if (!(shapesList.empty()))
+	{
+		for (shape* shapePointer : shapesList)
+		{
+			if (shapePointer->IsSelected() && !(shapePointer->IsDeleted()))
+			{
+				shapePointer->SetFilled(stat);
+			}
+		}
+	}
+}
+
 bool Graph::ShapeListStateSelected() const
 {
 	if (!(shapesList.empty()))

@@ -162,11 +162,20 @@ operationType GUI::GetUseroperation()
 
 }
 ////////////////////////////////////////////////////
+bool GUI::GetFillStatus() const
+{
+	return FillStatus;
+}
+////////////////////////////////////////////////////
 void GUI::setCrntFillColor(color clr) //set current filling color
 {
 	FillColor = clr;
 }
 ////////////////////////////////////////////////////
+void GUI::setFillStatus(bool stat)
+{
+	FillStatus = stat;
+}
 
 
 
