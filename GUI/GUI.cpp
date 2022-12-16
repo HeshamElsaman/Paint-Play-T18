@@ -17,10 +17,10 @@ GUI::GUI()
 	MenuIconWidth = 80;
 
 	DrawColor = BLUE;	//default Drawing color
-	FillColor = GREEN;	//default Filling color
-	MsgColor = BLACK;		//Messages color
 	BkGrndColor = WHITE;	//Background color
 	HighlightColor = MAGENTA;	//This color should NOT be used to draw shapes. use if for highlight only
+	FillColor = BkGrndColor;	//default Filling color
+	MsgColor = BLACK;		//Messages color
 	StatusBarColor = LIGHTSEAGREEN;
 	PenWidth = 3;	//default width of the shapes frames
 	
@@ -51,10 +51,7 @@ void GUI::GetOpLastPointClicked(int& x, int& y) const
 	x = opLastPointClicked.x;
 	y = opLastPointClicked.y;
 }
-void GUI::GetSmallWindPointClicked(int& x, int& y) const // for color palette window only 
-{
-	ptrPallete->WaitMouseClick(x, y);	//Wait for mouse click
-}
+
 /////////////////////////////////////////////////////////////////////////////////////////
 int GUI::GetClickType(int x, int y) const
 {
@@ -135,8 +132,8 @@ operationType GUI::GetUseroperation()
 			case ICON_DEL:
 				return DEL;
 
-			case ICON_Palette:
-				return Pallete;
+			case ICON_CFC:
+				return CHNG_FILL_CLR;
 
 			case ICON_EXIT:
 				return EXIT;
@@ -186,25 +183,36 @@ window* GUI::CreateWind(int w, int h, int x, int y) const
 	pW->DrawRectangle(0, ToolBarHeight, w, h);
 	return pW;
 }
+///////////////////////////////////////////////////////////////////////////////////////////
 
-void GUI::Colorpallete() 
+void GUI::CreateColorPalette()
 {
-	ptrPallete = CreateWind(400, 300, 200, 90);
-	ptrPallete->SetBrush(RED);
-	ptrPallete->ChangeTitle("Color pallete");
-	//ptrPallete->GetHeight();
-	//ptrPallete->GetWidth();
-	ptrPallete->DrawImage("Menu_Colorpallete.jpg", 50,50);
-	ptrPallete->SetBuffering(0);
-	ptrPallete->SetWaitClose(true);
+	pPalette = CreateWind(400, 300, 200, 90);
+	pPalette->ChangeTitle("Color palette");
+	pPalette->DrawImage("Menu_Colorpallete.jpg", 50,50);
+	pPalette->SetBuffering(0);
+	pPalette->SetWaitClose(false);
 }
 
-color GUI::GetPickedColor(const int iX, const int iY)
+void GUI::DeleteColorPalette()
 {
-	PickedColor = ptrPallete->GetColor(iX, iY);
-	return PickedColor;
+	if (pPalette)
+	{
+		delete pPalette; pPalette = nullptr;
+	}
 }
 
+void GUI::GetPalettePointClicked(int& x, int& y) const
+{
+	pPalette->WaitMouseClick(x, y);
+}
+
+void GUI::GetPaletteColorClicked(int x, int y, color& clr) const
+{
+	clr = pPalette->GetColor(x, y);
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////
 void GUI::CreateStatusBar() const
 {
 	pWind->SetPen(StatusBarColor, 1);
@@ -240,7 +248,7 @@ void GUI::CreateDrawToolBar()
 	MenuIconImages[ICON_POLY] = "images\\MenuIcons\\DrawMenu\\Menu_Polygon.jpg";
 	MenuIconImages[ICON_REGPOLY] = "images\\MenuIcons\\DrawMenu\\Menu_RegPolygon.jpg";
 	MenuIconImages[ICON_DEL] = "images\\MenuIcons\\DrawMenu\\Menu_Delete.jpg";
-	MenuIconImages[ICON_Palette] = "images\\MenuIcons\\DrawMenu\\Menu_ColorPalette.jpg";
+	MenuIconImages[ICON_CFC] = "images\\MenuIcons\\DrawMenu\\Menu_FillColor.jpg";
 	MenuIconImages[ICON_EXIT] = "images\\MenuIcons\\DrawMenu\\Menu_Exit.jpg";
 
 	//TODO: Prepare images for each menu icon and add it to the list
@@ -553,6 +561,6 @@ void GUI::DrawRegPolygon(Point* verts, int vertn, GfxInfo RegPolygonGfxInfo) con
 GUI::~GUI()
 {
 	delete pWind;
-	delete ptrPallete;
+	if (pPalette) delete pPalette;
 }
 

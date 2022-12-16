@@ -46,7 +46,8 @@ class GUI
 		ICON_OVAL,
 		ICON_POLY,
 		ICON_REGPOLY,
-		ICON_Palette,
+		ICON_CFC,
+		
 
 		ICON_DEL,
 		//TODO: Add more icons names here
@@ -92,7 +93,8 @@ class GUI
 
 	Point opLastPointClicked;
 	window* pWind;
-	window* ptrPallete; // pointer for color pallete window only
+
+	window* pPalette = nullptr; // pointer for color pallete window only
 
 	
 
@@ -103,11 +105,13 @@ public:
 	// Input Functions  ---------------------------
 	void GetPointClicked(int& x, int& y) const;
 	void GetOpLastPointClicked(int& x, int& y) const;
-	void GetSmallWindPointClicked(int& x, int& y) const;
+	
 	//Get coordinate where user clicks
 	int GetClickType(int x, int y) const;
 	string GetSrting() const;	 //Returns a string entered by the user
 	operationType GetUseroperation(); //Read the user click and map to an operation
+	void GetPalettePointClicked(int& x, int& y) const;
+	void GetPaletteColorClicked(int x, int y, color&) const;
 	void setCrntFillColor(color); //set current filling color
 
 	// Output Functions  ---------------------------
@@ -115,10 +119,12 @@ public:
 	void CreateDrawToolBar();	//creates Draw mode toolbar & menu
 	void CreatePlayToolBar();	//creates Play mode toolbar & menu
 	void CreateStatusBar() const;	//create the status bar
+	void CreateColorPalette();
+	void DeleteColorPalette();
 
 	void ClearStatusBar() const;	//Clears the status bar
 	void ClearDrawArea() const;	//Clears the drawing area
-	void Colorpallete() ;
+	
 	// -- shapes Drawing functions
 	void DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo) const;  //Draw a rectangle
 	void DrawSquare(Point P1, Point P2,/*Point P3,*/ GfxInfo SquareGfxInfo) const;  //Draw a square
@@ -132,9 +138,7 @@ public:
 
 	///Make similar functions for drawing all other shapes.
 	
-	color GetPickedColor(const int iX, const int iY);
 	
-	void SetPickedColor();
 
 	void PrintMessage(string msg) const;	//Print a message on Status bar
 

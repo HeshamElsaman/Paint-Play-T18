@@ -7,9 +7,8 @@
 #include "Operations\opAddCircle.h"
 #include "Operations\opAddPolygon.h"
 #include "Operations\opAddRegPolygon.h"
-#include "Operations\opChngGenFillClr.h"
-#include "Operations\opPalette.h"
-#include "Operations/Select.h"
+#include "Operations\opChngFillClr.h"
+#include "Operations\Select.h"
 
 
 //Constructor
@@ -67,13 +66,10 @@ operation* controller::createOperation(operationType OpType)
 			pOp = new opAddRegPolygon(this);
 			break;
 
-		case CHNG_GEN_FILL_CLR:
-			pOp = new opChngGenFillClr(this);
+		case CHNG_FILL_CLR:
+			pOp = new opChngFillClr(this);
 			break;
 
-		case Pallete:
-			pOp = new opPalette(this);
-			break;
 		case DRAWING_AREA:
 			pOp = new opSelect(this);
 
