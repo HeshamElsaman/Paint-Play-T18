@@ -18,10 +18,10 @@ bool Oval::isInside(int X,int Y)
 {
 	double cent_x = (Corner1.x + Corner2.x)/2.0;
 	double cent_y = (Corner1.y + Corner2.y)/2.0;
-	double axis1 = Corner1.x - Corner2.x;
-	double axis2 = Corner1.y - Corner2.y;
+	double axis1 = 0.5 * (Corner1.x - Corner2.x);
+	double axis2 = 0.5 * (Corner1.y - Corner2.y);
 	double relation = pow((X - cent_x), 2.0) / pow(axis1, 2.0) + pow((Y - cent_y), 2.0) / pow(axis2, 2.0);
-	if (relation <=0.28)
+	if (relation <= 1)
 		return true;
 	return false;
 }
