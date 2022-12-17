@@ -13,8 +13,8 @@ GUI::GUI()
 
 
 	StatusBarHeight = 50;
-	ToolBarHeight = width / 15.0;
-	MenuIconWidth = width/15.0;
+	ToolBarHeight = double(width) / DRAW_ICON_COUNT;
+	MenuIconWidth = double(width) / DRAW_ICON_COUNT;
 
 	DrawColor = BLUE;	//default Drawing color
 	BkGrndColor = WHITE;	//Background color
