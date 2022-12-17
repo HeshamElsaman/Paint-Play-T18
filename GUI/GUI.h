@@ -48,9 +48,16 @@ class GUI
 		ICON_REGPOLY,
 		ICON_CFC,
 		ICON_CPC,
+		ICON_CPW,
+		ICON_COPY,
+		ICON_CUT,
+		ICON_PASTE,
+		ICON_UNDO,
+		ICON_REDO,
+		ICON_STICK_IMG,
+		ICON_DEL,
 		ICON_SAVE,
 		ICON_LOAD,
-		ICON_DEL,
 		//TODO: Add more icons names here
 		ICON_SWITCH_TO_PLAY,
 		ICON_EXIT,		//Exit icon

@@ -129,14 +129,35 @@ operationType GUI::GetUseroperation()
 			case ICON_REGPOLY:
 				return DRAW_REGPOLY;
 
+			case ICON_CFC:
+				return CHNG_FILL_CLR;
+
 			case ICON_CPC:
 				return CHNG_DRAW_CLR;
 
+			case ICON_CPW:
+				return CHNG_PEN_WIDTH;
+
+			case ICON_COPY:
+				return COPY;
+
+			case ICON_CUT:
+				return CUT;
+
+			case ICON_PASTE:
+				return PASTE;
+
+			case ICON_UNDO:
+				return UNDO;
+
+			case ICON_REDO:
+				return REDO;
+
+			case ICON_STICK_IMG:
+				return STICK_IMG;
+			
 			case ICON_DEL:
 				return DEL;
-
-			case ICON_CFC:
-				return CHNG_FILL_CLR;
 
 			case ICON_SAVE:
 				return SAVE;
@@ -268,9 +289,16 @@ void GUI::CreateDrawToolBar()
 	MenuIconImages[ICON_OVAL] = "images\\MenuIcons\\DrawMenu\\Oval.jpg";
 	MenuIconImages[ICON_POLY] = "images\\MenuIcons\\DrawMenu\\Menu_Polygon.jpg";
 	MenuIconImages[ICON_REGPOLY] = "images\\MenuIcons\\DrawMenu\\Menu_RegPolygon.jpg";
-	MenuIconImages[ICON_DEL] = "images\\MenuIcons\\DrawMenu\\Menu_Delete.jpg";
 	MenuIconImages[ICON_CFC] = "images\\MenuIcons\\DrawMenu\\Menu_FillColor.jpg";
 	MenuIconImages[ICON_CPC] = "images\\MenuIcons\\DrawMenu\\Menu_PenColor.jpg";
+	MenuIconImages[ICON_CPW] = "images\\MenuIcons\\DrawMenu\\Menu_PenWidth.jpg";
+	MenuIconImages[ICON_COPY] = "images\\MenuIcons\\DrawMenu\\Menu_Copy.jpg";
+	MenuIconImages[ICON_CUT] = "images\\MenuIcons\\DrawMenu\\Menu_Cut.jpg";
+	MenuIconImages[ICON_PASTE] = "images\\MenuIcons\\DrawMenu\\Menu_Paste.jpg";
+	MenuIconImages[ICON_UNDO] = "images\\MenuIcons\\DrawMenu\\Menu_Undo.jpg";
+	MenuIconImages[ICON_REDO] = "images\\MenuIcons\\DrawMenu\\Menu_Redo.jpg";
+	MenuIconImages[ICON_STICK_IMG] = "images\\MenuIcons\\DrawMenu\\Menu_StickImage.jpg";
+	MenuIconImages[ICON_DEL] = "images\\MenuIcons\\DrawMenu\\Menu_Delete.jpg";
 	MenuIconImages[ICON_SAVE] = "images\\MenuIcons\\DrawMenu\\Menu_Save.jpg";
 	MenuIconImages[ICON_LOAD] = "images\\MenuIcons\\DrawMenu\\Menu_Load.jpg";
 	MenuIconImages[ICON_SWITCH_TO_PLAY] = "images\\MenuIcons\\DrawMenu\\Menu_Switch_To_PlayMode.jpg";
