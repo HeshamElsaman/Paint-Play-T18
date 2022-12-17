@@ -18,14 +18,16 @@ void opAddPolygon::Execute()
 	
 	int vertnum = 0;
 	//getting the number of successive clicks
-	int click = 0;
+	/*int click = 0;
 	int z = 0, p = 0;
 	pUI->PrintMessage("New Polygon: Specify the number of vertices using RightClicks followed by a LeftClick");
 	do
 	{
 		click = pUI->GetClickType(z, p);
 		if (click == 2) vertnum++;
-	} while (click == 2);
+	} while (click == 2);*/
+	pUI->PrintMessage("New Polygon: Specify the number of vertices");
+	vertnum = stoi(pUI->GetSrting());
 
 	if (vertnum >= 3) {
 		Point* verts = new Point[vertnum];
