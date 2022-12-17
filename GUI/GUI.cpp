@@ -6,15 +6,15 @@ GUI::GUI()
 	//Initialize user interface parameters
 	InterfaceMode = MODE_DRAW;
 
-	width = 1000;
-	height = 400;
+	width = 1500;
+	height = 800;
 	wx = 5;
 	wy = 5;
 
 
 	StatusBarHeight = 50;
-	ToolBarHeight = 65;
-	MenuIconWidth = 65;
+	ToolBarHeight = width / 15.0;
+	MenuIconWidth = width/15.0;
 
 	DrawColor = BLUE;	//default Drawing color
 	BkGrndColor = WHITE;	//Background color
