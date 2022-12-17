@@ -7,7 +7,7 @@ GUI::GUI()
 	//InterfaceMode = MODE_DRAW;
 
 	width = 1500;
-	height = 800;
+	height = 700;
 	wx = 5;
 	wy = 5;
 

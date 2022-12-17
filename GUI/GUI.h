@@ -132,9 +132,11 @@ public:
 	//void GetPalettePointClicked(int& x, int& y) const;
 	void GetPaletteColorClicked(int x, int y, color&) const;
 	void GetPalettePointClicked(int& x, int& y) const;
-	void GetMode(int& x, int& y)const;
+	void ChangeMode();
 	void setCrntFillColor(color); //set current filling color
 	void setFillStatus(bool);
+	void setCrntDrawColor(color);
+	void setCrntPenWidth(int);
 
 	// Output Functions  ---------------------------
 	window* CreateWind(int, int, int, int) const; //creates the application window
@@ -143,7 +145,7 @@ public:
 	void CreateStatusBar() const;	//create the status bar
 	void CreateColorPalette();
 	void DeleteColorPalette();
-	void GetMode() const;
+	
 
 	void CreateChooseWind();
 	void DeleteChooseWind();

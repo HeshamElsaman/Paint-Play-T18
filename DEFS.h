@@ -14,7 +14,6 @@ enum operationType //The operations supported (you can add more if needed)
 	DRAW_POLY,		//Draw Irregular Polygon
 	DRAW_REGPOLY,	//Draw Regular Polygon
 	CHNG_DRAW_CLR,	//Change the drawing color
-	CHNG_PEN_WIDTH,	//Change the pen width
 	CHNG_FILL_CLR,	//Change the filling color
 	CHNG_PEN_WIDTH, //Change the boarder thickness
 	STICK_IMG,
