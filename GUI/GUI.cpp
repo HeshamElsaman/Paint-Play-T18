@@ -431,6 +431,8 @@ void GUI::CreateDrawToolBar()
 	//Draw menu icon one image at a time
 	if (InterfaceMode == MODE_DRAW)
 	{
+		pWind->SetBrush(WHITE);
+		pWind->DrawRectangle(0, 0, width, ToolBarHeight);
 		for (int i = 0; i < DRAW_ICON_COUNT; i++) {
 			pWind->DrawImage(MenuIconImages[i], i * MenuIconWidth, 0, MenuIconWidth, ToolBarHeight);
 
@@ -475,6 +477,8 @@ void GUI::CreatePlayToolBar()
 	//Draw menu icon one image at a time
 	if (InterfaceMode == MODE_PLAY)
 	{
+		pWind->SetBrush(WHITE);
+		pWind->DrawRectangle(0, 0, width, ToolBarHeight);
 		for (int i = 0; i < PLAY_ICON_COUNT; i++) {
 			pWind->DrawImage(MenuIconImages[i], i * MenuIconWidth, 0, MenuIconWidth, ToolBarHeight);
 
