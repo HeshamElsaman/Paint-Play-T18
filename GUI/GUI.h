@@ -21,6 +21,7 @@ struct GfxInfo	//Graphical info common for all shapes (you may add more members)
 	int BorderWdth;	//Width of shape borders
 	bool isSelected;	//true if the shape is selected.
 	bool isDeleted = false;		//true if the shape is deleted
+	//int PenWidth;
 };
 
 
@@ -47,6 +48,8 @@ class GUI
 		ICON_POLY,
 		ICON_REGPOLY,
 		ICON_CFC,
+		ICON_DRAW_COLOR,
+		ICON_PEN_WIDTH,
 		
 
 		ICON_DEL,
@@ -64,6 +67,12 @@ class GUI
 		//If you want to change the menu icons order, change the order here
 
 		//TODO: Add more icons names here
+		//ICON_HIDE,		//Recangle icon in menu
+		//ICON_UNHIDE,
+		//ICON_MATCH_SHAPES,
+		ICON_START,		//Circle icon in menu
+		//ICON_RESTART,
+		
 
 		PLAY_ICON_COUNT		//no. of menu icons ==> This should be the last line in this enum
 
@@ -95,7 +104,7 @@ class GUI
 	window* pWind;
 
 	window* pPalette = nullptr; // pointer for color pallete window only
-
+	window* pChooseMode = nullptr;
 	
 
 public:
@@ -105,15 +114,22 @@ public:
 	// Input Functions  ---------------------------
 	void GetPointClicked(int& x, int& y) const;
 	void GetOpLastPointClicked(int& x, int& y) const;
-	
+	void ChangeMode();
 	//Get coordinate where user clicks
 	int GetClickType(int x, int y) const;
+
+	void GetKeyPressed(char&) const;
+
+
 	string GetSrting() const;	 //Returns a string entered by the user
 	operationType GetUseroperation(); //Read the user click and map to an operation
-	void GetPalettePointClicked(int& x, int& y) const;
+	//void GetPalettePointClicked(int& x, int& y) const;
 	void GetPaletteColorClicked(int x, int y, color&) const;
+	void GetPalettePointClicked(int& x, int& y) const;
+	void GetMode(int& x, int& y)const;
 	void setCrntFillColor(color); //set current filling color
-
+	void setCrntDrawColor(color); //set current Drawing color
+	void setCrntPenWidth(int);
 	// Output Functions  ---------------------------
 	window* CreateWind(int, int, int, int) const; //creates the application window
 	void CreateDrawToolBar();	//creates Draw mode toolbar & menu
@@ -121,10 +137,16 @@ public:
 	void CreateStatusBar() const;	//create the status bar
 	void CreateColorPalette();
 	void DeleteColorPalette();
+	void GetMode() const;
+
+	void CreateChooseWind();
+	void DeleteChooseWind();
 
 	void ClearStatusBar() const;	//Clears the status bar
 	void ClearDrawArea() const;	//Clears the drawing area
 	
+
+	//void FlushKeyQueue();
 	// -- shapes Drawing functions
 	void DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo) const;  //Draw a rectangle
 	void DrawSquare(Point P1, Point P2,/*Point P3,*/ GfxInfo SquareGfxInfo) const;  //Draw a square
@@ -133,6 +155,7 @@ public:
 	void DrawLine(Point P1, Point P2, GfxInfo LineGfxInfo) const;  //Draw a line
 	void Drawcircle(Point P1, Point P2, GfxInfo circleGfxInfo) const;  //Draw a circle
 	void DrawPolygon(Point* verts, int vertn, GfxInfo PolygonGfxInfo) const;
+	//void DrawImage(Point* verts, int vertn, GfxInfo Image) const;
 	void DrawRegPolygon(Point* verts, int vertn, GfxInfo RegPolygonGfxInfo) const;
 
 
