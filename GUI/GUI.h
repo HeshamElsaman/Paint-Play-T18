@@ -48,10 +48,11 @@ class GUI
 		ICON_REGPOLY,
 		ICON_CFC,
 		ICON_CPC,
-
+		ICON_SAVE,
+		ICON_LOAD,
 		ICON_DEL,
 		//TODO: Add more icons names here
-
+		ICON_SWITCH_TO_PLAY,
 		ICON_EXIT,		//Exit icon
 
 		DRAW_ICON_COUNT		//no. of menu icons ==> This should be the last line in this enum

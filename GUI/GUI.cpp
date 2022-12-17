@@ -13,8 +13,8 @@ GUI::GUI()
 
 
 	StatusBarHeight = 50;
-	ToolBarHeight = 50;
-	MenuIconWidth = 80;
+	ToolBarHeight = 65;
+	MenuIconWidth = 65;
 
 	DrawColor = BLUE;	//default Drawing color
 	BkGrndColor = WHITE;	//Background color
@@ -138,6 +138,15 @@ operationType GUI::GetUseroperation()
 			case ICON_CFC:
 				return CHNG_FILL_CLR;
 
+			case ICON_SAVE:
+				return SAVE;
+
+			case ICON_LOAD:
+				return LOAD;
+
+			case ICON_SWITCH_TO_PLAY:
+				return TO_PLAY;
+
 			case ICON_EXIT:
 				return EXIT;
 
@@ -201,7 +210,7 @@ void GUI::CreateColorPalette()
 {
 	pPalette = CreateWind(400, 300, 200, 90);
 	pPalette->ChangeTitle("Color palette");
-	pPalette->DrawImage("Menu_Colorpallete.jpg", 50,50);
+	pPalette->DrawImage("Images\\MenuIcons\\Menu_ColorPalette.jpg", 50,50);
 	pPalette->SetBuffering(0);
 	pPalette->SetWaitClose(false);
 }
@@ -262,6 +271,9 @@ void GUI::CreateDrawToolBar()
 	MenuIconImages[ICON_DEL] = "images\\MenuIcons\\DrawMenu\\Menu_Delete.jpg";
 	MenuIconImages[ICON_CFC] = "images\\MenuIcons\\DrawMenu\\Menu_FillColor.jpg";
 	MenuIconImages[ICON_CPC] = "images\\MenuIcons\\DrawMenu\\Menu_PenColor.jpg";
+	MenuIconImages[ICON_SAVE] = "images\\MenuIcons\\DrawMenu\\Menu_Save.jpg";
+	MenuIconImages[ICON_LOAD] = "images\\MenuIcons\\DrawMenu\\Menu_Load.jpg";
+	MenuIconImages[ICON_SWITCH_TO_PLAY] = "images\\MenuIcons\\DrawMenu\\Menu_Switch_To_PlayMode.jpg";
 	MenuIconImages[ICON_EXIT] = "images\\MenuIcons\\DrawMenu\\Menu_Exit.jpg";
 
 	//TODO: Prepare images for each menu icon and add it to the list
