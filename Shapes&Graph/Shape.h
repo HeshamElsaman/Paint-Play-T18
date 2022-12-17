@@ -1,6 +1,7 @@
 #pragma once
 #include "..\defs.h"
 #include "..\GUI\GUI.h"
+#include <fstream>
 
 
 //Base class for all shapes
@@ -17,6 +18,9 @@ public:
 	virtual ~shape() {}
 	void SetSelected(bool s);	//select/unselect the shape
 	bool IsSelected() const;	//check whether fig is selected
+
+	int getID(); // get the ID to be used in Graph
+	void setID(int id); // set ID 
 
 	void SetDeleted(bool s);	//delete/restore the shape
 	bool IsDeleted() const;	//check whether fig is deleted
@@ -41,7 +45,7 @@ public:
 	//virtual void Resize() = 0;	//Resize the shape
 	//virtual void Move() = 0;		//Move the shape
 
-	//virtual void Save(ofstream &OutFile) = 0;	//Save the shape parameters to the file
+	virtual void Save(ofstream &OutFile) = 0;	//Save the shape parameters to the file
 	//virtual void Load(ifstream &Infile) = 0;	//Load the shape parameters to the file
 
 	//virtual void PrintInfo(Output* pOut) = 0;	//print all shape info on the status bar

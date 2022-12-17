@@ -13,6 +13,7 @@ class Graph
 private:
 	vector <shape*> shapesList; //a container to hold all shapes							   
 	shape* selectedShape=NULL;	//pointer to the currently selected shape
+	int globalID;
 public:
 	Graph();
 	~Graph();

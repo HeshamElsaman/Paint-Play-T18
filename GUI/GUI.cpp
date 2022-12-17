@@ -6,8 +6,11 @@ GUI::GUI()
 	//Initialize user interface parameters
 	//InterfaceMode = MODE_DRAW;
 
-	width = 1500;
-	height = 700;
+
+	width = 1250;
+	height = 600;
+
+
 	wx = 5;
 	wy = 5;
 
@@ -91,6 +94,7 @@ string GUI::GetSrting() const
 			return "";	//returns nothing as user has cancelled label
 		if (Key == 13)	//ENTER key is pressed
 			return Label;
+		
 		if (Key == 8)	//BackSpace is pressed
 			if( Label.size() > 0)	
 				Label.resize(Label.size() - 1);
@@ -431,6 +435,8 @@ void GUI::CreateDrawToolBar()
 	//Draw menu icon one image at a time
 	if (InterfaceMode == MODE_DRAW)
 	{
+		pWind->SetBrush(WHITE);
+		pWind->DrawRectangle(0, 0, width, ToolBarHeight);
 		for (int i = 0; i < DRAW_ICON_COUNT; i++) {
 			pWind->DrawImage(MenuIconImages[i], i * MenuIconWidth, 0, MenuIconWidth, ToolBarHeight);
 
@@ -475,6 +481,8 @@ void GUI::CreatePlayToolBar()
 	//Draw menu icon one image at a time
 	if (InterfaceMode == MODE_PLAY)
 	{
+		pWind->SetBrush(WHITE);
+		pWind->DrawRectangle(0, 0, width, ToolBarHeight);
 		for (int i = 0; i < PLAY_ICON_COUNT; i++) {
 			pWind->DrawImage(MenuIconImages[i], i * MenuIconWidth, 0, MenuIconWidth, ToolBarHeight);
 

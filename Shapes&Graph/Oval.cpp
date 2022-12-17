@@ -9,6 +9,24 @@ Oval::Oval(Point P1, Point P2, GfxInfo shapeGfxInfo) :shape(shapeGfxInfo)
 Oval::~Oval()
 {}
 
+void Oval::Save(ofstream& OutFile)
+{
+	OutFile << "Oval" << "  "
+		<< this->ID << "  "
+		<< this->Corner1.x << "  "
+		<< this->Corner1.y << "  "
+		<< this->Corner2.x << "  "
+		<< this->Corner2.y << "   "
+		<< (int)this->ShpGfxInfo.DrawClr.ucRed << "  "
+		<< (int)this->ShpGfxInfo.DrawClr.ucBlue << "  "
+		<< (int)this->ShpGfxInfo.DrawClr.ucGreen << "  "
+		<< (int)this->ShpGfxInfo.FillClr.ucRed << "  "
+		<< (int)this->ShpGfxInfo.FillClr.ucBlue << "  "
+		<< (int)this->ShpGfxInfo.FillClr.ucGreen << "  "
+		<< (int)this->ShpGfxInfo.BorderWdth << "  " 
+		<< this->IsDeleted() << "  " << endl;
+}
+
 void Oval::Draw(GUI* pUI) const
 {
 	//Call Output::DrawOval to draw an oval on the screen	

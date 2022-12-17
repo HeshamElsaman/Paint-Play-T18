@@ -10,6 +10,7 @@ private:
 public:
 	RegPolygon(Point*, int, GfxInfo shapeGfxInfo);
 	virtual ~RegPolygon();
+	virtual void Save(ofstream& OutFile);
 	virtual void Draw(GUI* pUI) const;
 	bool isInside(int X, int Y) ;
 	double polygonArea();

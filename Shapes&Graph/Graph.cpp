@@ -4,6 +4,7 @@
 Graph::Graph()
 {
 	selectedShape = nullptr;
+	globalID = 1;
 }
 
 Graph::~Graph()
@@ -15,10 +16,15 @@ Graph::~Graph()
 //==================================================================================//
 
 //Add a shape to the list of shapes
-void Graph::Addshape(shape* pShp)
+void Graph::Addshape(shape* pFig)
 {
 	//Add a new shape to the shapes vector
-	shapesList.push_back(pShp);	
+	pFig->setID(globalID); // set the ID in shape to globalID 
+	shapesList.push_back(pFig);
+	if (!(pFig->IsDeleted()))
+	{
+		globalID++;
+	}
 }
 ////////////////////////////////////////////////////////////////////////////////////
 //Draw all shapes on the user interface
@@ -153,6 +159,19 @@ bool Graph::ShapeListStateSelected() const
 	return false;
 }
 
+void Graph::Save(ofstream& OutFile)
+{
+	if (!(shapesList.empty()))
+	{
+		OutFile << shapesList.size()<<endl;
+		for (int i = 0; i < shapesList.size(); i++)
+		{
+			//if (!(shapesList[i])->IsDeleted())
+				shapesList[i]->Save(OutFile);
+		}
+	}
+	OutFile.close();
+}
 
 void Graph::ReleaseShapesMemory()
 {
