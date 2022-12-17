@@ -48,9 +48,16 @@ class GUI
 		ICON_REGPOLY,
 		ICON_CFC,
 		ICON_CPC,
+		ICON_CPW,
+		ICON_COPY,
+		ICON_CUT,
+		ICON_PASTE,
+		ICON_UNDO,
+		ICON_REDO,
+		ICON_STICK_IMG,
+		ICON_DEL,
 		ICON_SAVE,
 		ICON_LOAD,
-		ICON_DEL,
 		//TODO: Add more icons names here
 		ICON_SWITCH_TO_PLAY,
 		ICON_EXIT,		//Exit icon
@@ -65,6 +72,12 @@ class GUI
 		//If you want to change the menu icons order, change the order here
 
 		//TODO: Add more icons names here
+		//ICON_HIDE,		//Recangle icon in menu
+		//ICON_UNHIDE,
+		//ICON_MATCH_SHAPES,
+		ICON_START,		//Circle icon in menu
+		//ICON_RESTART,
+		
 
 		PLAY_ICON_COUNT		//no. of menu icons ==> This should be the last line in this enum
 
@@ -97,7 +110,7 @@ class GUI
 	window* pWind;
 
 	window* pPalette = nullptr; // pointer for color pallete window only
-
+	window* pChooseMode = nullptr;
 	
 
 public:
@@ -110,12 +123,20 @@ public:
 	bool GetFillStatus() const;
 	//Get coordinate where user clicks
 	int GetClickType(int x, int y) const;
+
+	void GetKeyPressed(char&) const;
+
+
 	string GetSrting() const;	 //Returns a string entered by the user
 	operationType GetUseroperation(); //Read the user click and map to an operation
-	void GetPalettePointClicked(int& x, int& y) const;
+	//void GetPalettePointClicked(int& x, int& y) const;
 	void GetPaletteColorClicked(int x, int y, color&) const;
+	void GetPalettePointClicked(int& x, int& y) const;
+	void ChangeMode();
 	void setCrntFillColor(color); //set current filling color
 	void setFillStatus(bool);
+	void setCrntDrawColor(color);
+	void setCrntPenWidth(int);
 
 	// Output Functions  ---------------------------
 	window* CreateWind(int, int, int, int) const; //creates the application window
@@ -124,10 +145,16 @@ public:
 	void CreateStatusBar() const;	//create the status bar
 	void CreateColorPalette();
 	void DeleteColorPalette();
+	
+
+	void CreateChooseWind();
+	void DeleteChooseWind();
 
 	void ClearStatusBar() const;	//Clears the status bar
 	void ClearDrawArea() const;	//Clears the drawing area
 	
+
+	//void FlushKeyQueue();
 	// -- shapes Drawing functions
 	void DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo) const;  //Draw a rectangle
 	void DrawSquare(Point P1, Point P2,/*Point P3,*/ GfxInfo SquareGfxInfo) const;  //Draw a square
@@ -136,6 +163,7 @@ public:
 	void DrawLine(Point P1, Point P2, GfxInfo LineGfxInfo) const;  //Draw a line
 	void Drawcircle(Point P1, Point P2, GfxInfo circleGfxInfo) const;  //Draw a circle
 	void DrawPolygon(Point* verts, int vertn, GfxInfo PolygonGfxInfo) const;
+	//void DrawImage(Point* verts, int vertn, GfxInfo Image) const;
 	void DrawRegPolygon(Point* verts, int vertn, GfxInfo RegPolygonGfxInfo) const;
 
 

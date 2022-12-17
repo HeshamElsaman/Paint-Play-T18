@@ -32,6 +32,7 @@ public:
 	
 	void ChngDrawClr(color Dclr);	//changes the shape's drawing color
 	void ChngFillClr(color Fclr);	//changes the shape's filling color
+	void ChngPenWidth(int c);	   //changes the shape's Pen Width
 	virtual bool isInside(int X,int Y) = 0;
 
 	///The following functions should be supported by the shape class

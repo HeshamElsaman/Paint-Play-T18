@@ -19,14 +19,16 @@ void opAddRegPolygon::Execute()
 
 	int vertnum = 0;
 	//getting the number of successive clicks
-	int click = 0;
+	/*int click = 0;
 	int z = 0, p = 0;
 	pUI->PrintMessage("New RegPolygon: Specify the number of vertices using RightClicks followed by a LeftClick");
 	do
 	{
 		click = pUI->GetClickType(z, p);
 		if (click == 2) vertnum++;
-	} while (click == 2);
+	} while (click == 2);*/
+	pUI->PrintMessage("New Regular Polygon: Specify the number of vertices");
+	vertnum = stoi(pUI->GetSrting());
 
 	//Calculating the Side Length, Central Angle, and the Radius of the Inscribing Circle
 	string msg = "Click at two points to get their distance as your Side Length...";
@@ -45,6 +47,7 @@ void opAddRegPolygon::Execute()
 
 	//Get the Center of the Regular Polygon
 	msg = "Click at the point desired to be your centre...";
+	pUI->PrintMessage(msg);
 	pUI->GetPointClicked(cent.x, cent.y);
 	pUI->ClearStatusBar();
 

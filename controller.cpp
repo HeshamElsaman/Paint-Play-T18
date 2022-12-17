@@ -7,10 +7,14 @@
 #include "Operations/opAddCircle.h"
 #include "Operations/opAddPolygon.h"
 #include "Operations/opAddRegPolygon.h"
+//#include "Operations/opAddImage.h"
 #include "Operations/Select.h"
 #include "Operations/opChngFillClr.h"
+#include "Operations/opChngDrawClr.h"
+#include "Operations/opChngPenWidth.h"
 #include "Operations/opDeleteShape.h"
 #include "Operations/opSave.h"
+#include "Operations/opChngToPlayMode.h"
 #include "Operations/opExit.h"
 
 
@@ -73,6 +77,14 @@ operation* controller::createOperation(operationType OpType)
 			pOp = new opChngFillClr(this);
 			break;
 
+		case CHNG_DRAW_CLR :
+			pOp = new opChngDrawClr(this);
+			break;
+
+		case CHNG_PEN_WIDTH:
+			pOp = new opChngPenWidth(this);
+			break;
+
 		case DEL:
 			pOp = new opDeleteShape(this);
 			break;
@@ -81,8 +93,13 @@ operation* controller::createOperation(operationType OpType)
 			pOp = new opSelect(this);
 			break;
 
+
 		case SAVE:
 			pOp = new opSave(this);
+
+		case TO_PLAY:
+			pOp = new opChngToPlayMode(this);
+
 			break;
 
 		case EXIT:

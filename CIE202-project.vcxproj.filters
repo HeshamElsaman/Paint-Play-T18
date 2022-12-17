@@ -177,7 +177,17 @@
     <ClCompile Include="Operations\opExit.cpp">
       <Filter>Operations</Filter>
     </ClCompile>
+
     <ClCompile Include="..\..\v5\Paint-Play-T18\Operations\opSave.cpp">
+
+    <ClCompile Include="Operations\opChngDrawClr.cpp">
+      <Filter>Operations</Filter>
+    </ClCompile>
+    <ClCompile Include="Operations\opChngPenWidth.cpp">
+      <Filter>Operations</Filter>
+    </ClCompile>
+    <ClCompile Include="Operations\opChngToPlayMode.cpp">
+
       <Filter>Operations</Filter>
     </ClCompile>
   </ItemGroup>
@@ -317,7 +327,14 @@
     <ClInclude Include="Operations\opExit.h">
       <Filter>Operations</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\v5\Paint-Play-T18\Operations\opSave.h">
+    <ClInclude Include="Operations\opChngDrawClr.h">
+      <Filter>Operations</Filter>
+    </ClInclude>
+    <ClInclude Include="Operations\opChngPenWidth.h">
+      <Filter>Operations</Filter>
+    </ClInclude>
+    <ClInclude Include="Operations\opChngToPlayMode.h">
+
       <Filter>Operations</Filter>
     </ClInclude>
   </ItemGroup>
