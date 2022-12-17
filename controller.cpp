@@ -10,6 +10,7 @@
 #include "Operations/Select.h"
 #include "Operations/opChngFillClr.h"
 #include "Operations/opDeleteShape.h"
+#include "Operations/opSave.h"
 #include "Operations/opExit.h"
 
 
@@ -80,11 +81,17 @@ operation* controller::createOperation(operationType OpType)
 			pOp = new opSelect(this);
 			break;
 
+		case SAVE:
+			pOp = new opSave(this);
+			break;
+
 		case EXIT:
 			/*
 			//The (SAVE) action shall be added to this operation
 			*/
+			
 			pOp = new opExit(this);
+		
 			
 			break;
 		
