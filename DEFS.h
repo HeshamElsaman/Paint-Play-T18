@@ -38,8 +38,8 @@ enum operationType //The operations supported (you can add more if needed)
 	RESTART,
 	MATCH_SHAPES,
 
-	EXIT,			//Exit the application
-
+	EXIT_DRAW,			//Exit the application
+	EXIT_PLAY,
 	DRAWING_AREA,	//A click on the drawing area
 	STATUS,			//A click on the status bar
 	EMPTY,			//A click on empty place in the toolbar

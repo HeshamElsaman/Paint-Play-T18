@@ -13,6 +13,7 @@
 #include "Operations/opChngDrawClr.h"
 #include "Operations/opChngPenWidth.h"
 #include "Operations/opDeleteShape.h"
+#include "Operations/opSave.h"
 #include "Operations/opChngToPlayMode.h"
 #include "Operations/opExit.h"
 
@@ -96,15 +97,23 @@ operation* controller::createOperation(operationType OpType)
 			pOp = new opSelect(this);
 			break;
 
-		case TO_PLAY:
-			pOp = new opChngToPlayMode(this);
+
+		case SAVE:
+			pOp = new opSave(this);
 			break;
 
-		case EXIT:
+		case TO_PLAY:
+			pOp = new opChngToPlayMode(this);
+
+			break;
+
+		case EXIT_DRAW:
 			/*
 			//The (SAVE) action shall be added to this operation
 			*/
+			
 			pOp = new opExit(this);
+		
 			
 			break;
 		
@@ -172,6 +181,6 @@ void controller::Run()
 		//Update the interface
 		UpdateInterface();
 
-	} while (OpType != EXIT);
+	} while ((OpType != EXIT_DRAW) && (OpType != EXIT_PLAY));
 
 }

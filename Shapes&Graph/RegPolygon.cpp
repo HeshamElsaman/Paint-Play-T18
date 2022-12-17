@@ -13,6 +13,25 @@ RegPolygon::RegPolygon(Point* P_, int vertNum, GfxInfo shapeGfxInfo) :shape(shap
 RegPolygon::~RegPolygon()
 {}
 
+void RegPolygon::Save(ofstream& OutFile)
+{
+    OutFile << "RegPolygon" << "  "
+        << this->ID << "  ";
+    for (int i = 0; i < VertNum; i++)
+    {
+        OutFile << Verts[i].x << "  " << Verts[i].y << "  ";
+    }
+    OutFile
+        << (int)this->ShpGfxInfo.DrawClr.ucRed << "  "
+        << (int)this->ShpGfxInfo.DrawClr.ucBlue << "  "
+        << (int)this->ShpGfxInfo.DrawClr.ucGreen << "  "
+        << (int)this->ShpGfxInfo.FillClr.ucRed << "  "
+        << (int)this->ShpGfxInfo.FillClr.ucBlue << "  "
+        << (int)this->ShpGfxInfo.FillClr.ucGreen << "  "
+        << (int)this->ShpGfxInfo.BorderWdth << "  " 
+        << this->IsDeleted() << "  " << endl;
+}
+
 void RegPolygon::Draw(GUI* pUI) const
 {
 	//Call Output::DrawRegPolygon to draw a RegPolygon on the screen	

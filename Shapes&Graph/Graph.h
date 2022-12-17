@@ -13,6 +13,7 @@ class Graph
 private:
 	vector <shape*> shapesList; //a container to hold all shapes							   
 	shape* selectedShape=NULL;	//pointer to the currently selected shape
+	int globalID;
 public:
 	Graph();
 	~Graph();
@@ -28,6 +29,7 @@ public:
 	bool ShapeListStateSelected() const;
 	void StickImg(int);
 	void ReleaseShapesMemory();
+	void ChangePenWidth(int num);
 
 	void Save(ofstream& outfile);	//Save all shapes to a file
 	void load(ifstream& inputfile);	//Load all shapes from a file

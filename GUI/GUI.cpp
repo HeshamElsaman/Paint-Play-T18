@@ -6,8 +6,11 @@ GUI::GUI()
 	//Initialize user interface parameters
 	//InterfaceMode = MODE_DRAW;
 
-	width = 1500;
-	height = 700;
+
+	width = 1250;
+	height = 600;
+
+
 	wx = 5;
 	wy = 5;
 
@@ -114,6 +117,7 @@ string GUI::GetSrting() const
 			return "";	//returns nothing as user has cancelled label
 		if (Key == 13)	//ENTER key is pressed
 			return Label;
+		
 		if (Key == 8)	//BackSpace is pressed
 			if( Label.size() > 0)	
 				Label.resize(Label.size() - 1);
@@ -213,7 +217,7 @@ operationType GUI::GetUseroperation()
 				return TO_PLAY;
 
 			case ICON_EXIT:
-				return EXIT;
+				return EXIT_DRAW;
 
 			default:
 				return EMPTY;	//A click on empty place in desgin toolbar
@@ -242,26 +246,27 @@ operationType GUI::GetUseroperation()
 
 			switch (ClickedIconOrder)
 			{
-			/*case ICON_HIDE:
+			case ICON_HIDE:
 				return HIDE;
 
 			case ICON_UNHIDE:
-				return UNHIDE;*/
+				return UNHIDE;
 
 			case ICON_START:
 				return START;
 
-			/*case ICON_RESTART:
+			case ICON_RESTART:
 				return RESTART;
 
 			case ICON_MATCH_SHAPES:
 				return MATCH_SHAPES;
 
-			case ICON_EXIT:
-				return EXIT;
+			case ICON_EXIT_PLAY:
+				return EXIT_PLAY;
+
 
 			default:
-				return EMPTY;*/	//A click on empty place in desgin toolbar
+				return EMPTY;	//A click on empty place in desgin toolbar
 			}
 		}
 
@@ -454,6 +459,8 @@ void GUI::CreateDrawToolBar()
 	//Draw menu icon one image at a time
 	if (InterfaceMode == MODE_DRAW)
 	{
+		pWind->SetBrush(WHITE);
+		pWind->DrawRectangle(0, 0, width, ToolBarHeight);
 		for (int i = 0; i < DRAW_ICON_COUNT; i++) {
 			pWind->DrawImage(MenuIconImages[i], i * MenuIconWidth, 0, MenuIconWidth, ToolBarHeight);
 
@@ -480,24 +487,26 @@ void GUI::CreatePlayToolBar()
 	//reoder them in UI_Info.h ==> enum DrawMenuIcon
 	string MenuIconImages[PLAY_ICON_COUNT];
 	MenuIconImages[ICON_START] = "images\\MenuIcons\\PlayMenu\\Start.jpg";
-	/*MenuIconImages[ICON_LINE] = "images\\MenuIcons\\DrawMenu\\Menu_Line.jpg";
-	MenuIconImages[ICON_SQUARE] = "images\\MenuIcons\\DrawMenu\\Menu_Square.jpg";
-	MenuIconImages[ICON_TRI] = "images\\MenuIcons\\DrawMenu\\Menu_Triangle.jpg";
-	MenuIconImages[ICON_CIRC] = "images\\MenuIcons\\DrawMenu\\Menu_Circ.jpg";
-	MenuIconImages[ICON_OVAL] = "images\\MenuIcons\\DrawMenu\\Oval.jpg";
-	MenuIconImages[ICON_POLY] = "images\\MenuIcons\\DrawMenu\\Menu_Polygon.jpg";
-	MenuIconImages[ICON_REGPOLY] = "images\\MenuIcons\\DrawMenu\\Menu_RegPolygon.jpg";
+	MenuIconImages[ICON_HIDE] = "images\\MenuIcons\\PlayMenu\\Hide.jpg";
+	MenuIconImages[ICON_UNHIDE] = "images\\MenuIcons\\PlayMenu\\Unhide.jpg";
+	MenuIconImages[ICON_MATCH_SHAPES] = "images\\MenuIcons\\PlayMenu\\Match.jpg";
+	MenuIconImages[ICON_RESTART] = "images\\MenuIcons\\PlayMenu\\Restart.jpg";
+	//MenuIconImages[ICON_OVAL] = "images\\MenuIcons\\DrawMenu\\Oval.jpg";
+	//MenuIconImages[ICON_POLY] = "images\\MenuIcons\\DrawMenu\\Menu_Polygon.jpg";
 	//MenuIconImages[ICON_REGPOLY] = "images\\MenuIcons\\DrawMenu\\Menu_RegPolygon.jpg";
-	//MenuIconImages[ICON_REGPOLY] = "images\\MenuIcons\\DrawMenu\\Menu_RegPolygon.jpg";
-	MenuIconImages[ICON_DEL] = "images\\MenuIcons\\DrawMenu\\Menu_Delete.jpg";
-	MenuIconImages[ICON_CFC] = "images\\MenuIcons\\DrawMenu\\Menu_FillColor.jpg";
-	MenuIconImages[ICON_EXIT] = "images\\MenuIcons\\DrawMenu\\Menu_Exit.jpg";*/
+	////MenuIconImages[ICON_REGPOLY] = "images\\MenuIcons\\DrawMenu\\Menu_RegPolygon.jpg";
+	////MenuIconImages[ICON_REGPOLY] = "images\\MenuIcons\\DrawMenu\\Menu_RegPolygon.jpg";
+	//MenuIconImages[ICON_DEL] = "images\\MenuIcons\\DrawMenu\\Menu_Delete.jpg";
+	//MenuIconImages[ICON_CFC] = "images\\MenuIcons\\DrawMenu\\Menu_FillColor.jpg";
+	MenuIconImages[ICON_EXIT_PLAY] = "images\\MenuIcons\\DrawMenu\\Menu_Exit.jpg";
 
 	//TODO: Prepare images for each menu icon and add it to the list
 
 	//Draw menu icon one image at a time
 	if (InterfaceMode == MODE_PLAY)
 	{
+		pWind->SetBrush(WHITE);
+		pWind->DrawRectangle(0, 0, width, ToolBarHeight);
 		for (int i = 0; i < PLAY_ICON_COUNT; i++) {
 			pWind->DrawImage(MenuIconImages[i], i * MenuIconWidth, 0, MenuIconWidth, ToolBarHeight);
 

@@ -74,11 +74,13 @@ class GUI
 		//If you want to change the menu icons order, change the order here
 
 		//TODO: Add more icons names here
-		//ICON_HIDE,		//Recangle icon in menu
-		//ICON_UNHIDE,
-		//ICON_MATCH_SHAPES,
+		ICON_HIDE,		//Recangle icon in menu
+		ICON_UNHIDE,
+		ICON_MATCH_SHAPES,
 		ICON_START,		//Circle icon in menu
-		//ICON_RESTART,
+		ICON_RESTART,
+		ICON_EXIT_PLAY,
+		
 		
 
 		PLAY_ICON_COUNT		//no. of menu icons ==> This should be the last line in this enum

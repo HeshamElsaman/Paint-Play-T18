@@ -182,6 +182,7 @@
     <ClCompile Include="Operations\opChngToPlayMode.cpp" />
     <ClCompile Include="Operations\opDeleteShape.cpp" />
     <ClCompile Include="Operations\opExit.cpp" />
+    <ClCompile Include="Operations\opSave.cpp" />
     <ClCompile Include="Operations\Select.cpp" />
     <ClCompile Include="Shapes&amp;Graph\Circle.cpp" />
     <ClCompile Include="Shapes&amp;Graph\Graph.cpp" />
@@ -234,6 +235,7 @@
     <ClInclude Include="Operations\opDeleteShape.h" />
     <ClInclude Include="operations\operation.h" />
     <ClInclude Include="Operations\opExit.h" />
+    <ClInclude Include="Operations\opSave.h" />
     <ClInclude Include="Operations\Select.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Shapes&amp;Graph\Circle.h" />
@@ -251,7 +253,48 @@
     <ResourceCompile Include="CIE202-project.rc" />
   </ItemGroup>
   <ItemGroup>
+    <None Include=".gitignore" />
+    <None Include="CIE202-project.aps" />
     <None Include="ClassDiagram.cd" />
+    <None Include="README.md" />
+    <None Include="Thumbs.db" />
+    <None Include="UpgradeLog.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="ClassDiagram.jpg" />
+    <Image Include="DrawOrPlay.jpg" />
+    <Image Include="Images\MenuIcons\DrawMenu\Menu_Circ.jpg" />
+    <Image Include="Images\MenuIcons\DrawMenu\Menu_Copy.jpg" />
+    <Image Include="Images\MenuIcons\DrawMenu\Menu_Cut.jpg" />
+    <Image Include="Images\MenuIcons\DrawMenu\Menu_Delete.jpg" />
+    <Image Include="Images\MenuIcons\DrawMenu\Menu_Exit.jpg" />
+    <Image Include="Images\MenuIcons\DrawMenu\Menu_FillColor.jpg" />
+    <Image Include="Images\MenuIcons\DrawMenu\Menu_Line.jpg" />
+    <Image Include="Images\MenuIcons\DrawMenu\Menu_Load.jpg" />
+    <Image Include="Images\MenuIcons\DrawMenu\Menu_Paste.jpg" />
+    <Image Include="Images\MenuIcons\DrawMenu\Menu_PenColor.jpg" />
+    <Image Include="Images\MenuIcons\DrawMenu\Menu_PenWidth.jpg" />
+    <Image Include="Images\MenuIcons\DrawMenu\Menu_Polygon.jpg" />
+    <Image Include="Images\MenuIcons\DrawMenu\Menu_Rect.JPG" />
+    <Image Include="Images\MenuIcons\DrawMenu\Menu_Redo.jpg" />
+    <Image Include="Images\MenuIcons\DrawMenu\Menu_RegPolygon.jpg" />
+    <Image Include="Images\MenuIcons\DrawMenu\Menu_Save.jpg" />
+    <Image Include="Images\MenuIcons\DrawMenu\Menu_Square.jpg" />
+    <Image Include="Images\MenuIcons\DrawMenu\Menu_StickImage.jpg" />
+    <Image Include="Images\MenuIcons\DrawMenu\Menu_Switch_to_PlayMode.jpg" />
+    <Image Include="Images\MenuIcons\DrawMenu\Menu_Triangle.jpg" />
+    <Image Include="Images\MenuIcons\DrawMenu\Menu_Undo.jpg" />
+    <Image Include="Images\MenuIcons\DrawMenu\Oval.jpg" />
+    <Image Include="Images\MenuIcons\DrawOrPlay.jpg" />
+    <Image Include="Images\MenuIcons\Menu_ColorPalette.jpg" />
+    <Image Include="Images\MenuIcons\PlayMenu\Draw or Play.jpg" />
+    <Image Include="Images\MenuIcons\PlayMenu\Start.jpg" />
+    <Image Include="Menu_Colorpallete.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="UpgradeLog.XML" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

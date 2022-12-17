@@ -11,6 +11,27 @@ Triangle::Triangle(Point P1, Point P2, Point P3, GfxInfo shapeGfxInfo) :shape(sh
 Triangle::~Triangle()
 {}
 
+void Triangle::Save(ofstream& OutFile) // the file name is Outfile
+{
+	OutFile << "TRI" << "  "
+		<< this->ID << "  "
+		<< this->Corner1.x << "  "
+		<< this->Corner1.y << "  "
+		<< this->Corner2.x << "  "
+		<< this->Corner2.y << "   "
+		<< this->Corner3.x << "  "
+		<< this->Corner3.y << "  "
+		<< (int)this->ShpGfxInfo.DrawClr.ucRed << "  "
+		<< (int)this->ShpGfxInfo.DrawClr.ucBlue << "  "
+		<< (int)this->ShpGfxInfo.DrawClr.ucGreen << "  "
+		<< (int)this->ShpGfxInfo.FillClr.ucRed << "  "
+		<< (int)this->ShpGfxInfo.FillClr.ucBlue << "  "
+		<< (int)this->ShpGfxInfo.FillClr.ucGreen << "  "
+		<< (int)this->ShpGfxInfo.BorderWdth << "  " 
+		<< this->IsDeleted() << "  " << endl;
+
+}
+
 void Triangle::Draw(GUI* pUI) const
 {
 	//Call Output::DrawTriangle to draw a triangle on the screen	
