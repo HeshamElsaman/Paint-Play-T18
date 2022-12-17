@@ -23,6 +23,7 @@ public:
 	void SetSelectedShape(shape*) ;
 	void DeleteSelectedShapes();
 	void ChangeFillClr(color);
+	void ChangeDrawClr(color);
 	bool ShapeListStateSelected() const;
 
 

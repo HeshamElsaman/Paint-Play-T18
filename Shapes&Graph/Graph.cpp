@@ -95,6 +95,20 @@ void Graph::ChangeFillClr(color clr)
 	}
 }
 
+void Graph::ChangeDrawClr(color clr)
+{
+	if (!(shapesList.empty()))
+	{
+		for (shape* shapePointer : shapesList)
+		{
+			if (shapePointer->IsSelected() && !(shapePointer->IsDeleted()))
+			{
+				shapePointer->ChngDrawClr(clr);
+			}
+		}
+	}
+}
+
 bool Graph::ShapeListStateSelected() const
 {
 	if (!(shapesList.empty()))
