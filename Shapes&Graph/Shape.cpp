@@ -30,3 +30,8 @@ void shape::ChngFillClr(color Fclr)
 	ShpGfxInfo.FillClr = Fclr; 
 }
 
+void shape::ChngPenWidth(int c)
+{
+	ShpGfxInfo.BorderWdth = c;
+}
+
