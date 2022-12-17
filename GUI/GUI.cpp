@@ -6,8 +6,8 @@ GUI::GUI()
 	//Initialize user interface parameters
 	InterfaceMode = MODE_DRAW;
 
-	width = 1500;
-	height = 800;
+	width = 1250;
+	height = 600;
 	wx = 5;
 	wy = 5;
 
@@ -72,6 +72,7 @@ string GUI::GetSrting() const
 			return "";	//returns nothing as user has cancelled label
 		if (Key == 13)	//ENTER key is pressed
 			return Label;
+		
 		if (Key == 8)	//BackSpace is pressed
 			if( Label.size() > 0)	
 				Label.resize(Label.size() - 1);
