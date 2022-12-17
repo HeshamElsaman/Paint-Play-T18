@@ -167,6 +167,7 @@
     <ClCompile Include="GUI\GUI.cpp" />
     <ClCompile Include="controller.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Operations\opChngPenWidth.cpp" />
     <ClCompile Include="Operations\opAddCircle.cpp" />
     <ClCompile Include="Operations\opAddLINE.cpp" />
     <ClCompile Include="Operations\opAddOval.cpp" />
@@ -175,6 +176,7 @@
     <ClCompile Include="Operations\opAddRegPolygon.cpp" />
     <ClCompile Include="Operations\opAddSquare.cpp" />
     <ClCompile Include="Operations\opAddTriangle.cpp" />
+    <ClCompile Include="Operations\opChngDrawClr.cpp" />
     <ClCompile Include="Operations\opChngFillClr.cpp" />
     <ClCompile Include="Operations\opDeleteShape.cpp" />
     <ClCompile Include="Operations\Select.cpp" />
@@ -213,6 +215,7 @@
     <ClInclude Include="GUI\GUI.h" />
     <ClInclude Include="controller.h" />
     <ClInclude Include="DEFS.h" />
+    <ClInclude Include="Operations\opChngPenWidth.h" />
     <ClInclude Include="Operations\opAddCircle.h" />
     <ClInclude Include="Operations\opAddLINE.h" />
     <ClInclude Include="Operations\opAddOval.h" />
@@ -221,6 +224,7 @@
     <ClInclude Include="Operations\opAddRegPolygon.h" />
     <ClInclude Include="Operations\opAddSquare.h" />
     <ClInclude Include="Operations\opAddTriangle.h" />
+    <ClInclude Include="Operations\opChngDrawClr.h" />
     <ClInclude Include="Operations\opChngFillClr.h" />
     <ClInclude Include="Operations\opDeleteShape.h" />
     <ClInclude Include="operations\operation.h" />
