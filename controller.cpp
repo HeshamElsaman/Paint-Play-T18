@@ -13,6 +13,7 @@
 #include "Operations/opChngDrawClr.h"
 #include "Operations/opChngPenWidth.h"
 #include "Operations/opDeleteShape.h"
+#include "Operations/opChngToPlayMode.h"
 #include "Operations/opExit.h"
 
 
@@ -89,6 +90,10 @@ operation* controller::createOperation(operationType OpType)
 
 		case DRAWING_AREA:
 			pOp = new opSelect(this);
+			break;
+
+		case TO_PLAY:
+			pOp = new opChngToPlayMode(this);
 			break;
 
 		case EXIT:

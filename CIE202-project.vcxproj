@@ -178,6 +178,7 @@
     <ClCompile Include="Operations\opAddTriangle.cpp" />
     <ClCompile Include="Operations\opChngDrawClr.cpp" />
     <ClCompile Include="Operations\opChngFillClr.cpp" />
+    <ClCompile Include="Operations\opChngToPlayMode.cpp" />
     <ClCompile Include="Operations\opDeleteShape.cpp" />
     <ClCompile Include="Operations\opExit.cpp" />
     <ClCompile Include="Operations\Select.cpp" />
@@ -216,6 +217,7 @@
     <ClInclude Include="GUI\GUI.h" />
     <ClInclude Include="controller.h" />
     <ClInclude Include="DEFS.h" />
+    <ClInclude Include="Operations\opChngToPlayMode.h" />
     <ClInclude Include="Operations\opChngPenWidth.h" />
     <ClInclude Include="Operations\opAddCircle.h" />
     <ClInclude Include="Operations\opAddLINE.h" />
