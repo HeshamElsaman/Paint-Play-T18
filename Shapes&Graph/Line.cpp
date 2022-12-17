@@ -9,6 +9,24 @@ Line::Line(Point P1, Point P2, GfxInfo shapeGfxInfo):shape(shapeGfxInfo)
 Line::~Line()
 {}
 
+void Line::Save(ofstream& OutFile)
+{
+
+	OutFile << "Line" << "  "
+		<< this->ID << "  "
+		<< this->Corner1.x << "  "
+		<< this->Corner1.y << "  "
+		<< this->Corner2.x << "  "
+		<< this->Corner2.y << "   "
+		<< (int)this->ShpGfxInfo.DrawClr.ucRed << "  "
+		<< (int)this->ShpGfxInfo.DrawClr.ucBlue << "  "
+		<< (int)this->ShpGfxInfo.DrawClr.ucGreen << "  "
+		<< "No fill color" << "  "
+		<< (int)this->ShpGfxInfo.BorderWdth << "  "
+		<<this->IsDeleted() << "  " << endl;
+}
+
+
 void Line::Draw(GUI* pUI) const
 {
 	//Call Output::DrawLine to draw a line on the screen	

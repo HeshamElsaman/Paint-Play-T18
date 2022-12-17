@@ -11,6 +11,16 @@ void shape::SetSelected(bool s)
 bool shape::IsSelected() const
 {	return ShpGfxInfo.isSelected; }
 
+int shape::getID()
+{
+	return ID;
+}
+
+void shape::setID(int id)
+{
+	this->ID = id;
+}
+
 void shape::SetDeleted(bool s)
 {
 	ShpGfxInfo.isDeleted = s;

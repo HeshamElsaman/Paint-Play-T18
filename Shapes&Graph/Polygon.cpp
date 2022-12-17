@@ -13,6 +13,25 @@ PolyGon::PolyGon(Point* P_, int vertNum, GfxInfo shapeGfxInfo) :shape(shapeGfxIn
 PolyGon::~PolyGon()
 {}
 
+void PolyGon::Save(ofstream& OutFile)
+{
+    OutFile << "Polygon" << "  "
+        << this->ID << "  ";
+    for (int i = 0; i < VertNum; i++)
+    {
+        OutFile << this->Verts[i].x << "  " << this->Verts[i].y << "  ";
+    }
+    OutFile
+        << (int)this->ShpGfxInfo.DrawClr.ucRed << "  "
+        << (int)this->ShpGfxInfo.DrawClr.ucBlue << "  "
+        << (int)this->ShpGfxInfo.DrawClr.ucGreen << "  "
+        << (int)this->ShpGfxInfo.FillClr.ucRed << "  "
+        << (int)this->ShpGfxInfo.FillClr.ucBlue << "  "
+        << (int)this->ShpGfxInfo.FillClr.ucGreen << "  "
+        << (int)this->ShpGfxInfo.BorderWdth << "  " 
+        << this->IsDeleted() << "  " << endl;
+}
+
 void PolyGon::Draw(GUI* pUI) const
 {
 	//Call Output::DrawPolygon to draw a polygon on the screen	

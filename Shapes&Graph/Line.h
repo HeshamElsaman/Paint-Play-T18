@@ -10,6 +10,7 @@ private:
 public:
 	Line(Point , Point, GfxInfo shapeGfxInfo );
 	virtual ~Line();
+	virtual void Save(ofstream& OutFile);
 	virtual void Draw(GUI* pUI) const;
 	bool isInside(int X, int Y);
 };

@@ -9,6 +9,28 @@ Rect::Rect(Point P1, Point P2, GfxInfo shapeGfxInfo):shape(shapeGfxInfo)
 Rect::~Rect()
 {}
 
+void Rect::Save(ofstream& OutFile) // the file name is Outfile
+{
+
+	OutFile << "Rect" << "  "
+		<< this->ID << "  "
+		<< this->Corner1.x << "  "
+		<< this->Corner1.y << "  "
+		<< this->Corner2.x << "  "
+		<< this->Corner2.y << "   "
+		<< (int)this->ShpGfxInfo.DrawClr.ucRed << "  "
+		<< (int)this->ShpGfxInfo.DrawClr.ucBlue << "  "
+		<< (int)this->ShpGfxInfo.DrawClr.ucGreen << "  "
+		<< (int)this->ShpGfxInfo.FillClr.ucRed << "  "
+		<< (int)this->ShpGfxInfo.FillClr.ucBlue << "  "
+		<< (int)this->ShpGfxInfo.FillClr.ucGreen << "  "
+		<< (int)this->ShpGfxInfo.BorderWdth << "  " 
+		<< this->IsDeleted() << "  " << endl;
+	
+
+
+}
+
 void Rect::Draw(GUI* pUI) const
 {
 	//Call Output::DrawRect to draw a rectangle on the screen	
