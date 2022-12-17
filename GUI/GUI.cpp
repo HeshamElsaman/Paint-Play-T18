@@ -194,7 +194,7 @@ operationType GUI::GetUseroperation()
 				return TO_PLAY;
 
 			case ICON_EXIT:
-				return EXIT;
+				return EXIT_DRAW;
 
 			default:
 				return EMPTY;	//A click on empty place in desgin toolbar
@@ -238,8 +238,9 @@ operationType GUI::GetUseroperation()
 			case ICON_MATCH_SHAPES:
 				return MATCH_SHAPES;
 
-			case ICON_EXIT:
-				return EXIT;
+			case ICON_EXIT_PLAY:
+				return EXIT_PLAY;
+
 
 			default:
 				return EMPTY;	//A click on empty place in desgin toolbar
@@ -474,7 +475,7 @@ void GUI::CreatePlayToolBar()
 	////MenuIconImages[ICON_REGPOLY] = "images\\MenuIcons\\DrawMenu\\Menu_RegPolygon.jpg";
 	//MenuIconImages[ICON_DEL] = "images\\MenuIcons\\DrawMenu\\Menu_Delete.jpg";
 	//MenuIconImages[ICON_CFC] = "images\\MenuIcons\\DrawMenu\\Menu_FillColor.jpg";
-	/*MenuIconImages[ICON_EXIT] = "images\\MenuIcons\\DrawMenu\\Menu_Exit.jpg";*/
+	MenuIconImages[ICON_EXIT_PLAY] = "images\\MenuIcons\\DrawMenu\\Menu_Exit.jpg";
 
 	//TODO: Prepare images for each menu icon and add it to the list
 

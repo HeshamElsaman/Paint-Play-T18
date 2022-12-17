@@ -77,6 +77,7 @@ class GUI
 		ICON_MATCH_SHAPES,
 		ICON_START,		//Circle icon in menu
 		ICON_RESTART,
+		ICON_EXIT_PLAY,
 		
 		
 

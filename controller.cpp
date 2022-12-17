@@ -103,7 +103,7 @@ operation* controller::createOperation(operationType OpType)
 
 			break;
 
-		case EXIT:
+		case EXIT_DRAW:
 			/*
 			//The (SAVE) action shall be added to this operation
 			*/
@@ -177,6 +177,6 @@ void controller::Run()
 		//Update the interface
 		UpdateInterface();
 
-	} while (OpType != EXIT);
+	} while ((OpType != EXIT_DRAW) && (OpType != EXIT_PLAY));
 
 }
