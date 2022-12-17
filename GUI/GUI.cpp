@@ -116,8 +116,7 @@ string GUI::GetSrting() const
 		if (ktype == ESCAPE )	//ESCAPE key is pressed
 			return "";	//returns nothing as user has cancelled label
 		if (Key == 13)	//ENTER key is pressed
-			return Label;
-		
+			return Label;		
 		if (Key == 8)	//BackSpace is pressed
 			if( Label.size() > 0)	
 				Label.resize(Label.size() - 1);
