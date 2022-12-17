@@ -1,11 +1,11 @@
 #include "opChngPenWidth.h"
-
+#include <iostream>
 #include "..\CMUgraphicsLib\CMUgraphics.h"
-
+#include <string>
 #include "../controller.h"
 
 #include "../GUI/GUI.h"
-
+using namespace std;
 opChngPenWidth::opChngPenWidth(controller* pCont) :operation(pCont)
 {}
 opChngPenWidth::~opChngPenWidth()
@@ -21,17 +21,30 @@ void opChngPenWidth::Execute()
 
 	pUI->PrintMessage("Change General PenWidth: Pick a Number for the PenWidth");
 
-	char KEY;
+	string KEY= pUI->GetSrting();
 	
-	pUI->GetKeyPressed(KEY);
+
+	
+	
+	
 
 	//Read click position
 
 
-		pUI->setCrntPenWidth((int)KEY);
+		pUI->setCrntPenWidth(stoi(KEY));
+		
 
 
 	//Getting the color clicked
+	if (pGr->ShapeListStateSelected()) {
+		pGr->ChangePenWidth(stoi(KEY));
+	}
+	else
+	{
+		pUI->setCrntPenWidth(stoi(KEY));
+	}
+	pUI->DeleteColorPalette();
+
 
 
 	

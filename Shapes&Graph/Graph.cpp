@@ -124,6 +124,19 @@ void Graph::ChangeDrawClr(color clr)
 		}
 	}
 }
+void Graph::ChangePenWidth(int num)
+{
+	if (!(shapesList.empty()))
+	{
+		for (shape* shapePointer : shapesList)
+		{
+			if (shapePointer->IsSelected() && !(shapePointer->IsDeleted()))
+			{
+				shapePointer->ChngPenWidth(num);
+			}
+		}
+	}
+}
 
 bool Graph::ShapeListStateSelected() const
 {

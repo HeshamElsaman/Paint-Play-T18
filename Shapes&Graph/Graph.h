@@ -27,6 +27,7 @@ public:
 	void ChangeDrawClr(color);
 	bool ShapeListStateSelected() const;
 	void ReleaseShapesMemory();
+	void ChangePenWidth(int num);
 
 	void Save(ofstream& outfile);	//Save all shapes to a file
 	void load(ifstream& inputfile);	//Load all shapes from a file
