@@ -10,6 +10,7 @@
 #include "Operations/Select.h"
 #include "Operations/opChngFillClr.h"
 #include "Operations/opDeleteShape.h"
+#include "Operations/opExit.h"
 
 
 //Constructor
@@ -77,9 +78,13 @@ operation* controller::createOperation(operationType OpType)
 
 		case DRAWING_AREA:
 			pOp = new opSelect(this);
+			break;
 
 		case EXIT:
-			///create Exitoperation here
+			/*
+			//The (SAVE) action shall be added to this operation
+			*/
+			pOp = new opExit(this);
 			
 			break;
 		

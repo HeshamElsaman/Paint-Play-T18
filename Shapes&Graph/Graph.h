@@ -25,7 +25,7 @@ public:
 	void ChangeFillClr(color);
 	void SetSelectedFillState(bool);
 	bool ShapeListStateSelected() const;
-
+	void ReleaseShapesMemory();
 
 	void Save(ofstream& outfile);	//Save all shapes to a file
 	void load(ifstream& inputfile);	//Load all shapes from a file

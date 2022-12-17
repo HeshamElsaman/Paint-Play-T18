@@ -25,11 +25,13 @@ void Graph::Addshape(shape* pShp)
 void Graph::Draw(GUI* pUI) const
 {
 	pUI->ClearDrawArea();
-	
-	for (auto shapePointer : shapesList)
-	{	
-		if (!(shapePointer->IsDeleted()))
-			shapePointer->Draw(pUI);
+	if (!(shapesList.empty()))
+	{
+		for (auto shapePointer : shapesList)
+		{
+			if (!(shapePointer->IsDeleted()))
+				shapePointer->Draw(pUI);
+		}
 	}
 }
 
@@ -122,4 +124,16 @@ bool Graph::ShapeListStateSelected() const
 		}
 	}
 	return false;
+}
+
+
+void Graph::ReleaseShapesMemory()
+{
+	if (!(shapesList.empty()))
+	{
+		for (shape* shapePointer : shapesList)
+		{
+			delete shapePointer; shapePointer = nullptr;
+		}
+	}
 }
