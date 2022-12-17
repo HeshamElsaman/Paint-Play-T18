@@ -13,6 +13,15 @@ void Rect::Draw(GUI* pUI) const
 {
 	//Call Output::DrawRect to draw a rectangle on the screen	
 	pUI->DrawRect(Corner1, Corner2, ShpGfxInfo);
+	
+	if(ShpGfxInfo.imgSticked)
+	{
+		int x = (Corner1.x <= Corner2.x) ? Corner1.x : Corner2.x;
+		int y = (Corner1.y <= Corner2.y) ? Corner1.y : Corner2.y;
+		int width = abs(Corner1.x - Corner2.x);
+		int length = abs(Corner1.y - Corner2.y);
+		pUI->StickImage(img, x, y, width, length);
+	}
 }
 bool Rect::isInside(int X, int Y)
 {

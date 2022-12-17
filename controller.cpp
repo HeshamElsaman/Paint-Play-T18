@@ -7,7 +7,7 @@
 #include "Operations/opAddCircle.h"
 #include "Operations/opAddPolygon.h"
 #include "Operations/opAddRegPolygon.h"
-//#include "Operations/opAddImage.h"
+#include "Operations/opStickImage.h"
 #include "Operations/Select.h"
 #include "Operations/opChngFillClr.h"
 #include "Operations/opChngDrawClr.h"
@@ -82,6 +82,10 @@ operation* controller::createOperation(operationType OpType)
 
 		case CHNG_PEN_WIDTH:
 			pOp = new opChngPenWidth(this);
+			break;
+
+		case STICK_IMG:
+			pOp = new opStickImage(this);
 			break;
 
 		case DEL:

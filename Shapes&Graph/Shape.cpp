@@ -31,6 +31,21 @@ bool shape::IsFilled() const
 	return ShpGfxInfo.isFilled;
 }
 
+void shape::SetImgSticked(bool s)
+{
+	ShpGfxInfo.imgSticked = s;
+}
+
+bool shape::IsImgSticked() const
+{
+	return ShpGfxInfo.imgSticked;
+}
+
+void shape::SetImgSticked(int img_)
+{
+	img = img_;
+}
+
 void shape::ChngDrawClr(color Dclr)
 {	ShpGfxInfo.DrawClr = Dclr; }
 

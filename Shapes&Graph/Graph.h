@@ -26,6 +26,7 @@ public:
 	void SetSelectedFillState(bool);
 	void ChangeDrawClr(color);
 	bool ShapeListStateSelected() const;
+	void StickImg(int);
 	void ReleaseShapesMemory();
 
 	void Save(ofstream& outfile);	//Save all shapes to a file

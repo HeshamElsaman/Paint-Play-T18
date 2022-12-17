@@ -3,6 +3,7 @@
 
 
 #include "..\CMUgraphicsLib\CMUgraphics.h"
+//#include "image.h"
 #include "..\Defs.h"
 
 #include <string>
@@ -21,6 +22,7 @@ struct GfxInfo	//Graphical info common for all shapes (you may add more members)
 	int BorderWdth;	//Width of shape borders
 	bool isSelected;	//true if the shape is selected.
 	bool isDeleted = false;		//true if the shape is deleted
+	bool imgSticked = false;
 };
 
 
@@ -125,8 +127,9 @@ public:
 	int GetClickType(int x, int y) const;
 
 	void GetKeyPressed(char&) const;
-
-
+	void open();
+	void StickImage(int,int,int,int,int);
+	//void draw(GUI*);
 	string GetSrting() const;	 //Returns a string entered by the user
 	operationType GetUseroperation(); //Read the user click and map to an operation
 	//void GetPalettePointClicked(int& x, int& y) const;
@@ -163,9 +166,9 @@ public:
 	void DrawLine(Point P1, Point P2, GfxInfo LineGfxInfo) const;  //Draw a line
 	void Drawcircle(Point P1, Point P2, GfxInfo circleGfxInfo) const;  //Draw a circle
 	void DrawPolygon(Point* verts, int vertn, GfxInfo PolygonGfxInfo) const;
-	//void DrawImage(Point* verts, int vertn, GfxInfo Image) const;
+	void DrawImage(Point* verts, int vertn, GfxInfo Image) const;
 	void DrawRegPolygon(Point* verts, int vertn, GfxInfo RegPolygonGfxInfo) const;
-
+	
 
 	///Make similar functions for drawing all other shapes.
 	

@@ -12,5 +12,6 @@ public:
 	virtual ~Rect();
 	virtual void Draw(GUI* pUI) const;
 	bool isInside(int X, int Y);
+	
 };
 

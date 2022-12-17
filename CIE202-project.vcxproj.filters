@@ -186,6 +186,9 @@
     <ClCompile Include="Operations\opChngToPlayMode.cpp">
       <Filter>Operations</Filter>
     </ClCompile>
+    <ClCompile Include="Operations\opStickImage.cpp">
+      <Filter>Operations</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="controller.h" />
@@ -330,6 +333,9 @@
       <Filter>Operations</Filter>
     </ClInclude>
     <ClInclude Include="Operations\opChngToPlayMode.h">
+      <Filter>Operations</Filter>
+    </ClInclude>
+    <ClInclude Include="Operations\opStickImage.h">
       <Filter>Operations</Filter>
     </ClInclude>
   </ItemGroup>
