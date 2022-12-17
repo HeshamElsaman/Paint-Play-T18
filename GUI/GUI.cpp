@@ -6,15 +6,15 @@ GUI::GUI()
 	//Initialize user interface parameters
 	//InterfaceMode = MODE_DRAW;
 
-	width = 1000;
-	height = 400;
+	width = 1500;
+	height = 800;
 	wx = 5;
 	wy = 5;
 
 
 	StatusBarHeight = 50;
-	ToolBarHeight = 50;
-	MenuIconWidth = 80;
+	ToolBarHeight = double(width) / DRAW_ICON_COUNT;
+	MenuIconWidth = double(width) / DRAW_ICON_COUNT;
 
 	DrawColor = BLUE;	//default Drawing color
 	BkGrndColor = WHITE;	//Background color
@@ -150,17 +150,44 @@ operationType GUI::GetUseroperation()
 			case ICON_REGPOLY:
 				return DRAW_REGPOLY;
 
-			case ICON_DEL:
-				return DEL;
-
 			case ICON_CFC:
 				return CHNG_FILL_CLR;
 
-			case ICON_DRAW_COLOR:
+			case ICON_CPC:
 				return CHNG_DRAW_CLR;
 
-			case ICON_PEN_WIDTH:
+			case ICON_CPW:
 				return CHNG_PEN_WIDTH;
+
+			case ICON_COPY:
+				return COPY;
+
+			case ICON_CUT:
+				return CUT;
+
+			case ICON_PASTE:
+				return PASTE;
+
+			case ICON_UNDO:
+				return UNDO;
+
+			case ICON_REDO:
+				return REDO;
+
+			case ICON_STICK_IMG:
+				return STICK_IMG;
+			
+			case ICON_DEL:
+				return DEL;
+
+			case ICON_SAVE:
+				return SAVE;
+
+			case ICON_LOAD:
+				return LOAD;
+
+			case ICON_SWITCH_TO_PLAY:
+				return TO_PLAY;
 
 			case ICON_EXIT:
 				return EXIT;
@@ -234,6 +261,11 @@ operationType GUI::GetUseroperation()
 
 }
 ////////////////////////////////////////////////////
+bool GUI::GetFillStatus() const
+{
+	return FillStatus;
+}
+////////////////////////////////////////////////////
 void GUI::setCrntFillColor(color clr) //set current filling color
 {
 	FillColor = clr;
@@ -249,6 +281,10 @@ void GUI::setCrntPenWidth(int s) //set current pen width
 	PenWidth = s;
 }
 ////////////////////////////////////////////////////
+void GUI::setFillStatus(bool stat)
+{
+	FillStatus = stat;
+}
 
 
 
@@ -271,7 +307,7 @@ void GUI::CreateColorPalette()
 {
 	pPalette = CreateWind(400, 300, 200, 90);
 	pPalette->ChangeTitle("Color palette");
-	pPalette->DrawImage("Menu_Colorpallete.jpg", 50,50);
+	pPalette->DrawImage("Images\\MenuIcons\\Menu_ColorPalette.jpg", 50,50);
 	pPalette->SetBuffering(0);
 	pPalette->SetWaitClose(false);
 }
@@ -375,10 +411,19 @@ void GUI::CreateDrawToolBar()
 	MenuIconImages[ICON_OVAL] = "images\\MenuIcons\\DrawMenu\\Oval.jpg";
 	MenuIconImages[ICON_POLY] = "images\\MenuIcons\\DrawMenu\\Menu_Polygon.jpg";
 	MenuIconImages[ICON_REGPOLY] = "images\\MenuIcons\\DrawMenu\\Menu_RegPolygon.jpg";
-	MenuIconImages[ICON_DRAW_COLOR] = "images\\MenuIcons\\DrawMenu\\ChngDrawClr.jpg";
-	MenuIconImages[ICON_PEN_WIDTH] = "images\\MenuIcons\\DrawMenu\\ChngPenWidth.jpg";
 	MenuIconImages[ICON_CFC] = "images\\MenuIcons\\DrawMenu\\Menu_FillColor.jpg";
+	MenuIconImages[ICON_CPC] = "images\\MenuIcons\\DrawMenu\\Menu_PenColor.jpg";
+	MenuIconImages[ICON_CPW] = "images\\MenuIcons\\DrawMenu\\Menu_PenWidth.jpg";
+	MenuIconImages[ICON_COPY] = "images\\MenuIcons\\DrawMenu\\Menu_Copy.jpg";
+	MenuIconImages[ICON_CUT] = "images\\MenuIcons\\DrawMenu\\Menu_Cut.jpg";
+	MenuIconImages[ICON_PASTE] = "images\\MenuIcons\\DrawMenu\\Menu_Paste.jpg";
+	MenuIconImages[ICON_UNDO] = "images\\MenuIcons\\DrawMenu\\Menu_Undo.jpg";
+	MenuIconImages[ICON_REDO] = "images\\MenuIcons\\DrawMenu\\Menu_Redo.jpg";
+	MenuIconImages[ICON_STICK_IMG] = "images\\MenuIcons\\DrawMenu\\Menu_StickImage.jpg";
 	MenuIconImages[ICON_DEL] = "images\\MenuIcons\\DrawMenu\\Menu_Delete.jpg";
+	MenuIconImages[ICON_SAVE] = "images\\MenuIcons\\DrawMenu\\Menu_Save.jpg";
+	MenuIconImages[ICON_LOAD] = "images\\MenuIcons\\DrawMenu\\Menu_Load.jpg";
+	MenuIconImages[ICON_SWITCH_TO_PLAY] = "images\\MenuIcons\\DrawMenu\\Menu_Switch_To_PlayMode.jpg";
 	MenuIconImages[ICON_EXIT] = "images\\MenuIcons\\DrawMenu\\Menu_Exit.jpg";
 	
 	//TODO: Prepare images for each menu icon and add it to the list

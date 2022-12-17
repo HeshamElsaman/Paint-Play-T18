@@ -28,14 +28,32 @@ void opChngFillClr::Execute()
 	//Getting the color clicked
 	color CLR;
 	pUI->GetPaletteColorClicked(P.x, P.y, CLR);
-	//If the click is in the (Area) of the color palette
-	if (pGr->ShapeListStateSelected()) {
-		pGr->ChangeFillClr(CLR);
+	
+
+	if (P.x > 350 && P.y > 250)
+	{
+		if (pGr->ShapeListStateSelected()) {
+			pGr->SetSelectedFillState(false);
+		}
+		else
+		{
+			pUI->setFillStatus(false);
+		}
 	}
 	else
 	{
-		pUI->setCrntFillColor(CLR);
+		if (pGr->ShapeListStateSelected()) {
+			pGr->ChangeFillClr(CLR);
+		}
+		else
+		{
+			pUI->setFillStatus(true);
+			pUI->setCrntFillColor(CLR);
+		}
 	}
+	
+
+
 	pUI->DeleteColorPalette();
 	
 }

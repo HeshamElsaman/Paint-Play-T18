@@ -16,6 +16,13 @@ enum operationType //The operations supported (you can add more if needed)
 	CHNG_DRAW_CLR,	//Change the drawing color
 	CHNG_PEN_WIDTH,	//Change the pen width
 	CHNG_FILL_CLR,	//Change the filling color
+	CHNG_PEN_WIDTH, //Change the boarder thickness
+	STICK_IMG,
+	COPY,
+	PASTE,
+	CUT,
+	UNDO,
+	REDO,
 	CHNG_BK_CLR,	//Change background color
 	DEL,			//Delete a shape(s)
 	MOVE,			//Move a shape(s)

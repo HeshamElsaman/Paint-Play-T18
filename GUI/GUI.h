@@ -47,13 +47,19 @@ class GUI
 		ICON_POLY,
 		ICON_REGPOLY,
 		ICON_CFC,
-		ICON_DRAW_COLOR,
-		ICON_PEN_WIDTH,
-		
-
+		ICON_CPC,
+		ICON_CPW,
+		ICON_COPY,
+		ICON_CUT,
+		ICON_PASTE,
+		ICON_UNDO,
+		ICON_REDO,
+		ICON_STICK_IMG,
 		ICON_DEL,
+		ICON_SAVE,
+		ICON_LOAD,
 		//TODO: Add more icons names here
-
+		ICON_SWITCH_TO_PLAY,
 		ICON_EXIT,		//Exit icon
 
 		DRAW_ICON_COUNT		//no. of menu icons ==> This should be the last line in this enum
@@ -89,6 +95,7 @@ class GUI
 
 	color DrawColor;		//Drawing color
 	color FillColor;		//Filling color
+	bool FillStatus = false; //General Fill Status
 	color HighlightColor;	//Highlighting color
 	color MsgColor;			//Messages color
 	color BkGrndColor;		//Background color
@@ -113,7 +120,7 @@ public:
 	// Input Functions  ---------------------------
 	void GetPointClicked(int& x, int& y) const;
 	void GetOpLastPointClicked(int& x, int& y) const;
-	void ChangeMode();
+	bool GetFillStatus() const;
 	//Get coordinate where user clicks
 	int GetClickType(int x, int y) const;
 
@@ -127,8 +134,8 @@ public:
 	void GetPalettePointClicked(int& x, int& y) const;
 	void GetMode(int& x, int& y)const;
 	void setCrntFillColor(color); //set current filling color
-	void setCrntDrawColor(color); //set current Drawing color
-	void setCrntPenWidth(int);
+	void setFillStatus(bool);
+
 	// Output Functions  ---------------------------
 	window* CreateWind(int, int, int, int) const; //creates the application window
 	void CreateDrawToolBar();	//creates Draw mode toolbar & menu

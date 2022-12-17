@@ -21,6 +21,9 @@ public:
 	void SetDeleted(bool s);	//delete/restore the shape
 	bool IsDeleted() const;	//check whether fig is deleted
 
+	void SetFilled(bool s);
+	bool IsFilled() const;
+
 	virtual void Draw(GUI* pUI) const  = 0 ;		//Draw the shape
 	
 	void ChngDrawClr(color Dclr);	//changes the shape's drawing color

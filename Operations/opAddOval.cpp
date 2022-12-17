@@ -38,7 +38,7 @@ void opAddOval::Execute()
 	OvalGfxInfo.BorderWdth = pUI->getCrntPenWidth();
 
 
-	OvalGfxInfo.isFilled = true;	//default is not filled
+	OvalGfxInfo.isFilled = pUI->GetFillStatus();	//default is not filled
 	OvalGfxInfo.isSelected = false;	//defualt is not selected
 
 

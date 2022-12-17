@@ -13,6 +13,7 @@
 #include "Operations/opChngDrawClr.h"
 #include "Operations/opChngPenWidth.h"
 #include "Operations/opDeleteShape.h"
+#include "Operations/opExit.h"
 
 
 //Constructor
@@ -91,7 +92,10 @@ operation* controller::createOperation(operationType OpType)
 			break;
 
 		case EXIT:
-			///create Exitoperation here
+			/*
+			//The (SAVE) action shall be added to this operation
+			*/
+			pOp = new opExit(this);
 			
 			break;
 		

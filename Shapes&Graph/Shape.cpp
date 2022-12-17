@@ -21,6 +21,16 @@ bool shape::IsDeleted() const
 	return ShpGfxInfo.isDeleted;
 }
 
+void shape::SetFilled(bool s)
+{
+	ShpGfxInfo.isFilled = s;
+}
+
+bool shape::IsFilled() const
+{
+	return ShpGfxInfo.isFilled;
+}
+
 void shape::ChngDrawClr(color Dclr)
 {	ShpGfxInfo.DrawClr = Dclr; }
 
