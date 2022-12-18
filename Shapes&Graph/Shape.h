@@ -10,7 +10,7 @@ class shape
 protected:
 	int ID;		//Each shape has an ID
 	GfxInfo ShpGfxInfo;	//shape graphis info
-	
+	int img;
 	/// Add more parameters if needed.
 
 public:
@@ -28,12 +28,17 @@ public:
 	void SetFilled(bool s);
 	bool IsFilled() const;
 
+	void SetImgSticked(bool s);
+	void SetImgSticked(int img_);
+	bool IsImgSticked() const;
+
 	virtual void Draw(GUI* pUI) const  = 0 ;		//Draw the shape
 	
 	void ChngDrawClr(color Dclr);	//changes the shape's drawing color
 	void ChngFillClr(color Fclr);	//changes the shape's filling color
 	void ChngPenWidth(int c);	   //changes the shape's Pen Width
 	virtual bool isInside(int X,int Y) = 0;
+	
 
 	///The following functions should be supported by the shape class
 	///It should be overridden by each inherited shape

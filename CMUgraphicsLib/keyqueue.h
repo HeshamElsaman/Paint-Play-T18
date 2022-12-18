@@ -16,7 +16,6 @@ enum keytype {
 	ARROW,
 	FUNCTION,
 	ESCAPE
-
 };
 
 

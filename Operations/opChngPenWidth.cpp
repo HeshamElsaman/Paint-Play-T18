@@ -1,7 +1,11 @@
 #include "opChngPenWidth.h"
+
 #include <iostream>
+
 #include "..\CMUgraphicsLib\CMUgraphics.h"
+
 #include <string>
+
 #include "../controller.h"
 
 #include "../GUI/GUI.h"

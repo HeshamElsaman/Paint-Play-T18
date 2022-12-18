@@ -27,6 +27,7 @@ public:
 	void SetSelectedFillState(bool);
 	void ChangeDrawClr(color);
 	bool ShapeListStateSelected() const;
+	void StickImg(int);
 	void ReleaseShapesMemory();
 	void ChangePenWidth(int num);
 

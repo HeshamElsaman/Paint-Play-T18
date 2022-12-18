@@ -64,6 +64,13 @@ void GUI::GetOpLastPointClicked(int& x, int& y) const
 	y = opLastPointClicked.y;
 }
 
+//////////////////////////////////////////////////////////////////////////////////////////
+
+/*void GUI::open(const char* Pictures, imagetype itThisType = JPEG)
+{
+	 image.Open();
+}*/
+
 /////////////////////////////////////////////////////////////////////////////////////////
 int GUI::GetClickType(int x, int y) const
 {
@@ -71,12 +78,28 @@ int GUI::GetClickType(int x, int y) const
 }
 /////////////////////////////////////////////////////////////////////////////////////////
 
+/*void GUI::draw(GUI* m)
+{
+	pWind->Draw
+}*/
+
+
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////
 void GUI::GetKeyPressed(char& key) const
 {
 	pWind->GetKeyPress(key);
 }
-
-
+////////////////////////////////////////////////////////////////////////////
+void GUI::StickImage(int img, int x, int y, int length, int width)
+{
+	string IMG = "Images\\StickingImages\\" + to_string(img) + ".jpg";
+	pWind->DrawImage(IMG, x, y, width, length);
+}
+///////////////////////////////////////////////////////////////////////////////////
 
 
 
@@ -93,8 +116,7 @@ string GUI::GetSrting() const
 		if (ktype == ESCAPE )	//ESCAPE key is pressed
 			return "";	//returns nothing as user has cancelled label
 		if (Key == 13)	//ENTER key is pressed
-			return Label;
-		
+			return Label;		
 		if (Key == 8)	//BackSpace is pressed
 			if( Label.size() > 0)	
 				Label.resize(Label.size() - 1);
@@ -194,7 +216,7 @@ operationType GUI::GetUseroperation()
 				return TO_PLAY;
 
 			case ICON_EXIT:
-				return EXIT;
+				return EXIT_DRAW;
 
 			default:
 				return EMPTY;	//A click on empty place in desgin toolbar
@@ -238,8 +260,9 @@ operationType GUI::GetUseroperation()
 			case ICON_MATCH_SHAPES:
 				return MATCH_SHAPES;
 
-			case ICON_EXIT:
-				return EXIT;
+			case ICON_EXIT_PLAY:
+				return EXIT_PLAY;
+
 
 			default:
 				return EMPTY;	//A click on empty place in desgin toolbar
@@ -474,7 +497,7 @@ void GUI::CreatePlayToolBar()
 	////MenuIconImages[ICON_REGPOLY] = "images\\MenuIcons\\DrawMenu\\Menu_RegPolygon.jpg";
 	//MenuIconImages[ICON_DEL] = "images\\MenuIcons\\DrawMenu\\Menu_Delete.jpg";
 	//MenuIconImages[ICON_CFC] = "images\\MenuIcons\\DrawMenu\\Menu_FillColor.jpg";
-	/*MenuIconImages[ICON_EXIT] = "images\\MenuIcons\\DrawMenu\\Menu_Exit.jpg";*/
+	MenuIconImages[ICON_EXIT_PLAY] = "images\\MenuIcons\\DrawMenu\\Menu_Exit.jpg";
 
 	//TODO: Prepare images for each menu icon and add it to the list
 
@@ -562,6 +585,11 @@ void GUI::DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo) const
 
 	pWind->DrawRectangle(P1.x, P1.y, P2.x, P2.y, style);
 
+	/*int Width = P2.x - P1.x;
+	int Length= P2.y - P1.y;*/
+
+	
+
 }
 //Drawing square by manpiulating a rectangle 
 void GUI::DrawSquare(Point P1, Point P2,/* Point P3,*/ GfxInfo SquareGfxInfo) const
@@ -582,28 +610,7 @@ void GUI::DrawSquare(Point P1, Point P2,/* Point P3,*/ GfxInfo SquareGfxInfo) co
 	}
 	else
 		style = FRAME;
-	/*int SideLength = pow((pow((P2.x - P1.x), 2) + pow((P2.y - P1.y), 2)), 0.5);
-	P1.x = P3.x + (SideLength / 2);
-	P1.y = P3.y + (SideLength / 2);
-	P2.x = abs((SideLength / 2) - P3.x);
-	P2.y =  abs((SideLength / 2)-P3.y);*/
 	
-	/*int y_side_length = abs(P2.y - P1.y);
-	int x_side_length = abs(P2.x - P1.x);
-	bool sideL = y_side_length > x_side_length;
-	switch (sideL) {
-	case 1:
-		P2.x = P1.x + y_side_length;
-		P2.y = P1.y + y_side_length;
-		break;
-	case 0:
-		P2.x = P1.x + x_side_length;
-		P2.y = P1.y + x_side_length;
-		break;
-
-
-	}*/
-	;
 	pWind->DrawRectangle(P1.x, P1.y, P2.x, P2.y, style);
 }
 ////////////////////////////////////////////////////////////////

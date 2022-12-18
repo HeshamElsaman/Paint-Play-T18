@@ -183,3 +183,18 @@ void Graph::ReleaseShapesMemory()
 		}
 	}
 }
+
+void Graph::StickImg(int img)
+{
+	if (!(shapesList.empty()))
+	{
+		for (shape* shapePointer : shapesList)
+		{
+			if (shapePointer->IsSelected() && !(shapePointer->IsDeleted()))
+			{
+				shapePointer->SetImgSticked(true);
+				shapePointer->SetImgSticked(img);
+			}
+		}
+	}
+}

@@ -65,7 +65,7 @@ class image {
 	
 	// Find out the dimensions of our image
 	unsigned long GetWidth() { return usWidth; }
-	unsigned long GetHeight() { return usHeight; }
+	unsigned long GetHeight() { return usHeight;}
 
     // Copy images 
     void operator=(image &imgOther); 

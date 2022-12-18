@@ -7,7 +7,7 @@
 #include "Operations/opAddCircle.h"
 #include "Operations/opAddPolygon.h"
 #include "Operations/opAddRegPolygon.h"
-//#include "Operations/opAddImage.h"
+#include "Operations/opStickImage.h"
 #include "Operations/Select.h"
 #include "Operations/opChngFillClr.h"
 #include "Operations/opChngDrawClr.h"
@@ -85,6 +85,10 @@ operation* controller::createOperation(operationType OpType)
 			pOp = new opChngPenWidth(this);
 			break;
 
+		case STICK_IMG:
+			pOp = new opStickImage(this);
+			break;
+
 		case DEL:
 			pOp = new opDeleteShape(this);
 			break;
@@ -103,7 +107,7 @@ operation* controller::createOperation(operationType OpType)
 
 			break;
 
-		case EXIT:
+		case EXIT_DRAW:
 			/*
 			//The (SAVE) action shall be added to this operation
 			*/
@@ -177,6 +181,6 @@ void controller::Run()
 		//Update the interface
 		UpdateInterface();
 
-	} while (OpType != EXIT);
+	} while ((OpType != EXIT_DRAW) && (OpType != EXIT_PLAY));
 
 }
