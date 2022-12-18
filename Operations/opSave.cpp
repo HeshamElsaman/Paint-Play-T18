@@ -16,7 +16,7 @@ void opSave::Execute()
 	pUI->PrintMessage("Saving.....Enter file name by pressing on the keyboard then press Enter ");
 
 	// to get the keypresses from the user
-	OutFile.open("D:\\C++\\0 project\\fixed\\Paint-Play-T18\\playmode save\\" +pUI->GetSrting() + ".txt");
+	OutFile.open("playmode save\\"+pUI->GetSrting()+".txt");
 
 	Graph* pGr = pControl->getGraph();
 
