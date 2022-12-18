@@ -96,6 +96,7 @@ operation* controller::createOperation(operationType OpType)
 
 		case SAVE:
 			pOp = new opSave(this);
+			break;
 
 		case TO_PLAY:
 			pOp = new opChngToPlayMode(this);
