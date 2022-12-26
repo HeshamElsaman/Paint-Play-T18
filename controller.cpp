@@ -104,17 +104,10 @@ operation* controller::createOperation(operationType OpType)
 
 		case TO_PLAY:
 			pOp = new opChngToPlayMode(this);
-
 			break;
 
 		case EXIT_DRAW:
-			/*
-			//The (SAVE) action shall be added to this operation
-			*/
-			
 			pOp = new opExit(this);
-		
-			
 			break;
 		
 		case STATUS:	//a click on the status bar ==> no operation
@@ -124,6 +117,25 @@ operation* controller::createOperation(operationType OpType)
 	return pOp;
 	
 }
+//////////////////////////////////////////////////////////////////////////////////////
+void controller::UNDO()
+{
+	if (!(undoStack.empty())) {
+		redoStack.push(undoStack.top());
+		//(undoStack.top())->Undo();
+		undoStack.pop();
+	}
+}
+
+void controller::REDO()
+{
+	if (!(redoStack.empty())) {
+		undoStack.push(redoStack.top());
+		//(redoStack.top())->Redo();
+		redoStack.pop();
+	}
+}
+//////////////////////////////////////////////////////////////////////////////////////
 //==================================================================================//
 //							Interface Management Functions							//
 //==================================================================================//

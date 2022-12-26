@@ -24,7 +24,7 @@ void opChngFillClr::Execute()
 	//Read click position
 	pUI->GetPalettePointClicked(P.x, P.y);
 
-
+	// check if point in the range of color palatte window --> do something,  else close pallate without doing anything.
 	//Getting the color clicked
 	color CLR;
 	pUI->GetPaletteColorClicked(P.x, P.y, CLR);

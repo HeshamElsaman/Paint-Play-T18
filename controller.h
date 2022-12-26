@@ -3,6 +3,7 @@
 #include "DEFS.h"
 #include "Shapes&Graph\Graph.h"
 #include "GUI\GUI.h"
+#include <stack>
 
 class operation; //forward declaration
 
@@ -12,7 +13,8 @@ class controller
 
 	Graph* pGraph;	//pointe to the grapg
 	GUI* pGUI;		//Pointer to UI class
-	
+	stack <operation*> undoStack;
+	stack <operation*> redoStack;
 
 public:	
 	controller(); 
@@ -22,6 +24,8 @@ public:
 	//Reads the input command from the user and returns the corresponding operation type
 	operationType GetUseroperation() const;
 	operation* createOperation(operationType) ; //Creates an operation
+	void UNDO(); //Undo an operation
+	void REDO(); //Redo an operation
 	void Run();
 	
 	Graph* getGraph() const;

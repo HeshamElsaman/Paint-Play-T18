@@ -248,9 +248,9 @@
     <ClCompile Include="Operations\opChngToPlayMode.cpp">
       <Filter>Operations</Filter>
     </ClCompile>
-    <ClCompile Include="Operations\opStickImage.cpp">
-      <Filter>Operations</Filter>
-    </ClCompile>
+    <ClCompile Include="Operations\opStickImage.cpp" />
+    <ClCompile Include="Operations\opUndo.cpp" />
+    <ClCompile Include="Operations\opRedo.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h" />
@@ -304,6 +304,9 @@
     <ClInclude Include="Shapes&amp;Graph\Square.h" />
     <ClInclude Include="Shapes&amp;Graph\Triangle.h" />
     <ClInclude Include="Operations\opSave.h" />
+    <ClInclude Include="Operations\opStickImage.h" />
+    <ClInclude Include="Operations\opUndo.h" />
+    <ClInclude Include="Operations\opRedo.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="CIE202-project.rc" />
@@ -377,9 +380,6 @@
       <Filter>Operations</Filter>
     </ClInclude>
     <ClInclude Include="Operations\opChngToPlayMode.h">
-      <Filter>Operations</Filter>
-    </ClInclude>
-    <ClInclude Include="Operations\opStickImage.h">
       <Filter>Operations</Filter>
     </ClInclude>
   </ItemGroup>
