@@ -8,6 +8,14 @@ PolyGon::PolyGon(Point* P_, int vertNum, GfxInfo shapeGfxInfo) :shape(shapeGfxIn
 	Verts = new Point[VertNum];
 	if (!Verts) { exit(-1); }
 	for (int i = 0; i < vertNum; i++) { Verts[i].x = P_[i].x; Verts[i].y = P_[i].y; }
+    com.x = 0; com.y = 0;
+    for (int i = 0; i < VertNum; i++)
+    {
+        com.x += Verts[i].x;
+        com.y += Verts[i].y;
+    }
+    com.x /= double(VertNum);
+    com.y /= double(VertNum);
 }
 
 PolyGon::~PolyGon()
@@ -73,4 +81,15 @@ bool PolyGon::isInside(int X, int Y)
         return true;
     }
     return false;
+}
+
+void PolyGon::Rotate()
+{
+    Point gen;
+    for (int i = 0; i < VertNum; i++)
+    {
+        gen = Verts[i];
+        Verts[i].x = cos(2 * atan(1)) * (gen.x - com.x) - sin(2 * atan(1)) * (gen.y - com.y) + com.x;
+        Verts[i].y = sin(2 * atan(1)) * (gen.x - com.x) + cos(2 * atan(1)) * (gen.y - com.y) + com.y;
+    }
 }

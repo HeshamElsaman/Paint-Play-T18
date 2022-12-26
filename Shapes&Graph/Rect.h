@@ -13,6 +13,6 @@ public:
 	virtual void Save(ofstream& OutFile);
 	virtual void Draw(GUI* pUI) const;
 	bool isInside(int X, int Y);
-	
+	void Rotate() override;
 };
 

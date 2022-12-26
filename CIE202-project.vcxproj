@@ -168,6 +168,7 @@
     <ClCompile Include="controller.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Operations\opRedo.cpp" />
+    <ClCompile Include="Operations\opRotate.cpp" />
     <ClCompile Include="Operations\opStickImage.cpp" />
     <ClCompile Include="Operations\opChngPenWidth.cpp" />
     <ClCompile Include="Operations\opAddCircle.cpp" />
@@ -222,6 +223,7 @@
     <ClInclude Include="controller.h" />
     <ClInclude Include="DEFS.h" />
     <ClInclude Include="Operations\opRedo.h" />
+    <ClInclude Include="Operations\opRotate.h" />
     <ClInclude Include="Operations\opStickImage.h" />
     <ClInclude Include="Operations\opChngToPlayMode.h" />
     <ClInclude Include="Operations\opChngPenWidth.h" />

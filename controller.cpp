@@ -13,6 +13,7 @@
 #include "Operations/opChngDrawClr.h"
 #include "Operations/opChngPenWidth.h"
 #include "Operations/opDeleteShape.h"
+#include "Operations/opRotate.h"
 #include "Operations/opSave.h"
 #include "Operations/opChngToPlayMode.h"
 #include "Operations/opExit.h"
@@ -91,6 +92,10 @@ operation* controller::createOperation(operationType OpType)
 
 		case DEL:
 			pOp = new opDeleteShape(this);
+			break;
+
+		case ROTATE:
+			pOp = new opRotate(this);
 			break;
 
 		case DRAWING_AREA:

@@ -2,6 +2,7 @@
 #include "..\defs.h"
 #include "..\GUI\GUI.h"
 #include <fstream>
+#include <cmath>
 
 
 //Base class for all shapes
@@ -46,7 +47,7 @@ public:
 	///Decide the parameters that you should pass to each function	
 
 
-	//virtual void Rotate() = 0;	//Rotate the shape
+	virtual void Rotate() = 0;	//Rotate the shape
 	//virtual void Resize() = 0;	//Resize the shape
 	//virtual void Move() = 0;		//Move the shape
 

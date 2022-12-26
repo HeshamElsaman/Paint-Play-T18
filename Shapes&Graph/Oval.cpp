@@ -44,3 +44,16 @@ bool Oval::isInside(int X,int Y)
 		return true;
 	return false;
 }
+
+void Oval::Rotate()
+{
+	Point cent, gen;
+	cent.x = 0.5 * (Corner1.x + Corner2.x);
+	cent.y = 0.5 * (Corner1.y + Corner2.y);
+	gen = Corner1;
+	Corner1.x = cos(2 * atan(1)) * (gen.x - cent.x) - sin(2 * atan(1)) * (gen.y - cent.y) + cent.x;
+	Corner1.y = sin(2 * atan(1)) * (gen.x - cent.x) + cos(2 * atan(1)) * (gen.y - cent.y) + cent.y;
+	gen = Corner2;
+	Corner2.x = cos(2 * atan(1)) * (gen.x - cent.x) - sin(2 * atan(1)) * (gen.y - cent.y) + cent.x;
+	Corner2.y = sin(2 * atan(1)) * (gen.x - cent.x) + cos(2 * atan(1)) * (gen.y - cent.y) + cent.y;
+}

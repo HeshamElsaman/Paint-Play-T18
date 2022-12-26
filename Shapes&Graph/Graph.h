@@ -28,8 +28,9 @@ public:
 	void ChangeDrawClr(color);
 	bool ShapeListStateSelected() const;
 	void StickImg(int);
-	void ReleaseShapesMemory();
 	void ChangePenWidth(int num);
+	void Rotate90();
+	void ReleaseShapesMemory();
 
 	void Save(ofstream& outfile);	//Save all shapes to a file
 	void load(ifstream& inputfile);	//Load all shapes from a file

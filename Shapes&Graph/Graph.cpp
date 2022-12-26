@@ -198,3 +198,17 @@ void Graph::StickImg(int img)
 		}
 	}
 }
+
+void Graph::Rotate90()
+{
+	if (!(shapesList.empty()))
+	{
+		for (shape* shapePointer : shapesList)
+		{
+			if (shapePointer->IsSelected() && !(shapePointer->IsDeleted()))
+			{
+				shapePointer->Rotate();
+			}
+		}
+	}
+}

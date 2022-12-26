@@ -47,3 +47,4 @@ bool Square::isInside(int X, int Y)
 	}
 	return false;
 }
+

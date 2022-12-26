@@ -15,4 +15,5 @@ public:
 	virtual void Save(ofstream& OutFile);
 	virtual void Draw(GUI* pUI) const;
 	bool isInside(int x, int y) ;
+	void Rotate() override;
 };

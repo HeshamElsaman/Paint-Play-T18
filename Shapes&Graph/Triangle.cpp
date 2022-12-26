@@ -61,3 +61,19 @@ bool Triangle::isInside(int X, int Y)
 	return false;
 
 }
+
+void Triangle::Rotate()
+{
+	Point cent, gen;
+	cent.x = (Corner1.x + Corner2.x + Corner3.x) / 3.0;
+	cent.y = (Corner1.y + Corner2.y + Corner3.y) / 3.0;
+	gen = Corner1;
+	Corner1.x = cos(2 * atan(1)) * (gen.x - cent.x) - sin(2 * atan(1)) * (gen.y - cent.y) + cent.x;
+	Corner1.y = sin(2 * atan(1)) * (gen.x - cent.x) + cos(2 * atan(1)) * (gen.y - cent.y) + cent.y;
+	gen = Corner2;
+	Corner2.x = cos(2 * atan(1)) * (gen.x - cent.x) - sin(2 * atan(1)) * (gen.y - cent.y) + cent.x;
+	Corner2.y = sin(2 * atan(1)) * (gen.x - cent.x) + cos(2 * atan(1)) * (gen.y - cent.y) + cent.y;
+	gen = Corner3;
+	Corner3.x = cos(2 * atan(1)) * (gen.x - cent.x) - sin(2 * atan(1)) * (gen.y - cent.y) + cent.x;
+	Corner3.y = sin(2 * atan(1)) * (gen.x - cent.x) + cos(2 * atan(1)) * (gen.y - cent.y) + cent.y;
+}
