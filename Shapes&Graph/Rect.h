@@ -7,6 +7,7 @@ class Rect : public shape
 private:
 	Point Corner1;	
 	Point Corner2;
+	Point com;
 public:
 	Rect(Point , Point, GfxInfo shapeGfxInfo );
 	virtual ~Rect();

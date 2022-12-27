@@ -6,6 +6,7 @@ class Oval : public shape
 private:
 	Point Corner1;
 	Point Corner2;
+	Point com;
 public:
 	Oval(Point, Point, GfxInfo shapeGfxInfo);
 	virtual ~Oval();
