@@ -4,7 +4,8 @@ Square::Square(Point P1, Point P2,/*Point P3,*/ GfxInfo shapeGfxInfo) :shape(sha
 {
 	Corner1 = P1;
 	Corner2 = P2;
-	//Corner3 = P3;
+	com.x = 0.5 * (Corner1.x + Corner2.x);
+	com.y = 0.5 * (Corner1.y + Corner2.y);
 }
 
 Square::~Square()
@@ -48,3 +49,13 @@ bool Square::isInside(int X, int Y)
 	return false;
 }
 
+void Square::Rotate()
+{
+	Point gen;
+	gen = Corner1;
+	Corner1.x = cos(2 * atan(1)) * (gen.x - com.x) - sin(2 * atan(1)) * (gen.y - com.y) + com.x;
+	Corner1.y = sin(2 * atan(1)) * (gen.x - com.x) + cos(2 * atan(1)) * (gen.y - com.y) + com.y;
+	gen = Corner2;
+	Corner2.x = cos(2 * atan(1)) * (gen.x - com.x) - sin(2 * atan(1)) * (gen.y - com.y) + com.x;
+	Corner2.y = sin(2 * atan(1)) * (gen.x - com.x) + cos(2 * atan(1)) * (gen.y - com.y) + com.y;
+}
