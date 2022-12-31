@@ -70,6 +70,7 @@ void Graph::SetSelectedShape(shape* shp)
 	selectedShape = shp;
 }
 
+
 void Graph::DeleteSelectedShapes()
 {
 	if (!(shapesList.empty()))
@@ -143,7 +144,18 @@ void Graph::ChangePenWidth(int num)
 		}
 	}
 }
+void Graph::setShapeListStateSelected()
+{
+	if (!(shapesList.empty()))
+	{
+		for (shape* shapePointer : shapesList)
+		{
+			shapePointer->SetSelected(false);
+		}
+	}
+	
 
+}
 bool Graph::ShapeListStateSelected() const
 {
 	if (!(shapesList.empty()))

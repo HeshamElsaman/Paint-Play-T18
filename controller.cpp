@@ -99,7 +99,10 @@ operation* controller::createOperation(operationType OpType)
 			break;
 
 		case DRAWING_AREA:
-			pOp = new opSelect(this);
+			if (pGUI->GetOpLastPointClickedType() == RIGHT_CLICK)
+				pGUI->setSelectMode(!(pGUI->getSelectMode()));
+			else if (pGUI->GetOpLastPointClickedType() == LEFT_CLICK)
+				pOp = new opSelect(this);
 			break;
 
 
