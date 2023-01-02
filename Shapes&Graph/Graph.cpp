@@ -3,7 +3,7 @@
 
 Graph::Graph()
 {
-	globalID = 1;
+	shpnum = 0;
 }
 
 Graph::~Graph()
@@ -18,32 +18,41 @@ Graph::~Graph()
 void Graph::Addshape(shape* pFig)
 {
 	//Add a new shape to the shapes vector
-	pFig->setID(globalID); // set the ID in shape to globalID 
 	shapesList.push_back(pFig);
-	if (!(pFig->IsDeleted()))
+	pFig->setID(shapesList.size()); // set the ID in shape to globalID 
+	/*if (!(pFig->IsDeleted()))
 	{
 		globalID++;
-	}
+	}*/
 }
 ////////////////////////////////////////////////////////////////////////////////////
 //Draw all shapes on the user interface
-void Graph::Draw(GUI* pUI) const
+void Graph::Draw(GUI* pUI)
 {
+	int num = 0;
 	pUI->ClearDrawArea();
 	if (!(shapesList.empty()))
 	{
-		for (auto shapePointer : shapesList)
+		for (int i = 0; i < shapesList.size(); i++)
 		{
-			if (!(shapePointer->IsDeleted()))
-				shapePointer->Draw(pUI);
+			/*if (((shapesList[i])->getID()) != (i + 1)) {
+				(shapesList[i])->setID(i + 1);
+			}*/
+
+			if (!(shapesList[i]->IsDeleted()))
+			{
+				shapesList[i]->Draw(pUI);
+				num++;
+			}
 		}
 	}
+	if (shpnum != num) shpnum = num;
 }
 
 
 shape* Graph::Getshape(int x, int y) const
 {
-	for (int i = shapesList.size()-1;i>=0;i--)
+	for (int i = shapesList.size()-1; i >= 0; i--)
 		if (shapesList[i]->isInside(x, y) && !(shapesList[i]->IsDeleted()))
 		{
 			return shapesList[i];
@@ -183,13 +192,21 @@ bool Graph::ShapeListStateSelected() const
 
 void Graph::Save(ofstream& OutFile)
 {
+	int temporalID = 0;
+	int actualID;
 	if (!(shapesList.empty()))
 	{
-		OutFile << shapesList.size()<<endl;
+		OutFile << shpnum << endl;
 		for (int i = 0; i < shapesList.size(); i++)
 		{
-			//if (!(shapesList[i])->IsDeleted())
+			if (!((shapesList[i])->IsDeleted()))
+			{
+				temporalID++;
+				actualID = shapesList[i]->getID();
+				shapesList[i]->setID(temporalID);
 				shapesList[i]->Save(OutFile);
+				shapesList[i]->setID(actualID);
+			}
 		}
 	}
 	OutFile.close();

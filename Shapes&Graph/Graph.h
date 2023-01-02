@@ -13,12 +13,12 @@ class Graph
 private:
 	vector <shape*> shapesList; //a container to hold all shapes							   
 	vector <shape*> selectedShapes;	//pointer to the currently selected shape
-	int globalID;
+	int shpnum;					//to record the number of undeleted shapes
 public:
 	Graph();
 	~Graph();
 	void Addshape(shape* pFig); //Adds a new shape to the shapesList
-	void Draw(GUI* pUI) const;			//Draw the graph (draw all shapes)
+	void Draw(GUI* pUI);			//Draw the graph (draw all shapes)
 	shape* Getshape(int x, int y) const; //Search for a shape given a point inside the shape
 	void GetSelectedShapes(vector <shape*>&) const;		//Modifies a vector of pointers to the currently selected shapes
 	void AddSelectedShape(shape*);
