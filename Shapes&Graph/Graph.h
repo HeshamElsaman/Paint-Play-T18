@@ -53,7 +53,7 @@ public:
 	bool ShapeListStateSelected() const;
 	void StickImg(int);
 	void ChangePenWidth(int num);
-	void Rotate90();
+	void Rotate90(double);
 	void ReleaseShapesMemory();
 
 	void Save(ofstream& outfile);	//Save all shapes to a file

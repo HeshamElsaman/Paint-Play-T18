@@ -14,6 +14,6 @@ void opRotate::Execute()
 {
 	Graph* pGr = pControl->getGraph();
 	if (pGr->ShapeListStateSelected()) {
-		pGr->Rotate90();
+		pGr->Rotate90(2 * atan(1));
 	}
 }

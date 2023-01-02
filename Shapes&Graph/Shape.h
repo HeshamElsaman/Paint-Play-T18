@@ -52,7 +52,7 @@ public:
 	virtual void getCorners(vector <Point>&) = 0;
 
 
-	virtual void Rotate() = 0;	//Rotate the shape
+	virtual void Rotate(double) = 0;	//Rotate the shape
 	//virtual void Resize() = 0;	//Resize the shape
 	//virtual void Move() = 0;		//Move the shape
 

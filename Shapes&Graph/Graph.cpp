@@ -238,7 +238,7 @@ void Graph::StickImg(int img)
 	}
 }
 
-void Graph::Rotate90()
+void Graph::Rotate90(double theta = 2 * atan(1))
 {
 	if (!(shapesList.empty()))
 	{
@@ -246,7 +246,7 @@ void Graph::Rotate90()
 		{
 			if (shapePointer->IsSelected() && !(shapePointer->IsDeleted()))
 			{
-				shapePointer->Rotate();
+				shapePointer->Rotate(theta);
 			}
 		}
 	}
