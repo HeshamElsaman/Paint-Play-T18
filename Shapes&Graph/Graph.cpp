@@ -251,3 +251,33 @@ void Graph::Rotate90()
 		}
 	}
 }
+
+
+void Graph::AddUndoChngTr(ChngTr* cu)
+{
+	cUndo.push_back(cu);
+}
+ChngTr* Graph::PopUndoChngTr()
+{
+	ChngTr* cu;
+	if (!(cUndo.empty())) {
+		cu = *(cUndo.rbegin());
+		cUndo.pop_back();
+		return cu;
+	}
+	return nullptr;
+}
+void Graph::AddRedoChngTr(ChngTr* cr)
+{
+	cUndo.push_back(cr);
+}
+ChngTr* Graph::PopRedoChngTr()
+{
+	ChngTr* cr;
+	if (!(cRedo.empty())) {
+		cr = *(cRedo.rbegin());
+		cRedo.pop_back();
+		return cr;
+	}
+	return nullptr;
+}
