@@ -45,57 +45,72 @@ operation* controller::createOperation(operationType OpType)
 	{
 		case DRAW_RECT:
 			pOp = new opAddRect(this);
+			sUndo.push(pOp);
 			break;
 
 		case DRAW_SQR:
 			pOp = new opAddSquare(this);
+			sUndo.push(pOp);
 			break;
 
 		case DRAW_TRI:
 			pOp = new opAddTriangle(this);
+			sUndo.push(pOp);
 			break;
 
 		case DRAW_LINE:
 			pOp = new opAddLINE(this);
+			sUndo.push(pOp);
 			break;
+
 		case DRAW_CIRC:
 			pOp = new opAddCircle(this);
+			sUndo.push(pOp);
 			break;
 
 		case DRAW_OVAL:
 			pOp = new opAddOval(this);
+			sUndo.push(pOp);
 			break;
 
 		case DRAW_POLY:
 			pOp = new opAddPolygon(this);
+			sUndo.push(pOp);
 			break;
 
 		case DRAW_REGPOLY:
 			pOp = new opAddRegPolygon(this);
+			sUndo.push(pOp);
 			break;
 
 		case CHNG_FILL_CLR:
 			pOp = new opChngFillClr(this);
+			sUndo.push(pOp);
 			break;
 
 		case CHNG_DRAW_CLR :
 			pOp = new opChngDrawClr(this);
+			sUndo.push(pOp);
 			break;
 
 		case CHNG_PEN_WIDTH:
 			pOp = new opChngPenWidth(this);
+			sUndo.push(pOp);
 			break;
 
 		case STICK_IMG:
 			pOp = new opStickImage(this);
+			sUndo.push(pOp);
 			break;
 
 		case DEL:
 			pOp = new opDeleteShape(this);
+			sUndo.push(pOp);
 			break;
 
 		case ROTATE:
 			pOp = new opRotate(this);
+			sUndo.push(pOp);
 			break;
 
 		case DRAWING_AREA:
@@ -128,19 +143,19 @@ operation* controller::createOperation(operationType OpType)
 //////////////////////////////////////////////////////////////////////////////////////
 void controller::UNDO()
 {
-	if (!(undoStack.empty())) {
-		redoStack.push(undoStack.top());
+	if (!(sUndo.empty())) {
+		sRedo.push(sUndo.top());
 		//(undoStack.top())->Undo();
-		undoStack.pop();
+		sUndo.pop();
 	}
 }
 
 void controller::REDO()
 {
-	if (!(redoStack.empty())) {
-		undoStack.push(redoStack.top());
+	if (!(sRedo.empty())) {
+		sUndo.push(sRedo.top());
 		//(redoStack.top())->Redo();
-		redoStack.pop();
+		sRedo.pop();
 	}
 }
 //////////////////////////////////////////////////////////////////////////////////////

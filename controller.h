@@ -13,8 +13,8 @@ class controller
 
 	Graph* pGraph;	//pointe to the grapg
 	GUI* pGUI;		//Pointer to UI class
-	stack <operation*> undoStack;
-	stack <operation*> redoStack;
+	stack <operation*> sUndo;
+	stack <operation*> sRedo;
 
 public:	
 	controller(); 
