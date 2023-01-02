@@ -57,3 +57,15 @@ void Oval::Rotate()
 	Corner2.x = cos(2 * atan(1)) * (gen.x - com.x) - sin(2 * atan(1)) * (gen.y - com.y) + com.x;
 	Corner2.y = sin(2 * atan(1)) * (gen.x - com.x) + cos(2 * atan(1)) * (gen.y - com.y) + com.y;
 }
+
+
+void Oval::setCorners(vector <Point> pts)
+{
+	Corner1 = pts[0];
+	Corner2 = pts[1];
+}
+void Oval::getCorners(vector <Point>& pts)
+{
+	pts.push_back(Corner1);
+	pts.push_back(Corner2);
+}

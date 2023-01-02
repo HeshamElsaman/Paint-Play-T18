@@ -3,6 +3,7 @@
 #include "..\GUI\GUI.h"
 #include <fstream>
 #include <cmath>
+#include <vector>
 
 
 //Base class for all shapes
@@ -16,6 +17,7 @@ protected:
 
 public:
 	shape(GfxInfo shapeGfxInfo);
+	shape() {}
 	virtual ~shape() {}
 	void SetSelected(bool s);	//select/unselect the shape
 	bool IsSelected() const;	//check whether fig is selected
@@ -45,6 +47,9 @@ public:
 	///It should be overridden by each inherited shape
 
 	///Decide the parameters that you should pass to each function	
+
+	virtual void setCorners(vector <Point>) = 0;
+	virtual void getCorners(vector <Point>&) = 0;
 
 
 	virtual void Rotate() = 0;	//Rotate the shape

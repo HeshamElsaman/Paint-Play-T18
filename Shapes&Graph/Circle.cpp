@@ -43,3 +43,15 @@ bool Circle::isInside(int X, int Y)
 		return true;
 	return false;
 }
+
+
+void Circle::setCorners(vector <Point> pts)
+{
+	Corner1 = pts[0];
+	Corner2 = pts[1];
+}
+void Circle::getCorners(vector <Point>& pts)
+{
+	pts.push_back(Corner1);
+	pts.push_back(Corner2);
+}

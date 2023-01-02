@@ -92,3 +92,19 @@ void RegPolygon::Rotate()
         Verts[i].y = sin(2 * atan(1)) * (gen.x - com.x) + cos(2 * atan(1)) * (gen.y - com.y) + com.y;
     }
 }
+
+
+void RegPolygon::setCorners(vector <Point> pts)
+{
+    for (int i = 0; i < VertNum; i++)
+    {
+        Verts[i] = pts[i];
+    }
+}
+void RegPolygon::getCorners(vector <Point>& pts)
+{
+    for (int i = 0; i < VertNum; i++)
+    {
+        pts.push_back(Verts[i]);
+    }
+}

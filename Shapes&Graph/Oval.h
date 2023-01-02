@@ -14,5 +14,7 @@ public:
 	virtual void Draw(GUI* pUI) const;
 	bool isInside(int X, int Y) ;
 	void Rotate() override;
+	void setCorners(vector <Point>) override;
+	void getCorners(vector <Point>&) override;
 };
 

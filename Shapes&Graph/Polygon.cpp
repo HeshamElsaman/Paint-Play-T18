@@ -93,3 +93,19 @@ void PolyGon::Rotate()
         Verts[i].y = sin(2 * atan(1)) * (gen.x - com.x) + cos(2 * atan(1)) * (gen.y - com.y) + com.y;
     }
 }
+
+
+void PolyGon::setCorners(vector <Point> pts)
+{
+    for (int i = 0; i < VertNum; i++)
+    {
+        Verts[i] = pts[i];
+    }
+}
+void PolyGon::getCorners(vector <Point>& pts)
+{
+    for (int i = 0; i < VertNum; i++)
+    {
+        pts.push_back(Verts[i]);
+    }
+}

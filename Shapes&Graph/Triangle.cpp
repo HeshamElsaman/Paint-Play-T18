@@ -77,3 +77,17 @@ void Triangle::Rotate()
 	Corner3.x = cos(2 * atan(1)) * (gen.x - com.x) - sin(2 * atan(1)) * (gen.y - com.y) + com.x;
 	Corner3.y = sin(2 * atan(1)) * (gen.x - com.x) + cos(2 * atan(1)) * (gen.y - com.y) + com.y;
 }
+
+
+void Triangle::setCorners(vector <Point> pts)
+{
+	Corner1 = pts[0];
+	Corner2 = pts[1];
+	Corner3 = pts[2];
+}
+void Triangle::getCorners(vector <Point>& pts)
+{
+	pts.push_back(Corner1);
+	pts.push_back(Corner2);
+	pts.push_back(Corner3);
+}

@@ -16,5 +16,7 @@ public:
 	bool isInside(int X, int Y) ;
 	double polygonArea();
 	void Rotate() override;
+	void setCorners(vector <Point>) override;
+	void getCorners(vector <Point>&) override;
 };
 
