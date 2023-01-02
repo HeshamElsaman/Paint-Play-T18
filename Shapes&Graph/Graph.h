@@ -12,7 +12,7 @@ class Graph
 {
 private:
 	vector <shape*> shapesList; //a container to hold all shapes							   
-	shape* selectedShape=NULL;	//pointer to the currently selected shape
+	vector <shape*> selectedShapes;	//pointer to the currently selected shape
 	int globalID;
 public:
 	Graph();
@@ -20,8 +20,9 @@ public:
 	void Addshape(shape* pFig); //Adds a new shape to the shapesList
 	void Draw(GUI* pUI) const;			//Draw the graph (draw all shapes)
 	shape* Getshape(int x, int y) const; //Search for a shape given a point inside the shape
-	shape* GetSelectedShape() const;		//Returns a pointer to the currently selected shape
-	void SetSelectedShape(shape*) ;
+	void GetSelectedShapes(vector <shape*>&) const;		//Modifies a vector of pointers to the currently selected shapes
+	void AddSelectedShape(shape*);
+	void ClearSelectedShapes();
 	void DeleteSelectedShapes();
 	void ChangeFillClr(color);
 	void SetSelectedFillState(bool);

@@ -3,7 +3,6 @@
 
 Graph::Graph()
 {
-	selectedShape = nullptr;
 	globalID = 1;
 }
 
@@ -61,13 +60,24 @@ shape* Graph::Getshape(int x, int y) const
 }
 
 
-shape* Graph::GetSelectedShape() const
+void Graph::GetSelectedShapes(vector <shape*>& slctdshps) const
 {
-	return selectedShape;
+	slctdshps = selectedShapes;
 }
-void Graph::SetSelectedShape(shape* shp)
+void Graph::AddSelectedShape(shape* shp)
 {
-	selectedShape = shp;
+	selectedShapes.push_back(shp);
+}
+void Graph::ClearSelectedShapes()
+{
+	if (!(selectedShapes.empty()))
+	{
+		int num = selectedShapes.size();
+		for (int i = num - 1; i >= 0; i--)
+		{
+			selectedShapes[i] = nullptr; selectedShapes.pop_back();
+		}
+	}
 }
 
 

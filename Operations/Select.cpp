@@ -11,19 +11,20 @@ void opSelect::Execute()
 	if (pUI->getSelectMode()==false) {
 		pUI->GetOpLastPointClicked(P1.x, P1.y);
 		shape* shape1 = pGr->Getshape(P1.x, P1.y);
-		shape* shape2 = pGr->GetSelectedShape();
+		
 		if (shape1)
 		{
 			pGr->setShapeListStateSelected();
+			pGr->ClearSelectedShapes();
 			shape1->SetSelected(true);
-			pGr->SetSelectedShape(shape1);
+			pGr->AddSelectedShape(shape1);
 
 
 		}
 		else
 		{
 			pGr->setShapeListStateSelected();
-			pGr->SetSelectedShape(nullptr);
+			pGr->ClearSelectedShapes();
 		}
 	}
 	else if (pUI->getSelectMode() == true)
@@ -33,6 +34,7 @@ void opSelect::Execute()
 		if (shape1)
 		{
 			shape1->SetSelected(true);
+			pGr->AddSelectedShape(shape1);
 		}
 	}
 	
