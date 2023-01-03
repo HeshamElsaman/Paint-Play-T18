@@ -41,6 +41,16 @@ void opChngPenWidth::Execute()
 
 	//Getting the color clicked
 	if (pGr->ShapeListStateSelected()) {
+		GfxInfo ctr;
+		ChngTr* tr = new ChngTr;
+		pGr->GetSelectedShapes(tr->ShpsCh);
+		for (shape* shpPointer : tr->ShpsCh)
+		{
+			ctr.BorderWdth = shpPointer->GetPenWidth();
+			tr->ShpsChTr.push_back(ctr);
+		}
+		pGr->AddUndoChngTr(tr);
+		
 		pGr->ChangePenWidth(stoi(KEY));
 	}
 	else
@@ -63,4 +73,35 @@ void opChngPenWidth::Execute()
 	}
 	pUI->DeleteColorPalette();*/
 
+}
+
+
+void opChngPenWidth::Undo()
+{
+	Graph* pGr = pControl->getGraph();
+	ChngTr* un = pGr->PopUndoChngTr();
+	int wdth;
+	if (un) {
+		for (int i = 0; i < (un->ShpsCh).size(); i++) {
+			wdth = (un->ShpsCh)[i]->GetPenWidth();
+			(un->ShpsCh)[i]->ChngPenWidth(((un->ShpsChTr)[i]).BorderWdth);
+			(un->ShpsChTr)[i].BorderWdth = wdth;
+		}
+		pGr->AddRedoChngTr(un);
+	}
+}
+
+void opChngPenWidth::Redo()
+{
+	Graph* pGr = pControl->getGraph();
+	ChngTr* re = pGr->PopRedoChngTr();
+	int wdth;
+	if (re) {
+		for (int i = 0; i < (re->ShpsCh).size(); i++) {
+			wdth = (re->ShpsCh)[i]->GetPenWidth();
+			(re->ShpsCh)[i]->ChngPenWidth(((re->ShpsChTr)[i]).BorderWdth);
+			(re->ShpsChTr)[i].BorderWdth = wdth;
+		}
+		pGr->AddUndoChngTr(re);
+	}
 }

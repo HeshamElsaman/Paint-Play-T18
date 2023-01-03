@@ -48,71 +48,85 @@ operation* controller::createOperation(operationType OpType)
 		case DRAW_RECT:
 			pOp = new opAddRect(this);
 			sUndo.push(pOp);
+			ClearRedo();
 			break;
 
 		case DRAW_SQR:
 			pOp = new opAddSquare(this);
 			sUndo.push(pOp);
+			ClearRedo();
 			break;
 
 		case DRAW_TRI:
 			pOp = new opAddTriangle(this);
 			sUndo.push(pOp);
+			ClearRedo();
 			break;
 
 		case DRAW_LINE:
 			pOp = new opAddLINE(this);
 			sUndo.push(pOp);
+			ClearRedo();
 			break;
 
 		case DRAW_CIRC:
 			pOp = new opAddCircle(this);
 			sUndo.push(pOp);
+			ClearRedo();
 			break;
 
 		case DRAW_OVAL:
 			pOp = new opAddOval(this);
 			sUndo.push(pOp);
+			ClearRedo();
 			break;
 
 		case DRAW_POLY:
 			pOp = new opAddPolygon(this);
 			sUndo.push(pOp);
+			ClearRedo();
 			break;
 
 		case DRAW_REGPOLY:
 			pOp = new opAddRegPolygon(this);
 			sUndo.push(pOp);
+			ClearRedo();
 			break;
 
 		case CHNG_FILL_CLR:
 			pOp = new opChngFillClr(this);
 			sUndo.push(pOp);
+			ClearRedo();
 			break;
 
 		case CHNG_DRAW_CLR :
 			pOp = new opChngDrawClr(this);
 			sUndo.push(pOp);
+			ClearRedo();
 			break;
 
 		case CHNG_PEN_WIDTH:
 			pOp = new opChngPenWidth(this);
 			sUndo.push(pOp);
+			ClearRedo();
 			break;
 
 		case STICK_IMG:
 			pOp = new opStickImage(this);
 			sUndo.push(pOp);
+			ClearRedo();
 			break;
 
 		case DEL:
 			pOp = new opDeleteShape(this);
 			sUndo.push(pOp);
+			ClearRedo();
 			break;
 
 		case ROTATE:
 			pOp = new opRotate(this);
 			sUndo.push(pOp);
+			ClearRedo();
 			break;
 
 		case UNDO:
@@ -168,6 +182,14 @@ void controller::ReDo()
 		sRedo.pop();
 	}
 }
+
+void controller::ClearRedo()
+{
+	while (!(sRedo.empty())) {
+		delete sRedo.top(); sRedo.top() = nullptr;
+		sRedo.pop();
+	}
+}
 //////////////////////////////////////////////////////////////////////////////////////
 //==================================================================================//
 //							Interface Management Functions							//
@@ -197,6 +219,14 @@ controller::~controller()
 	delete pGUI;
 	delete pGraph;
 	
+	while (!(sUndo.empty())) {
+		delete sUndo.top(); sUndo.top() = nullptr;
+		sUndo.pop();
+	}
+	while (!(sRedo.empty())) {
+		delete sRedo.top(); sRedo.top() = nullptr;
+		sRedo.pop();
+	}
 }
 
 

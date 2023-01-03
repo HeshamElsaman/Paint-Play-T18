@@ -26,6 +26,7 @@ public:
 	operation* createOperation(operationType) ; //Creates an operation
 	void UnDo(); //Undo an operation
 	void ReDo(); //Redo an operation
+	void ClearRedo();
 	void Run();
 	
 	Graph* getGraph() const;
