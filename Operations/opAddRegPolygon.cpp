@@ -106,9 +106,40 @@ void opAddRegPolygon::Execute()
 
 		//Add the regular polygon to the list of shapes
 		pGr->Addshape(rP);
+
+		ChngTr* tr = new ChngTr;
+		tr->ShpsCh.push_back(rP);
+		//tr->ShpsChTr.push_back(circleGfxInfo);
+		pGr->AddUndoChngTr(tr);
 	}
 	else {
 		string msg = "NOT A POLYGON!";
 		pUI->PrintMessage(msg);
+	}
+}
+
+
+void opAddRegPolygon::Undo()
+{
+	Graph* pGr = pControl->getGraph();
+	ChngTr* un = pGr->PopUndoChngTr();
+	if (un) {
+		for (shape* shpPointer : un->ShpsCh) {
+			shpPointer->SetDeleted(1);
+		}
+		pGr->AddRedoChngTr(un);
+	}
+
+}
+
+void opAddRegPolygon::Redo()
+{
+	Graph* pGr = pControl->getGraph();
+	ChngTr* re = pGr->PopRedoChngTr();
+	if (re) {
+		for (shape* shpPointer : re->ShpsCh) {
+			shpPointer->SetDeleted(0);
+		}
+		pGr->AddUndoChngTr(re);
 	}
 }

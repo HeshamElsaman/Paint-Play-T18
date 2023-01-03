@@ -66,4 +66,33 @@ void opAddTriangle::Execute()
 	//Add the circle to the list of shapes
 	pGr->Addshape(C);
 
+	ChngTr* tr = new ChngTr;
+	tr->ShpsCh.push_back(C);
+	//tr->ShpsChTr.push_back(circleGfxInfo);
+	pGr->AddUndoChngTr(tr);
+}
+
+void opAddTriangle::Undo()
+{
+	Graph* pGr = pControl->getGraph();
+	ChngTr* un = pGr->PopUndoChngTr();
+	if (un) {
+		for (shape* shpPointer : un->ShpsCh) {
+			shpPointer->SetDeleted(1);
+		}
+		pGr->AddRedoChngTr(un);
+	}
+
+}
+
+void opAddTriangle::Redo()
+{
+	Graph* pGr = pControl->getGraph();
+	ChngTr* re = pGr->PopRedoChngTr();
+	if (re) {
+		for (shape* shpPointer : re->ShpsCh) {
+			shpPointer->SetDeleted(0);
+		}
+		pGr->AddUndoChngTr(re);
+	}
 }

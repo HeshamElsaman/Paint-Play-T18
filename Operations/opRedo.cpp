@@ -12,5 +12,5 @@ opRedo::~opRedo()
 //Execute the operation
 void opRedo::Execute()
 {
-	pControl->REDO();
+	pControl->ReDo();
 }

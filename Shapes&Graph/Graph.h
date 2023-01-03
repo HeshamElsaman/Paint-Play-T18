@@ -15,6 +15,7 @@ struct ChngTr
 	vector <shape*> ShpsCh;				//to get the changed shapes
 	vector <int> ids;					//to get the id of the changed shapes
 	vector <GfxInfo> ShpsChTr;			//to trace the changes
+	vector <int> imgs;					//to record the sticked images for each shape
 	
 	//most probably won't be needed
 	vector <int> vNUMs;					//to get the numbers of vertices

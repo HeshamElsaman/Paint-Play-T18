@@ -8,6 +8,18 @@ Graph::Graph()
 
 Graph::~Graph()
 {
+	if(!(cUndo.empty()))
+	{
+		for (auto opPointer : cUndo) {
+			delete opPointer; opPointer = nullptr;
+		}
+	}
+	if (!(cRedo.empty()))
+	{
+		for (auto opPointer : cRedo) {
+			delete opPointer; opPointer = nullptr;
+		}
+	}
 }
 
 //==================================================================================//
@@ -19,7 +31,7 @@ void Graph::Addshape(shape* pFig)
 {
 	//Add a new shape to the shapes vector
 	shapesList.push_back(pFig);
-	pFig->setID(shapesList.size()); // set the ID in shape to globalID 
+	pFig->setID(shapesList.size()); // set the shape ID to the size of the shapes list 
 	/*if (!(pFig->IsDeleted()))
 	{
 		globalID++;
@@ -35,9 +47,9 @@ void Graph::Draw(GUI* pUI)
 	{
 		for (int i = 0; i < shapesList.size(); i++)
 		{
-			/*if (((shapesList[i])->getID()) != (i + 1)) {
+			if (((shapesList[i])->getID()) != (i + 1)) {
 				(shapesList[i])->setID(i + 1);
-			}*/
+			}
 
 			if (!(shapesList[i]->IsDeleted()))
 			{
@@ -101,11 +113,12 @@ void Graph::DeleteSelectedShapes()
 				if (shapePointer->IsSelected())
 				{
 					shapePointer->SetDeleted(true);
-					//shapePointer->SetSelected(false);
+					shapePointer->SetSelected(false);
 				}
 			}
 		}
 	}
+	ClearSelectedShapes();
 	
 }
 
@@ -269,7 +282,7 @@ ChngTr* Graph::PopUndoChngTr()
 }
 void Graph::AddRedoChngTr(ChngTr* cr)
 {
-	cUndo.push_back(cr);
+	cRedo.push_back(cr);
 }
 ChngTr* Graph::PopRedoChngTr()
 {

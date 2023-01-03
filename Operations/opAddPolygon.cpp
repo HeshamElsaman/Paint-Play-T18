@@ -63,9 +63,44 @@ void opAddPolygon::Execute()
 
 		//Add the rectangle to the list of shapes
 		pGr->Addshape(P);
+
+
+		ChngTr* tr = new ChngTr;
+		tr->ShpsCh.push_back(P);
+		//tr->ShpsChTr.push_back(circleGfxInfo);
+		pGr->AddUndoChngTr(tr);
 	}
 	else {
 		string msg = "NOT A POLYGON!";
 		pUI->PrintMessage(msg);
 	}
+
+
+	
 }
+
+void opAddPolygon::Undo()
+{
+	Graph* pGr = pControl->getGraph();
+	ChngTr* un = pGr->PopUndoChngTr();
+	if (un) {
+		for (shape* shpPointer : un->ShpsCh) {
+			shpPointer->SetDeleted(1);
+		}
+		pGr->AddRedoChngTr(un);
+	}
+
+}
+
+void opAddPolygon::Redo()
+{
+	Graph* pGr = pControl->getGraph();
+	ChngTr* re = pGr->PopRedoChngTr();
+	if (re) {
+		for (shape* shpPointer : re->ShpsCh) {
+			shpPointer->SetDeleted(0);
+		}
+		pGr->AddUndoChngTr(re);
+	}
+}
+

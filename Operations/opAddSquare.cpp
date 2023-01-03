@@ -65,4 +65,33 @@ void opAddSquare::Execute()
 	//Add the square to the list of shapes
 	pGr->Addshape(S);
 
+	ChngTr* tr = new ChngTr;
+	tr->ShpsCh.push_back(S);
+	//tr->ShpsChTr.push_back(circleGfxInfo);
+	pGr->AddUndoChngTr(tr);
+}
+
+void opAddSquare::Undo()
+{
+	Graph* pGr = pControl->getGraph();
+	ChngTr* un = pGr->PopUndoChngTr();
+	if (un) {
+		for (shape* shpPointer : un->ShpsCh) {
+			shpPointer->SetDeleted(1);
+		}
+		pGr->AddRedoChngTr(un);
+	}
+
+}
+
+void opAddSquare::Redo()
+{
+	Graph* pGr = pControl->getGraph();
+	ChngTr* re = pGr->PopRedoChngTr();
+	if (re) {
+		for (shape* shpPointer : re->ShpsCh) {
+			shpPointer->SetDeleted(0);
+		}
+		pGr->AddUndoChngTr(re);
+	}
 }

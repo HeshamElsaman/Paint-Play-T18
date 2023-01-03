@@ -24,8 +24,8 @@ public:
 	//Reads the input command from the user and returns the corresponding operation type
 	operationType GetUseroperation() const;
 	operation* createOperation(operationType) ; //Creates an operation
-	void UNDO(); //Undo an operation
-	void REDO(); //Redo an operation
+	void UnDo(); //Undo an operation
+	void ReDo(); //Redo an operation
 	void Run();
 	
 	Graph* getGraph() const;

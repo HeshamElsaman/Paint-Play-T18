@@ -13,6 +13,8 @@
 #include "Operations/opChngDrawClr.h"
 #include "Operations/opChngPenWidth.h"
 #include "Operations/opDeleteShape.h"
+#include "Operations/opUndo.h"
+#include "Operations/opRedo.h"
 #include "Operations/opRotate.h"
 #include "Operations/opSave.h"
 #include "Operations/opChngToPlayMode.h"
@@ -113,6 +115,14 @@ operation* controller::createOperation(operationType OpType)
 			sUndo.push(pOp);
 			break;
 
+		case UNDO:
+			pOp = new opUndo(this);
+			break;
+
+		case REDO:
+			pOp = new opRedo(this);
+			break;
+
 		case DRAWING_AREA:
 			if (pGUI->GetOpLastPointClickedType() == RIGHT_CLICK)
 				pGUI->setSelectMode(!(pGUI->getSelectMode()));
@@ -141,20 +151,20 @@ operation* controller::createOperation(operationType OpType)
 	
 }
 //////////////////////////////////////////////////////////////////////////////////////
-void controller::UNDO()
+void controller::UnDo()
 {
 	if (!(sUndo.empty())) {
 		sRedo.push(sUndo.top());
-		//(undoStack.top())->Undo();
+		(sUndo.top())->Undo();
 		sUndo.pop();
 	}
 }
 
-void controller::REDO()
+void controller::ReDo()
 {
 	if (!(sRedo.empty())) {
 		sUndo.push(sRedo.top());
-		//(redoStack.top())->Redo();
+		(sRedo.top())->Redo();
 		sRedo.pop();
 	}
 }
@@ -209,8 +219,11 @@ void controller::Run()
 		if (pOpr)
 		{
 			pOpr->Execute();//Execute
+			/*
 			delete pOpr;	//operation is not needed any more ==> delete it
+			*/
 			pOpr = nullptr;
+			
 		}
 
 		//Update the interface

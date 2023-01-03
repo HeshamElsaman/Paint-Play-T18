@@ -12,7 +12,7 @@ public:
 	//Add oval to the controller
 	virtual void Execute();
 
-	virtual void Undo() override {}
-	virtual void Redo() override {}
+	virtual void Undo() override;
+	virtual void Redo() override;
 };
 
