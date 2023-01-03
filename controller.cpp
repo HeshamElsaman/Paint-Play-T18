@@ -183,6 +183,11 @@ void controller::ReDo()
 	}
 }
 
+void controller::PopUndo()
+{
+	delete sUndo.top(); sUndo.top() = nullptr; sUndo.pop();
+}
+
 void controller::ClearRedo()
 {
 	while (!(sRedo.empty())) {

@@ -26,6 +26,7 @@ public:
 	operation* createOperation(operationType) ; //Creates an operation
 	void UnDo(); //Undo an operation
 	void ReDo(); //Redo an operation
+	void PopUndo();
 	void ClearRedo();
 	void Run();
 	

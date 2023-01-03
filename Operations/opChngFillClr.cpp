@@ -49,6 +49,7 @@ void opChngFillClr::Execute()
 		else
 		{
 			pUI->setFillStatus(false);
+			pControl->PopUndo();
 		}
 	}
 	else
@@ -71,6 +72,7 @@ void opChngFillClr::Execute()
 		{
 			pUI->setFillStatus(true);
 			pUI->setCrntFillColor(CLR);
+			pControl->PopUndo();
 		}
 	}
 	
