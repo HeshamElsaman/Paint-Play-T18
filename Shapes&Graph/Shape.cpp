@@ -59,14 +59,29 @@ void shape::SetImgSticked(int img_)
 void shape::ChngDrawClr(color Dclr)
 {	ShpGfxInfo.DrawClr = Dclr; }
 
+color shape::GetDrawClr() const
+{
+	return ShpGfxInfo.DrawClr;
+}
+
 void shape::ChngFillClr(color Fclr)
 {	
 	ShpGfxInfo.isFilled = true;
 	ShpGfxInfo.FillClr = Fclr; 
 }
 
+color shape::GetFillClr() const
+{
+	return ShpGfxInfo.FillClr;
+}
+
 void shape::ChngPenWidth(int c)
 {
 	ShpGfxInfo.BorderWdth = c;
+}
+
+int shape::GetPenWidth() const
+{
+	return ShpGfxInfo.BorderWdth;
 }
 

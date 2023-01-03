@@ -38,8 +38,11 @@ public:
 	virtual void Draw(GUI* pUI) const  = 0 ;		//Draw the shape
 	
 	void ChngDrawClr(color Dclr);	//changes the shape's drawing color
+	color GetDrawClr() const;
 	void ChngFillClr(color Fclr);	//changes the shape's filling color
+	color GetFillClr() const;
 	void ChngPenWidth(int c);	   //changes the shape's Pen Width
+	int GetPenWidth() const;
 	virtual bool isInside(int X,int Y) = 0;
 	
 
