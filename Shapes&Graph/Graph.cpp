@@ -3,12 +3,23 @@
 
 Graph::Graph()
 {
-	selectedShape = nullptr;
-	globalID = 1;
+	shpnum = 0;
 }
 
 Graph::~Graph()
 {
+	if(!(cUndo.empty()))
+	{
+		for (auto opPointer : cUndo) {
+			delete opPointer; opPointer = nullptr;
+		}
+	}
+	if (!(cRedo.empty()))
+	{
+		for (auto opPointer : cRedo) {
+			delete opPointer; opPointer = nullptr;
+		}
+	}
 }
 
 //==================================================================================//
@@ -19,32 +30,41 @@ Graph::~Graph()
 void Graph::Addshape(shape* pFig)
 {
 	//Add a new shape to the shapes vector
-	pFig->setID(globalID); // set the ID in shape to globalID 
 	shapesList.push_back(pFig);
-	if (!(pFig->IsDeleted()))
+	pFig->setID(shapesList.size()); // set the shape ID to the size of the shapes list 
+	/*if (!(pFig->IsDeleted()))
 	{
 		globalID++;
-	}
+	}*/
 }
 ////////////////////////////////////////////////////////////////////////////////////
 //Draw all shapes on the user interface
-void Graph::Draw(GUI* pUI) const
+void Graph::Draw(GUI* pUI)
 {
+	int num = 0;
 	pUI->ClearDrawArea();
 	if (!(shapesList.empty()))
 	{
-		for (auto shapePointer : shapesList)
+		for (int i = 0; i < shapesList.size(); i++)
 		{
-			if (!(shapePointer->IsDeleted()))
-				shapePointer->Draw(pUI);
+			if (((shapesList[i])->getID()) != (i + 1)) {
+				(shapesList[i])->setID(i + 1);
+			}
+
+			if (!(shapesList[i]->IsDeleted()))
+			{
+				shapesList[i]->Draw(pUI);
+				num++;
+			}
 		}
 	}
+	if (shpnum != num) shpnum = num;
 }
 
 
 shape* Graph::Getshape(int x, int y) const
 {
-	for (int i = shapesList.size()-1;i>=0;i--)
+	for (int i = shapesList.size()-1; i >= 0; i--)
 		if (shapesList[i]->isInside(x, y) && !(shapesList[i]->IsDeleted()))
 		{
 			return shapesList[i];
@@ -61,14 +81,26 @@ shape* Graph::Getshape(int x, int y) const
 }
 
 
-shape* Graph::GetSelectedShape() const
+void Graph::GetSelectedShapes(vector <shape*>& slctdshps) const
 {
-	return selectedShape;
+	slctdshps = selectedShapes;
 }
-void Graph::SetSelectedShape(shape* shp)
+void Graph::AddSelectedShape(shape* shp)
 {
-	selectedShape = shp;
+	selectedShapes.push_back(shp);
 }
+void Graph::ClearSelectedShapes()
+{
+	if (!(selectedShapes.empty()))
+	{
+		int num = selectedShapes.size();
+		for (int i = num - 1; i >= 0; i--)
+		{
+			selectedShapes[i] = nullptr; selectedShapes.pop_back();
+		}
+	}
+}
+
 
 void Graph::DeleteSelectedShapes()
 {
@@ -81,11 +113,12 @@ void Graph::DeleteSelectedShapes()
 				if (shapePointer->IsSelected())
 				{
 					shapePointer->SetDeleted(true);
-					//shapePointer->SetSelected(false);
+					shapePointer->SetSelected(false);
 				}
 			}
 		}
 	}
+	ClearSelectedShapes();
 	
 }
 
@@ -143,7 +176,18 @@ void Graph::ChangePenWidth(int num)
 		}
 	}
 }
+void Graph::setShapeListStateSelected()
+{
+	if (!(shapesList.empty()))
+	{
+		for (shape* shapePointer : shapesList)
+		{
+			shapePointer->SetSelected(false);
+		}
+	}
+	
 
+}
 bool Graph::ShapeListStateSelected() const
 {
 	if (!(shapesList.empty()))
@@ -161,13 +205,21 @@ bool Graph::ShapeListStateSelected() const
 
 void Graph::Save(ofstream& OutFile)
 {
+	int temporalID = 0;
+	int actualID;
 	if (!(shapesList.empty()))
 	{
-		OutFile << shapesList.size()<<endl;
+		OutFile << shpnum << endl;
 		for (int i = 0; i < shapesList.size(); i++)
 		{
-			//if (!(shapesList[i])->IsDeleted())
+			if (!((shapesList[i])->IsDeleted()))
+			{
+				temporalID++;
+				actualID = shapesList[i]->getID();
+				shapesList[i]->setID(temporalID);
 				shapesList[i]->Save(OutFile);
+				shapesList[i]->setID(actualID);
+			}
 		}
 	}
 	OutFile.close();
@@ -199,7 +251,7 @@ void Graph::StickImg(int img)
 	}
 }
 
-void Graph::Rotate90()
+void Graph::Rotate90(double theta = 2 * atan(1))
 {
 	if (!(shapesList.empty()))
 	{
@@ -207,8 +259,38 @@ void Graph::Rotate90()
 		{
 			if (shapePointer->IsSelected() && !(shapePointer->IsDeleted()))
 			{
-				shapePointer->Rotate();
+				shapePointer->Rotate(theta);
 			}
 		}
 	}
+}
+
+
+void Graph::AddUndoChngTr(ChngTr* cu)
+{
+	cUndo.push_back(cu);
+}
+ChngTr* Graph::PopUndoChngTr()
+{
+	ChngTr* cu;
+	if (!(cUndo.empty())) {
+		cu = *(cUndo.rbegin());
+		cUndo.pop_back();
+		return cu;
+	}
+	return nullptr;
+}
+void Graph::AddRedoChngTr(ChngTr* cr)
+{
+	cRedo.push_back(cr);
+}
+ChngTr* Graph::PopRedoChngTr()
+{
+	ChngTr* cr;
+	if (!(cRedo.empty())) {
+		cr = *(cRedo.rbegin());
+		cRedo.pop_back();
+		return cr;
+	}
+	return nullptr;
 }

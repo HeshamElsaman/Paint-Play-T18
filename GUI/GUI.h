@@ -115,6 +115,9 @@ class GUI
 
 
 	Point opLastPointClicked;
+	clicktype opLastPointClickedType;
+	bool MultiSelectMode = false;
+
 	window* pWind;
 
 	window* pPalette = nullptr; // pointer for color pallete window only
@@ -127,11 +130,11 @@ public:
 
 	// Input Functions  ---------------------------
 	void GetPointClicked(int& x, int& y) const;
-	void GetOpLastPointClicked(int& x, int& y) const;
+	clicktype GetOpLastPointClicked(int& x, int& y) const;
 	bool GetFillStatus() const;
 	//Get coordinate where user clicks
 	int GetClickType(int x, int y) const;
-
+	clicktype GetOpLastPointClickedType() const;
 	void GetKeyPressed(char&) const;
 	void open();
 	void StickImage(int,int,int,int,int);
@@ -146,6 +149,8 @@ public:
 	void setFillStatus(bool);
 	void setCrntDrawColor(color);
 	void setCrntPenWidth(int);
+	void setSelectMode(bool);
+	bool getSelectMode() const;
 
 	// Output Functions  ---------------------------
 	window* CreateWind(int, int, int, int) const; //creates the application window

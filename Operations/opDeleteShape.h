@@ -12,4 +12,6 @@ public:
 	//Delete a Shape
 	virtual void Execute();
 
+	virtual void Undo() override;
+	virtual void Redo() override;
 };

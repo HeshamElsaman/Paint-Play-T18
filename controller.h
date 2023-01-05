@@ -13,8 +13,8 @@ class controller
 
 	Graph* pGraph;	//pointe to the grapg
 	GUI* pGUI;		//Pointer to UI class
-	stack <operation*> undoStack;
-	stack <operation*> redoStack;
+	stack <operation*> sUndo;
+	stack <operation*> sRedo;
 
 public:	
 	controller(); 
@@ -24,8 +24,10 @@ public:
 	//Reads the input command from the user and returns the corresponding operation type
 	operationType GetUseroperation() const;
 	operation* createOperation(operationType) ; //Creates an operation
-	void UNDO(); //Undo an operation
-	void REDO(); //Redo an operation
+	void UnDo(); //Undo an operation
+	void ReDo(); //Redo an operation
+	void PopUndo();
+	void ClearRedo();
 	void Run();
 	
 	Graph* getGraph() const;

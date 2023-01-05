@@ -58,10 +58,15 @@ void GUI::GetPointClicked(int& x, int& y) const
 {
 	pWind->WaitMouseClick(x, y);	//Wait for mouse click
 }
-void GUI::GetOpLastPointClicked(int& x, int& y) const
+clicktype GUI::GetOpLastPointClicked(int& x, int& y) const
 {
 	x = opLastPointClicked.x;
 	y = opLastPointClicked.y;
+	return opLastPointClickedType;
+}
+clicktype GUI::GetOpLastPointClickedType() const
+{
+	return opLastPointClickedType;
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -134,7 +139,7 @@ operationType GUI::GetUseroperation()
 	
 	int x, y;
 
-	pWind->WaitMouseClick(x, y);	//Get the coordinates of the user click
+	opLastPointClickedType = pWind->WaitMouseClick(x, y);	//Get the coordinates of the user click
 	
 	opLastPointClicked.x = x;
 	opLastPointClicked.y = y;
@@ -326,7 +331,10 @@ void GUI::setFillStatus(bool stat)
 {
 	FillStatus = stat;
 }
-
+void GUI::setSelectMode(bool S)
+{
+	MultiSelectMode = S;
+}
 
 
 
@@ -416,7 +424,10 @@ void GUI::GetPaletteColorClicked(int x, int y, color& clr) const
 {
 	clr = pPalette->GetColor(x, y);
 }
-
+bool GUI::getSelectMode() const
+{
+	return MultiSelectMode;
+}
 //////////////////////////////////////////////////////////////////////////////////////////
 void GUI::CreateStatusBar() const
 {

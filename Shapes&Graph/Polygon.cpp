@@ -83,13 +83,29 @@ bool PolyGon::isInside(int X, int Y)
     return false;
 }
 
-void PolyGon::Rotate()
+void PolyGon::Rotate(double theta = 2 * atan(1))
 {
     Point gen;
     for (int i = 0; i < VertNum; i++)
     {
         gen = Verts[i];
-        Verts[i].x = cos(2 * atan(1)) * (gen.x - com.x) - sin(2 * atan(1)) * (gen.y - com.y) + com.x;
-        Verts[i].y = sin(2 * atan(1)) * (gen.x - com.x) + cos(2 * atan(1)) * (gen.y - com.y) + com.y;
+        Verts[i].x = cos(theta) * (gen.x - com.x) - sin(theta) * (gen.y - com.y) + com.x;
+        Verts[i].y = sin(theta) * (gen.x - com.x) + cos(theta) * (gen.y - com.y) + com.y;
+    }
+}
+
+
+void PolyGon::setCorners(vector <Point> pts)
+{
+    for (int i = 0; i < VertNum; i++)
+    {
+        Verts[i] = pts[i];
+    }
+}
+void PolyGon::getCorners(vector <Point>& pts)
+{
+    for (int i = 0; i < VertNum; i++)
+    {
+        pts.push_back(Verts[i]);
     }
 }

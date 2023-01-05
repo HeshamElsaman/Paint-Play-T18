@@ -11,7 +11,7 @@ opAddRect::~opAddRect()
 {} 
 
 //Execute the operation
-void opAddRect::Execute() 
+void opAddRect::Execute()
 {
 	Point P1, P2;
 
@@ -31,7 +31,7 @@ void opAddRect::Execute()
 
 	//Preapre all rectangle parameters
 	GfxInfo RectGfxInfo;
-	
+
 	//get drawing, filling colors and pen width from the interface
 	RectGfxInfo.DrawClr = pUI->getCrntDrawColor();
 	RectGfxInfo.FillClr = pUI->getCrntFillColor();
@@ -43,7 +43,7 @@ void opAddRect::Execute()
 
 
 	//Create a rectangle with the above parameters
-	Rect *R=new Rect(P1, P2, RectGfxInfo);
+	Rect* R = new Rect(P1, P2, RectGfxInfo);
 
 	//Get a pointer to the graph
 	Graph* pGr = pControl->getGraph();
@@ -51,4 +51,34 @@ void opAddRect::Execute()
 	//Add the rectangle to the list of shapes
 	pGr->Addshape(R);
 
+
+	ChngTr* tr = new ChngTr;
+	tr->ShpsCh.push_back(R);
+	//tr->ShpsChTr.push_back(circleGfxInfo);
+	pGr->AddUndoChngTr(tr);
+}
+
+void opAddRect::Undo()
+{
+	Graph* pGr = pControl->getGraph();
+	ChngTr* un = pGr->PopUndoChngTr();
+	if (un) {
+		for (shape* shpPointer : un->ShpsCh) {
+			shpPointer->SetDeleted(1);
+		}
+		pGr->AddRedoChngTr(un);
+	}
+
+}
+
+void opAddRect::Redo()
+{
+	Graph* pGr = pControl->getGraph();
+	ChngTr* re = pGr->PopRedoChngTr();
+	if (re) {
+		for (shape* shpPointer : re->ShpsCh) {
+			shpPointer->SetDeleted(0);
+		}
+		pGr->AddUndoChngTr(re);
+	}
 }

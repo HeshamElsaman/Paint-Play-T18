@@ -13,6 +13,8 @@
 #include "Operations/opChngDrawClr.h"
 #include "Operations/opChngPenWidth.h"
 #include "Operations/opDeleteShape.h"
+#include "Operations/opUndo.h"
+#include "Operations/opRedo.h"
 #include "Operations/opRotate.h"
 #include "Operations/opSave.h"
 #include "Operations/opZoomIn.h"
@@ -48,61 +50,101 @@ operation* controller::createOperation(operationType OpType)
 	{
 		case DRAW_RECT:
 			pOp = new opAddRect(this);
+			sUndo.push(pOp);
+			ClearRedo();
 			break;
 
 		case DRAW_SQR:
 			pOp = new opAddSquare(this);
+			sUndo.push(pOp);
+			ClearRedo();
 			break;
 
 		case DRAW_TRI:
 			pOp = new opAddTriangle(this);
+			sUndo.push(pOp);
+			ClearRedo();
 			break;
 
 		case DRAW_LINE:
 			pOp = new opAddLINE(this);
+			sUndo.push(pOp);
+			ClearRedo();
 			break;
+
 		case DRAW_CIRC:
 			pOp = new opAddCircle(this);
+			sUndo.push(pOp);
+			ClearRedo();
 			break;
 
 		case DRAW_OVAL:
 			pOp = new opAddOval(this);
+			sUndo.push(pOp);
+			ClearRedo();
 			break;
 
 		case DRAW_POLY:
 			pOp = new opAddPolygon(this);
+			sUndo.push(pOp);
+			ClearRedo();
 			break;
 
 		case DRAW_REGPOLY:
 			pOp = new opAddRegPolygon(this);
+			sUndo.push(pOp);
+			ClearRedo();
 			break;
 
 		case CHNG_FILL_CLR:
 			pOp = new opChngFillClr(this);
+			sUndo.push(pOp);
+			ClearRedo();
 			break;
 
 		case CHNG_DRAW_CLR :
 			pOp = new opChngDrawClr(this);
+			sUndo.push(pOp);
+			ClearRedo();
 			break;
 
 		case CHNG_PEN_WIDTH:
 			pOp = new opChngPenWidth(this);
+			sUndo.push(pOp);
+			ClearRedo();
 			break;
 
 		case STICK_IMG:
 			pOp = new opStickImage(this);
+			sUndo.push(pOp);
+			ClearRedo();
 			break;
 
 		case DEL:
 			pOp = new opDeleteShape(this);
+			sUndo.push(pOp);
+			ClearRedo();
 			break;
 
 		case ROTATE:
 			pOp = new opRotate(this);
+			sUndo.push(pOp);
+			ClearRedo();
+			break;
+
+		case UNDO:
+			pOp = new opUndo(this);
+			break;
+
+		case REDO:
+			pOp = new opRedo(this);
 			break;
 
 		case DRAWING_AREA:
-			pOp = new opSelect(this);
+			if (pGUI->GetOpLastPointClickedType() == RIGHT_CLICK)
+				pGUI->setSelectMode(!(pGUI->getSelectMode()));
+			else if (pGUI->GetOpLastPointClickedType() == LEFT_CLICK)
+				pOp = new opSelect(this);
 			break;
 
 
@@ -138,21 +180,34 @@ operation* controller::createOperation(operationType OpType)
 	
 }
 //////////////////////////////////////////////////////////////////////////////////////
-void controller::UNDO()
+void controller::UnDo()
 {
-	if (!(undoStack.empty())) {
-		redoStack.push(undoStack.top());
-		//(undoStack.top())->Undo();
-		undoStack.pop();
+	if (!(sUndo.empty())) {
+		sRedo.push(sUndo.top());
+		(sUndo.top())->Undo();
+		sUndo.pop();
 	}
 }
 
-void controller::REDO()
+void controller::ReDo()
 {
-	if (!(redoStack.empty())) {
-		undoStack.push(redoStack.top());
-		//(redoStack.top())->Redo();
-		redoStack.pop();
+	if (!(sRedo.empty())) {
+		sUndo.push(sRedo.top());
+		(sRedo.top())->Redo();
+		sRedo.pop();
+	}
+}
+
+void controller::PopUndo()
+{
+	delete sUndo.top(); sUndo.top() = nullptr; sUndo.pop();
+}
+
+void controller::ClearRedo()
+{
+	while (!(sRedo.empty())) {
+		delete sRedo.top(); sRedo.top() = nullptr;
+		sRedo.pop();
 	}
 }
 //////////////////////////////////////////////////////////////////////////////////////
@@ -184,6 +239,14 @@ controller::~controller()
 	delete pGUI;
 	delete pGraph;
 	
+	while (!(sUndo.empty())) {
+		delete sUndo.top(); sUndo.top() = nullptr;
+		sUndo.pop();
+	}
+	while (!(sRedo.empty())) {
+		delete sRedo.top(); sRedo.top() = nullptr;
+		sRedo.pop();
+	}
 }
 
 
@@ -206,8 +269,11 @@ void controller::Run()
 		if (pOpr)
 		{
 			pOpr->Execute();//Execute
+			/*
 			delete pOpr;	//operation is not needed any more ==> delete it
+			*/
 			pOpr = nullptr;
+			
 		}
 
 		//Update the interface

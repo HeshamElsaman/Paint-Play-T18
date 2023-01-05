@@ -12,5 +12,5 @@ opUndo::~opUndo()
 //Execute the operation
 void opUndo::Execute()
 {
-	pControl->UNDO();
+	pControl->UnDo();
 }

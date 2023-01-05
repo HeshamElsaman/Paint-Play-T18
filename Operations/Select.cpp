@@ -7,24 +7,35 @@ void opSelect::Execute()
 {
 	Point P1;
 	GUI* pUI = pControl->GetUI();
-	pUI->GetOpLastPointClicked(P1.x, P1.y);
 	Graph* pGr = pControl->getGraph();
-	shape* shape1 = pGr->Getshape(P1.x, P1.y);
-	shape* shape2 = pGr->GetSelectedShape();
-	if (shape1)
-	{
-		if (shape2)
-			shape2->SetSelected(false);
-		shape1->SetSelected(true);
-		pGr->SetSelectedShape(shape1);
+	if (pUI->getSelectMode()==false) {
+		pUI->GetOpLastPointClicked(P1.x, P1.y);
+		shape* shape1 = pGr->Getshape(P1.x, P1.y);
 		
-		
+		if (shape1)
+		{
+			pGr->setShapeListStateSelected();
+			pGr->ClearSelectedShapes();
+			shape1->SetSelected(true);
+			pGr->AddSelectedShape(shape1);
+
+
+		}
+		else
+		{
+			pGr->setShapeListStateSelected();
+			pGr->ClearSelectedShapes();
+		}
 	}
-	else
+	else if (pUI->getSelectMode() == true)
 	{
-		if (shape2)
-			shape2->SetSelected(false);
-		pGr->SetSelectedShape(nullptr);
+		pUI->GetOpLastPointClicked(P1.x, P1.y);
+		shape* shape1 = pGr->Getshape(P1.x, P1.y);
+		if (shape1)
+		{
+			shape1->SetSelected(true);
+			pGr->AddSelectedShape(shape1);
+		}
 	}
 	
 	
