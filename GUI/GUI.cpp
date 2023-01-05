@@ -7,8 +7,8 @@ GUI::GUI()
 	//InterfaceMode = MODE_DRAW;
 
 
-	width = 1500;
-	height = 750;
+	width = 1350;
+	height = 700;
 
 
 	wx = 5;
@@ -16,8 +16,8 @@ GUI::GUI()
 
 
 	StatusBarHeight = 50;
-	ToolBarHeight = double(width) / DRAW_ICON_COUNT;
-	MenuIconWidth = double(width) / DRAW_ICON_COUNT;
+	ToolBarHeight = int(double(width) / DRAW_ICON_COUNT);
+	MenuIconWidth = int(double(width) / DRAW_ICON_COUNT);
 
 	DrawColor = BLUE;	//default Drawing color
 	BkGrndColor = WHITE;	//Background color
@@ -214,6 +214,17 @@ operationType GUI::GetUseroperation()
 
 			case ICON_LOAD:
 				return LOAD;
+				                      
+			case ICON_ZOOM_IN:
+				return ZOOM_IN;
+
+
+			case ICON_ZOOM_OUT:
+				return ZOOM_OUT;
+
+			case ICON_SEND_TO_BACK:
+				return SEND_TO_BACK;
+
 
 			case ICON_SWITCH_TO_PLAY:
 				return TO_PLAY;
@@ -454,6 +465,9 @@ void GUI::CreateDrawToolBar()
 	MenuIconImages[ICON_DEL] = "images\\MenuIcons\\DrawMenu\\Menu_Delete.jpg";
 	MenuIconImages[ICON_SAVE] = "images\\MenuIcons\\DrawMenu\\Menu_Save.jpg";
 	MenuIconImages[ICON_LOAD] = "images\\MenuIcons\\DrawMenu\\Menu_Load.jpg";
+	MenuIconImages[ICON_ZOOM_IN] = "images\\MenuIcons\\DrawMenu\\Menu_ZoomIn.jpg";
+	MenuIconImages[ICON_ZOOM_OUT] = "images\\MenuIcons\\DrawMenu\\Menu_ZoomOut.jpg";
+	MenuIconImages[ICON_SEND_TO_BACK] = "images\\MenuIcons\\DrawMenu\\Menu_SendToBack.jpg";
 	MenuIconImages[ICON_SWITCH_TO_PLAY] = "images\\MenuIcons\\DrawMenu\\Menu_Switch_To_PlayMode.jpg";
 	MenuIconImages[ICON_EXIT] = "images\\MenuIcons\\DrawMenu\\Menu_Exit.jpg";
 	

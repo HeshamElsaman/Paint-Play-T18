@@ -169,6 +169,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Operations\opRedo.cpp" />
     <ClCompile Include="Operations\opRotate.cpp" />
+    <ClCompile Include="Operations\opSendToBack.cpp" />
     <ClCompile Include="Operations\opStickImage.cpp" />
     <ClCompile Include="Operations\opChngPenWidth.cpp" />
     <ClCompile Include="Operations\opAddCircle.cpp" />
@@ -186,7 +187,9 @@
     <ClCompile Include="Operations\opExit.cpp" />
     <ClCompile Include="Operations\opSave.cpp" />
     <ClCompile Include="Operations\opUndo.cpp" />
+    <ClCompile Include="Operations\opZoonIn.cpp" />
     <ClCompile Include="Operations\Select.cpp" />
+    <ClCompile Include="Operations\opZoomOut.cpp" />
     <ClCompile Include="Shapes&amp;Graph\Circle.cpp" />
     <ClCompile Include="Shapes&amp;Graph\Graph.cpp" />
     <ClCompile Include="Shapes&amp;Graph\Line.cpp" />
@@ -224,6 +227,7 @@
     <ClInclude Include="DEFS.h" />
     <ClInclude Include="Operations\opRedo.h" />
     <ClInclude Include="Operations\opRotate.h" />
+    <ClInclude Include="Operations\opSendToBack.h" />
     <ClInclude Include="Operations\opStickImage.h" />
     <ClInclude Include="Operations\opChngToPlayMode.h" />
     <ClInclude Include="Operations\opChngPenWidth.h" />
@@ -242,6 +246,8 @@
     <ClInclude Include="Operations\opExit.h" />
     <ClInclude Include="Operations\opSave.h" />
     <ClInclude Include="Operations\opUndo.h" />
+    <ClInclude Include="Operations\opZoomIn.h" />
+    <ClInclude Include="Operations\opZoomOut.h" />
     <ClInclude Include="Operations\Select.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Shapes&amp;Graph\Circle.h" />

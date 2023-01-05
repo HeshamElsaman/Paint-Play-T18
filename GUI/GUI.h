@@ -61,6 +61,9 @@ class GUI
 		ICON_DEL,
 		ICON_SAVE,
 		ICON_LOAD,
+		ICON_ZOOM_IN,
+		ICON_ZOOM_OUT,
+		ICON_SEND_TO_BACK,
 		//TODO: Add more icons names here
 		ICON_SWITCH_TO_PLAY,
 		ICON_EXIT,		//Exit icon

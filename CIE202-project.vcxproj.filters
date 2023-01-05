@@ -252,6 +252,9 @@
     <ClCompile Include="Operations\opUndo.cpp" />
     <ClCompile Include="Operations\opRedo.cpp" />
     <ClCompile Include="Operations\opRotate.cpp" />
+    <ClCompile Include="Operations\opZoonIn.cpp" />
+    <ClCompile Include="Operations\opZoomOut.cpp" />
+    <ClCompile Include="Operations\opSendToBack.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h" />
@@ -309,6 +312,9 @@
     <ClInclude Include="Operations\opUndo.h" />
     <ClInclude Include="Operations\opRedo.h" />
     <ClInclude Include="Operations\opRotate.h" />
+    <ClInclude Include="Operations\opZoomIn.h" />
+    <ClInclude Include="Operations\opZoomOut.h" />
+    <ClInclude Include="Operations\opSendToBack.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="CIE202-project.rc" />

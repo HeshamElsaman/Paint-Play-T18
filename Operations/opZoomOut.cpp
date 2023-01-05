@@ -1,4 +1,4 @@
-#include "opChngPenWidth.h"
+#include "opZoomOut.h"
 
 #include <iostream>
 
@@ -10,33 +10,36 @@
 
 #include "../GUI/GUI.h"
 using namespace std;
-opChngPenWidth::opChngPenWidth(controller* pCont) :operation(pCont)
+
+
+using namespace std;
+ZoomOut::ZoomOut(controller* pCont) :operation(pCont)
 {}
-opChngPenWidth::~opChngPenWidth()
+ZoomOut::~ZoomOut()
 {}
 
 //Execute the operation
-void opChngPenWidth::Execute()
+void ZoomOut::Execute()
 {
 	Point P;
 
 	GUI* pUI = pControl->GetUI();
 	Graph* pGr = pControl->getGraph();
 
-	pUI->PrintMessage("Change General PenWidth: Pick a Number for the PenWidth");
+	pUI->PrintMessage("Zooming In ");
 
-	string KEY= pUI->GetSrting();
-	
+	string KEY = pUI->GetSrting();
 
-	
-	
-	
+
+
+
+
 
 	//Read click position
 
 
-		pUI->setCrntPenWidth(stoi(KEY));
-		
+	pUI->setCrntPenWidth(stoi(KEY));
+
 
 
 	//Getting the color clicked

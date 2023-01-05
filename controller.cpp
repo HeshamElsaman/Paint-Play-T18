@@ -15,6 +15,9 @@
 #include "Operations/opDeleteShape.h"
 #include "Operations/opRotate.h"
 #include "Operations/opSave.h"
+#include "Operations/opZoomIn.h"
+#include "Operations/opZoomOut.h"
+#include "Operations/opSendToBack.h"
 #include "Operations/opChngToPlayMode.h"
 #include "Operations/opExit.h"
 
@@ -105,6 +108,18 @@ operation* controller::createOperation(operationType OpType)
 
 		case SAVE:
 			pOp = new opSave(this);
+			break;
+
+		case ZOOM_IN:
+			pOp = new ZoomIn(this);
+			break;
+
+		case ZOOM_OUT:
+			pOp = new ZoomOut(this);
+			break;
+
+		case SEND_TO_BACK:
+			pOp = new SendToBack(this);
 			break;
 
 		case TO_PLAY:
