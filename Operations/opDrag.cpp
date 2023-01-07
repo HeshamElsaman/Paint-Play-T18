@@ -23,10 +23,7 @@ void opDrag::Execute()
 
     char cKeyData;
     
-    ChngTr* tr = new ChngTr;
-    //pGr->GetSelectedShapes(tr->ShpsCh);
-    //tr->ShpsChTr.push_back(circleGfxInfo);
-    pGr->AddUndoChngTr(tr);
+    
     int x_displaced = 0;
     int y_displaced = 0;
 
@@ -73,6 +70,10 @@ void opDrag::Execute()
     }
     if(shp)
     {
+        ChngTr* tr = new ChngTr;
+        //pGr->GetSelectedShapes(tr->ShpsCh);
+        //tr->ShpsChTr.push_back(circleGfxInfo);
+        pGr->AddUndoChngTr(tr);
         (tr->ShpsCh).push_back(shp);
         tr->x_displacement = x_displaced;
         tr->y_displacement = y_displaced;
