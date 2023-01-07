@@ -150,7 +150,11 @@ operation* controller::createOperation(operationType OpType)
 				}
 			}
 			else if (pGUI->GetOpLastPointClickedType() == RIGHT_CLICK && pGUI->GetButtonState(RIGHT_BUTTON, x_, y_) == BUTTON_DOWN)
+			{
 				pOp = new opDrag(this);
+				sUndo.push(pOp);
+				ClearRedo();
+			}
 		}
 			break;
 		

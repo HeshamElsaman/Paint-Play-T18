@@ -23,6 +23,14 @@ void opDrag::Execute()
 
     char cKeyData;
     
+    ChngTr* tr = new ChngTr;
+    //pGr->GetSelectedShapes(tr->ShpsCh);
+    //tr->ShpsChTr.push_back(circleGfxInfo);
+    pGr->AddUndoChngTr(tr);
+    int x_displaced = 0;
+    int y_displaced = 0;
+
+
     // Loop until there escape is pressed
     while (pUI->GetButtonState(RIGHT_BUTTON, iX, iY) == BUTTON_DOWN/*pUI->GetKeyPressed(cKeyData) != ESCAPE*/)
     {
@@ -45,9 +53,13 @@ void opDrag::Execute()
             {
                 diffx = (iX - iXOld);
                 iXOld = iX;
-                 
+                
+                x_displaced += diffx;
+                
                 diffy =  (iY - iYOld);
                 iYOld = iY;
+                
+                y_displaced += diffy;
             }
             
         }
@@ -56,10 +68,49 @@ void opDrag::Execute()
             shp->Move(diffx, diffy);
             pControl->UpdateInterface();
            
-            Sleep(10);
+            Sleep(8);
         }
+    }
+    if(shp)
+    {
+        (tr->ShpsCh).push_back(shp);
+        tr->x_displacement = x_displaced;
+        tr->y_displacement = y_displaced;
     }
     pUI->FlushMQue();
     pControl->UpdateInterface();
 
+}
+
+
+
+void opDrag::Undo()
+{
+    Graph* pGr = pControl->getGraph();
+    ChngTr* un = pGr->PopUndoChngTr();
+    int x_dis, y_dis;
+    if (un) {
+        x_dis = -1 * (un->x_displacement); y_dis = -1 * (un->y_displacement);
+        for (shape* shpPointer : un->ShpsCh) {
+            shpPointer->Move(x_dis, y_dis);
+        }
+        un->x_displacement *= -1; un->y_displacement *= -1;
+        pGr->AddRedoChngTr(un);
+    }
+
+}
+
+void opDrag::Redo()
+{
+    Graph* pGr = pControl->getGraph();
+    ChngTr* re = pGr->PopRedoChngTr();
+    int x_dis, y_dis;
+    if (re) {
+        x_dis = -1 * (re->x_displacement); y_dis = -1 * (re->y_displacement);
+        for (shape* shpPointer : re->ShpsCh) {
+            shpPointer->SetDeleted(1);
+        }
+        re->x_displacement *= -1; re->x_displacement *= -1;
+        pGr->AddUndoChngTr(re);
+    }
 }
