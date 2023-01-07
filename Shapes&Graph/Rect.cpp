@@ -82,6 +82,11 @@ void Rect::Move(int dx, int dy)
 	com.y += dy;
 }
 
+shape* Rect::getCopy()
+{
+	return new Rect(Corner1, Corner2, ShpGfxInfo);
+}
+
 
 void Rect::setCorners(vector <Point> pts)
 {

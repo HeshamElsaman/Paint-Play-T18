@@ -106,6 +106,11 @@ void PolyGon::Move(int dx, int dy)
     }
 }
 
+shape* PolyGon::getCopy()
+{
+    return new PolyGon(Verts, VertNum, ShpGfxInfo);
+}
+
 
 void PolyGon::setCorners(vector <Point> pts)
 {

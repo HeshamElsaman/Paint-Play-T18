@@ -121,6 +121,16 @@ void Graph::DeleteSelectedShapes()
 	ClearSelectedShapes();
 	
 }
+void Graph::Copy()
+{
+	for (auto shapePointer : shapesList)
+	{
+		if (shapePointer->IsSelected())
+		{
+			Clipboard.push_back(shapePointer->getCopy());
+		}
+	}
+}
 
 void Graph::ChangeFillClr(color clr)
 {

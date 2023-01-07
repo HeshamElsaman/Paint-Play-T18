@@ -73,6 +73,10 @@ void Line::Move(int dx, int dy)
 	com.x += dx;
 	com.y += dy;
 }
+shape* Line::getCopy()
+{
+	return new Line(Corner1, Corner2, ShpGfxInfo);
+}
 
 
 void Line::setCorners(vector <Point> pts)

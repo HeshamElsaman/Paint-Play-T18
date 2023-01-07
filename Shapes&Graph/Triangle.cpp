@@ -89,6 +89,10 @@ void Triangle::Move(int dx, int dy)
 	com.x += dx;
 	com.y += dy;
 }
+shape* Triangle::getCopy()
+{
+	return new Triangle(Corner1, Corner2,Corner3, ShpGfxInfo);
+}
 
 
 void Triangle::setCorners(vector <Point> pts)

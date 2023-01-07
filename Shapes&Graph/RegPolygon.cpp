@@ -105,6 +105,11 @@ void RegPolygon::Move(int dx, int dy)
     }
 }
 
+shape* RegPolygon::getCopy()
+{
+    return new RegPolygon(Verts,VertNum, ShpGfxInfo);
+}
+
 
 void RegPolygon::setCorners(vector <Point> pts)
 {

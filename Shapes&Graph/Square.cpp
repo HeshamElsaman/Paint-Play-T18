@@ -70,6 +70,10 @@ void Square::Move(int dx, int dy)
 	com.x += dx;
 	com.y += dy;
 }
+shape* Square::getCopy()
+{
+	return new Square(Corner1,Corner2,ShpGfxInfo);
+}
 
 
 void Square::setCorners(vector <Point> pts)

@@ -53,6 +53,11 @@ void Circle::Move(int dx, int dy)
 	Corner2.y += dy;
 }
 
+shape* Circle::getCopy()
+{
+	return new Circle(Corner1, Corner2, ShpGfxInfo);
+}
+
 
 
 void Circle::setCorners(vector <Point> pts)

@@ -17,6 +17,7 @@ public:
 	double polygonArea();
 	void Rotate(double) override;
 	void Move(int, int) override;
+	shape* getCopy();
 	void setCorners(vector <Point>) override;
 	void getCorners(vector <Point>&) override;
 };

@@ -68,6 +68,10 @@ void Oval::Move(int dx, int dy)
 	com.x += dx;
 	com.y += dy;
 }
+shape* Oval::getCopy()
+{
+	return new Oval(Corner1, Corner2, ShpGfxInfo);
+}
 
 
 

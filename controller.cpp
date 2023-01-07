@@ -18,6 +18,7 @@
 #include "Operations/opUndo.h"
 #include "Operations/opRedo.h"
 #include "Operations/opRotate.h"
+#include "Operations/Copy.h"
 #include "Operations/opSave.h"
 #include "Operations/opChngToPlayMode.h"
 #include "Operations/opExit.h"
@@ -138,6 +139,8 @@ operation* controller::createOperation(operationType OpType)
 		case REDO:
 			pOp = new opRedo(this);
 			break;
+		case COPY:
+			pOp = new Copy(this);
 
 		case DRAWING_AREA:
 		{
