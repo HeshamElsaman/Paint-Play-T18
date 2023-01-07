@@ -15,7 +15,7 @@ void opAddPolygon::Execute()
 {
 	//Get a Pointer to the Input / Output Interfaces
 	GUI* pUI = pControl->GetUI();
-	
+	Point P; pUI->GetPointClicked(P.x, P.y);
 	int vertnum = 0;
 	//getting the number of successive clicks
 	/*int click = 0;

@@ -18,6 +18,8 @@ void opStickImage::Execute()
 	GUI* pUI = pControl->GetUI();
 	Graph* pGr = pControl->getGraph();
 
+	Point P; pUI->GetPointClicked(P.x, P.y);
+
 	pUI->PrintMessage("Choose an Image: Enter A Number for the Image");
 
 	

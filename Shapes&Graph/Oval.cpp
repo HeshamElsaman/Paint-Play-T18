@@ -59,6 +59,18 @@ void Oval::Rotate(double theta = 2 * atan(1))
 }
 
 
+void Oval::Move(int dx, int dy)
+{
+	Corner1.x += dx;
+	Corner1.y += dy;
+	Corner2.x += dx;
+	Corner2.y += dy;
+	com.x += dx;
+	com.y += dy;
+}
+
+
+
 void Oval::setCorners(vector <Point> pts)
 {
 	Corner1 = pts[0];

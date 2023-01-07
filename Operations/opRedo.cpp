@@ -12,5 +12,9 @@ opRedo::~opRedo()
 //Execute the operation
 void opRedo::Execute()
 {
+	
+	GUI* pUI = pControl->GetUI();
+	Point P; pUI->GetPointClicked(P.x, P.y);
+
 	pControl->ReDo();
 }

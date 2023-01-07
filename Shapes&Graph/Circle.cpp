@@ -45,6 +45,16 @@ bool Circle::isInside(int X, int Y)
 }
 
 
+void Circle::Move(int dx, int dy)
+{
+	Corner1.x += dx;
+	Corner1.y += dy;
+	Corner2.x += dx;
+	Corner2.y += dy;
+}
+
+
+
 void Circle::setCorners(vector <Point> pts)
 {
 	Corner1 = pts[0];

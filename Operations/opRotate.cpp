@@ -12,6 +12,10 @@ opRotate::~opRotate()
 //Execute the operation
 void opRotate::Execute()
 {
+	
+	GUI* pUI = pControl->GetUI();
+	Point P; pUI->GetPointClicked(P.x, P.y);
+
 	Graph* pGr = pControl->getGraph();
 	if (pGr->ShapeListStateSelected()) {
 		ChngTr* tr = new ChngTr;

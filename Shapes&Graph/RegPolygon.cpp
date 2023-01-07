@@ -94,6 +94,18 @@ void RegPolygon::Rotate(double theta = 2 * atan(1))
 }
 
 
+void RegPolygon::Move(int dx, int dy)
+{
+    com.x += dx;
+    com.y += dy;
+    for (int i = 0; i < VertNum; i++)
+    {
+        Verts[i].x += dx;
+        Verts[i].y += dy;
+    }
+}
+
+
 void RegPolygon::setCorners(vector <Point> pts)
 {
     for (int i = 0; i < VertNum; i++)

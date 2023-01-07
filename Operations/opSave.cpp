@@ -9,8 +9,8 @@ opSave::~opSave() {};
 
 void opSave::Execute()
 {
-	
 	GUI* pUI = pControl->GetUI();
+	Point P; pUI->GetPointClicked(P.x, P.y);
 	// to write in a file
 	ofstream OutFile;
 	pUI->PrintMessage("Saving.....Enter file name by pressing on the keyboard then press Enter ");

@@ -26,7 +26,7 @@ public:
 	operation* createOperation(operationType) ; //Creates an operation
 	void UnDo(); //Undo an operation
 	void ReDo(); //Redo an operation
-	void PopUndo();
+	void PopUndo(); //for the operations not wanted to be recorded to remove themselves
 	void ClearRedo();
 	void Run();
 	

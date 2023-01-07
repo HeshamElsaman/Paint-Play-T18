@@ -63,6 +63,18 @@ void Line::Rotate(double theta = 2 * atan(1))
 	Corner2.y = sin(theta) * (gen.x - com.x) + cos(theta) * (gen.y - com.y) + com.y;
 }
 
+
+void Line::Move(int dx, int dy)
+{
+	Corner1.x += dx;
+	Corner1.y += dy;
+	Corner2.x += dx;
+	Corner2.y += dy;
+	com.x += dx;
+	com.y += dy;
+}
+
+
 void Line::setCorners(vector <Point> pts)
 {
 	Corner1 = pts[0];
