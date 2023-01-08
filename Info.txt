@@ -1,0 +1,9 @@
+# Paint-Play-T18
+Fundamentals of Computer Programming using C++ (UST-ZC Fall 2022 - Course Project)
+  - OOP oriented project.
+
+# Contributers
+  - Hesham Elsaman			<<s-hesham.elsaman@zewailcity.edu.eg>>			202000640
+  - Abdelrahman Fouad Eldreeny 		<<s-abdelrahman.eldreeny@zewailcity.edu.eg>> 		202100379
+  - Bahy Walid Awad Elsisi 		<<s-bahy.elsisi@zewailcity.edu.eg>>			202001053
+  - Makary Magdy Fayez AbdelMalak 	<<s-makary.fayez@zewailcity.edu.eg>>			202001417
