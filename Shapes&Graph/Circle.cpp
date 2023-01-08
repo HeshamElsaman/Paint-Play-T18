@@ -33,9 +33,37 @@ void Circle::Draw(GUI* pUI) const
 	//Call Output::Drawcircle to draw a line on the screen	
 	pUI->Drawcircle(Corner1, Corner2, ShpGfxInfo);
 
+	if (ShpGfxInfo.imgSticked)
+	{
+		int x = (Corner1.x <= Corner2.x) ? Corner1.x : Corner2.x; x += this->ShpGfxInfo.BorderWdth;
+		int y = (Corner1.y <= Corner2.y) ? Corner1.y : Corner2.y; y += this->ShpGfxInfo.BorderWdth;
+		int width = abs(Corner1.x - Corner2.x); width -= 2 * this->ShpGfxInfo.BorderWdth;
+		int length = abs(Corner1.y - Corner2.y); length -= 2 * this->ShpGfxInfo.BorderWdth;
+		pUI->StickImage(img, x, y, length, width);
+	}
 
 
 }
+
+void Circle::Drawdouble(GUI* pUI) const
+{
+	//Call Output::Drawcircle to draw a line on the screen	
+	pUI->Drawcircle(Corner1, Corner2, ShpGfxInfo);
+
+	if (ShpGfxInfo.imgSticked)
+	{
+		int x = (Corner1.x <= Corner2.x) ? Corner1.x : Corner2.x; x += this->ShpGfxInfo.BorderWdth;
+		int y = (Corner1.y <= Corner2.y) ? Corner1.y : Corner2.y; y += this->ShpGfxInfo.BorderWdth;
+		int width = abs(Corner1.x - Corner2.x); width -= 2 * this->ShpGfxInfo.BorderWdth;
+		int length = abs(Corner1.y - Corner2.y); length -= 2 * this->ShpGfxInfo.BorderWdth;
+		pUI->StickImage(img, x, y, length, width);
+	}
+
+
+}
+
+
+
 bool Circle::isInside(int X, int Y)
 {
 	double radius=pow((pow((Corner2.x - Corner1.x), 2) + pow((Corner2.y - Corner1.y), 2)), 0.5);
@@ -44,6 +72,18 @@ bool Circle::isInside(int X, int Y)
 	return false;
 }
 
+
+void Circle::Resize(double f)
+{
+	double d1 = pow((pow((Corner1.x - Corner2.x), 2) + pow((Corner2.y - Corner1.y), 2)), 0.5);
+	
+
+	double delta1 = (f - 1) * d1;
+	
+
+	moveFurther(Corner1, Corner2, delta1);
+	
+}
 
 void Circle::Move(int dx, int dy)
 {
@@ -83,3 +123,15 @@ void Circle::getCorners(vector <Point>& pts)
 	pts.push_back(Corner1);
 	pts.push_back(Corner2);
 }
+
+void Circle::Hide(GUI* lolo)
+{
+
+	int x = (Corner1.x <= Corner2.x) ? Corner1.x : Corner2.x; x += this->ShpGfxInfo.BorderWdth;
+	int y = (Corner1.y <= Corner2.y) ? Corner1.y : Corner2.y; y += this->ShpGfxInfo.BorderWdth;
+	int width = abs(Corner1.x - Corner2.x); width -= 2 * this->ShpGfxInfo.BorderWdth;
+	int length = abs(Corner1.y - Corner2.y); length -= 2 * this->ShpGfxInfo.BorderWdth;
+
+	lolo->StickImage_(x, y, 20, 20);
+}
+

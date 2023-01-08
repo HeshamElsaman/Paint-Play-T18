@@ -2,17 +2,30 @@
 
 
 
-#include "..\CMUgraphicsLib\CMUgraphics.h"
+
 //#include "image.h"
 #include "..\Defs.h"
-
+#include "..\CMUgraphicsLib\CMUgraphics.h"
+//#include "..\Shapes&Graph\Shape.h"
 #include <string>
 using namespace std;
 
 struct Point	//To be used for shapes points
 {
 	int x, y;
+
+public:
+
+	void operator+ (int s)
+	{
+		x += s;
+		y += s;
+
+	}
+
 };
+
+
 
 struct GfxInfo	//Graphical info common for all shapes (you may add more members)
 {
@@ -55,12 +68,17 @@ class GUI
 		ICON_CUT,
 		ICON_PASTE,
 		ICON_ROTATE,
+		ICON_RESIZE,
 		ICON_UNDO,
 		ICON_REDO,
 		ICON_STICK_IMG,
 		ICON_DEL,
 		ICON_SAVE,
 		ICON_LOAD,
+		ICON_DUBLICATE,
+		ICON_ZOOM_IN,
+		ICON_ZOOM_OUT,
+		ICON_SEND_TO_BACK,
 		//TODO: Add more icons names here
 		ICON_SWITCH_TO_PLAY,
 		ICON_EXIT,		//Exit icon
@@ -136,7 +154,13 @@ public:
 	clicktype GetOpLastPointClickedType() const;
 	keytype GetKeyPressed(char&) const;
 	void open();
+
+
+	
+
 	void StickImage(int,int,int,int,int);
+	void StickImage_(int x, int y, int length, int width);
+	
 	//void draw(GUI*);
 	string GetSrting() const;	 //Returns a string entered by the user
 	buttonstate GetButtonState(button, int&, int&) const;
@@ -159,6 +183,7 @@ public:
 	void CreateDrawToolBar();	//creates Draw mode toolbar & menu
 	void CreatePlayToolBar();	//creates Play mode toolbar & menu
 	void CreateStatusBar() const;	//create the status bar
+	void CreateCards();
 	void CreateColorPalette();
 	void DeleteColorPalette();
 	

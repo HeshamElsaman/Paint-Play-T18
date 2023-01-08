@@ -7,8 +7,8 @@ GUI::GUI()
 	//InterfaceMode = MODE_DRAW;
 
 
-	width = 1500;
-	height = 750;
+	width = 1300;
+	height = 650;
 
 
 	wx = 5;
@@ -228,6 +228,9 @@ operationType GUI::GetUseroperation()
 
 			case ICON_ROTATE:
 				return ROTATE;
+
+			case ICON_RESIZE:
+				return RESIZE;
 
 			case ICON_UNDO:
 				return UNDO;
@@ -459,6 +462,10 @@ void GUI::CreateStatusBar() const
 	pWind->SetBrush(StatusBarColor);
 	pWind->DrawRectangle(0, height - StatusBarHeight, width, height);
 }
+void GUI::CreateCards()
+{
+
+}
 //////////////////////////////////////////////////////////////////////////////////////////
 void GUI::ClearStatusBar() const
 {
@@ -494,6 +501,7 @@ void GUI::CreateDrawToolBar()
 	MenuIconImages[ICON_CUT] = "images\\MenuIcons\\DrawMenu\\Menu_Cut.jpg";
 	MenuIconImages[ICON_PASTE] = "images\\MenuIcons\\DrawMenu\\Menu_Paste.jpg";
 	MenuIconImages[ICON_ROTATE] = "images\\MenuIcons\\DrawMenu\\Menu_Rotate90.jpg";
+	MenuIconImages[ICON_RESIZE] = "images\\MenuIcons\\DrawMenu\\Menu_Resize.jpg";
 	MenuIconImages[ICON_UNDO] = "images\\MenuIcons\\DrawMenu\\Menu_Undo.jpg";
 	MenuIconImages[ICON_REDO] = "images\\MenuIcons\\DrawMenu\\Menu_Redo.jpg";
 	MenuIconImages[ICON_STICK_IMG] = "images\\MenuIcons\\DrawMenu\\Menu_StickImage.jpg";
