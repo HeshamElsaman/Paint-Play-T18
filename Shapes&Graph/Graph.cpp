@@ -246,15 +246,19 @@ void Graph::ReleaseShapesMemory()
 	}
 }
 
-int Graph::Getshpnum() const
-{
-	return shpnum;
-}
+
 
 vector <shape*> Graph::getshapelist() const
 {
 	return shapesList;
 }
+
+int Graph::GetShpnum() const
+{
+	return shpnum;
+}
+
+
 
 void Graph::StickImg(int img)
 {
@@ -297,6 +301,27 @@ void Graph::Resize(double scale)
 			}
 		}
 	}
+}
+
+void Graph::ToOnePixel()
+{
+	if (!(shapesList.empty()))
+	{
+		for (shape* shapePointer : shapesList)
+		{
+			if (!(shapePointer->IsDeleted()))
+			{
+				shapePointer->ToOnePixel();
+			}
+		}
+	}
+}
+
+int Graph::grid()
+{
+	int sq_n = sqrt(shpnum);
+	int a = ((630 - 50 - 56) / sq_n);
+	return a;
 }
 
 

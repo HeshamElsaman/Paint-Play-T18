@@ -65,6 +65,12 @@ void Circle::Move(int dx, int dy)
 	Corner2.y += dy;
 }
 
+void Circle::ToOnePixel()
+{
+	double d1 = pow((pow((Corner1.x - Corner2.x), 2) + pow((Corner2.y - Corner1.y), 2)), 0.5);
+	Resize(1 / d1);
+}
+
 shape* Circle::getCopy()
 {
 	return new Circle(Corner1, Corner2, ShpGfxInfo);

@@ -104,6 +104,26 @@ void Triangle::Move(int dx, int dy)
 	com.x += dx;
 	com.y += dy;
 }
+void Triangle::ToOnePixel()
+{
+	double d1 = pow((pow((Corner1.x - com.x), 2) + pow((com.y - Corner1.y), 2)), 0.5);
+	double d2 = pow((pow((Corner2.x - com.x), 2) + pow((com.y - Corner2.y), 2)), 0.5);
+	double d3 = pow((pow((Corner3.x - com.x), 2) + pow((com.y - Corner3.y), 2)), 0.5);
+	cout << d1 << endl << d2 << endl << d3 << endl;
+	if (d1 > d2 && d1 > d3)
+	{
+		Resize(1 / d1);
+	}
+	else if (d2 > d1 && d2 > d3)
+	{
+		Resize(1 / d2);
+	}
+	else if (d3 > d1 && d3 > d2)
+	{
+		Resize(1 / d3);
+	}
+
+}
 shape* Triangle::getCopy()
 {
 	return new Triangle(Corner1, Corner2,Corner3, ShpGfxInfo);

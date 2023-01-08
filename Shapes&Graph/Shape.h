@@ -44,6 +44,7 @@ public:
 	void ChngPenWidth(int c);	   //changes the shape's Pen Width
 	int GetPenWidth() const;
 	virtual bool isInside(int X,int Y) = 0;
+	virtual void ToOnePixel() = 0;
 	
 
 	///The following functions should be supported by the shape class

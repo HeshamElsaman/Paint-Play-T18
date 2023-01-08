@@ -87,6 +87,14 @@ void Rect::Resize(double f)
 	moveFurther(com, Corner2, delta2);
 }
 
+void Rect::ToOnePixel()
+{
+	double d1 = pow((pow((Corner1.x - com.x), 2) + pow((com.y - Corner1.y), 2)), 0.5);
+	//double d2 = pow((pow((Corner2.x - com.x), 2) + pow((com.y - Corner2.y), 2)), 0.5);
+
+	Resize(1 / d1);
+}
+
 
 void Rect::Move(int dx, int dy)
 {

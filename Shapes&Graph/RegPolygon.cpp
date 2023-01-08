@@ -117,6 +117,11 @@ void RegPolygon::Move(int dx, int dy)
     }
 }
 
+void RegPolygon::ToOnePixel()
+{
+    
+}
+
 shape* RegPolygon::getCopy()
 {
     return new RegPolygon(Verts,VertNum, ShpGfxInfo);

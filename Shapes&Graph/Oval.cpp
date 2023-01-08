@@ -81,6 +81,20 @@ void Oval::Move(int dx, int dy)
 	com.x += dx;
 	com.y += dy;
 }
+void Oval::ToOnePixel()
+{
+	double d1 = pow((pow((Corner1.x - com.x), 2) + pow((com.y - Corner1.y), 2)), 0.5);
+	double d2 = pow((pow((Corner2.x - com.x), 2) + pow((com.y - Corner2.y), 2)), 0.5);
+
+	if (d1 > d2)
+	{
+		Resize(1 / d1);
+	}
+	else if (d2 > d1)
+	{
+		Resize(1 / d2);
+	}
+}
 shape* Oval::getCopy()
 {
 	return new Oval(Corner1, Corner2, ShpGfxInfo);

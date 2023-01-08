@@ -117,6 +117,10 @@ void PolyGon::Move(int dx, int dy)
     }
 }
 
+void PolyGon::ToOnePixel()
+{
+}
+
 shape* PolyGon::getCopy()
 {
     return new PolyGon(Verts, VertNum, ShpGfxInfo);
