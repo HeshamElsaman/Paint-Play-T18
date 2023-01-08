@@ -49,6 +49,25 @@ void Rect::Draw(GUI* pUI) const
 		pUI->StickImage(img, x, y, length, width);
 	}
 }
+
+void Rect::Drawdouble(GUI* pUI) const
+{
+	//Call Output::DrawRect to draw a rectangle on the screen	
+	pUI->DrawRect(Corner1, Corner2, ShpGfxInfo);
+
+	if (ShpGfxInfo.imgSticked)
+	{
+		int x = (Corner1.x <= Corner2.x) ? Corner1.x : Corner2.x; x += this->ShpGfxInfo.BorderWdth;
+		int y = (Corner1.y <= Corner2.y) ? Corner1.y : Corner2.y; y += this->ShpGfxInfo.BorderWdth;
+		int width = abs(Corner1.x - Corner2.x); width -= 2 * this->ShpGfxInfo.BorderWdth;
+		int length = abs(Corner1.y - Corner2.y); length -= 2 * this->ShpGfxInfo.BorderWdth;
+		pUI->StickImage(img, x, y, length, width);
+	}
+}
+
+
+
+
 bool Rect::isInside(int X, int Y)
 {
 	int Xmin = (Corner1.x <= Corner2.x) ? Corner1.x : Corner2.x;
@@ -110,6 +129,17 @@ shape* Rect::getCopy()
 {
 	return new Rect(Corner1, Corner2, ShpGfxInfo);
 }
+void Rect::Paste(int x, int y)
+{
+	ShpGfxInfo.isSelected = false;
+	int dx, dy;
+	dx = Corner1.x - x;
+	dy = Corner1.y - y;
+	Corner1.x = Corner1.x - dx;
+	Corner1.y = Corner1.y - dy;
+	Corner2.x = Corner2.x - dx;
+	Corner2.y = Corner2.y - dy;
+}
 
 
 void Rect::setCorners(vector <Point> pts)
@@ -122,3 +152,45 @@ void Rect::getCorners(vector <Point>& pts)
 	pts.push_back(Corner1);
 	pts.push_back(Corner2);
 }
+
+
+
+vector <Point*> Rect::GetPoints()const
+{
+	vector <Point*> points;
+	
+	*points[0] = Corner1;
+	*points[1] = Corner2;
+
+	return points;
+}
+
+/*Point Rect::GetCenter(GUI* lolo)
+{
+	Point m;
+
+	
+	m.x = 0.5 * (Corner1.x + Corner2.x);
+	m.y = 0.5 * (Corner1.y + Corner2.y);
+
+	return m;
+
+}*/
+
+void Rect::Hide(GUI* lolo )
+{
+
+	int x = (Corner1.x <= Corner2.x) ? Corner1.x : Corner2.x; x += this->ShpGfxInfo.BorderWdth;
+	int y = (Corner1.y <= Corner2.y) ? Corner1.y : Corner2.y; y += this->ShpGfxInfo.BorderWdth;
+	int width = (Corner1.x - Corner2.x); width += 2 * this->ShpGfxInfo.BorderWdth;
+	int length = (Corner1.y - Corner2.y); length += 2 * this->ShpGfxInfo.BorderWdth;
+	
+	lolo->StickImage(1,x, y, length, width);
+}
+
+
+
+/*void Rect::UnHide(GUI* pUI)
+{
+	pUI->DrawRect(Corner1, Corner2, ShpGfxInfo);
+}*/

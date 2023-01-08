@@ -25,5 +25,7 @@ public:
 	//To redo this operation (code depends on operation type)
 	virtual void Redo()=0;
 
+
+
 };
 

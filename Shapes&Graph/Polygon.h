@@ -13,6 +13,7 @@ public:
 	virtual ~PolyGon();
 	virtual void Save(ofstream& OutFile);
 	virtual void Draw(GUI* pUI) const;
+	virtual void Drawdouble(GUI* pUI) const;
 	bool isInside(int X, int Y) ;
 	double polyGonArea();
 	void Rotate(double) override;
@@ -20,7 +21,9 @@ public:
 	void Move(int, int) override;
 	void ToOnePixel() override;
 	shape* getCopy();
+	void Paste(int, int) ;
 	void setCorners(vector <Point>) override;
 	void getCorners(vector <Point>&) override;
+	void Hide(GUI*);
 };
 

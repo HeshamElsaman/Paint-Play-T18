@@ -43,7 +43,34 @@ void RegPolygon::Draw(GUI* pUI) const
 {
 	//Call Output::DrawRegPolygon to draw a RegPolygon on the screen	
 	pUI->DrawRegPolygon(Verts, VertNum, ShpGfxInfo);
+
+   /* if (ShpGfxInfo.imgSticked)
+    {
+        int x = (Corner1.x <= Corner2.x) ? Corner1.x : Corner2.x; x += this->ShpGfxInfo.BorderWdth;
+        int y = (Corner1.y <= Corner2.y) ? Corner1.y : Corner2.y; y += this->ShpGfxInfo.BorderWdth;
+        int width = abs(Corner1.x - Corner2.x); width -= 2 * this->ShpGfxInfo.BorderWdth;
+        int length = abs(Corner1.y - Corner2.y); length -= 2 * this->ShpGfxInfo.BorderWdth;
+        pUI->StickImage(img, x, y, length, width);
+    }*/
+
 }
+
+void RegPolygon::Drawdouble(GUI* pUI) const
+{
+    //Call Output::DrawRegPolygon to draw a RegPolygon on the screen	
+    pUI->DrawRegPolygon(Verts, VertNum, ShpGfxInfo);
+
+    /* if (ShpGfxInfo.imgSticked)
+     {
+         int x = (Corner1.x <= Corner2.x) ? Corner1.x : Corner2.x; x += this->ShpGfxInfo.BorderWdth;
+         int y = (Corner1.y <= Corner2.y) ? Corner1.y : Corner2.y; y += this->ShpGfxInfo.BorderWdth;
+         int width = abs(Corner1.x - Corner2.x); width -= 2 * this->ShpGfxInfo.BorderWdth;
+         int length = abs(Corner1.y - Corner2.y); length -= 2 * this->ShpGfxInfo.BorderWdth;
+         pUI->StickImage(img, x, y, length, width);
+     }*/
+
+}
+
 double RegPolygon::polygonArea()
 {
     
@@ -126,6 +153,18 @@ shape* RegPolygon::getCopy()
 {
     return new RegPolygon(Verts,VertNum, ShpGfxInfo);
 }
+void RegPolygon::Paste(int x, int y)
+{
+    ShpGfxInfo.isSelected = false;
+    int dx, dy;
+    dx = Verts[0].x - x;
+    dy = Verts[0].y - y;
+    for (int i = 0; i < VertNum; i++)
+    {
+        Verts[i].x = Verts[i].x - dx;
+        Verts[i].y = Verts[i].y - dy;
+    }
+}
 
 
 void RegPolygon::setCorners(vector <Point> pts)
@@ -142,3 +181,15 @@ void RegPolygon::getCorners(vector <Point>& pts)
         pts.push_back(Verts[i]);
     }
 }
+
+void RegPolygon::Hide(GUI* lolo)
+{
+
+    //int x = (Corner1.x <= Corner2.x) ? Corner1.x : Corner2.x; x += this->ShpGfxInfo.BorderWdth;
+    //int y = (Corner1.y <= Corner2.y) ? Corner1.y : Corner2.y; y += this->ShpGfxInfo.BorderWdth;
+    //int width = abs(Corner1.x - Corner2.x); width -= 2 * this->ShpGfxInfo.BorderWdth;
+    //int length = abs(Corner1.y - Corner2.y); length -= 2 * this->ShpGfxInfo.BorderWdth;
+
+    //lolo->StickImage_(x, y, 20, 20);
+}
+

@@ -1,5 +1,7 @@
 #include "Graph.h"
 #include "../GUI/GUI.h"
+#include <iostream>
+using namespace std;
 
 Graph::Graph()
 {
@@ -8,6 +10,14 @@ Graph::Graph()
 
 Graph::~Graph()
 {
+	if (!(Clipboard.empty()))
+	{
+		for (shape* shapePointer : Clipboard)
+		{
+			delete shapePointer; shapePointer = nullptr;
+		}
+		Clipboard.clear();
+	}
 	if(!(cUndo.empty()))
 	{
 		for (auto opPointer : cUndo) {
@@ -37,7 +47,47 @@ void Graph::Addshape(shape* pFig)
 		globalID++;
 	}*/
 }
+
+
+
 ////////////////////////////////////////////////////////////////////////////////////
+
+
+////////////////////////////////////////////////////////////////////////
+void Graph::AddshapesToBack()
+{
+	//Add a new shape to the first of shapes vector
+	shape* shp = nullptr;//vector <shape*> hamo;
+	int i = shapesList.size() - 1;
+	bool run = false;
+	for(;i >= 0;i--)
+	{
+		if(shapesList[i]->IsSelected() && !(shapesList[i]->IsDeleted()))
+		{
+			shp = shapesList[i];
+			shapesList.erase(shapesList.begin() + i);
+			shapesList.insert(shapesList.begin(), shp);
+			run = !run;
+		}
+		if (shapesList[i]->getID() == 1)
+		{
+			if (shapesList[i]->IsSelected() && !(shapesList[i]->IsDeleted()))
+			{
+				shp = shapesList[i];
+				shapesList.erase(shapesList.begin() + i);
+				shapesList.insert(shapesList.begin(), shp);
+			}
+			break;
+		}
+		else if (run)
+		{
+			i++;
+			run = !run;
+		}
+	}
+	shp = nullptr;
+
+}
 //Draw all shapes on the user interface
 void Graph::Draw(GUI* pUI)
 {
@@ -80,6 +130,25 @@ shape* Graph::Getshape(int x, int y) const
 	return nullptr;
 }
 
+shape* Graph::GetSelectedShape(vector <shape*>& slctdshps) const
+{
+	for (int i = 0; i <= slctdshps.size(); i++)
+	{
+		if (slctdshps[i]->IsSelected())
+		{
+			return slctdshps[i];
+		}
+	}
+
+}
+
+vector <shape*> Graph::GetShapesVector() const
+{
+	return shapesList;
+}
+
+
+
 
 void Graph::GetSelectedShapes(vector <shape*>& slctdshps) const
 {
@@ -121,16 +190,63 @@ void Graph::DeleteSelectedShapes()
 	ClearSelectedShapes();
 	
 }
-void Graph::Copy()
+vector <shape*> Graph::getClipboard()
 {
+	return Clipboard;
+}
+void Graph::opCopy()
+{
+	if (!(Clipboard.empty()))
+	{
+		for (shape* shapePointer : Clipboard)
+		{
+			delete shapePointer; shapePointer = nullptr;
+		}
+		Clipboard.clear();
+	}
+	
 	for (auto shapePointer : shapesList)
 	{
-		if (shapePointer->IsSelected())
+		if (shapePointer->IsSelected() && !(shapePointer->IsDeleted()))
 		{
 			Clipboard.push_back(shapePointer->getCopy());
+			//shapesList.erase(find(shapesList.begin(), shapesList.end(), shapePointer));
+			
+		}
+		
+	}
+}
+void Graph::opCut()
+{
+	
+	{
+		if (!(shapesList.empty()))
+		{
+			for (int i = 0; i < shapesList.size(); i++) {
+				if (shapesList[i]->IsSelected()) {
+					Clipboard.push_back(shapesList[i]);
+					shapesList.erase(find(shapesList.begin(), shapesList.end(), shapesList[i]));
+				}
+			}
 		}
 	}
 }
+
+void Graph::getPaste(int x,int y,int& size)
+{
+	if (Clipboard.size() == 0)
+	{
+		size = 0; return;
+	}
+	
+	Clipboard.back()->Paste(x,y);
+	
+	shapesList.push_back(Clipboard.back());
+
+	Clipboard.pop_back();
+	size = Clipboard.size();
+}
+
 
 void Graph::ChangeFillClr(color clr)
 {
@@ -234,6 +350,31 @@ void Graph::Save(ofstream& OutFile)
 	}
 	OutFile.close();
 }
+
+/*void Graph::Load(ofstream& OutFile)
+{
+	int temporalID = 0;
+	int actualID;
+	if (!(shapesList.empty()))
+	{
+		OutFile << shpnum << endl;
+		for (int i = 0; i < shapesList.size(); i++)
+		{
+			if (!((shapesList[i])->IsDeleted()))
+			{
+				temporalID++;
+				actualID = shapesList[i]->getID();
+				shapesList[i]->setID(temporalID);
+				shapesList[i]->Save(OutFile);
+				shapesList[i]->setID(actualID);
+			}
+		}
+	}
+	OutFile.close();
+}*/
+
+
+
 
 void Graph::ReleaseShapesMemory()
 {

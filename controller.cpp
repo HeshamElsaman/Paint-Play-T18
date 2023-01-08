@@ -17,13 +17,21 @@
 #include "Operations/opDeleteShape.h"
 #include "Operations/opUndo.h"
 #include "Operations/opRedo.h"
+#include "Operations/opHide.h"
+#include "Operations/opUnHide.h"
+#include "Operations/opDuplicate.h"
+//#include "Operations/opStart.h"
 #include "Operations/opRotate.h"
 #include "Operations/opResize.h"
-#include "Operations/opScramble.h"
 #include "Operations/Copy.h"
+#include "Operations/Cut.h"
 #include "Operations/opSave.h"
+#include "Operations/opZoomIn.h"
+//#include "Operations/opZoomOut.h"
+#include "Operations/opSendToBack.h"
 #include "Operations/opChngToPlayMode.h"
 #include "Operations/opExit.h"
+#include "Operations/opPaste.h"
 
 
 //Constructor
@@ -151,6 +159,13 @@ operation* controller::createOperation(operationType OpType)
 			break;
 		case COPY:
 			pOp = new Copy(this);
+			break;
+		case CUT:
+			pOp = new Cut(this);
+			break;
+		case PASTE:
+			pOp = new opPaste(this);
+			break;
 
 		case DRAWING_AREA:
 		{
@@ -177,14 +192,41 @@ operation* controller::createOperation(operationType OpType)
 			pOp = new opSave(this);
 			break;
 
-		case TO_PLAY:
-			pOp = new opChngToPlayMode(this);
+		case ZOOM_IN:
+			pOp = new ZoomIn(this);
 			break;
 
-		case SCRAMBLE:
-			pOp = new opScramble(this);
+		/*case ZOOM_OUT:
+			pOp = new ZoomOut(this);
+			break;*/
+
+		case SEND_TO_BACK:
+			pOp = new SendToBack(this);
 			sUndo.push(pOp);
 			ClearRedo();
+			break;
+
+			/*case START:
+			pOp = new Start(this);
+			break;*/
+
+		case HIDE:
+			pOp = new opHide(this);
+			break;
+
+			/*case UNHIDE:
+				pOp = new opUnHide(this);
+				break;*/
+
+		case DUBLICATE:
+			pOp = new opDuplicate(this);
+			sUndo.push(pOp);
+			ClearRedo();
+			break;
+
+
+		case TO_PLAY:
+			pOp = new opChngToPlayMode(this);
 			break;
 
 

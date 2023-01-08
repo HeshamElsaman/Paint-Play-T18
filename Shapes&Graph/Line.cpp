@@ -34,6 +34,22 @@ void Line::Draw(GUI* pUI) const
 	//Call Output::DrawLine to draw a line on the screen	
 	pUI->DrawLine(Corner1, Corner2, ShpGfxInfo);
 }
+
+void Line::Drawdouble(GUI* pUI) const
+{
+	//Call Output::DrawRect to draw a rectangle on the screen	
+	pUI->DrawRect(Corner1, Corner2, ShpGfxInfo);
+
+	if (ShpGfxInfo.imgSticked)
+	{
+		int x = (Corner1.x <= Corner2.x) ? Corner1.x : Corner2.x; x += this->ShpGfxInfo.BorderWdth;
+		int y = (Corner1.y <= Corner2.y) ? Corner1.y : Corner2.y; y += this->ShpGfxInfo.BorderWdth;
+		int width = abs(Corner1.x - Corner2.x); width -= 2 * this->ShpGfxInfo.BorderWdth;
+		int length = abs(Corner1.y - Corner2.y); length -= 2 * this->ShpGfxInfo.BorderWdth;
+		pUI->StickImage(img, x, y, length, width);
+	}
+}
+
 bool Line::isInside(int X, int Y)
 {
 	double m = double((Corner2.y - Corner1.y)) / (Corner2.x - Corner1.x);
@@ -95,6 +111,18 @@ shape* Line::getCopy()
 	return new Line(Corner1, Corner2, ShpGfxInfo);
 }
 
+void Line::Paste(int x, int y)
+{
+	ShpGfxInfo.isSelected = false;
+	int dx, dy;
+	dx = Corner1.x - x;
+	dy = Corner1.y - y;
+	Corner1.x = Corner1.x - dx;
+	Corner1.y = Corner1.y - dy;
+	Corner2.x = Corner2.x - dx;
+	Corner2.y = Corner2.y - dy;
+}
+
 
 void Line::setCorners(vector <Point> pts)
 {
@@ -105,4 +133,15 @@ void Line::getCorners(vector <Point>& pts)
 {
 	pts.push_back(Corner1);
 	pts.push_back(Corner2);
+}
+
+void Line::Hide(GUI* lolo)
+{
+
+	int x = (Corner1.x <= Corner2.x) ? Corner1.x : Corner2.x; x += this->ShpGfxInfo.BorderWdth;
+	int y = (Corner1.y <= Corner2.y) ? Corner1.y : Corner2.y; y += this->ShpGfxInfo.BorderWdth;
+	int width = abs(Corner1.x - Corner2.x); width -= 2 * this->ShpGfxInfo.BorderWdth;
+	int length = abs(Corner1.y - Corner2.y); length -= 2 * this->ShpGfxInfo.BorderWdth;
+
+	lolo->StickImage_(x, y, 20, 20);
 }

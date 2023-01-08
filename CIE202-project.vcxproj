@@ -164,6 +164,7 @@
     <ClCompile Include="CMUgraphicsLib\jpeg\jquant1.c" />
     <ClCompile Include="CMUgraphicsLib\jpeg\jquant2.c" />
     <ClCompile Include="CMUgraphicsLib\jpeg\jutils.c" />
+    <ClCompile Include="Operations\Cut.cpp" />
     <ClCompile Include="Operations\Copy.cpp" />
     <ClCompile Include="GUI\GUI.cpp" />
     <ClCompile Include="controller.cpp" />
@@ -191,6 +192,7 @@
     <ClCompile Include="Operations\opSave.cpp" />
     <ClCompile Include="Operations\opUndo.cpp" />
     <ClCompile Include="Operations\opSelect.cpp" />
+    <ClCompile Include="Operations\opPaste.cpp" />
     <ClCompile Include="Shapes&amp;Graph\Circle.cpp" />
     <ClCompile Include="Shapes&amp;Graph\Graph.cpp" />
     <ClCompile Include="Shapes&amp;Graph\Line.cpp" />
@@ -223,6 +225,7 @@
     <ClInclude Include="CMUgraphicsLib\jpeg\jpegint.h" />
     <ClInclude Include="CMUgraphicsLib\jpeg\jpeglib.h" />
     <ClInclude Include="CMUgraphicsLib\jpeg\jversion.h" />
+    <ClInclude Include="Operations\Cut.h" />
     <ClInclude Include="Operations\Copy.h" />
     <ClInclude Include="GUI\GUI.h" />
     <ClInclude Include="controller.h" />
@@ -251,6 +254,7 @@
     <ClInclude Include="Operations\opSave.h" />
     <ClInclude Include="Operations\opUndo.h" />
     <ClInclude Include="Operations\opSelect.h" />
+    <ClInclude Include="Operations\opPaste.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Shapes&amp;Graph\Circle.h" />
     <ClInclude Include="Shapes&amp;Graph\Graph.h" />

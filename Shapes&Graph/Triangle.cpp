@@ -39,6 +39,13 @@ void Triangle::Draw(GUI* pUI) const
 	//Call Output::DrawTriangle to draw a triangle on the screen	
 	pUI->DrawTriangle(Corner1, Corner2, Corner3, ShpGfxInfo);
 }
+
+void Triangle::Drawdouble(GUI* pUI) const
+{
+	//Call Output::DrawTriangle to draw a triangle on the screen	
+	pUI->DrawTriangle(Corner1, Corner2, Corner3, ShpGfxInfo);
+}
+
 bool Triangle::isInside(int X, int Y)
 {
 	int side1= pow((pow((Corner2.x - Corner1.x), 2) + pow((Corner2.y - Corner1.y), 2)), 0.5);
@@ -56,7 +63,7 @@ bool Triangle::isInside(int X, int Y)
 	double area2 = sqrt(s2 * (s2 - inSide2) * (s2 - inSide3) * (s2 - side2));
 	double area3 = sqrt(s3 * (s3 - inSide3) * (s3 - inSide1) * (s3 - side3));
 	if ((area1 + area2 + area3) <= triarea) {
-		cout << (area1 + area2 + area3) << endl << triarea<<endl<<endl;
+		
 		return true;
 		
 	}
@@ -128,6 +135,19 @@ shape* Triangle::getCopy()
 {
 	return new Triangle(Corner1, Corner2,Corner3, ShpGfxInfo);
 }
+void Triangle::Paste(int x,int y)
+{
+	ShpGfxInfo.isSelected = false;
+	int distx = Corner1.x - x;
+	int disty = Corner1.y - y;
+	Corner1.x = Corner1.x - distx;
+	Corner1.y = Corner1.y - disty;
+	Corner2.x = Corner2.x - distx;
+	Corner2.y = Corner2.y - disty;
+	Corner3.x = Corner3.x - distx;
+	Corner3.y = Corner3.y - disty;
+
+}
 
 
 void Triangle::setCorners(vector <Point> pts)
@@ -141,4 +161,15 @@ void Triangle::getCorners(vector <Point>& pts)
 	pts.push_back(Corner1);
 	pts.push_back(Corner2);
 	pts.push_back(Corner3);
+}
+
+void Triangle::Hide(GUI* lolo)
+{
+
+	int x = (Corner1.x <= Corner2.x) ? Corner1.x : Corner2.x; x += this->ShpGfxInfo.BorderWdth;
+	int y = (Corner1.y <= Corner2.y) ? Corner1.y : Corner2.y; y += this->ShpGfxInfo.BorderWdth;
+	int width = abs(Corner1.x - Corner2.x); width -= 2 * this->ShpGfxInfo.BorderWdth;
+	int length = abs(Corner1.y - Corner2.y); length -= 2 * this->ShpGfxInfo.BorderWdth;
+
+	lolo->StickImage_(x, y, 20, 20);
 }
