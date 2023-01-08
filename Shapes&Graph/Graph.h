@@ -16,7 +16,10 @@ struct ChngTr
 	vector <int> ids;					//to get the id of the changed shapes
 	vector <GfxInfo> ShpsChTr;			//to trace the changes
 	vector <int> imgs;					//to record the sticked images for each shape
-	
+	int x_displacement;
+	int y_displacement;
+	double ResizeFactor;
+
 	//most probably won't be needed
 	vector <int> vNUMs;					//to get the numbers of vertices
 	vector <vector <Point>> MultiVerts;	//to record the exact vertices
@@ -55,7 +58,10 @@ public:
 	void StickImg(int);
 	void ChangePenWidth(int num);
 	void Rotate90(double);
+	void Resize(double);
 	void ReleaseShapesMemory();
+	int Getshpnum() const;
+	vector <shape*> getshapelist() const;
 
 	void Save(ofstream& outfile);	//Save all shapes to a file
 	void load(ifstream& inputfile);	//Load all shapes from a file

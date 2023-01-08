@@ -252,6 +252,7 @@
     <ClCompile Include="Operations\opUndo.cpp" />
     <ClCompile Include="Operations\opRedo.cpp" />
     <ClCompile Include="Operations\opRotate.cpp" />
+    <ClCompile Include="Operations\opResize.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h" />
@@ -309,6 +310,7 @@
     <ClInclude Include="Operations\opUndo.h" />
     <ClInclude Include="Operations\opRedo.h" />
     <ClInclude Include="Operations\opRotate.h" />
+    <ClInclude Include="Operations\opResize.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="CIE202-project.rc" />

@@ -55,6 +55,7 @@ class GUI
 		ICON_CUT,
 		ICON_PASTE,
 		ICON_ROTATE,
+		ICON_RESIZE,
 		ICON_UNDO,
 		ICON_REDO,
 		ICON_STICK_IMG,
@@ -154,6 +155,7 @@ public:
 	void CreateDrawToolBar();	//creates Draw mode toolbar & menu
 	void CreatePlayToolBar();	//creates Play mode toolbar & menu
 	void CreateStatusBar() const;	//create the status bar
+	void CreateCards();
 	void CreateColorPalette();
 	void DeleteColorPalette();
 	
