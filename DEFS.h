@@ -36,6 +36,7 @@ enum operationType //The operations supported (you can add more if needed)
 	SEND_TO_BACK,
 	HIDE,
 	UNHIDE,
+	DUBLICATE,
 	START,
 	RESTART,
 	MATCH_SHAPES,

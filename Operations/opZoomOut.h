@@ -9,6 +9,7 @@ public:
 	virtual ~ZoomOut();
 
 	//Add ZoomOut to the controller
-	virtual void Execute();
-
+	void Execute();
+	virtual void Undo() override {}
+	virtual void Redo() override {}
 };
