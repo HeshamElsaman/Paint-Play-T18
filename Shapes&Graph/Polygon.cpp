@@ -45,6 +45,14 @@ void PolyGon::Draw(GUI* pUI) const
 	//Call Output::DrawPolygon to draw a polygon on the screen	
 	pUI->DrawPolygon(Verts, VertNum, ShpGfxInfo);
 }
+
+
+void PolyGon::Drawdouble(GUI* pUI) const
+{
+    //Call Output::DrawPolygon to draw a polygon on the screen	
+    pUI->DrawPolygon(Verts, VertNum, ShpGfxInfo);
+}
+
 double PolyGon::polyGonArea()
 {
 
@@ -108,4 +116,15 @@ void PolyGon::getCorners(vector <Point>& pts)
     {
         pts.push_back(Verts[i]);
     }
+}
+
+void PolyGon::Hide(GUI* lolo)
+{
+    /*
+    int x = (Corner1.x <= Corner2.x) ? Corner1.x : Corner2.x; x += this->ShpGfxInfo.BorderWdth;
+    int y = (Corner1.y <= Corner2.y) ? Corner1.y : Corner2.y; y += this->ShpGfxInfo.BorderWdth;
+    int width = abs(Corner1.x - Corner2.x); width -= 2 * this->ShpGfxInfo.BorderWdth;
+    int length = abs(Corner1.y - Corner2.y); length -= 2 * this->ShpGfxInfo.BorderWdth;
+
+    lolo->StickImage_(x, y, 20, 20);*/
 }

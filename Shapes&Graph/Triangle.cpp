@@ -39,6 +39,13 @@ void Triangle::Draw(GUI* pUI) const
 	//Call Output::DrawTriangle to draw a triangle on the screen	
 	pUI->DrawTriangle(Corner1, Corner2, Corner3, ShpGfxInfo);
 }
+
+void Triangle::Drawdouble(GUI* pUI) const
+{
+	//Call Output::DrawTriangle to draw a triangle on the screen	
+	pUI->DrawTriangle(Corner1, Corner2, Corner3, ShpGfxInfo);
+}
+
 bool Triangle::isInside(int X, int Y)
 {
 	int side1= pow((pow((Corner2.x - Corner1.x), 2) + pow((Corner2.y - Corner1.y), 2)), 0.5);
@@ -90,4 +97,15 @@ void Triangle::getCorners(vector <Point>& pts)
 	pts.push_back(Corner1);
 	pts.push_back(Corner2);
 	pts.push_back(Corner3);
+}
+
+void Triangle::Hide(GUI* lolo)
+{
+
+	int x = (Corner1.x <= Corner2.x) ? Corner1.x : Corner2.x; x += this->ShpGfxInfo.BorderWdth;
+	int y = (Corner1.y <= Corner2.y) ? Corner1.y : Corner2.y; y += this->ShpGfxInfo.BorderWdth;
+	int width = abs(Corner1.x - Corner2.x); width -= 2 * this->ShpGfxInfo.BorderWdth;
+	int length = abs(Corner1.y - Corner2.y); length -= 2 * this->ShpGfxInfo.BorderWdth;
+
+	lolo->StickImage_(x, y, 20, 20);
 }

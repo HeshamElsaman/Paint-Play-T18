@@ -35,7 +35,33 @@ void Square::Draw(GUI* pUI) const
 	//Call Output::Drawcircle to draw a line on the screen	
 	pUI->DrawSquare(Corner1, Corner2, /*Corner3,*/ ShpGfxInfo);
 
+	if (ShpGfxInfo.imgSticked)
+	{
+		int x = (Corner1.x <= Corner2.x) ? Corner1.x : Corner2.x; x += this->ShpGfxInfo.BorderWdth;
+		int y = (Corner1.y <= Corner2.y) ? Corner1.y : Corner2.y; y += this->ShpGfxInfo.BorderWdth;
+		int width = abs(Corner1.x - Corner2.x); width -= 2 * this->ShpGfxInfo.BorderWdth;
+		int length = abs(Corner1.y - Corner2.y); length -= 2 * this->ShpGfxInfo.BorderWdth;
+		pUI->StickImage(img, x, y, length, width);
+	}
+
 }
+
+void Square::Drawdouble(GUI* pUI) const
+{
+	//Call Output::Drawcircle to draw a line on the screen	
+	pUI->DrawSquare(Corner1, Corner2, /*Corner3,*/ ShpGfxInfo);
+
+	if (ShpGfxInfo.imgSticked)
+	{
+		int x = (Corner1.x <= Corner2.x) ? Corner1.x : Corner2.x; x += this->ShpGfxInfo.BorderWdth;
+		int y = (Corner1.y <= Corner2.y) ? Corner1.y : Corner2.y; y += this->ShpGfxInfo.BorderWdth;
+		int width = abs(Corner1.x - Corner2.x); width -= 2 * this->ShpGfxInfo.BorderWdth;
+		int length = abs(Corner1.y - Corner2.y); length -= 2 * this->ShpGfxInfo.BorderWdth;
+		pUI->StickImage(img, x, y, length, width);
+	}
+
+}
+
 bool Square::isInside(int X, int Y)
 {
 	int Xmin = (Corner1.x <= Corner2.x) ? Corner1.x : Corner2.x;
@@ -70,4 +96,15 @@ void Square::getCorners(vector <Point>& pts)
 {
 	pts.push_back(Corner1);
 	pts.push_back(Corner2);
+}
+
+void Square::Hide(GUI* lolo)
+{
+
+	int x = (Corner1.x <= Corner2.x) ? Corner1.x : Corner2.x; x += this->ShpGfxInfo.BorderWdth;
+	int y = (Corner1.y <= Corner2.y) ? Corner1.y : Corner2.y; y += this->ShpGfxInfo.BorderWdth;
+	int width = abs(Corner1.x - Corner2.x); width -= 2 * this->ShpGfxInfo.BorderWdth;
+	int length = abs(Corner1.y - Corner2.y); length -= 2 * this->ShpGfxInfo.BorderWdth;
+
+	lolo->StickImage_(x, y, 20, 20);
 }

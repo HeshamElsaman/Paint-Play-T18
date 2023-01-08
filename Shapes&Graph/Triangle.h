@@ -15,8 +15,10 @@ public:
 	virtual ~Triangle();
 	virtual void Save(ofstream& OutFile);
 	virtual void Draw(GUI* pUI) const;
+	virtual void Drawdouble(GUI* pUI) const;
 	bool isInside(int x, int y) ;
 	void Rotate(double) override;
 	void setCorners(vector <Point>) override;
 	void getCorners(vector <Point>&) override;
+	void Hide(GUI*);
 };

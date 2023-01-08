@@ -34,6 +34,13 @@ void Oval::Draw(GUI* pUI) const
 	//Call Output::DrawOval to draw an oval on the screen	
 	pUI->DrawOval(Corner1, Corner2, ShpGfxInfo);
 }
+
+void Oval::Drawdouble(GUI* pUI) const
+{
+	//Call Output::DrawOval to draw an oval on the screen	
+	pUI->DrawOval(Corner1, Corner2, ShpGfxInfo);
+}
+
 bool Oval::isInside(int X,int Y)
 {
 	double cent_x = (Corner1.x + Corner2.x)/2.0;
@@ -68,4 +75,15 @@ void Oval::getCorners(vector <Point>& pts)
 {
 	pts.push_back(Corner1);
 	pts.push_back(Corner2);
+}
+
+void Oval::Hide(GUI* lolo)
+{
+
+	int x = (Corner1.x <= Corner2.x) ? Corner1.x : Corner2.x; x += this->ShpGfxInfo.BorderWdth;
+	int y = (Corner1.y <= Corner2.y) ? Corner1.y : Corner2.y; y += this->ShpGfxInfo.BorderWdth;
+	int width = abs(Corner1.x - Corner2.x); width -= 2 * this->ShpGfxInfo.BorderWdth;
+	int length = abs(Corner1.y - Corner2.y); length -= 2 * this->ShpGfxInfo.BorderWdth;
+
+	lolo->StickImage_(x, y, 20, 20);
 }

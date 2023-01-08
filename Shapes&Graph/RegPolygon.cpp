@@ -44,7 +44,34 @@ void RegPolygon::Draw(GUI* pUI) const
 {
 	//Call Output::DrawRegPolygon to draw a RegPolygon on the screen	
 	pUI->DrawRegPolygon(Verts, VertNum, ShpGfxInfo);
+
+   /* if (ShpGfxInfo.imgSticked)
+    {
+        int x = (Corner1.x <= Corner2.x) ? Corner1.x : Corner2.x; x += this->ShpGfxInfo.BorderWdth;
+        int y = (Corner1.y <= Corner2.y) ? Corner1.y : Corner2.y; y += this->ShpGfxInfo.BorderWdth;
+        int width = abs(Corner1.x - Corner2.x); width -= 2 * this->ShpGfxInfo.BorderWdth;
+        int length = abs(Corner1.y - Corner2.y); length -= 2 * this->ShpGfxInfo.BorderWdth;
+        pUI->StickImage(img, x, y, length, width);
+    }*/
+
 }
+
+void RegPolygon::Drawdouble(GUI* pUI) const
+{
+    //Call Output::DrawRegPolygon to draw a RegPolygon on the screen	
+    pUI->DrawRegPolygon(Verts, VertNum, ShpGfxInfo);
+
+    /* if (ShpGfxInfo.imgSticked)
+     {
+         int x = (Corner1.x <= Corner2.x) ? Corner1.x : Corner2.x; x += this->ShpGfxInfo.BorderWdth;
+         int y = (Corner1.y <= Corner2.y) ? Corner1.y : Corner2.y; y += this->ShpGfxInfo.BorderWdth;
+         int width = abs(Corner1.x - Corner2.x); width -= 2 * this->ShpGfxInfo.BorderWdth;
+         int length = abs(Corner1.y - Corner2.y); length -= 2 * this->ShpGfxInfo.BorderWdth;
+         pUI->StickImage(img, x, y, length, width);
+     }*/
+
+}
+
 double RegPolygon::polygonArea()
 {
     
@@ -108,3 +135,15 @@ void RegPolygon::getCorners(vector <Point>& pts)
         pts.push_back(Verts[i]);
     }
 }
+
+void RegPolygon::Hide(GUI* lolo)
+{
+
+    //int x = (Corner1.x <= Corner2.x) ? Corner1.x : Corner2.x; x += this->ShpGfxInfo.BorderWdth;
+    //int y = (Corner1.y <= Corner2.y) ? Corner1.y : Corner2.y; y += this->ShpGfxInfo.BorderWdth;
+    //int width = abs(Corner1.x - Corner2.x); width -= 2 * this->ShpGfxInfo.BorderWdth;
+    //int length = abs(Corner1.y - Corner2.y); length -= 2 * this->ShpGfxInfo.BorderWdth;
+
+    //lolo->StickImage_(x, y, 20, 20);
+}
+
