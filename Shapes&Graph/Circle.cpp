@@ -56,6 +56,7 @@ void Circle::Move(int dx, int dy)
 shape* Circle::getCopy()
 {
 	return new Circle(Corner1, Corner2, ShpGfxInfo);
+
 }
 
 void Circle::Paste(int x, int y)

@@ -53,6 +53,7 @@ public:
 	void DeleteSelectedShapes();
 	vector <shape*> getClipboard();
 	void opCopy();
+	void opCut();
 	void getPaste(int,int,int&);
 	void ChangeFillClr(color);
 	void SetSelectedFillState(bool);

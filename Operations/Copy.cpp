@@ -9,7 +9,10 @@ void Copy::Execute()
 	
 	Graph* pGr = pControl->getGraph();
 	//pGr->getClipboard().clear();
+	
 	pGr->opCopy();
+	
+	//pGr->DeleteSelectedShapes();
 	GUI* pUI = pControl->GetUI();
 	pUI->PrintMessage("The shape was copied!");
 

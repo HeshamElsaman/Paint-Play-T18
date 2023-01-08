@@ -19,6 +19,7 @@
 #include "Operations/opRedo.h"
 #include "Operations/opRotate.h"
 #include "Operations/Copy.h"
+#include "Operations/Cut.h"
 #include "Operations/opSave.h"
 #include "Operations/opChngToPlayMode.h"
 #include "Operations/opExit.h"
@@ -142,6 +143,9 @@ operation* controller::createOperation(operationType OpType)
 			break;
 		case COPY:
 			pOp = new Copy(this);
+			break;
+		case CUT:
+			pOp = new Cut(this);
 			break;
 		case PASTE:
 			pOp = new opPaste(this);

@@ -18,10 +18,12 @@ void opPaste::Execute()
 		
 		pUI->GetPointClicked(x, y);
 		pGr->getPaste(x, y, size);
+		
 		pControl->UpdateInterface();
 		
 
 	} while (size != 0);
+	
 	pUI->PrintMessage("Select a point to draw!");
 }
 void opPaste::Undo() {};

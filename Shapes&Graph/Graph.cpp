@@ -149,9 +149,28 @@ void Graph::opCopy()
 		if (shapePointer->IsSelected() && !(shapePointer->IsDeleted()))
 		{
 			Clipboard.push_back(shapePointer->getCopy());
+			//shapesList.erase(find(shapesList.begin(), shapesList.end(), shapePointer));
+			
+		}
+		
+	}
+}
+void Graph::opCut()
+{
+	
+	{
+		if (!(shapesList.empty()))
+		{
+			for (int i = 0; i < shapesList.size(); i++) {
+				if (shapesList[i]->IsSelected()) {
+					Clipboard.push_back(shapesList[i]);
+					shapesList.erase(find(shapesList.begin(), shapesList.end(), shapesList[i]));
+				}
+			}
 		}
 	}
 }
+
 void Graph::getPaste(int x,int y,int& size)
 {
 	if (Clipboard.size() == 0)
