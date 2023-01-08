@@ -100,6 +100,21 @@ void Graph::Draw(GUI* pUI)
 			}
 		}
 	}
+	if (!(newshapesList.empty()))
+	{
+		for (int i = 0; i < newshapesList.size(); i++)
+		{
+			/*if (((shapesList[i])->getID()) != (i + 1)) {
+				(shapesList[i])->setID(i + 1);
+			}*/
+
+			if (!(newshapesList[i]->IsDeleted()))
+			{
+				newshapesList[i]->Draw(pUI);
+				//num++;
+			}
+		}
+	}
 	if (shpnum != num) shpnum = num;
 }
 
@@ -137,6 +152,16 @@ shape* Graph::GetSelectedShape(vector <shape*>& slctdshps) const
 vector <shape*> Graph::GetShapesVector() const
 {
 	return shapesList;
+}
+
+vector <shape*> Graph::GetHiddenShapesVector()const
+{
+	return HiddenShapes;
+}
+
+vector <shape*>& Graph::GetNewShapesList()
+{
+	return newshapesList;
 }
 
 

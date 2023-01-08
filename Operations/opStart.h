@@ -1,13 +1,12 @@
-
 #pragma once
 #include "../Operations/operation.h"
 
 //Add ChngDrawClr operation class
-class opUnHide : public operation
+class Start : public operation
 {
 public:
-	opUnHide(controller* pCont);
-	virtual ~opUnHide();
+	Start(controller* pCont);
+	virtual ~Start();
 
 	//Add ChngGenDrawClr to the controller
 	virtual void Execute();

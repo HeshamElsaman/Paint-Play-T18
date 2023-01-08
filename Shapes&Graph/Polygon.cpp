@@ -146,13 +146,23 @@ void PolyGon::getCorners(vector <Point>& pts)
     }
 }
 
+void PolyGon::setCom(Point p)
+{
+    com = p;
+}
+Point PolyGon::getCom()
+{
+    return com;
+}
+
 void PolyGon::Hide(GUI* lolo)
 {
-    /*
-    int x = (Corner1.x <= Corner2.x) ? Corner1.x : Corner2.x; x += this->ShpGfxInfo.BorderWdth;
-    int y = (Corner1.y <= Corner2.y) ? Corner1.y : Corner2.y; y += this->ShpGfxInfo.BorderWdth;
-    int width = abs(Corner1.x - Corner2.x); width -= 2 * this->ShpGfxInfo.BorderWdth;
-    int length = abs(Corner1.y - Corner2.y); length -= 2 * this->ShpGfxInfo.BorderWdth;
+    ShpGfxInfo.IsHidden = true;
+    img = 1;
+}
 
-    lolo->StickImage_(x, y, 20, 20);*/
+void PolyGon::UnHide(GUI* lolo)
+{
+    ShpGfxInfo.IsHidden = false;
+    img = 1;
 }

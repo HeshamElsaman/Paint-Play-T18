@@ -21,9 +21,12 @@ public:
 	shape* getCopy();
 	void setCorners(vector <Point>) override;
 	void getCorners(vector <Point>&) override;
+	void setCom(Point);
+	Point getCom();
 	//Point GetCenter(GUI*);
 	vector <Point*> GetPoints()const;
 	void Hide(GUI*) /*override*/;
+	void UnHide(GUI*);
 	//void UnHide(GUI* pUI) /*override*/;
 	//void Duplicate(GUI* pUI)/*override*/;
 };

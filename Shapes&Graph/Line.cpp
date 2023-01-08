@@ -33,12 +33,6 @@ void Line::Draw(GUI* pUI) const
 {
 	//Call Output::DrawLine to draw a line on the screen	
 	pUI->DrawLine(Corner1, Corner2, ShpGfxInfo);
-}
-
-void Line::Drawdouble(GUI* pUI) const
-{
-	//Call Output::DrawRect to draw a rectangle on the screen	
-	pUI->DrawRect(Corner1, Corner2, ShpGfxInfo);
 
 	if (ShpGfxInfo.imgSticked)
 	{
@@ -47,6 +41,31 @@ void Line::Drawdouble(GUI* pUI) const
 		int width = abs(Corner1.x - Corner2.x); width -= 2 * this->ShpGfxInfo.BorderWdth;
 		int length = abs(Corner1.y - Corner2.y); length -= 2 * this->ShpGfxInfo.BorderWdth;
 		pUI->StickImage(img, x, y, length, width);
+	}
+
+	if (ShpGfxInfo.IsHidden)
+	{
+		int x = (Corner1.x <= Corner2.x) ? Corner1.x : Corner2.x;
+		int y = (Corner1.y <= Corner2.y) ? Corner1.y : Corner2.y;
+		int width = abs(Corner1.x - Corner2.x);
+		int length = abs(Corner1.y - Corner2.y);
+
+		pUI->StickImage(img, x, y, length, width);
+
+	}
+}
+void Line::Drawdouble(GUI * pUI) const
+{
+	//Call Output::DrawRect to draw a rectangle on the screen	
+	pUI->DrawRect(Corner1, Corner2, ShpGfxInfo);
+
+	if (ShpGfxInfo.imgSticked)
+	{
+		int x = (Corner1.x <= Corner2.x) ? Corner1.x : Corner2.x; x += this->ShpGfxInfo.BorderWdth;
+		int y = (Corner1.y <= Corner2.y) ? Corner1.y : Corner2.y; y += this->ShpGfxInfo.BorderWdth;
+		int width = abs(Corner1.x - Corner2.x); width += 2 * this->ShpGfxInfo.BorderWdth;
+		int length = abs(Corner1.y - Corner2.y); length += 2 * this->ShpGfxInfo.BorderWdth;
+		pUI->StickImage(img, x+2, y+2, length, width);
 	}
 }
 
@@ -118,13 +137,25 @@ void Line::getCorners(vector <Point>& pts)
 	pts.push_back(Corner2);
 }
 
+void Line::setCom(Point p)
+{
+	com = p;
+}
+Point Line::getCom()
+{
+	return com;
+}
+
 void Line::Hide(GUI* lolo)
 {
 
-	int x = (Corner1.x <= Corner2.x) ? Corner1.x : Corner2.x; x += this->ShpGfxInfo.BorderWdth;
-	int y = (Corner1.y <= Corner2.y) ? Corner1.y : Corner2.y; y += this->ShpGfxInfo.BorderWdth;
-	int width = abs(Corner1.x - Corner2.x); width -= 2 * this->ShpGfxInfo.BorderWdth;
-	int length = abs(Corner1.y - Corner2.y); length -= 2 * this->ShpGfxInfo.BorderWdth;
+	ShpGfxInfo.IsHidden = true;
+	img = 1;
+}
 
-	lolo->StickImage_(x, y, 20, 20);
+void Line::UnHide(GUI* lolo)
+{
+
+	ShpGfxInfo.IsHidden = false;
+	img = 1;
 }

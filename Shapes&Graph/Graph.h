@@ -54,7 +54,9 @@ public:
 	shape* Getshape(int x, int y) const; //Search for a shape given a point inside the shape
 	void GetSelectedShapes(vector <shape*>&) const;		//Modifies a vector of pointers to the currently selected shapes
 	shape* GetSelectedShape(vector <shape*>&) const;
-	vector <shape*> GetShapesVector() const;         // return the vector of shapes
+	vector <shape*> GetShapesVector() const; // return the vector of shapes
+	vector <shape*> GetHiddenShapesVector()const;
+	vector <shape*>& GetNewShapesList();
 	void AddSelectedShape(shape*);
 	void ClearSelectedShapes();
 	void DeleteSelectedShapes();

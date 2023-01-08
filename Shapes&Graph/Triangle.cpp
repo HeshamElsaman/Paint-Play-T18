@@ -38,6 +38,52 @@ void Triangle::Draw(GUI* pUI) const
 {
 	//Call Output::DrawTriangle to draw a triangle on the screen	
 	pUI->DrawTriangle(Corner1, Corner2, Corner3, ShpGfxInfo);
+
+	if (ShpGfxInfo.imgSticked)
+	{
+		if ((Corner1.x > Corner2.x) && (Corner2.x > Corner3.x)&&(Corner1.y>Corner2.y)&&(Corner2.y > Corner3.y))
+		{
+			int x = (Corner1.x <= Corner2.x) ? Corner1.x : Corner2.x;
+			int y = (Corner1.y <= Corner2.y) ? Corner1.y : Corner2.y;
+			int width = abs(Corner1.x - Corner2.x);
+			int length = abs(Corner1.y - Corner2.y);
+			pUI->StickImage(img, x, y, length, width);
+
+		}
+
+		if ((Corner2.x > Corner3.x) && (Corner3.x > Corner1.x) && (Corner2.y > Corner3.y) && (Corner3.y > Corner1.y))
+		{
+			int x = (Corner2.x <= Corner3.x) ? Corner2.x : Corner3.x;
+			int y = (Corner2.y <= Corner3.y) ? Corner2.y : Corner3.y;
+			int width = abs(Corner2.x - Corner3.x);
+			int length = abs(Corner2.y - Corner3.y);
+			pUI->StickImage(img, x, y, length, width);
+
+		}
+
+	}
+
+	if (ShpGfxInfo.IsHidden)
+	{
+		Point Ps[3] = { Corner1, Corner2, Corner3 };
+		int x_min = Corner1.x, y_min = Corner1.y, x_max = 0, y_max = 0;
+		for (int i = 0; i < 3; i++) {
+			if (Ps[i].x >= x_max) {
+				x_max = Ps[i].x;
+			}
+			if (Ps[i].y >= y_max) {
+				y_max = Ps[i].y;
+			}
+			if (Ps[i].x <= x_min) {
+				x_min = Ps[i].x;
+			}
+			if (Ps[i].y <= y_min) {
+				y_min = Ps[i].y;
+			}
+		}
+		pUI->StickImage(img, x_min, y_min, abs(y_max - y_min)+5, abs(x_max - x_min)+5);
+	}
+
 }
 
 void Triangle::Drawdouble(GUI* pUI) const
@@ -130,13 +176,25 @@ void Triangle::getCorners(vector <Point>& pts)
 	pts.push_back(Corner3);
 }
 
+void Triangle::setCom(Point p)
+{
+	com = p;
+}
+Point Triangle::getCom()
+{
+	return com;
+}
+
 void Triangle::Hide(GUI* lolo)
 {
 
-	int x = (Corner1.x <= Corner2.x) ? Corner1.x : Corner2.x; x += this->ShpGfxInfo.BorderWdth;
-	int y = (Corner1.y <= Corner2.y) ? Corner1.y : Corner2.y; y += this->ShpGfxInfo.BorderWdth;
-	int width = abs(Corner1.x - Corner2.x); width -= 2 * this->ShpGfxInfo.BorderWdth;
-	int length = abs(Corner1.y - Corner2.y); length -= 2 * this->ShpGfxInfo.BorderWdth;
+	ShpGfxInfo.IsHidden = true;
+	img = 1;
+}
 
-	lolo->StickImage_(x, y, 20, 20);
+void Triangle::UnHide(GUI* lolo)
+{
+
+	ShpGfxInfo.IsHidden = false;
+	img = 1;
 }

@@ -14,6 +14,7 @@ protected:
 	int ID;		//Each shape has an ID
 	GfxInfo ShpGfxInfo;	//shape graphis info
 	int img;
+	
 	/// Add more parameters if needed.
 
 public:
@@ -56,7 +57,8 @@ public:
 
 	virtual void setCorners(vector <Point>) = 0;
 	virtual void getCorners(vector <Point>&) = 0;
-
+	virtual void setCom(Point) = 0;
+	virtual Point getCom() = 0;
 	//virtual Point GetCenter() = 0;   //   to get the points of the shape4
 
 	
@@ -76,7 +78,7 @@ public:
 	//virtual void PrintInfo(Output* pOut) = 0;	//print all shape info on the status bar
 
 	virtual void Hide(GUI*) = 0;
-	/*virtual*/ //void UnHide(GUI* pUI) /*= 0*/;
+	virtual void UnHide(GUI* pUI) = 0;
 
 	
 

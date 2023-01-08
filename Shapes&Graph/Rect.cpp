@@ -48,6 +48,15 @@ void Rect::Draw(GUI* pUI) const
 		int length = abs(Corner1.y - Corner2.y); length -= 2 * this->ShpGfxInfo.BorderWdth;
 		pUI->StickImage(img, x, y, length, width);
 	}
+	if (ShpGfxInfo.IsHidden)
+	{
+		int x = (Corner1.x <= Corner2.x) ? Corner1.x : Corner2.x;
+		int y = (Corner1.y <= Corner2.y) ? Corner1.y : Corner2.y;
+		int width = abs(Corner1.x - Corner2.x);
+		int length = abs(Corner1.y - Corner2.y);
+		pUI->StickImage(img, x, y, length, width);
+	}
+
 }
 
 void Rect::Drawdouble(GUI* pUI) const
@@ -134,6 +143,14 @@ void Rect::getCorners(vector <Point>& pts)
 	pts.push_back(Corner2);
 }
 
+void Rect::setCom(Point p)
+{
+	com = p;
+}
+Point Rect::getCom()
+{
+	return com;
+}
 
 
 vector <Point*> Rect::GetPoints()const
@@ -160,18 +177,14 @@ vector <Point*> Rect::GetPoints()const
 
 void Rect::Hide(GUI* lolo )
 {
-
-	int x = (Corner1.x <= Corner2.x) ? Corner1.x : Corner2.x; x += this->ShpGfxInfo.BorderWdth;
-	int y = (Corner1.y <= Corner2.y) ? Corner1.y : Corner2.y; y += this->ShpGfxInfo.BorderWdth;
-	int width = (Corner1.x - Corner2.x); width += 2 * this->ShpGfxInfo.BorderWdth;
-	int length = (Corner1.y - Corner2.y); length += 2 * this->ShpGfxInfo.BorderWdth;
-	
-	lolo->StickImage(1,x, y, length, width);
+	ShpGfxInfo.IsHidden = true;
+	img = 1;
 }
 
 
-
-/*void Rect::UnHide(GUI* pUI)
+void Rect::UnHide(GUI* lolo)
 {
-	pUI->DrawRect(Corner1, Corner2, ShpGfxInfo);
-}*/
+
+	ShpGfxInfo.IsHidden = false;
+	img = 1;
+}

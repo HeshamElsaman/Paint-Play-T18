@@ -9,7 +9,7 @@
 #include "Operations/opAddPolygon.h"
 #include "Operations/opAddRegPolygon.h"
 #include "Operations/opStickImage.h"
-#include "Operations/opSelect.h"
+#include "Operations/Select.h"
 #include "Operations/opDrag.h"
 #include "Operations/opChngFillClr.h"
 #include "Operations/opChngDrawClr.h"
@@ -20,13 +20,13 @@
 #include "Operations/opHide.h"
 #include "Operations/opUnHide.h"
 #include "Operations/opDuplicate.h"
-//#include "Operations/opStart.h"
+#include "Operations/opStart.h"
 #include "Operations/opRotate.h"
 #include "Operations/opResize.h"
 #include "Operations/Copy.h"
 #include "Operations/opSave.h"
 #include "Operations/opZoomIn.h"
-//#include "Operations/opZoomOut.h"
+#include "Operations/opZoomOut.h"
 #include "Operations/opSendToBack.h"
 #include "Operations/opChngToPlayMode.h"
 #include "Operations/opExit.h"
@@ -187,32 +187,31 @@ operation* controller::createOperation(operationType OpType)
 			pOp = new ZoomIn(this);
 			break;
 
-		/*case ZOOM_OUT:
+		case ZOOM_OUT:
 			pOp = new ZoomOut(this);
-			break;*/
+			break;
 
 		case SEND_TO_BACK:
 			pOp = new SendToBack(this);
-			sUndo.push(pOp);
-			ClearRedo();
+			
 			break;
 
-			/*case START:
+			case START:
 			pOp = new Start(this);
-			break;*/
+			break;
 
 		case HIDE:
 			pOp = new opHide(this);
 			break;
 
-			/*case UNHIDE:
+			case UNHIDE:
 				pOp = new opUnHide(this);
-				break;*/
+				break;
 
 		case DUBLICATE:
 			pOp = new opDuplicate(this);
-			sUndo.push(pOp);
-			ClearRedo();
+			/*sUndo.push(pOp);
+			ClearRedo();*/
 			break;
 
 

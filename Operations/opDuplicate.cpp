@@ -19,31 +19,38 @@ opDuplicate::~opDuplicate()
 void opDuplicate::Execute()
 {
 
+	Point p;
+
 	GUI* pUI = pControl->GetUI();
 	Graph* pGr = pControl->getGraph();
 
-
-	//vector <shape*> HideCards; // A new  vector for the cards on the shapes.
-
+	pUI->GetPointClicked(p.x, p.y);
 
 
-	vector <shape*> shapes = pGr->GetShapesVector();//Get the shapes vector
+	 // A new  vector for the cards on the shapes.
 
 
 
-	for (int i = 0; i < shapes.size(); i++)
+	//Get the shapes vector
+
+
+
+	for (int i = 0; i < pGr->GetShapesVector().size(); i++)
 	{
+		shape* shp;
 
+		shp = pGr->GetShapesVector()[i];//->Draw(pUI);
 
-		shapes[i]->Drawdouble(pUI);
+		shp = shp->getCopy();
+		//pGr->GetNewShapesList().
+		pGr->GetNewShapesList().push_back(shp);
 
-
+		pGr->GetNewShapesList()[i]->Move(50, 10);
 
 		//HideCards.emplace_back(pUI);
 
-
 	}
-
+	
 
 
 }

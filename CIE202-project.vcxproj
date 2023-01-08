@@ -131,6 +131,7 @@
   <ItemGroup>
     <ClCompile Include="CMUgraphicsLib\auxil.cpp" />
     <ClCompile Include="CMUgraphicsLib\CMUgraphics.cpp" />
+    <ClCompile Include="CMUgraphicsLib\colors.cpp" />
     <ClCompile Include="CMUgraphicsLib\image.cpp" />
     <ClCompile Include="CMUgraphicsLib\jpegload.c" />
     <ClCompile Include="CMUgraphicsLib\keyqueue.cpp" />
@@ -169,9 +170,13 @@
     <ClCompile Include="controller.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Operations\opDrag.cpp" />
+    <ClCompile Include="Operations\opDuplicate.cpp" />
+    <ClCompile Include="Operations\opHide.cpp" />
     <ClCompile Include="Operations\opRedo.cpp" />
     <ClCompile Include="Operations\opResize.cpp" />
     <ClCompile Include="Operations\opRotate.cpp" />
+    <ClCompile Include="Operations\opSendToBack.cpp" />
+    <ClCompile Include="Operations\opStart.cpp" />
     <ClCompile Include="Operations\opStickImage.cpp" />
     <ClCompile Include="Operations\opChngPenWidth.cpp" />
     <ClCompile Include="Operations\opAddCircle.cpp" />
@@ -189,7 +194,10 @@
     <ClCompile Include="Operations\opExit.cpp" />
     <ClCompile Include="Operations\opSave.cpp" />
     <ClCompile Include="Operations\opUndo.cpp" />
-    <ClCompile Include="Operations\opSelect.cpp" />
+    <ClCompile Include="Operations\opZoonIn.cpp" />
+    <ClCompile Include="Operations\Select.cpp" />
+    <ClCompile Include="Operations\opZoomOut.cpp" />
+    <ClCompile Include="Operations\opUnHide.cpp" />
     <ClCompile Include="Shapes&amp;Graph\Circle.cpp" />
     <ClCompile Include="Shapes&amp;Graph\Graph.cpp" />
     <ClCompile Include="Shapes&amp;Graph\Line.cpp" />
@@ -227,9 +235,13 @@
     <ClInclude Include="controller.h" />
     <ClInclude Include="DEFS.h" />
     <ClInclude Include="Operations\opDrag.h" />
+    <ClInclude Include="Operations\opDuplicate.h" />
+    <ClInclude Include="Operations\opHide.h" />
     <ClInclude Include="Operations\opRedo.h" />
     <ClInclude Include="Operations\opResize.h" />
     <ClInclude Include="Operations\opRotate.h" />
+    <ClInclude Include="Operations\opSendToBack.h" />
+    <ClInclude Include="Operations\opStart.h" />
     <ClInclude Include="Operations\opStickImage.h" />
     <ClInclude Include="Operations\opChngToPlayMode.h" />
     <ClInclude Include="Operations\opChngPenWidth.h" />
@@ -248,7 +260,10 @@
     <ClInclude Include="Operations\opExit.h" />
     <ClInclude Include="Operations\opSave.h" />
     <ClInclude Include="Operations\opUndo.h" />
-    <ClInclude Include="Operations\opSelect.h" />
+    <ClInclude Include="Operations\opUnHide.h" />
+    <ClInclude Include="Operations\opZoomIn.h" />
+    <ClInclude Include="Operations\opZoomOut.h" />
+    <ClInclude Include="Operations\Select.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Shapes&amp;Graph\Circle.h" />
     <ClInclude Include="Shapes&amp;Graph\Graph.h" />
@@ -273,6 +288,7 @@
     <None Include="UpgradeLog.htm">
       <DeploymentContent>true</DeploymentContent>
     </None>
+    <None Include="_UpgradeReport_Files\UpgradeReport.css" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="ClassDiagram.jpg" />
@@ -281,6 +297,7 @@
     <Image Include="Images\MenuIcons\DrawMenu\Menu_Copy.jpg" />
     <Image Include="Images\MenuIcons\DrawMenu\Menu_Cut.jpg" />
     <Image Include="Images\MenuIcons\DrawMenu\Menu_Delete.jpg" />
+    <Image Include="Images\MenuIcons\DrawMenu\Menu_Duplicate.jpg" />
     <Image Include="Images\MenuIcons\DrawMenu\Menu_Exit.jpg" />
     <Image Include="Images\MenuIcons\DrawMenu\Menu_FillColor.jpg" />
     <Image Include="Images\MenuIcons\DrawMenu\Menu_Line.jpg" />
@@ -292,21 +309,40 @@
     <Image Include="Images\MenuIcons\DrawMenu\Menu_Rect.JPG" />
     <Image Include="Images\MenuIcons\DrawMenu\Menu_Redo.jpg" />
     <Image Include="Images\MenuIcons\DrawMenu\Menu_RegPolygon.jpg" />
+    <Image Include="Images\MenuIcons\DrawMenu\Menu_Rotate90.jpg" />
     <Image Include="Images\MenuIcons\DrawMenu\Menu_Save.jpg" />
+    <Image Include="Images\MenuIcons\DrawMenu\Menu_SendToBack.jpg" />
     <Image Include="Images\MenuIcons\DrawMenu\Menu_Square.jpg" />
     <Image Include="Images\MenuIcons\DrawMenu\Menu_StickImage.jpg" />
     <Image Include="Images\MenuIcons\DrawMenu\Menu_Switch_to_PlayMode.jpg" />
     <Image Include="Images\MenuIcons\DrawMenu\Menu_Triangle.jpg" />
     <Image Include="Images\MenuIcons\DrawMenu\Menu_Undo.jpg" />
+    <Image Include="Images\MenuIcons\DrawMenu\Menu_ZoomIn.jpg" />
+    <Image Include="Images\MenuIcons\DrawMenu\Menu_ZoomOut.jpg" />
     <Image Include="Images\MenuIcons\DrawMenu\Oval.jpg" />
     <Image Include="Images\MenuIcons\DrawOrPlay.jpg" />
     <Image Include="Images\MenuIcons\Menu_ColorPalette.jpg" />
     <Image Include="Images\MenuIcons\PlayMenu\Draw or Play.jpg" />
+    <Image Include="Images\MenuIcons\PlayMenu\Hide.jpg" />
+    <Image Include="Images\MenuIcons\PlayMenu\Match.jpg" />
+    <Image Include="Images\MenuIcons\PlayMenu\Restart.jpg" />
     <Image Include="Images\MenuIcons\PlayMenu\Start.jpg" />
+    <Image Include="Images\MenuIcons\PlayMenu\Unhide.jpg" />
+    <Image Include="Images\Menu_Duplicate.jpeg" />
+    <Image Include="Images\StickingImages\1.jpg" />
     <Image Include="Menu_Colorpallete.jpg" />
+    <Image Include="_UpgradeReport_Files\UpgradeReport_Error.png" />
+    <Image Include="_UpgradeReport_Files\UpgradeReport_Information.png" />
+    <Image Include="_UpgradeReport_Files\UpgradeReport_Success.png" />
+    <Image Include="_UpgradeReport_Files\UpgradeReport_Warning.png" />
   </ItemGroup>
   <ItemGroup>
     <Xml Include="UpgradeLog.XML" />
+    <Xml Include="_UpgradeReport_Files\UpgradeReport.xslt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="CMUgraphicsLib\Manual.txt" />
+    <Text Include="CMUgraphicsLib\Readme.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

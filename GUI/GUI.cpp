@@ -109,7 +109,11 @@ void GUI::StickImage(int img, int x, int y, int length, int width)
 	pWind->DrawImage(IMG, x, y, width, length);
 }
 ///////////////////////////////////////////////////////////////////////////////////
-
+void GUI::StickImage_(int x, int y, int length, int width)
+{
+	string IMG = "Images\\StickingImages\\" + to_string(1) + ".jpg";
+	pWind->DrawImage(IMG, x, y, width, length);
+}
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////
@@ -249,6 +253,16 @@ operationType GUI::GetUseroperation()
 
 			case ICON_LOAD:
 				return LOAD;
+
+			case ICON_ZOOM_IN:
+				return ZOOM_IN;
+
+			case ICON_ZOOM_OUT:
+				return ZOOM_OUT;
+
+			case ICON_DUBLICATE:
+				return DUBLICATE;
+		
 
 			case ICON_SWITCH_TO_PLAY:
 				return TO_PLAY;
@@ -508,6 +522,10 @@ void GUI::CreateDrawToolBar()
 	MenuIconImages[ICON_DEL] = "images\\MenuIcons\\DrawMenu\\Menu_Delete.jpg";
 	MenuIconImages[ICON_SAVE] = "images\\MenuIcons\\DrawMenu\\Menu_Save.jpg";
 	MenuIconImages[ICON_LOAD] = "images\\MenuIcons\\DrawMenu\\Menu_Load.jpg";
+	MenuIconImages[ICON_ZOOM_IN] = "images\\MenuIcons\\DrawMenu\\Menu_ZoomIn.jpg";
+	MenuIconImages[ICON_ZOOM_OUT] = "images\\MenuIcons\\DrawMenu\\Menu_ZoomOut.jpg";
+	MenuIconImages[ICON_SEND_TO_BACK] = "images\\MenuIcons\\DrawMenu\\Menu_SendToBack.jpg";
+	MenuIconImages[ICON_DUBLICATE] = "images\\MenuIcons\\DrawMenu\\Menu_Duplicate.jpg";
 	MenuIconImages[ICON_SWITCH_TO_PLAY] = "images\\MenuIcons\\DrawMenu\\Menu_Switch_To_PlayMode.jpg";
 	MenuIconImages[ICON_EXIT] = "images\\MenuIcons\\DrawMenu\\Menu_Exit.jpg";
 	

@@ -34,6 +34,7 @@ struct GfxInfo	//Graphical info common for all shapes (you may add more members)
 	bool isFilled;	//shape Filled or not
 	int BorderWdth;	//Width of shape borders
 	bool isSelected;	//true if the shape is selected.
+	bool IsHidden = false;
 	bool isDeleted = false;		//true if the shape is deleted
 	bool imgSticked = false;
 };
@@ -75,10 +76,10 @@ class GUI
 		ICON_DEL,
 		ICON_SAVE,
 		ICON_LOAD,
-		ICON_DUBLICATE,
 		ICON_ZOOM_IN,
 		ICON_ZOOM_OUT,
 		ICON_SEND_TO_BACK,
+		ICON_DUBLICATE,
 		//TODO: Add more icons names here
 		ICON_SWITCH_TO_PLAY,
 		ICON_EXIT,		//Exit icon

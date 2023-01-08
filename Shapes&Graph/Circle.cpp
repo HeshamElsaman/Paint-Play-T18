@@ -1,5 +1,6 @@
 #include "Circle.h"
 
+
 Circle::Circle(Point P1, Point P2, GfxInfo shapeGfxInfo) :shape(shapeGfxInfo)
 {
 	Corner1 = P1;
@@ -35,13 +36,21 @@ void Circle::Draw(GUI* pUI) const
 
 	if (ShpGfxInfo.imgSticked)
 	{
-		int x = (Corner1.x <= Corner2.x) ? Corner1.x : Corner2.x; x += this->ShpGfxInfo.BorderWdth;
-		int y = (Corner1.y <= Corner2.y) ? Corner1.y : Corner2.y; y += this->ShpGfxInfo.BorderWdth;
-		int width = abs(Corner1.x - Corner2.x); width -= 2 * this->ShpGfxInfo.BorderWdth;
-		int length = abs(Corner1.y - Corner2.y); length -= 2 * this->ShpGfxInfo.BorderWdth;
+		
+		int width = (abs(Corner1.x - Corner2.x) * (2))+5;// width -= 2 * this->ShpGfxInfo.BorderWdth;
+		int length = (abs(Corner1.x - Corner2.x) * 2)+5; //length -= 2 * this->ShpGfxInfo.BorderWdth;
+		int x = Corner1.x - (length/2);
+		int y = (Corner1.y + (length / 2));
 		pUI->StickImage(img, x, y, length, width);
 	}
 
+	if (ShpGfxInfo.IsHidden)
+	{
+		int d = sqrt(pow(Corner1.x - Corner2.x, 2) + pow(Corner1.y - Corner2.y, 2));
+		int x = Corner1.x - d;
+		int y = Corner1.y - d;
+		pUI->StickImage(img, x, y, 2*d, 2*d);
+	}
 
 }
 
@@ -111,14 +120,25 @@ void Circle::getCorners(vector <Point>& pts)
 	pts.push_back(Corner2);
 }
 
+void Circle::setCom(Point p)
+{
+	Corner1 = p;
+}
+Point Circle::getCom()
+{
+	return Corner1;
+}
+
 void Circle::Hide(GUI* lolo)
 {
 
-	int x = (Corner1.x <= Corner2.x) ? Corner1.x : Corner2.x; x += this->ShpGfxInfo.BorderWdth;
-	int y = (Corner1.y <= Corner2.y) ? Corner1.y : Corner2.y; y += this->ShpGfxInfo.BorderWdth;
-	int width = abs(Corner1.x - Corner2.x); width -= 2 * this->ShpGfxInfo.BorderWdth;
-	int length = abs(Corner1.y - Corner2.y); length -= 2 * this->ShpGfxInfo.BorderWdth;
-
-	lolo->StickImage_(x, y, 20, 20);
+	ShpGfxInfo.IsHidden = true;
+	img = 1;
 }
 
+void Circle::UnHide(GUI* lolo)
+{
+
+	ShpGfxInfo.IsHidden = false;
+	img = 1;
+}
