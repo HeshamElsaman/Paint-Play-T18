@@ -298,6 +298,9 @@ operationType GUI::GetUseroperation()
 			case ICON_MATCH_SHAPES:
 				return MATCH_SHAPES;
 
+			case ICON_SCRAMBLE:
+				return SCRAMBLE;
+
 			case ICON_EXIT_PLAY:
 				return EXIT_PLAY;
 
@@ -377,11 +380,11 @@ window* GUI::CreateWind(int w, int h, int x, int y) const
 
 void GUI::CreateColorPalette()
 {
-	pPalette = CreateWind(400, 300, 200, 90);
-	pPalette->ChangeTitle("Color palette");
-	pPalette->DrawImage("Images\\MenuIcons\\Menu_ColorPalette.jpg", 50,50);
-	pPalette->SetBuffering(0);
-	pPalette->SetWaitClose(false);
+	
+	
+	pWind->DrawImage("Images\\MenuIcons\\Menu_ColorPalette.jpg", 100,200);
+	pWind->SetBuffering(0);
+	pWind->SetWaitClose(false);
 }
 
 void GUI::CreateChooseWind()
@@ -403,17 +406,11 @@ void GUI::DeleteChooseWind()
 	}
 }
 
-void GUI::DeleteColorPalette()
-{
-	if (pPalette)
-	{
-		delete pPalette; pPalette = nullptr;
-	}
-}
+
 
 void GUI::GetPalettePointClicked(int& x, int& y) const
 {
-	pPalette->WaitMouseClick(x, y);
+	pWind->WaitMouseClick(x, y);
 }
 
 void GUI::ChangeMode()
@@ -445,7 +442,7 @@ void GUI::ChangeMode()
 
 void GUI::GetPaletteColorClicked(int x, int y, color& clr) const
 {
-	clr = pPalette->GetColor(x, y);
+	clr = pWind->GetColor(x, y);
 }
 bool GUI::getSelectMode() const
 {
@@ -547,6 +544,7 @@ void GUI::CreatePlayToolBar()
 	MenuIconImages[ICON_HIDE] = "images\\MenuIcons\\PlayMenu\\Hide.jpg";
 	MenuIconImages[ICON_UNHIDE] = "images\\MenuIcons\\PlayMenu\\Unhide.jpg";
 	MenuIconImages[ICON_MATCH_SHAPES] = "images\\MenuIcons\\PlayMenu\\Match.jpg";
+	MenuIconImages[ICON_SCRAMBLE] = "images\\MenuIcons\\PlayMenu\\Scramble.jpg";
 	MenuIconImages[ICON_RESTART] = "images\\MenuIcons\\PlayMenu\\Restart.jpg";
 	//MenuIconImages[ICON_OVAL] = "images\\MenuIcons\\DrawMenu\\Oval.jpg";
 	//MenuIconImages[ICON_POLY] = "images\\MenuIcons\\DrawMenu\\Menu_Polygon.jpg";
@@ -845,6 +843,6 @@ void GUI::DrawRegPolygon(Point* verts, int vertn, GfxInfo RegPolygonGfxInfo) con
 GUI::~GUI()
 {
 	delete pWind;
-	if (pPalette) delete pPalette;
+
 }
 

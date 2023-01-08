@@ -47,7 +47,7 @@ void opChngDrawClr::Execute()
 		pUI->setCrntDrawColor(CLR);
 		pControl->PopUndo();
 	}
-	pUI->DeleteColorPalette();
+	
 
 }
 

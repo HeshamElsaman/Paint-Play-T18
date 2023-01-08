@@ -78,6 +78,7 @@ class GUI
 		//TODO: Add more icons names here
 		ICON_HIDE,		//Recangle icon in menu
 		ICON_UNHIDE,
+		ICON_SCRAMBLE,
 		ICON_MATCH_SHAPES,
 		ICON_START,		//Circle icon in menu
 		ICON_RESTART,
@@ -119,7 +120,7 @@ class GUI
 
 	window* pWind;
 
-	window* pPalette = nullptr; // pointer for color pallete window only
+	//window* pPalette = nullptr; // pointer for color pallete window only
 	window* pChooseMode = nullptr;
 	
 
