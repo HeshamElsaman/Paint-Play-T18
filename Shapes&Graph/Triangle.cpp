@@ -56,7 +56,7 @@ bool Triangle::isInside(int X, int Y)
 	double area2 = sqrt(s2 * (s2 - inSide2) * (s2 - inSide3) * (s2 - side2));
 	double area3 = sqrt(s3 * (s3 - inSide3) * (s3 - inSide1) * (s3 - side3));
 	if ((area1 + area2 + area3) <= triarea) {
-		cout << (area1 + area2 + area3) << endl << triarea<<endl<<endl;
+		
 		return true;
 		
 	}
