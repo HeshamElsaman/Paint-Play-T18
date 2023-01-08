@@ -16,6 +16,7 @@ public:
 	virtual void Draw(GUI* pUI) const;
 	bool isInside(int X, int Y);
 	void Rotate(double) override {}
+	void Resize(double) override;
 	void Move(int, int) override;
 	shape* getCopy();
 	void setCorners(vector <Point>) override;

@@ -78,6 +78,21 @@ void Triangle::Rotate(double theta = 2 * atan(1))
 	Corner3.y = sin(theta) * (gen.x - com.x) + cos(theta) * (gen.y - com.y) + com.y;
 }
 
+void Triangle::Resize(double f)
+{
+	double d1 = pow((pow((Corner1.x - com.x), 2) + pow((com.y - Corner1.y), 2)), 0.5);
+	double d2 = pow((pow((Corner2.x - com.x), 2) + pow((com.y - Corner2.y), 2)), 0.5);
+	double d3 = pow((pow((Corner3.x - com.x), 2) + pow((com.y - Corner3.y), 2)), 0.5);
+
+	double delta1 = (f - 1) * d1;
+	double delta2 = (f - 1) * d2;
+	double delta3 = (f - 1) * d3;
+
+	moveFurther(com, Corner1, delta1);
+	moveFurther(com, Corner2, delta2);
+	moveFurther(com, Corner3, delta3);
+}
+
 void Triangle::Move(int dx, int dy)
 {
 	Corner1.x += dx;

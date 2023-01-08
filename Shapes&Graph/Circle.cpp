@@ -45,6 +45,18 @@ bool Circle::isInside(int X, int Y)
 }
 
 
+void Circle::Resize(double f)
+{
+	double d1 = pow((pow((Corner1.x - Corner2.x), 2) + pow((Corner2.y - Corner1.y), 2)), 0.5);
+	
+
+	double delta1 = (f - 1) * d1;
+	
+
+	moveFurther(Corner1, Corner2, delta1);
+	
+}
+
 void Circle::Move(int dx, int dy)
 {
 	Corner1.x += dx;

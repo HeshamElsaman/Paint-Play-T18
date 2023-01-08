@@ -16,6 +16,7 @@ public:
 	bool isInside(int X, int Y) ;
 	double polygonArea();
 	void Rotate(double) override;
+	void Resize(double) override;
 	void Move(int, int) override;
 	shape* getCopy();
 	void setCorners(vector <Point>) override;

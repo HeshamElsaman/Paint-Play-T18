@@ -18,6 +18,7 @@
 #include "Operations/opUndo.h"
 #include "Operations/opRedo.h"
 #include "Operations/opRotate.h"
+#include "Operations/opResize.h"
 #include "Operations/Copy.h"
 #include "Operations/opSave.h"
 #include "Operations/opChngToPlayMode.h"
@@ -131,6 +132,14 @@ operation* controller::createOperation(operationType OpType)
 			sUndo.push(pOp);
 			ClearRedo();
 			break;
+
+
+		case RESIZE:
+			pOp = new opResize(this);
+			sUndo.push(pOp);
+			ClearRedo();
+			break;
+
 
 		case UNDO:
 			pOp = new opUndo(this);
