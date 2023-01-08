@@ -20,12 +20,13 @@ void SendToBack::Execute()
 
 	GUI* pUI = pControl->GetUI();
 	Graph* pGr = pControl->getGraph();
-	pUI->PrintMessage("Send to Back ");
-	//shape* pSH;
-
-	pGr->Addshape(pGr->GetSelectedShape());
-
 	
+	pUI->PrintMessage("Send to Back ");
+	////shape* pSH;
+	
+	pGr->AddshapesToBack();
+
+	//
 
 	//string KEY = pUI->GetSrting();
 }

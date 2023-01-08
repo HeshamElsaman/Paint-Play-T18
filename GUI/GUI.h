@@ -2,17 +2,30 @@
 
 
 
-#include "..\CMUgraphicsLib\CMUgraphics.h"
+
 //#include "image.h"
 #include "..\Defs.h"
-
+#include "..\CMUgraphicsLib\CMUgraphics.h"
+//#include "..\Shapes&Graph\Shape.h"
 #include <string>
 using namespace std;
 
 struct Point	//To be used for shapes points
 {
 	int x, y;
+
+public:
+
+	void operator+ (int s)
+	{
+		x += s;
+		y += s;
+
+	}
+
 };
+
+
 
 struct GfxInfo	//Graphical info common for all shapes (you may add more members)
 {
@@ -61,6 +74,7 @@ class GUI
 		ICON_DEL,
 		ICON_SAVE,
 		ICON_LOAD,
+		ICON_DUBLICATE,
 		ICON_ZOOM_IN,
 		ICON_ZOOM_OUT,
 		ICON_SEND_TO_BACK,
@@ -137,7 +151,13 @@ public:
 	clicktype GetOpLastPointClickedType() const;
 	void GetKeyPressed(char&) const;
 	void open();
+
+
+	
+
 	void StickImage(int,int,int,int,int);
+	void StickImage_(int x, int y, int length, int width);
+	
 	//void draw(GUI*);
 	string GetSrting() const;	 //Returns a string entered by the user
 	operationType GetUseroperation(); //Read the user click and map to an operation

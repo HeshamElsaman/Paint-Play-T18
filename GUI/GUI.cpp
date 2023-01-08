@@ -106,6 +106,12 @@ void GUI::StickImage(int img, int x, int y, int length, int width)
 }
 ///////////////////////////////////////////////////////////////////////////////////
 
+void GUI::StickImage_( int x, int y, int length, int width)
+{
+	string IMG = "Images\\StickingImages\\" + to_string(1) + ".jpg";
+	pWind->DrawImage(IMG, x, y, width, length);
+}
+
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////
@@ -227,6 +233,9 @@ operationType GUI::GetUseroperation()
 			case ICON_ZOOM_OUT:
 				return ZOOM_OUT;
 
+			case ICON_DUBLICATE:
+				return DUBLICATE;
+
 			case ICON_SEND_TO_BACK:
 				return SEND_TO_BACK;
 
@@ -269,6 +278,9 @@ operationType GUI::GetUseroperation()
 
 			case ICON_UNHIDE:
 				return UNHIDE;
+
+			
+
 
 			case ICON_START:
 				return START;
@@ -476,6 +488,7 @@ void GUI::CreateDrawToolBar()
 	MenuIconImages[ICON_DEL] = "images\\MenuIcons\\DrawMenu\\Menu_Delete.jpg";
 	MenuIconImages[ICON_SAVE] = "images\\MenuIcons\\DrawMenu\\Menu_Save.jpg";
 	MenuIconImages[ICON_LOAD] = "images\\MenuIcons\\DrawMenu\\Menu_Load.jpg";
+	MenuIconImages[ICON_DUBLICATE] = "images\\MenuIcons\\DrawMenu\\Menu_Duplicate.jpg";
 	MenuIconImages[ICON_ZOOM_IN] = "images\\MenuIcons\\DrawMenu\\Menu_ZoomIn.jpg";
 	MenuIconImages[ICON_ZOOM_OUT] = "images\\MenuIcons\\DrawMenu\\Menu_ZoomOut.jpg";
 	MenuIconImages[ICON_SEND_TO_BACK] = "images\\MenuIcons\\DrawMenu\\Menu_SendToBack.jpg";
@@ -592,6 +605,9 @@ int GUI::getCrntPenWidth() const		//get current pen width
 //======================================================================================//
 //								shapes Drawing Functions								//
 //======================================================================================//
+
+//void GUI::DrawImage(const image* imgThis, const int iX, const int iY, const int iWidth, const int iHeight)
+
 
 void GUI::DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo) const
 {
