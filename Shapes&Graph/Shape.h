@@ -64,8 +64,11 @@ public:
 
 
 	virtual void Rotate(double) = 0;	//Rotate the shape
-	//virtual void Resize() = 0;	//Resize the shape
-	//virtual void Move() = 0;		//Move the shape
+	virtual void Resize(double) = 0;	//Resize the shape
+	void moveFurther(const Point&, Point&, double);
+	virtual void Move(int, int) = 0;		//Move the shape
+
+	virtual shape* getCopy() = 0;
 
 	virtual void Save(ofstream &OutFile) = 0;	//Save the shape parameters to the file
 	//virtual void Load(ifstream &Infile) = 0;	//Load the shape parameters to the file

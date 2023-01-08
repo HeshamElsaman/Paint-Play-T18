@@ -18,7 +18,7 @@ void Oval::Save(ofstream& OutFile)
 		<< this->Corner1.x << "  "
 		<< this->Corner1.y << "  "
 		<< this->Corner2.x << "  "
-		<< this->Corner2.y << "   "
+		<< this->Corner2.y << "  "
 		<< (int)this->ShpGfxInfo.DrawClr.ucRed << "  "
 		<< (int)this->ShpGfxInfo.DrawClr.ucBlue << "  "
 		<< (int)this->ShpGfxInfo.DrawClr.ucGreen << "  "
@@ -64,6 +64,35 @@ void Oval::Rotate(double theta = 2 * atan(1))
 	Corner2.x = cos(theta) * (gen.x - com.x) - sin(theta) * (gen.y - com.y) + com.x;
 	Corner2.y = sin(theta) * (gen.x - com.x) + cos(theta) * (gen.y - com.y) + com.y;
 }
+
+void Oval::Resize(double f)
+{
+	double d1 = pow((pow((Corner1.x - com.x), 2) + pow((com.y - Corner1.y), 2)), 0.5);
+	double d2 = pow((pow((Corner2.x - com.x), 2) + pow((com.y - Corner2.y), 2)), 0.5);
+	
+	double delta1 = (f - 1) * d1;
+	double delta2 = (f - 1) * d2;
+	
+	moveFurther(com, Corner1, delta1);
+	moveFurther(com, Corner2, delta2);
+	
+}
+
+
+void Oval::Move(int dx, int dy)
+{
+	Corner1.x += dx;
+	Corner1.y += dy;
+	Corner2.x += dx;
+	Corner2.y += dy;
+	com.x += dx;
+	com.y += dy;
+}
+shape* Oval::getCopy()
+{
+	return new Oval(Corner1, Corner2, ShpGfxInfo);
+}
+
 
 
 void Oval::setCorners(vector <Point> pts)

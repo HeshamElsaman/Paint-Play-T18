@@ -14,10 +14,10 @@ opChngDrawClr::~opChngDrawClr()
 void opChngDrawClr::Execute()
 {
 	Point P;
-
 	GUI* pUI = pControl->GetUI();
+	pUI->GetPointClicked(P.x, P.y);
 	Graph* pGr = pControl->getGraph();
-
+	pUI->FlushMQue();
 	pUI->PrintMessage("Change General Draw Color: Pick a color ! if you want to pick the white color click outside the palette");
 	pUI->CreateColorPalette();
 

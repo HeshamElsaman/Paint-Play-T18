@@ -14,10 +14,10 @@ opChngFillClr::~opChngFillClr()
 void opChngFillClr::Execute()
 {
 	Point P;
-
 	GUI* pUI = pControl->GetUI();
+	pUI->GetPointClicked(P.x, P.y);
 	Graph* pGr = pControl->getGraph();
-
+	pUI->FlushMQue();
 	pUI->PrintMessage("Change General Fill Color: Pick a color ! if you want to pick the white color click outside the palette");
 	pUI->CreateColorPalette();
 	

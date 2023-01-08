@@ -7,8 +7,8 @@ GUI::GUI()
 	//InterfaceMode = MODE_DRAW;
 
 
-	width = 1350;
-	height = 700;
+	width = 1300;
+	height = 650;
 
 
 	wx = 5;
@@ -16,8 +16,8 @@ GUI::GUI()
 
 
 	StatusBarHeight = 50;
-	ToolBarHeight = int(double(width) / DRAW_ICON_COUNT);
-	MenuIconWidth = int(double(width) / DRAW_ICON_COUNT);
+	ToolBarHeight = double(width) / DRAW_ICON_COUNT;
+	MenuIconWidth = double(width) / DRAW_ICON_COUNT;
 
 	DrawColor = BLUE;	//default Drawing color
 	BkGrndColor = WHITE;	//Background color
@@ -69,6 +69,10 @@ clicktype GUI::GetOpLastPointClickedType() const
 	return opLastPointClickedType;
 }
 
+void GUI::FlushMQue() const
+{
+	pWind->FlushMouseQueue();
+}
 //////////////////////////////////////////////////////////////////////////////////////////
 
 /*void GUI::open(const char* Pictures, imagetype itThisType = JPEG)
@@ -94,9 +98,9 @@ int GUI::GetClickType(int x, int y) const
 
 
 /////////////////////////////////////////////////////////////////////////////////////
-void GUI::GetKeyPressed(char& key) const
+keytype GUI::GetKeyPressed(char& key) const
 {
-	pWind->GetKeyPress(key);
+	return pWind->GetKeyPress(key);
 }
 ////////////////////////////////////////////////////////////////////////////
 void GUI::StickImage(int img, int x, int y, int length, int width)
@@ -105,12 +109,6 @@ void GUI::StickImage(int img, int x, int y, int length, int width)
 	pWind->DrawImage(IMG, x, y, width, length);
 }
 ///////////////////////////////////////////////////////////////////////////////////
-
-void GUI::StickImage_( int x, int y, int length, int width)
-{
-	string IMG = "Images\\StickingImages\\" + to_string(1) + ".jpg";
-	pWind->DrawImage(IMG, x, y, width, length);
-}
 
 
 
@@ -139,18 +137,41 @@ string GUI::GetSrting() const
 	}
 }
 
+buttonstate GUI::GetButtonState(button btn, int& iX, int& iY) const
+{
+	return pWind->GetButtonState(btn, iX, iY);
+}
+
 //This function reads the position where the user clicks to determine the desired operation
 operationType GUI::GetUseroperation()
 {
 	
-	int x, y;
+	int x = -1, y = -1;
+	
+	while (GetButtonState(LEFT_BUTTON, x, y) == BUTTON_UP && GetButtonState(RIGHT_BUTTON, x, y) == BUTTON_UP) {
+		if (GetButtonState(LEFT_BUTTON, x, y) == BUTTON_DOWN)
+		{
+			opLastPointClickedType = LEFT_CLICK;
+			//while(GetButtonState(LEFT_BUTTON, x, y) == BUTTON_DOWN) {}
+			//Sleep(10);
+			break;
+		}
+		if (GetButtonState(RIGHT_BUTTON, x, y) == BUTTON_DOWN)
+		{
+			opLastPointClickedType = RIGHT_CLICK;
+			//while (GetButtonState(RIGHT_BUTTON, x, y) == BUTTON_DOWN) {}
+			//Sleep(10);
+			break;
+		}
+	}
+	//while (GetButtonState(LEFT_BUTTON, x, y) == BUTTON_DOWN || GetButtonState(RIGHT_BUTTON, x, y) == BUTTON_DOWN){}
 
-	opLastPointClickedType = pWind->WaitMouseClick(x, y);	//Get the coordinates of the user click
+	//opLastPointClickedType = pWind->WaitMouseClick(x, y);	//Get the coordinates of the user click
 	
 	opLastPointClicked.x = x;
 	opLastPointClicked.y = y;
 	
-	if (InterfaceMode == MODE_DRAW)	//GUI in the DRAW mode
+	if (InterfaceMode == MODE_DRAW && x != -1 && y != -1)	//GUI in the DRAW mode
 	{
 		//[1] If user clicks on the Toolbar
 		if (y >= 0 && y < ToolBarHeight)
@@ -208,6 +229,9 @@ operationType GUI::GetUseroperation()
 			case ICON_ROTATE:
 				return ROTATE;
 
+			case ICON_RESIZE:
+				return RESIZE;
+
 			case ICON_UNDO:
 				return UNDO;
 
@@ -225,20 +249,6 @@ operationType GUI::GetUseroperation()
 
 			case ICON_LOAD:
 				return LOAD;
-				                      
-			case ICON_ZOOM_IN:
-				return ZOOM_IN;
-
-
-			case ICON_ZOOM_OUT:
-				return ZOOM_OUT;
-
-			case ICON_DUBLICATE:
-				return DUBLICATE;
-
-			case ICON_SEND_TO_BACK:
-				return SEND_TO_BACK;
-
 
 			case ICON_SWITCH_TO_PLAY:
 				return TO_PLAY;
@@ -261,7 +271,7 @@ operationType GUI::GetUseroperation()
 		return STATUS;
 	}
 	//GUI is in PLAY mode
-	else (InterfaceMode == MODE_PLAY); {
+	else (InterfaceMode == MODE_PLAY && x != -1 && y != -1); {
 		//[1] If user clicks on the Toolbar
 		if (y >= 0 && y < ToolBarHeight)
 		{
@@ -278,9 +288,6 @@ operationType GUI::GetUseroperation()
 
 			case ICON_UNHIDE:
 				return UNHIDE;
-
-			
-
 
 			case ICON_START:
 				return START;
@@ -346,6 +353,10 @@ void GUI::setFillStatus(bool stat)
 void GUI::setSelectMode(bool S)
 {
 	MultiSelectMode = S;
+}
+void GUI::setDragMode(bool D)
+{
+	DragMode = D;
 }
 
 
@@ -440,12 +451,20 @@ bool GUI::getSelectMode() const
 {
 	return MultiSelectMode;
 }
+bool GUI::getDragMode() const
+{
+	return DragMode;
+}
 //////////////////////////////////////////////////////////////////////////////////////////
 void GUI::CreateStatusBar() const
 {
 	pWind->SetPen(StatusBarColor, 1);
 	pWind->SetBrush(StatusBarColor);
 	pWind->DrawRectangle(0, height - StatusBarHeight, width, height);
+}
+void GUI::CreateCards()
+{
+
 }
 //////////////////////////////////////////////////////////////////////////////////////////
 void GUI::ClearStatusBar() const
@@ -482,16 +501,13 @@ void GUI::CreateDrawToolBar()
 	MenuIconImages[ICON_CUT] = "images\\MenuIcons\\DrawMenu\\Menu_Cut.jpg";
 	MenuIconImages[ICON_PASTE] = "images\\MenuIcons\\DrawMenu\\Menu_Paste.jpg";
 	MenuIconImages[ICON_ROTATE] = "images\\MenuIcons\\DrawMenu\\Menu_Rotate90.jpg";
+	MenuIconImages[ICON_RESIZE] = "images\\MenuIcons\\DrawMenu\\Menu_Resize.jpg";
 	MenuIconImages[ICON_UNDO] = "images\\MenuIcons\\DrawMenu\\Menu_Undo.jpg";
 	MenuIconImages[ICON_REDO] = "images\\MenuIcons\\DrawMenu\\Menu_Redo.jpg";
 	MenuIconImages[ICON_STICK_IMG] = "images\\MenuIcons\\DrawMenu\\Menu_StickImage.jpg";
 	MenuIconImages[ICON_DEL] = "images\\MenuIcons\\DrawMenu\\Menu_Delete.jpg";
 	MenuIconImages[ICON_SAVE] = "images\\MenuIcons\\DrawMenu\\Menu_Save.jpg";
 	MenuIconImages[ICON_LOAD] = "images\\MenuIcons\\DrawMenu\\Menu_Load.jpg";
-	MenuIconImages[ICON_DUBLICATE] = "images\\MenuIcons\\DrawMenu\\Menu_Duplicate.jpg";
-	MenuIconImages[ICON_ZOOM_IN] = "images\\MenuIcons\\DrawMenu\\Menu_ZoomIn.jpg";
-	MenuIconImages[ICON_ZOOM_OUT] = "images\\MenuIcons\\DrawMenu\\Menu_ZoomOut.jpg";
-	MenuIconImages[ICON_SEND_TO_BACK] = "images\\MenuIcons\\DrawMenu\\Menu_SendToBack.jpg";
 	MenuIconImages[ICON_SWITCH_TO_PLAY] = "images\\MenuIcons\\DrawMenu\\Menu_Switch_To_PlayMode.jpg";
 	MenuIconImages[ICON_EXIT] = "images\\MenuIcons\\DrawMenu\\Menu_Exit.jpg";
 	
@@ -605,9 +621,6 @@ int GUI::getCrntPenWidth() const		//get current pen width
 //======================================================================================//
 //								shapes Drawing Functions								//
 //======================================================================================//
-
-//void GUI::DrawImage(const image* imgThis, const int iX, const int iY, const int iWidth, const int iHeight)
-
 
 void GUI::DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo) const
 {

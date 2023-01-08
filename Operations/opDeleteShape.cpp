@@ -12,6 +12,10 @@ opDeleteShape::~opDeleteShape()
 //Execute the operation
 void opDeleteShape::Execute()
 {
+	
+	GUI* pUI = pControl->GetUI();
+	Point P; pUI->GetPointClicked(P.x, P.y);
+	
 	Graph* pGr = pControl->getGraph();
 	
 

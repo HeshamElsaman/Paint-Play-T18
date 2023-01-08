@@ -16,7 +16,10 @@ struct ChngTr
 	vector <int> ids;					//to get the id of the changed shapes
 	vector <GfxInfo> ShpsChTr;			//to trace the changes
 	vector <int> imgs;					//to record the sticked images for each shape
-	
+	int x_displacement;
+	int y_displacement;
+	double ResizeFactor;
+
 	//most probably won't be needed
 	vector <int> vNUMs;					//to get the numbers of vertices
 	vector <vector <Point>> MultiVerts;	//to record the exact vertices
@@ -34,6 +37,7 @@ private:
 	vector <shape*> selectedShapes;	//pointer to the currently selected shape
 	vector <ChngTr*> cUndo;
 	vector <ChngTr*> cRedo;
+	vector <shape*> Clipboard;
 	int shpnum;					//to record the number of undeleted shapes
 public:
 	Graph();
@@ -54,6 +58,7 @@ public:
 	void AddSelectedShape(shape*);
 	void ClearSelectedShapes();
 	void DeleteSelectedShapes();
+	void Copy();
 	void ChangeFillClr(color);
 	void SetSelectedFillState(bool);
 	void ChangeDrawClr(color);
@@ -62,7 +67,10 @@ public:
 	void StickImg(int);
 	void ChangePenWidth(int num);
 	void Rotate90(double);
+	void Resize(double);
 	void ReleaseShapesMemory();
+	int Getshpnum() const;
+	vector <shape*> getshapelist() const;
 
 	void Save(ofstream& outfile);	//Save all shapes to a file
 	//void load(ifstream& inputfile);	//Load all shapes from a file

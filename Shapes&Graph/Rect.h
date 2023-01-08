@@ -16,6 +16,9 @@ public:
 	virtual void Drawdouble(GUI* pUI) const;
 	bool isInside(int X, int Y);
 	void Rotate(double) override;
+	void Move(int, int) override;
+	void Resize(double) override;
+	shape* getCopy();
 	void setCorners(vector <Point>) override;
 	void getCorners(vector <Point>&) override;
 	//Point GetCenter(GUI*);

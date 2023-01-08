@@ -182,6 +182,16 @@ void Graph::DeleteSelectedShapes()
 	ClearSelectedShapes();
 	
 }
+void Graph::Copy()
+{
+	for (auto shapePointer : shapesList)
+	{
+		if (shapePointer->IsSelected())
+		{
+			Clipboard.push_back(shapePointer->getCopy());
+		}
+	}
+}
 
 void Graph::ChangeFillClr(color clr)
 {
@@ -322,6 +332,16 @@ void Graph::ReleaseShapesMemory()
 	}
 }
 
+int Graph::Getshpnum() const
+{
+	return shpnum;
+}
+
+vector <shape*> Graph::getshapelist() const
+{
+	return shapesList;
+}
+
 void Graph::StickImg(int img)
 {
 	if (!(shapesList.empty()))
@@ -346,6 +366,20 @@ void Graph::Rotate90(double theta = 2 * atan(1))
 			if (shapePointer->IsSelected() && !(shapePointer->IsDeleted()))
 			{
 				shapePointer->Rotate(theta);
+			}
+		}
+	}
+}
+
+void Graph::Resize(double scale)
+{
+	if (!(shapesList.empty()))
+	{
+		for (shape* shapePointer : shapesList)
+		{
+			if (shapePointer->IsSelected() && !(shapePointer->IsDeleted()))
+			{
+				shapePointer->Resize(scale);
 			}
 		}
 	}

@@ -14,10 +14,19 @@ opChngToPlayMode::~opChngToPlayMode()
 //Execute the operation
 void opChngToPlayMode::Execute()
 {
-	Point P;
-
-	GUI* pUI = pControl->GetUI();
 	
+	GUI* pUI = pControl->GetUI();
+	Point P; pUI->GetPointClicked(P.x, P.y);
+	//Graph* pGr = pControl->getGraph();
+
+	//pUI->PrintMessage("Change The Mode To Play Mode:");
+
+	//char KEY;
+
+	//pUI->GetKeyPressed(KEY);
+
+	//Read click position
+
 
 	pUI->CreatePlayToolBar();
 

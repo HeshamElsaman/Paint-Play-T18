@@ -79,6 +79,34 @@ void Line::Rotate(double theta = 2 * atan(1))
 	Corner2.y = sin(theta) * (gen.x - com.x) + cos(theta) * (gen.y - com.y) + com.y;
 }
 
+void Line::Resize(double f)
+{
+	double d1 = pow((pow((Corner1.x - com.x), 2) + pow((com.y - Corner1.y), 2)), 0.5);
+	double d2 = pow((pow((Corner2.x - com.x), 2) + pow((com.y - Corner2.y), 2)), 0.5);
+
+	double delta1 = (f - 1) * d1;
+	double delta2 = (f - 1) * d2;
+
+	moveFurther(com, Corner1, delta1);
+	moveFurther(com, Corner2, delta2);
+}
+
+
+void Line::Move(int dx, int dy)
+{
+	Corner1.x += dx;
+	Corner1.y += dy;
+	Corner2.x += dx;
+	Corner2.y += dy;
+	com.x += dx;
+	com.y += dy;
+}
+shape* Line::getCopy()
+{
+	return new Line(Corner1, Corner2, ShpGfxInfo);
+}
+
+
 void Line::setCorners(vector <Point> pts)
 {
 	Corner1 = pts[0];

@@ -68,6 +68,7 @@ class GUI
 		ICON_CUT,
 		ICON_PASTE,
 		ICON_ROTATE,
+		ICON_RESIZE,
 		ICON_UNDO,
 		ICON_REDO,
 		ICON_STICK_IMG,
@@ -131,6 +132,7 @@ class GUI
 	Point opLastPointClicked;
 	clicktype opLastPointClickedType;
 	bool MultiSelectMode = false;
+	bool DragMode = false;
 
 	window* pWind;
 
@@ -145,11 +147,12 @@ public:
 	// Input Functions  ---------------------------
 	void GetPointClicked(int& x, int& y) const;
 	clicktype GetOpLastPointClicked(int& x, int& y) const;
+	void FlushMQue() const;
 	bool GetFillStatus() const;
 	//Get coordinate where user clicks
 	int GetClickType(int x, int y) const;
 	clicktype GetOpLastPointClickedType() const;
-	void GetKeyPressed(char&) const;
+	keytype GetKeyPressed(char&) const;
 	void open();
 
 
@@ -160,6 +163,7 @@ public:
 	
 	//void draw(GUI*);
 	string GetSrting() const;	 //Returns a string entered by the user
+	buttonstate GetButtonState(button, int&, int&) const;
 	operationType GetUseroperation(); //Read the user click and map to an operation
 	//void GetPalettePointClicked(int& x, int& y) const;
 	void GetPaletteColorClicked(int x, int y, color&) const;
@@ -171,12 +175,15 @@ public:
 	void setCrntPenWidth(int);
 	void setSelectMode(bool);
 	bool getSelectMode() const;
+	void setDragMode(bool);
+	bool getDragMode() const;
 
 	// Output Functions  ---------------------------
 	window* CreateWind(int, int, int, int) const; //creates the application window
 	void CreateDrawToolBar();	//creates Draw mode toolbar & menu
 	void CreatePlayToolBar();	//creates Play mode toolbar & menu
 	void CreateStatusBar() const;	//create the status bar
+	void CreateCards();
 	void CreateColorPalette();
 	void DeleteColorPalette();
 	

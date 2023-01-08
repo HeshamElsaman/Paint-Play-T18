@@ -1,53 +1,60 @@
-#include "opRotate.h"
-
+#include "opResize.h"
 #include "..\controller.h"
 
 #include "..\GUI\GUI.h"
+#include <string>
 
-opRotate::opRotate(controller* pCont) :operation(pCont)
+opResize::opResize(controller* pCont) :operation(pCont)
 {}
-opRotate::~opRotate()
+opResize::~opResize()
 {}
 
 //Execute the operation
-void opRotate::Execute()
+void opResize::Execute()
 {
 	
-	GUI* pUI = pControl->GetUI();
-	Point P; pUI->GetPointClicked(P.x, P.y);
-
 	Graph* pGr = pControl->getGraph();
+	GUI* pUI = pControl->GetUI();
 	if (pGr->ShapeListStateSelected()) {
 		ChngTr* tr = new ChngTr;
 		pGr->GetSelectedShapes(tr->ShpsCh);
 		//tr->ShpsChTr.push_back(circleGfxInfo);
+		pUI->PrintMessage("Enter the rescaling value ");
+		string a = pUI->GetSrting();
+		double resize = stod(a);
 		pGr->AddUndoChngTr(tr);
-
-		pGr->Rotate90(2 * atan(1));
+		tr->ResizeFactor = resize;
+		pGr->Resize(resize);
 	}
 }
 
-void opRotate::Undo()
+void opResize::Undo()
 {
 	Graph* pGr = pControl->getGraph();
 	ChngTr* un = pGr->PopUndoChngTr();
+	double resize;
 	if (un) {
+		resize = 1.0 / (un->ResizeFactor);
 		for (shape* shpPointer : un->ShpsCh) {
-			shpPointer->Rotate(2 * atan(-1));
+			shpPointer->Resize(resize);
 		}
+		un->ResizeFactor = resize;
 		pGr->AddRedoChngTr(un);
 	}
 
 }
 
-void opRotate::Redo()
+void opResize::Redo()
 {
 	Graph* pGr = pControl->getGraph();
 	ChngTr* re = pGr->PopRedoChngTr();
+	double resize;
 	if (re) {
+		resize = 1.0 / (re->ResizeFactor);
 		for (shape* shpPointer : re->ShpsCh) {
-			shpPointer->Rotate(2 * atan(1));
+			shpPointer->Resize(resize);
 		}
+		re->ResizeFactor = resize;
 		pGr->AddUndoChngTr(re);
 	}
 }
