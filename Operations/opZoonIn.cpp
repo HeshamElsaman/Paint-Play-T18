@@ -28,13 +28,13 @@ void ZoomIn::Execute()
 	GUI* pUI = pControl->GetUI();
 	Graph* pGraph = pControl->getGraph();
 
-	vector <shape*> shapes = pGraph->GetShapesVector();
+	
 	pUI->GetPointClicked(p.x, p.y);
 
 	//vector <shape*> shapes = pGraph->GetShapesVector();
 	pUI->PrintMessage(" Zooming Out ");
 
-	for (int i = 0; i < shapes.size(); i++)
+	
 	for (int i = 0; i < pGraph->GetShapesVector().size(); i++)
 	{
 

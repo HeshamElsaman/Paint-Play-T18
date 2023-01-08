@@ -16,9 +16,10 @@ SendToBack::~SendToBack()
 //Execute the operation
 void SendToBack::Execute()
 {
-	//Point P;
+	Point P;
 
 	GUI* pUI = pControl->GetUI();
+	pUI->GetPointClicked(P.x, P.y);
 	Graph* pGr = pControl->getGraph();
 	
 	pUI->PrintMessage("Send to Back ");

@@ -9,7 +9,7 @@
 #include "Operations/opAddPolygon.h"
 #include "Operations/opAddRegPolygon.h"
 #include "Operations/opStickImage.h"
-#include "Operations/Select.h"
+#include "Operations/opSelect.h"
 #include "Operations/opDrag.h"
 #include "Operations/opChngFillClr.h"
 #include "Operations/opChngDrawClr.h"

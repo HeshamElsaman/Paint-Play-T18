@@ -21,7 +21,8 @@ void opHide::Execute()
 	
 	GUI* pUI = pControl->GetUI();
 	Graph* pGr = pControl->getGraph();
-	
+	Point P; pUI->GetPointClicked(P.x, P.y);
+
 	vector <shape*> shapes = pGr->GetShapesVector();//Get the shapes vector
 	//vector <shape*> shapes = pGr->GetShapesVector();//Get the shapes vector
 

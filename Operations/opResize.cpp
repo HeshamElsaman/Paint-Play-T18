@@ -15,6 +15,7 @@ void opResize::Execute()
 	
 	Graph* pGr = pControl->getGraph();
 	GUI* pUI = pControl->GetUI();
+	Point P; pUI->GetPointClicked(P.x, P.y);
 	if (pGr->ShapeListStateSelected()) {
 		ChngTr* tr = new ChngTr;
 		pGr->GetSelectedShapes(tr->ShpsCh);

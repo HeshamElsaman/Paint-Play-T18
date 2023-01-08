@@ -65,7 +65,6 @@
     <ClCompile Include="Operations\opSave.cpp" />
     <ClCompile Include="Operations\opUndo.cpp" />
     <ClCompile Include="Operations\opZoonIn.cpp" />
-    <ClCompile Include="Operations\Select.cpp" />
     <ClCompile Include="Operations\opZoomOut.cpp" />
     <ClCompile Include="Operations\opUnHide.cpp" />
     <ClCompile Include="Shapes&amp;Graph\Circle.cpp" />
@@ -271,6 +270,8 @@
     <ClCompile Include="Operations\opResize.cpp" />
     <ClCompile Include="Operations\opSendToBack.cpp" />
     <ClCompile Include="Operations\opStart.cpp" />
+    <ClCompile Include="Operations\opScramble.cpp" />
+    <ClCompile Include="Operations\opSelect.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h" />
@@ -324,7 +325,6 @@
     <ClInclude Include="Operations\opUnHide.h" />
     <ClInclude Include="Operations\opZoomIn.h" />
     <ClInclude Include="Operations\opZoomOut.h" />
-    <ClInclude Include="Operations\Select.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Shapes&amp;Graph\Circle.h" />
     <ClInclude Include="Shapes&amp;Graph\Graph.h" />
@@ -346,6 +346,9 @@
     <ClInclude Include="Operations\opPaste.h" />
     <ClInclude Include="Operations\opSendToBack.h" />
     <ClInclude Include="Operations\opStart.h" />
+    <ClInclude Include="Operations\Cut.h" />
+    <ClInclude Include="Operations\opScramble.h" />
+    <ClInclude Include="Operations\opSelect.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="CIE202-project.rc" />

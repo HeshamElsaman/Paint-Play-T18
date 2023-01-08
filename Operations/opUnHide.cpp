@@ -36,7 +36,7 @@ void opUnHide::Execute()
 
 
 
-	for (int i = 0; i <= shapes.size(); i++)
+	
 	for (int i = 0; i < pGr->GetHiddenShapesVector().size(); i++)
 	{
 

@@ -199,7 +199,6 @@
     <ClCompile Include="Operations\opSelect.cpp" />
     <ClCompile Include="Operations\opPaste.cpp" />
     <ClCompile Include="Operations\opZoonIn.cpp" />
-    <ClCompile Include="Operations\Select.cpp" />
     <ClCompile Include="Operations\opZoomOut.cpp" />
     <ClCompile Include="Operations\opUnHide.cpp" />
     <ClCompile Include="Shapes&amp;Graph\Circle.cpp" />
@@ -271,7 +270,6 @@
     <ClInclude Include="Operations\opUnHide.h" />
     <ClInclude Include="Operations\opZoomIn.h" />
     <ClInclude Include="Operations\opZoomOut.h" />
-    <ClInclude Include="Operations\Select.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Shapes&amp;Graph\Circle.h" />
     <ClInclude Include="Shapes&amp;Graph\Graph.h" />

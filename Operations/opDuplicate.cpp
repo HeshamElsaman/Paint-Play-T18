@@ -39,55 +39,55 @@ void opDuplicate::Execute()
 	for (int i = 0; i < shapes.size(); i++)
 	{
 
-	for (int i = 0; i < pGr->GetShapesVector().size(); i++)
-	{
-		shape* shp;
+		for (int i = 0; i < pGr->GetShapesVector().size(); i++)
+		{
+			shape* shp;
 
-		shapes[i]->Drawdouble(pUI);
-		shp = pGr->GetShapesVector()[i];//->Draw(pUI);
+			shapes[i]->Drawdouble(pUI);
+			shp = pGr->GetShapesVector()[i];//->Draw(pUI);
 
-		shp = shp->getCopy();
-		//pGr->GetNewShapesList().
-		pGr->GetNewShapesList().push_back(shp);
+			shp = shp->getCopy();
+			//pGr->GetNewShapesList().
+			pGr->GetNewShapesList().push_back(shp);
 
-		pGr->GetNewShapesList()[i]->Move(50, 10);
+			pGr->GetNewShapesList()[i]->Move(50, 10);
 
-		//HideCards.emplace_back(pUI);
-
-
-	}
-	
+			//HideCards.emplace_back(pUI);
 
 
-}
-
-void opDuplicate::Undo()
-{
-	Graph* pGr = pControl->getGraph();
-	ChngTr* un = pGr->PopUndoChngTr();
-	if (un) {
-		for (shape* shpPointer : un->ShpsCh) {
-			shpPointer->SetDeleted(0);
-			shpPointer->SetSelected(1);
-			pGr->AddSelectedShape(shpPointer);
 		}
-		pGr->AddRedoChngTr(un);
 	}
+
 
 }
 
-void opDuplicate::Redo()
-{
-	Graph* pGr = pControl->getGraph();
-	ChngTr* re = pGr->PopRedoChngTr();
-	if (re) {
-
-		for (shape* shpPointer : re->ShpsCh) {
-			shpPointer->SetDeleted(1);
-			shpPointer->SetSelected(0);
-		}
-		pGr->ClearSelectedShapes();
-
-		pGr->AddUndoChngTr(re);
-	}
-}
+//void opDuplicate::Undo()
+//{
+//	Graph* pGr = pControl->getGraph();
+//	ChngTr* un = pGr->PopUndoChngTr();
+//	if (un) {
+//		for (shape* shpPointer : un->ShpsCh) {
+//			shpPointer->SetDeleted(0);
+//			shpPointer->SetSelected(1);
+//			pGr->AddSelectedShape(shpPointer);
+//		}
+//		pGr->AddRedoChngTr(un);
+//	}
+//
+//}
+//
+//void opDuplicate::Redo()
+//{
+//	Graph* pGr = pControl->getGraph();
+//	ChngTr* re = pGr->PopRedoChngTr();
+//	if (re) {
+//
+//		for (shape* shpPointer : re->ShpsCh) {
+//			shpPointer->SetDeleted(1);
+//			shpPointer->SetSelected(0);
+//		}
+//		pGr->ClearSelectedShapes();
+//
+//		pGr->AddUndoChngTr(re);
+//	}
+//}

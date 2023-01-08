@@ -21,7 +21,6 @@ ZoomOut::~ZoomOut()
 //Execute the operation
 void ZoomOut::Execute()
 {
-	Point P;
 	Point p;
 
 	GUI* pUI = pControl->GetUI();
@@ -31,27 +30,10 @@ void ZoomOut::Execute()
 	pUI->PrintMessage("Zooming In ");
 	pUI->GetPointClicked(p.x, p.y);
 
-	string KEY = pUI->GetSrting();
 	//vector <shape*> shapes = pGraph->GetShapesVector();
 	pUI->PrintMessage(" Zooming Out ");
 
-
-
-
-
-
-	//Read click position
-
-
-	pUI->setCrntPenWidth(stoi(KEY));
-
-
-
-	//Getting the color clicked
-	if (pGr->ShapeListStateSelected()) {
-		pGr->ChangePenWidth(stoi(KEY));
-	}
-	else
+	
 	for (int i = 0; i < pGraph->GetShapesVector().size(); i++)
 	{
 		Point P; P.x = 750; P.y = 325;
@@ -62,7 +44,7 @@ void ZoomOut::Execute()
 		pGraph->GetShapesVector()[i]->getCorners(pts);
 		for (int j = 0; j < pts.size(); j++)
 		{
-		pUI->setCrntPenWidth(stoi(KEY));
+		
 			d = sqrt(pow((pts[j].x - 750), 2) + pow((pts[j].y - 325), 2));
 			delta = (f - 1) * d;
 			pGraph->GetShapesVector()[i]->moveFurther(P, pts[j], delta);
@@ -72,7 +54,7 @@ void ZoomOut::Execute()
 		comTemp.x /= double(pts.size()); comTemp.y /= double(pts.size());
 		pGraph->GetShapesVector()[i]->setCom(comTemp);
 	}
-	pUI->DeleteColorPalette();
+	
 
 
 
