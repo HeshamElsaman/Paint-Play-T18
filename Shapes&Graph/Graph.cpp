@@ -10,6 +10,14 @@ Graph::Graph()
 
 Graph::~Graph()
 {
+	if (!(Clipboard.empty()))
+	{
+		for (shape* shapePointer : Clipboard)
+		{
+			delete shapePointer; shapePointer = nullptr;
+		}
+		Clipboard.clear();
+	}
 	if(!(cUndo.empty()))
 	{
 		for (auto opPointer : cUndo) {
@@ -207,16 +215,63 @@ void Graph::DeleteSelectedShapes()
 	ClearSelectedShapes();
 	
 }
-void Graph::Copy()
+vector <shape*> Graph::getClipboard()
 {
+	return Clipboard;
+}
+void Graph::opCopy()
+{
+	if (!(Clipboard.empty()))
+	{
+		for (shape* shapePointer : Clipboard)
+		{
+			delete shapePointer; shapePointer = nullptr;
+		}
+		Clipboard.clear();
+	}
+	
 	for (auto shapePointer : shapesList)
 	{
-		if (shapePointer->IsSelected())
+		if (shapePointer->IsSelected() && !(shapePointer->IsDeleted()))
 		{
 			Clipboard.push_back(shapePointer->getCopy());
+			//shapesList.erase(find(shapesList.begin(), shapesList.end(), shapePointer));
+			
+		}
+		
+	}
+}
+void Graph::opCut()
+{
+	
+	{
+		if (!(shapesList.empty()))
+		{
+			for (int i = 0; i < shapesList.size(); i++) {
+				if (shapesList[i]->IsSelected()) {
+					Clipboard.push_back(shapesList[i]);
+					shapesList.erase(find(shapesList.begin(), shapesList.end(), shapesList[i]));
+				}
+			}
 		}
 	}
 }
+
+void Graph::getPaste(int x,int y,int& size)
+{
+	if (Clipboard.size() == 0)
+	{
+		size = 0; return;
+	}
+	
+	Clipboard.back()->Paste(x,y);
+	
+	shapesList.push_back(Clipboard.back());
+
+	Clipboard.pop_back();
+	size = Clipboard.size();
+}
+
 
 void Graph::ChangeFillClr(color clr)
 {
@@ -357,15 +412,19 @@ void Graph::ReleaseShapesMemory()
 	}
 }
 
-int Graph::Getshpnum() const
-{
-	return shpnum;
-}
+
 
 vector <shape*> Graph::getshapelist() const
 {
 	return shapesList;
 }
+
+int Graph::GetShpnum() const
+{
+	return shpnum;
+}
+
+
 
 void Graph::StickImg(int img)
 {
@@ -408,6 +467,27 @@ void Graph::Resize(double scale)
 			}
 		}
 	}
+}
+
+void Graph::ToOnePixel()
+{
+	if (!(shapesList.empty()))
+	{
+		for (shape* shapePointer : shapesList)
+		{
+			if (!(shapePointer->IsDeleted()))
+			{
+				shapePointer->ToOnePixel();
+			}
+		}
+	}
+}
+
+int Graph::grid()
+{
+	int sq_n = sqrt(shpnum);
+	int a = ((630 - 50 - 56) / sq_n);
+	return a;
 }
 
 

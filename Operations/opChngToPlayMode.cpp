@@ -16,6 +16,7 @@ void opChngToPlayMode::Execute()
 {
 	
 	GUI* pUI = pControl->GetUI();
+	Graph* pGr = pControl->getGraph();
 	Point P; pUI->GetPointClicked(P.x, P.y);
 	//Graph* pGr = pControl->getGraph();
 
@@ -26,8 +27,12 @@ void opChngToPlayMode::Execute()
 	//pUI->GetKeyPressed(KEY);
 
 	//Read click position
-
-
+	pGr->ToOnePixel();
+	for (int i = 0; i < pGr->getshapelist().size(); i++)
+	{
+		pGr->getshapelist()[i]->Resize(pGr->grid() / 2);
+	}
+	
 	pUI->CreatePlayToolBar();
 
 	//Getting the color clicked

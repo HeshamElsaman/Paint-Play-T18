@@ -125,9 +125,26 @@ void PolyGon::Move(int dx, int dy)
     }
 }
 
+void PolyGon::ToOnePixel()
+{
+}
+
 shape* PolyGon::getCopy()
 {
     return new PolyGon(Verts, VertNum, ShpGfxInfo);
+}
+
+void PolyGon::Paste(int x, int y)
+{
+    ShpGfxInfo.isSelected = false;
+    int dx, dy;
+    dx = Verts[0].x - x;
+    dy = Verts[0].y - y;
+    for (int i = 0; i < VertNum; i++)
+    {
+        Verts[i].x = Verts[i].x - dx;
+        Verts[i].y = Verts[i].y - dy;
+    }
 }
 
 

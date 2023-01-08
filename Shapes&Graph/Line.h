@@ -18,7 +18,9 @@ public:
 	void Rotate(double) override;
 	void Resize(double) override;
 	void Move(int, int) override;
+	void ToOnePixel() override;
 	shape* getCopy();
+	void Paste(int, int) ;
 	void setCorners(vector <Point>) override;
 	void getCorners(vector <Point>&) override;
 	void setCom(Point);

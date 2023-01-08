@@ -120,9 +120,26 @@ void Line::Move(int dx, int dy)
 	com.x += dx;
 	com.y += dy;
 }
+void Line::ToOnePixel()
+{
+	double d1 = pow((pow((Corner1.x - com.x), 2) + pow((com.y - Corner1.y), 2)), 0.5);
+	Resize(1 / d1);
+}
 shape* Line::getCopy()
 {
 	return new Line(Corner1, Corner2, ShpGfxInfo);
+}
+
+void Line::Paste(int x, int y)
+{
+	ShpGfxInfo.isSelected = false;
+	int dx, dy;
+	dx = Corner1.x - x;
+	dy = Corner1.y - y;
+	Corner1.x = Corner1.x - dx;
+	Corner1.y = Corner1.y - dy;
+	Corner2.x = Corner2.x - dx;
+	Corner2.y = Corner2.y - dy;
 }
 
 

@@ -78,7 +78,7 @@ void opChngFillClr::Execute()
 	
 
 
-	pUI->DeleteColorPalette();
+	
 	
 }
 

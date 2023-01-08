@@ -19,6 +19,7 @@ struct ChngTr
 	int x_displacement;
 	int y_displacement;
 	double ResizeFactor;
+	
 
 	//most probably won't be needed
 	vector <int> vNUMs;					//to get the numbers of vertices
@@ -39,6 +40,7 @@ private:
 	vector <ChngTr*> cRedo;
 	vector <shape*> Clipboard;
 	int shpnum;					//to record the number of undeleted shapes
+	
 public:
 	Graph();
 	~Graph();
@@ -60,7 +62,10 @@ public:
 	void AddSelectedShape(shape*);
 	void ClearSelectedShapes();
 	void DeleteSelectedShapes();
-	void Copy();
+	vector <shape*> getClipboard();
+	void opCopy();
+	void opCut();
+	void getPaste(int,int,int&);
 	void ChangeFillClr(color);
 	void SetSelectedFillState(bool);
 	void ChangeDrawClr(color);
@@ -70,9 +75,13 @@ public:
 	void ChangePenWidth(int num);
 	void Rotate90(double);
 	void Resize(double);
+	void ToOnePixel();
+	int grid();
 	void ReleaseShapesMemory();
-	int Getshpnum() const;
 	vector <shape*> getshapelist() const;
+	//vector <shape*> GetShapelist() const;
+	int GetShpnum() const;
+	
 
 	void Save(ofstream& outfile);	//Save all shapes to a file
 	//void load(ifstream& inputfile);	//Load all shapes from a file

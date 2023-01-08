@@ -144,9 +144,26 @@ void RegPolygon::Move(int dx, int dy)
     }
 }
 
+void RegPolygon::ToOnePixel()
+{
+    
+}
+
 shape* RegPolygon::getCopy()
 {
     return new RegPolygon(Verts,VertNum, ShpGfxInfo);
+}
+void RegPolygon::Paste(int x, int y)
+{
+    ShpGfxInfo.isSelected = false;
+    int dx, dy;
+    dx = Verts[0].x - x;
+    dy = Verts[0].y - y;
+    for (int i = 0; i < VertNum; i++)
+    {
+        Verts[i].x = Verts[i].x - dx;
+        Verts[i].y = Verts[i].y - dy;
+    }
 }
 
 

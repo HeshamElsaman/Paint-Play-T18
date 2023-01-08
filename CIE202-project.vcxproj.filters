@@ -78,6 +78,197 @@
     <ClCompile Include="Shapes&amp;Graph\Shape.cpp" />
     <ClCompile Include="Shapes&amp;Graph\Square.cpp" />
     <ClCompile Include="Shapes&amp;Graph\Triangle.cpp" />
+    <ClCompile Include="Operations\opSave.cpp" />
+    <ClCompile Include="CMUgraphicsLib\auxil.cpp">
+      <Filter>GraphicsLib</Filter>
+    </ClCompile>
+    <ClCompile Include="CMUgraphicsLib\image.cpp">
+      <Filter>GraphicsLib</Filter>
+    </ClCompile>
+    <ClCompile Include="CMUgraphicsLib\jpeg\jcomapi.c">
+      <Filter>GraphicsLib</Filter>
+    </ClCompile>
+    <ClCompile Include="CMUgraphicsLib\jpeg\jcparam.c">
+      <Filter>GraphicsLib</Filter>
+    </ClCompile>
+    <ClCompile Include="CMUgraphicsLib\jpeg\jdapimin.c">
+      <Filter>GraphicsLib</Filter>
+    </ClCompile>
+    <ClCompile Include="CMUgraphicsLib\jpeg\jdapistd.c">
+      <Filter>GraphicsLib</Filter>
+    </ClCompile>
+    <ClCompile Include="CMUgraphicsLib\jpeg\jdatasrc.c">
+      <Filter>GraphicsLib</Filter>
+    </ClCompile>
+    <ClCompile Include="CMUgraphicsLib\jpeg\jdcoefct.c">
+      <Filter>GraphicsLib</Filter>
+    </ClCompile>
+    <ClCompile Include="CMUgraphicsLib\jpeg\jdcolor.c">
+      <Filter>GraphicsLib</Filter>
+    </ClCompile>
+    <ClCompile Include="CMUgraphicsLib\jpeg\jddctmgr.c">
+      <Filter>GraphicsLib</Filter>
+    </ClCompile>
+    <ClCompile Include="CMUgraphicsLib\jpeg\jdhuff.c">
+      <Filter>GraphicsLib</Filter>
+    </ClCompile>
+    <ClCompile Include="CMUgraphicsLib\jpeg\jdinput.c">
+      <Filter>GraphicsLib</Filter>
+    </ClCompile>
+    <ClCompile Include="CMUgraphicsLib\jpeg\jdmainct.c">
+      <Filter>GraphicsLib</Filter>
+    </ClCompile>
+    <ClCompile Include="CMUgraphicsLib\jpeg\jdmarker.c">
+      <Filter>GraphicsLib</Filter>
+    </ClCompile>
+    <ClCompile Include="CMUgraphicsLib\jpeg\jdmaster.c">
+      <Filter>GraphicsLib</Filter>
+    </ClCompile>
+    <ClCompile Include="CMUgraphicsLib\jpeg\jdmerge.c">
+      <Filter>GraphicsLib</Filter>
+    </ClCompile>
+    <ClCompile Include="CMUgraphicsLib\jpeg\jdphuff.c">
+      <Filter>GraphicsLib</Filter>
+    </ClCompile>
+    <ClCompile Include="CMUgraphicsLib\jpeg\jdpostct.c">
+      <Filter>GraphicsLib</Filter>
+    </ClCompile>
+    <ClCompile Include="CMUgraphicsLib\jpeg\jdsample.c">
+      <Filter>GraphicsLib</Filter>
+    </ClCompile>
+    <ClCompile Include="CMUgraphicsLib\jpeg\jdtrans.c">
+      <Filter>GraphicsLib</Filter>
+    </ClCompile>
+    <ClCompile Include="CMUgraphicsLib\jpeg\jerror.c">
+      <Filter>GraphicsLib</Filter>
+    </ClCompile>
+    <ClCompile Include="CMUgraphicsLib\jpeg\jidctflt.c">
+      <Filter>GraphicsLib</Filter>
+    </ClCompile>
+    <ClCompile Include="CMUgraphicsLib\jpeg\jidctfst.c">
+      <Filter>GraphicsLib</Filter>
+    </ClCompile>
+    <ClCompile Include="CMUgraphicsLib\jpeg\jidctint.c">
+      <Filter>GraphicsLib</Filter>
+    </ClCompile>
+    <ClCompile Include="CMUgraphicsLib\jpeg\jidctred.c">
+      <Filter>GraphicsLib</Filter>
+    </ClCompile>
+    <ClCompile Include="CMUgraphicsLib\jpeg\jmemmgr.c">
+      <Filter>GraphicsLib</Filter>
+    </ClCompile>
+    <ClCompile Include="CMUgraphicsLib\jpeg\jmemnobs.c">
+      <Filter>GraphicsLib</Filter>
+    </ClCompile>
+    <ClCompile Include="CMUgraphicsLib\jpegload.c">
+      <Filter>GraphicsLib</Filter>
+    </ClCompile>
+    <ClCompile Include="CMUgraphicsLib\jpeg\jquant1.c">
+      <Filter>GraphicsLib</Filter>
+    </ClCompile>
+    <ClCompile Include="CMUgraphicsLib\jpeg\jquant2.c">
+      <Filter>GraphicsLib</Filter>
+    </ClCompile>
+    <ClCompile Include="CMUgraphicsLib\jpeg\jutils.c">
+      <Filter>GraphicsLib</Filter>
+    </ClCompile>
+    <ClCompile Include="CMUgraphicsLib\keyqueue.cpp">
+      <Filter>GraphicsLib</Filter>
+    </ClCompile>
+    <ClCompile Include="CMUgraphicsLib\mousequeue.cpp">
+      <Filter>GraphicsLib</Filter>
+    </ClCompile>
+    <ClCompile Include="CMUgraphicsLib\windowinput.cpp">
+      <Filter>GraphicsLib</Filter>
+    </ClCompile>
+    <ClCompile Include="operations\opAddRect.cpp">
+      <Filter>Operations</Filter>
+    </ClCompile>
+    <ClCompile Include="CMUgraphicsLib\CMUgraphics.cpp">
+      <Filter>GraphicsLib</Filter>
+    </ClCompile>
+    <ClCompile Include="GUI\GUI.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Shapes&amp;Graph\Graph.cpp">
+      <Filter>Shapes&amp;Graph</Filter>
+    </ClCompile>
+    <ClCompile Include="Shapes&amp;Graph\Rect.cpp">
+      <Filter>Shapes&amp;Graph</Filter>
+    </ClCompile>
+    <ClCompile Include="Shapes&amp;Graph\Shape.cpp">
+      <Filter>Shapes&amp;Graph</Filter>
+    </ClCompile>
+    <ClCompile Include="Shapes&amp;Graph\Oval.cpp">
+      <Filter>Shapes&amp;Graph</Filter>
+    </ClCompile>
+    <ClCompile Include="Operations\opAddOval.cpp">
+      <Filter>Operations</Filter>
+    </ClCompile>
+    <ClCompile Include="Operations\opChngFillClr.cpp">
+      <Filter>Operations</Filter>
+    </ClCompile>
+    <ClCompile Include="Operations\opAddPolygon.cpp">
+      <Filter>Operations</Filter>
+    </ClCompile>
+    <ClCompile Include="Shapes&amp;Graph\Polygon.cpp">
+      <Filter>Shapes&amp;Graph</Filter>
+    </ClCompile>
+    <ClCompile Include="Operations\opAddRegPolygon.cpp">
+      <Filter>Operations</Filter>
+    </ClCompile>
+    <ClCompile Include="Shapes&amp;Graph\RegPolygon.cpp">
+      <Filter>Shapes&amp;Graph</Filter>
+    </ClCompile>
+    <ClCompile Include="Operations\opDeleteShape.cpp">
+      <Filter>Operations</Filter>
+    </ClCompile>
+    <ClCompile Include="Operations\opAddCircle.cpp">
+      <Filter>Operations</Filter>
+    </ClCompile>
+    <ClCompile Include="Shapes&amp;Graph\Circle.cpp">
+      <Filter>Shapes&amp;Graph</Filter>
+    </ClCompile>
+    <ClCompile Include="Shapes&amp;Graph\Line.cpp">
+      <Filter>Shapes&amp;Graph</Filter>
+    </ClCompile>
+    <ClCompile Include="Operations\opAddLINE.cpp">
+      <Filter>Operations</Filter>
+    </ClCompile>
+    <ClCompile Include="Operations\opAddSquare.cpp">
+      <Filter>Operations</Filter>
+    </ClCompile>
+    <ClCompile Include="Shapes&amp;Graph\Square.cpp">
+      <Filter>Shapes&amp;Graph</Filter>
+    </ClCompile>
+    <ClCompile Include="Shapes&amp;Graph\Triangle.cpp">
+      <Filter>Shapes&amp;Graph</Filter>
+    </ClCompile>
+    <ClCompile Include="Operations\opAddTriangle.cpp">
+      <Filter>Operations</Filter>
+    </ClCompile>
+    <ClCompile Include="Operations\opExit.cpp">
+      <Filter>Operations</Filter>
+    </ClCompile>
+    <ClCompile Include="Operations\opChngDrawClr.cpp">
+      <Filter>Operations</Filter>
+    </ClCompile>
+    <ClCompile Include="Operations\opChngPenWidth.cpp">
+      <Filter>Operations</Filter>
+    </ClCompile>
+    <ClCompile Include="Operations\opChngToPlayMode.cpp">
+      <Filter>Operations</Filter>
+    </ClCompile>
+    <ClCompile Include="Operations\opStickImage.cpp" />
+    <ClCompile Include="Operations\opUndo.cpp" />
+    <ClCompile Include="Operations\opRedo.cpp" />
+    <ClCompile Include="Operations\opRotate.cpp" />
+    <ClCompile Include="Operations\opDrag.cpp" />
+    <ClCompile Include="Operations\Copy.cpp" />
+    <ClCompile Include="Operations\opPaste.cpp" />
+    <ClCompile Include="Operations\Cut.cpp" />
+    <ClCompile Include="Operations\Copy.cpp" />
+    <ClCompile Include="Operations\opResize.cpp" />
     <ClCompile Include="Operations\opSendToBack.cpp" />
     <ClCompile Include="Operations\opStart.cpp" />
   </ItemGroup>
@@ -145,6 +336,14 @@
     <ClInclude Include="Shapes&amp;Graph\Shape.h" />
     <ClInclude Include="Shapes&amp;Graph\Square.h" />
     <ClInclude Include="Shapes&amp;Graph\Triangle.h" />
+    <ClInclude Include="Operations\opSave.h" />
+    <ClInclude Include="Operations\opStickImage.h" />
+    <ClInclude Include="Operations\opUndo.h" />
+    <ClInclude Include="Operations\opRedo.h" />
+    <ClInclude Include="Operations\opRotate.h" />
+    <ClInclude Include="Operations\opDrag.h" />
+    <ClInclude Include="Operations\Copy.h" />
+    <ClInclude Include="Operations\opPaste.h" />
     <ClInclude Include="Operations\opSendToBack.h" />
     <ClInclude Include="Operations\opStart.h" />
   </ItemGroup>

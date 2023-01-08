@@ -24,12 +24,14 @@
 #include "Operations/opRotate.h"
 #include "Operations/opResize.h"
 #include "Operations/Copy.h"
+#include "Operations/Cut.h"
 #include "Operations/opSave.h"
 #include "Operations/opZoomIn.h"
 #include "Operations/opZoomOut.h"
 #include "Operations/opSendToBack.h"
 #include "Operations/opChngToPlayMode.h"
 #include "Operations/opExit.h"
+#include "Operations/opPaste.h"
 
 
 //Constructor
@@ -157,6 +159,13 @@ operation* controller::createOperation(operationType OpType)
 			break;
 		case COPY:
 			pOp = new Copy(this);
+			break;
+		case CUT:
+			pOp = new Cut(this);
+			break;
+		case PASTE:
+			pOp = new opPaste(this);
+			break;
 
 		case DRAWING_AREA:
 		{

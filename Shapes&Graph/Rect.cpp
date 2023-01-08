@@ -115,6 +115,14 @@ void Rect::Resize(double f)
 	moveFurther(com, Corner2, delta2);
 }
 
+void Rect::ToOnePixel()
+{
+	double d1 = pow((pow((Corner1.x - com.x), 2) + pow((com.y - Corner1.y), 2)), 0.5);
+	//double d2 = pow((pow((Corner2.x - com.x), 2) + pow((com.y - Corner2.y), 2)), 0.5);
+
+	Resize(1 / d1);
+}
+
 
 void Rect::Move(int dx, int dy)
 {
@@ -129,6 +137,17 @@ void Rect::Move(int dx, int dy)
 shape* Rect::getCopy()
 {
 	return new Rect(Corner1, Corner2, ShpGfxInfo);
+}
+void Rect::Paste(int x, int y)
+{
+	ShpGfxInfo.isSelected = false;
+	int dx, dy;
+	dx = Corner1.x - x;
+	dy = Corner1.y - y;
+	Corner1.x = Corner1.x - dx;
+	Corner1.y = Corner1.y - dy;
+	Corner2.x = Corner2.x - dx;
+	Corner2.y = Corner2.y - dy;
 }
 
 

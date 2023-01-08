@@ -109,7 +109,7 @@ bool Triangle::isInside(int X, int Y)
 	double area2 = sqrt(s2 * (s2 - inSide2) * (s2 - inSide3) * (s2 - side2));
 	double area3 = sqrt(s3 * (s3 - inSide3) * (s3 - inSide1) * (s3 - side3));
 	if ((area1 + area2 + area3) <= triarea) {
-		cout << (area1 + area2 + area3) << endl << triarea<<endl<<endl;
+		
 		return true;
 		
 	}
@@ -157,9 +157,42 @@ void Triangle::Move(int dx, int dy)
 	com.x += dx;
 	com.y += dy;
 }
+void Triangle::ToOnePixel()
+{
+	double d1 = pow((pow((Corner1.x - com.x), 2) + pow((com.y - Corner1.y), 2)), 0.5);
+	double d2 = pow((pow((Corner2.x - com.x), 2) + pow((com.y - Corner2.y), 2)), 0.5);
+	double d3 = pow((pow((Corner3.x - com.x), 2) + pow((com.y - Corner3.y), 2)), 0.5);
+	cout << d1 << endl << d2 << endl << d3 << endl;
+	if (d1 > d2 && d1 > d3)
+	{
+		Resize(1 / d1);
+	}
+	else if (d2 > d1 && d2 > d3)
+	{
+		Resize(1 / d2);
+	}
+	else if (d3 > d1 && d3 > d2)
+	{
+		Resize(1 / d3);
+	}
+
+}
 shape* Triangle::getCopy()
 {
 	return new Triangle(Corner1, Corner2,Corner3, ShpGfxInfo);
+}
+void Triangle::Paste(int x,int y)
+{
+	ShpGfxInfo.isSelected = false;
+	int distx = Corner1.x - x;
+	int disty = Corner1.y - y;
+	Corner1.x = Corner1.x - distx;
+	Corner1.y = Corner1.y - disty;
+	Corner2.x = Corner2.x - distx;
+	Corner2.y = Corner2.y - disty;
+	Corner3.x = Corner3.x - distx;
+	Corner3.y = Corner3.y - disty;
+
 }
 
 
