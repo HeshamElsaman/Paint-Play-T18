@@ -1,4 +1,6 @@
 #include "Rect.h"
+#include <iostream>
+using namespace std;
 
 Rect::Rect(Point P1, Point P2, GfxInfo shapeGfxInfo):shape(shapeGfxInfo)
 {
@@ -19,7 +21,7 @@ void Rect::Save(ofstream& OutFile) // the file name is Outfile
 		<< this->Corner1.x << "  "
 		<< this->Corner1.y << "  "
 		<< this->Corner2.x << "  "
-		<< this->Corner2.y << "   "
+		<< this->Corner2.y << "  "
 		<< (int)this->ShpGfxInfo.DrawClr.ucRed << "  "
 		<< (int)this->ShpGfxInfo.DrawClr.ucBlue << "  "
 		<< (int)this->ShpGfxInfo.DrawClr.ucGreen << "  "
@@ -47,6 +49,25 @@ void Rect::Draw(GUI* pUI) const
 		pUI->StickImage(img, x, y, length, width);
 	}
 }
+
+void Rect::Drawdouble(GUI* pUI) const
+{
+	//Call Output::DrawRect to draw a rectangle on the screen	
+	pUI->DrawRect(Corner1, Corner2, ShpGfxInfo);
+
+	if (ShpGfxInfo.imgSticked)
+	{
+		int x = (Corner1.x <= Corner2.x) ? Corner1.x : Corner2.x; x += this->ShpGfxInfo.BorderWdth;
+		int y = (Corner1.y <= Corner2.y) ? Corner1.y : Corner2.y; y += this->ShpGfxInfo.BorderWdth;
+		int width = abs(Corner1.x - Corner2.x); width -= 2 * this->ShpGfxInfo.BorderWdth;
+		int length = abs(Corner1.y - Corner2.y); length -= 2 * this->ShpGfxInfo.BorderWdth;
+		pUI->StickImage(img, x, y, length, width);
+	}
+}
+
+
+
+
 bool Rect::isInside(int X, int Y)
 {
 	int Xmin = (Corner1.x <= Corner2.x) ? Corner1.x : Corner2.x;
@@ -69,6 +90,20 @@ void Rect::Rotate(double theta = 2 * atan(1))
 	gen = Corner2;
 	Corner2.x = cos(theta) * (gen.x - com.x) - sin(theta) * (gen.y - com.y) + com.x;
 	Corner2.y = sin(theta) * (gen.x - com.x) + cos(theta) * (gen.y - com.y) + com.y;
+}
+
+void Rect::Resize(double f)
+{
+	double d1 = pow((pow((Corner1.x - com.x), 2) + pow((com.y - Corner1.y), 2)), 0.5);
+	double d2 = pow((pow((Corner2.x - com.x), 2) + pow((com.y - Corner2.y), 2)), 0.5);
+
+	double delta1 = (f - 1) * d1;
+	double delta2 = (f - 1) * d2;
+
+
+
+	moveFurther(com, Corner1, delta1);
+	moveFurther(com, Corner2, delta2);
 }
 
 
@@ -109,3 +144,45 @@ void Rect::getCorners(vector <Point>& pts)
 	pts.push_back(Corner1);
 	pts.push_back(Corner2);
 }
+
+
+
+vector <Point*> Rect::GetPoints()const
+{
+	vector <Point*> points;
+	
+	*points[0] = Corner1;
+	*points[1] = Corner2;
+
+	return points;
+}
+
+/*Point Rect::GetCenter(GUI* lolo)
+{
+	Point m;
+
+	
+	m.x = 0.5 * (Corner1.x + Corner2.x);
+	m.y = 0.5 * (Corner1.y + Corner2.y);
+
+	return m;
+
+}*/
+
+void Rect::Hide(GUI* lolo )
+{
+
+	int x = (Corner1.x <= Corner2.x) ? Corner1.x : Corner2.x; x += this->ShpGfxInfo.BorderWdth;
+	int y = (Corner1.y <= Corner2.y) ? Corner1.y : Corner2.y; y += this->ShpGfxInfo.BorderWdth;
+	int width = (Corner1.x - Corner2.x); width += 2 * this->ShpGfxInfo.BorderWdth;
+	int length = (Corner1.y - Corner2.y); length += 2 * this->ShpGfxInfo.BorderWdth;
+	
+	lolo->StickImage(1,x, y, length, width);
+}
+
+
+
+/*void Rect::UnHide(GUI* pUI)
+{
+	pUI->DrawRect(Corner1, Corner2, ShpGfxInfo);
+}*/

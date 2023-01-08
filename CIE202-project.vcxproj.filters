@@ -252,6 +252,8 @@
     <ClCompile Include="Operations\opDrag.cpp" />
     <ClCompile Include="Operations\Copy.cpp" />
     <ClCompile Include="Operations\opPaste.cpp" />
+    <ClCompile Include="Operations\Copy.cpp" />
+    <ClCompile Include="Operations\opResize.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h" />
@@ -310,8 +312,6 @@
     <ClInclude Include="Operations\opRedo.h" />
     <ClInclude Include="Operations\opRotate.h" />
     <ClInclude Include="Operations\opDrag.h" />
-    <ClInclude Include="Operations\Copy.h" />
-    <ClInclude Include="Operations\opPaste.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="CIE202-project.rc" />

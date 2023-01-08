@@ -31,9 +31,12 @@ enum operationType //The operations supported (you can add more if needed)
 	BRNG_FRNT,		//Bring a shape to the front of all shapes
 	SAVE,			//Save the whole graph to a file
 	LOAD,			//Load a graph from a file
-
+	ZOOM_IN,
+	ZOOM_OUT,
+	SEND_TO_BACK,
 	HIDE,
 	UNHIDE,
+	DUBLICATE,
 	START,
 	RESTART,
 	MATCH_SHAPES,

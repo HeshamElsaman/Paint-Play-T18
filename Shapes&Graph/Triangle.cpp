@@ -39,6 +39,13 @@ void Triangle::Draw(GUI* pUI) const
 	//Call Output::DrawTriangle to draw a triangle on the screen	
 	pUI->DrawTriangle(Corner1, Corner2, Corner3, ShpGfxInfo);
 }
+
+void Triangle::Drawdouble(GUI* pUI) const
+{
+	//Call Output::DrawTriangle to draw a triangle on the screen	
+	pUI->DrawTriangle(Corner1, Corner2, Corner3, ShpGfxInfo);
+}
+
 bool Triangle::isInside(int X, int Y)
 {
 	int side1= pow((pow((Corner2.x - Corner1.x), 2) + pow((Corner2.y - Corner1.y), 2)), 0.5);
@@ -76,6 +83,21 @@ void Triangle::Rotate(double theta = 2 * atan(1))
 	gen = Corner3;
 	Corner3.x = cos(theta) * (gen.x - com.x) - sin(theta) * (gen.y - com.y) + com.x;
 	Corner3.y = sin(theta) * (gen.x - com.x) + cos(theta) * (gen.y - com.y) + com.y;
+}
+
+void Triangle::Resize(double f)
+{
+	double d1 = pow((pow((Corner1.x - com.x), 2) + pow((com.y - Corner1.y), 2)), 0.5);
+	double d2 = pow((pow((Corner2.x - com.x), 2) + pow((com.y - Corner2.y), 2)), 0.5);
+	double d3 = pow((pow((Corner3.x - com.x), 2) + pow((com.y - Corner3.y), 2)), 0.5);
+
+	double delta1 = (f - 1) * d1;
+	double delta2 = (f - 1) * d2;
+	double delta3 = (f - 1) * d3;
+
+	moveFurther(com, Corner1, delta1);
+	moveFurther(com, Corner2, delta2);
+	moveFurther(com, Corner3, delta3);
 }
 
 void Triangle::Move(int dx, int dy)
@@ -119,4 +141,15 @@ void Triangle::getCorners(vector <Point>& pts)
 	pts.push_back(Corner1);
 	pts.push_back(Corner2);
 	pts.push_back(Corner3);
+}
+
+void Triangle::Hide(GUI* lolo)
+{
+
+	int x = (Corner1.x <= Corner2.x) ? Corner1.x : Corner2.x; x += this->ShpGfxInfo.BorderWdth;
+	int y = (Corner1.y <= Corner2.y) ? Corner1.y : Corner2.y; y += this->ShpGfxInfo.BorderWdth;
+	int width = abs(Corner1.x - Corner2.x); width -= 2 * this->ShpGfxInfo.BorderWdth;
+	int length = abs(Corner1.y - Corner2.y); length -= 2 * this->ShpGfxInfo.BorderWdth;
+
+	lolo->StickImage_(x, y, 20, 20);
 }

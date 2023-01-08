@@ -13,12 +13,19 @@ public:
 	virtual ~Rect();
 	virtual void Save(ofstream& OutFile);
 	virtual void Draw(GUI* pUI) const;
+	virtual void Drawdouble(GUI* pUI) const;
 	bool isInside(int X, int Y);
 	void Rotate(double) override;
 	void Move(int, int) override;
+	void Resize(double) override;
 	shape* getCopy();
 	void Paste(int, int) ;
 	void setCorners(vector <Point>) override;
 	void getCorners(vector <Point>&) override;
+	//Point GetCenter(GUI*);
+	vector <Point*> GetPoints()const;
+	void Hide(GUI*) /*override*/;
+	//void UnHide(GUI* pUI) /*override*/;
+	//void Duplicate(GUI* pUI)/*override*/;
 };
 

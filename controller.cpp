@@ -17,9 +17,17 @@
 #include "Operations/opDeleteShape.h"
 #include "Operations/opUndo.h"
 #include "Operations/opRedo.h"
+#include "Operations/opHide.h"
+#include "Operations/opUnHide.h"
+#include "Operations/opDuplicate.h"
+//#include "Operations/opStart.h"
 #include "Operations/opRotate.h"
+#include "Operations/opResize.h"
 #include "Operations/Copy.h"
 #include "Operations/opSave.h"
+#include "Operations/opZoomIn.h"
+//#include "Operations/opZoomOut.h"
+#include "Operations/opSendToBack.h"
 #include "Operations/opChngToPlayMode.h"
 #include "Operations/opExit.h"
 #include "Operations/opPaste.h"
@@ -133,6 +141,14 @@ operation* controller::createOperation(operationType OpType)
 			ClearRedo();
 			break;
 
+
+		case RESIZE:
+			pOp = new opResize(this);
+			sUndo.push(pOp);
+			ClearRedo();
+			break;
+
+
 		case UNDO:
 			pOp = new opUndo(this);
 			break;
@@ -172,9 +188,43 @@ operation* controller::createOperation(operationType OpType)
 			pOp = new opSave(this);
 			break;
 
+		case ZOOM_IN:
+			pOp = new ZoomIn(this);
+			break;
+
+		/*case ZOOM_OUT:
+			pOp = new ZoomOut(this);
+			break;*/
+
+		case SEND_TO_BACK:
+			pOp = new SendToBack(this);
+			sUndo.push(pOp);
+			ClearRedo();
+			break;
+
+			/*case START:
+			pOp = new Start(this);
+			break;*/
+
+		case HIDE:
+			pOp = new opHide(this);
+			break;
+
+			/*case UNHIDE:
+				pOp = new opUnHide(this);
+				break;*/
+
+		case DUBLICATE:
+			pOp = new opDuplicate(this);
+			sUndo.push(pOp);
+			ClearRedo();
+			break;
+
+
 		case TO_PLAY:
 			pOp = new opChngToPlayMode(this);
 			break;
+
 
 		case EXIT_DRAW:
 			pOp = new opExit(this);
