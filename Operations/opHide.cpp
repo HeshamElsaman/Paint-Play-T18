@@ -27,10 +27,10 @@ void opHide::Execute()
 	//vector <shape*> shapes = pGr->GetShapesVector();//Get the shapes vector
 
 	
-	for (int i = 0; i < shapes.size(); i++)
+	
 	for (int i = 0; i < pGr->GetShapesVector().size(); i++)
 	{
-		shapes[i]->Hide(pUI);
+		//shapes[i]->Hide(pUI);
 		pGr->GetShapesVector()[i]->Hide(pUI);
 
 		pGr->GetHiddenShapesVector().push_back(pGr->GetShapesVector()[i]);
