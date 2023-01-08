@@ -19,6 +19,7 @@
 #include "Operations/opRedo.h"
 #include "Operations/opRotate.h"
 #include "Operations/opResize.h"
+#include "Operations/opScramble.h"
 #include "Operations/Copy.h"
 #include "Operations/opSave.h"
 #include "Operations/opChngToPlayMode.h"
@@ -179,6 +180,13 @@ operation* controller::createOperation(operationType OpType)
 		case TO_PLAY:
 			pOp = new opChngToPlayMode(this);
 			break;
+
+		case SCRAMBLE:
+			pOp = new opScramble(this);
+			sUndo.push(pOp);
+			ClearRedo();
+			break;
+
 
 		case EXIT_DRAW:
 			pOp = new opExit(this);
