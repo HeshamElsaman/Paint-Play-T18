@@ -88,6 +88,22 @@ void Rect::Resize(double f)
 }
 
 
+void Rect::Move(int dx, int dy)
+{
+	Corner1.x += dx;
+	Corner1.y += dy;
+	Corner2.x += dx;
+	Corner2.y += dy;
+	com.x += dx;
+	com.y += dy;
+}
+
+shape* Rect::getCopy()
+{
+	return new Rect(Corner1, Corner2, ShpGfxInfo);
+}
+
+
 void Rect::setCorners(vector <Point> pts)
 {
 	Corner1 = pts[0];

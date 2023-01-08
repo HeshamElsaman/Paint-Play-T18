@@ -72,6 +72,22 @@ void Oval::Resize(double f)
 }
 
 
+void Oval::Move(int dx, int dy)
+{
+	Corner1.x += dx;
+	Corner1.y += dy;
+	Corner2.x += dx;
+	Corner2.y += dy;
+	com.x += dx;
+	com.y += dy;
+}
+shape* Oval::getCopy()
+{
+	return new Oval(Corner1, Corner2, ShpGfxInfo);
+}
+
+
+
 void Oval::setCorners(vector <Point> pts)
 {
 	Corner1 = pts[0];

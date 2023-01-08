@@ -25,6 +25,7 @@ void opAddCircle::Execute()
 	pUI->PrintMessage("New Circle: Click at the first point (centre) ");
 	//Read 1st corner and store in point P1
 	pUI->GetPointClicked(P1.x, P1.y);
+	pUI->GetPointClicked(P1.x, P1.y);
 
 	string msg = "First point is at (" + to_string(P1.x) + ", " + to_string(P1.y) + " )";
 	msg += " ... Click at second corner";

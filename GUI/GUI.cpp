@@ -69,6 +69,10 @@ clicktype GUI::GetOpLastPointClickedType() const
 	return opLastPointClickedType;
 }
 
+void GUI::FlushMQue() const
+{
+	pWind->FlushMouseQueue();
+}
 //////////////////////////////////////////////////////////////////////////////////////////
 
 /*void GUI::open(const char* Pictures, imagetype itThisType = JPEG)
@@ -94,9 +98,9 @@ int GUI::GetClickType(int x, int y) const
 
 
 /////////////////////////////////////////////////////////////////////////////////////
-void GUI::GetKeyPressed(char& key) const
+keytype GUI::GetKeyPressed(char& key) const
 {
-	pWind->GetKeyPress(key);
+	return pWind->GetKeyPress(key);
 }
 ////////////////////////////////////////////////////////////////////////////
 void GUI::StickImage(int img, int x, int y, int length, int width)
@@ -133,18 +137,41 @@ string GUI::GetSrting() const
 	}
 }
 
+buttonstate GUI::GetButtonState(button btn, int& iX, int& iY) const
+{
+	return pWind->GetButtonState(btn, iX, iY);
+}
+
 //This function reads the position where the user clicks to determine the desired operation
 operationType GUI::GetUseroperation()
 {
 	
-	int x, y;
+	int x = -1, y = -1;
+	
+	while (GetButtonState(LEFT_BUTTON, x, y) == BUTTON_UP && GetButtonState(RIGHT_BUTTON, x, y) == BUTTON_UP) {
+		if (GetButtonState(LEFT_BUTTON, x, y) == BUTTON_DOWN)
+		{
+			opLastPointClickedType = LEFT_CLICK;
+			//while(GetButtonState(LEFT_BUTTON, x, y) == BUTTON_DOWN) {}
+			//Sleep(10);
+			break;
+		}
+		if (GetButtonState(RIGHT_BUTTON, x, y) == BUTTON_DOWN)
+		{
+			opLastPointClickedType = RIGHT_CLICK;
+			//while (GetButtonState(RIGHT_BUTTON, x, y) == BUTTON_DOWN) {}
+			//Sleep(10);
+			break;
+		}
+	}
+	//while (GetButtonState(LEFT_BUTTON, x, y) == BUTTON_DOWN || GetButtonState(RIGHT_BUTTON, x, y) == BUTTON_DOWN){}
 
-	opLastPointClickedType = pWind->WaitMouseClick(x, y);	//Get the coordinates of the user click
+	//opLastPointClickedType = pWind->WaitMouseClick(x, y);	//Get the coordinates of the user click
 	
 	opLastPointClicked.x = x;
 	opLastPointClicked.y = y;
 	
-	if (InterfaceMode == MODE_DRAW)	//GUI in the DRAW mode
+	if (InterfaceMode == MODE_DRAW && x != -1 && y != -1)	//GUI in the DRAW mode
 	{
 		//[1] If user clicks on the Toolbar
 		if (y >= 0 && y < ToolBarHeight)
@@ -244,7 +271,7 @@ operationType GUI::GetUseroperation()
 		return STATUS;
 	}
 	//GUI is in PLAY mode
-	else (InterfaceMode == MODE_PLAY); {
+	else (InterfaceMode == MODE_PLAY && x != -1 && y != -1); {
 		//[1] If user clicks on the Toolbar
 		if (y >= 0 && y < ToolBarHeight)
 		{
@@ -326,6 +353,10 @@ void GUI::setFillStatus(bool stat)
 void GUI::setSelectMode(bool S)
 {
 	MultiSelectMode = S;
+}
+void GUI::setDragMode(bool D)
+{
+	DragMode = D;
 }
 
 
@@ -419,6 +450,10 @@ void GUI::GetPaletteColorClicked(int x, int y, color& clr) const
 bool GUI::getSelectMode() const
 {
 	return MultiSelectMode;
+}
+bool GUI::getDragMode() const
+{
+	return DragMode;
 }
 //////////////////////////////////////////////////////////////////////////////////////////
 void GUI::CreateStatusBar() const

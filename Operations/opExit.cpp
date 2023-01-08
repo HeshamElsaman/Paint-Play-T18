@@ -17,6 +17,9 @@ void opExit::Execute()
 {
 	ofstream restoreshapes;
 	GUI* pUI = pControl->GetUI();
+
+	Point P; pUI->GetPointClicked(P.x, P.y);
+
 	Graph* pGr = pControl->getGraph();
 	pUI->PrintMessage("If you want to save type the file name / or just exit by pressing ESCAPE ");
 	// to get the keypresses from the user

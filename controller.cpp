@@ -1,3 +1,4 @@
+#include <iostream>
 #include "controller.h"
 #include "Operations/opAddRect.h"
 #include "Operations/opAddOval.h"
@@ -8,7 +9,8 @@
 #include "Operations/opAddPolygon.h"
 #include "Operations/opAddRegPolygon.h"
 #include "Operations/opStickImage.h"
-#include "Operations/Select.h"
+#include "Operations/opSelect.h"
+#include "Operations/opDrag.h"
 #include "Operations/opChngFillClr.h"
 #include "Operations/opChngDrawClr.h"
 #include "Operations/opChngPenWidth.h"
@@ -16,7 +18,7 @@
 #include "Operations/opUndo.h"
 #include "Operations/opRedo.h"
 #include "Operations/opRotate.h"
-#include "Operations/opResize.h"
+#include "Operations/Copy.h"
 #include "Operations/opSave.h"
 #include "Operations/opChngToPlayMode.h"
 #include "Operations/opExit.h"
@@ -130,12 +132,6 @@ operation* controller::createOperation(operationType OpType)
 			ClearRedo();
 			break;
 
-		case RESIZE:
-			pOp = new opResize(this);
-			sUndo.push(pOp);
-			ClearRedo();
-			break;
-
 		case UNDO:
 			pOp = new opUndo(this);
 			break;
@@ -143,13 +139,28 @@ operation* controller::createOperation(operationType OpType)
 		case REDO:
 			pOp = new opRedo(this);
 			break;
+		case COPY:
+			pOp = new Copy(this);
 
 		case DRAWING_AREA:
-			if (pGUI->GetOpLastPointClickedType() == RIGHT_CLICK)
-				pGUI->setSelectMode(!(pGUI->getSelectMode()));
-			else if (pGUI->GetOpLastPointClickedType() == LEFT_CLICK)
+		{
+			int x_ = -1, y_ = -1;
+			if (pGUI->GetOpLastPointClickedType() == LEFT_CLICK)
+			{
 				pOp = new opSelect(this);
+				while (pGUI->GetButtonState(LEFT_BUTTON, x_, y_) == BUTTON_DOWN) {
+					if (pGUI->GetButtonState(LEFT_BUTTON, x_, y_) == BUTTON_UP) break;
+				}
+			}
+			else if (pGUI->GetOpLastPointClickedType() == RIGHT_CLICK && pGUI->GetButtonState(RIGHT_BUTTON, x_, y_) == BUTTON_DOWN)
+			{
+				pOp = new opDrag(this);
+				sUndo.push(pOp);
+				ClearRedo();
+			}
+		}
 			break;
+		
 
 
 		case SAVE:

@@ -83,6 +83,21 @@ void Square::Resize(double f)
 }
 
 
+void Square::Move(int dx, int dy)
+{
+	Corner1.x += dx;
+	Corner1.y += dy;
+	Corner2.x += dx;
+	Corner2.y += dy;
+	com.x += dx;
+	com.y += dy;
+}
+shape* Square::getCopy()
+{
+	return new Square(Corner1,Corner2,ShpGfxInfo);
+}
+
+
 void Square::setCorners(vector <Point> pts)
 {
 	Corner1 = pts[0];

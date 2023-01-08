@@ -106,6 +106,23 @@ void RegPolygon::Resize(double f)
 }
 
 
+void RegPolygon::Move(int dx, int dy)
+{
+    com.x += dx;
+    com.y += dy;
+    for (int i = 0; i < VertNum; i++)
+    {
+        Verts[i].x += dx;
+        Verts[i].y += dy;
+    }
+}
+
+shape* RegPolygon::getCopy()
+{
+    return new RegPolygon(Verts,VertNum, ShpGfxInfo);
+}
+
+
 void RegPolygon::setCorners(vector <Point> pts)
 {
     for (int i = 0; i < VertNum; i++)

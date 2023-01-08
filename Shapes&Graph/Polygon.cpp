@@ -106,6 +106,23 @@ void PolyGon::Resize(double f)
 }
 
 
+void PolyGon::Move(int dx, int dy)
+{
+    com.x += dx;
+    com.y += dy;
+    for (int i = 0; i < VertNum; i++)
+    {
+        Verts[i].x += dx;
+        Verts[i].y += dy;
+    }
+}
+
+shape* PolyGon::getCopy()
+{
+    return new PolyGon(Verts, VertNum, ShpGfxInfo);
+}
+
+
 void PolyGon::setCorners(vector <Point> pts)
 {
     for (int i = 0; i < VertNum; i++)

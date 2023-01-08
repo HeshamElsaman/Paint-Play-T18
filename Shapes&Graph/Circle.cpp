@@ -45,12 +45,19 @@ bool Circle::isInside(int X, int Y)
 }
 
 
-void Circle::Resize(double f)
+void Circle::Move(int dx, int dy)
 {
-	double radius = pow((pow((Corner2.x - Corner1.x), 2) + pow((Corner2.y - Corner1.y), 2)), 0.5);
-	Corner2.x = Corner1.x + radius * f;
-
+	Corner1.x += dx;
+	Corner1.y += dy;
+	Corner2.x += dx;
+	Corner2.y += dy;
 }
+
+shape* Circle::getCopy()
+{
+	return new Circle(Corner1, Corner2, ShpGfxInfo);
+}
+
 
 
 void Circle::setCorners(vector <Point> pts)

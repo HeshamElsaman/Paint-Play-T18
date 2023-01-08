@@ -18,11 +18,10 @@ opChngPenWidth::~opChngPenWidth()
 //Execute the operation
 void opChngPenWidth::Execute()
 {
-	Point P;
 
 	GUI* pUI = pControl->GetUI();
 	Graph* pGr = pControl->getGraph();
-
+	Point P; pUI->GetPointClicked(P.x, P.y);
 	pUI->PrintMessage("Change General PenWidth: Pick a Number for the PenWidth");
 
 	string KEY= pUI->GetSrting();
