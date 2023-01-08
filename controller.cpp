@@ -22,6 +22,7 @@
 #include "Operations/opSave.h"
 #include "Operations/opChngToPlayMode.h"
 #include "Operations/opExit.h"
+#include "Operations/opPaste.h"
 
 
 //Constructor
@@ -141,6 +142,10 @@ operation* controller::createOperation(operationType OpType)
 			break;
 		case COPY:
 			pOp = new Copy(this);
+			break;
+		case PASTE:
+			pOp = new opPaste(this);
+			break;
 
 		case DRAWING_AREA:
 		{

@@ -58,6 +58,18 @@ shape* Circle::getCopy()
 	return new Circle(Corner1, Corner2, ShpGfxInfo);
 }
 
+void Circle::Paste(int x, int y)
+{
+	ShpGfxInfo.isSelected = false;
+	int dx, dy;
+	dx = Corner1.x - x;
+	dy = Corner1.y - y;
+	Corner1.x = Corner1.x - dx;
+	Corner1.y = Corner1.y - dy;
+	Corner2.x = Corner2.x - dx;
+	Corner2.y = Corner2.y - dy;
+}
+
 
 
 void Circle::setCorners(vector <Point> pts)

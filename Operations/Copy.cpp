@@ -6,9 +6,12 @@ Copy::Copy(controller* pCont):operation(pCont){}
 Copy::~Copy() {};
 void Copy::Execute()
 {
-
+	
 	Graph* pGr = pControl->getGraph();
-	pGr->Copy();
+	//pGr->getClipboard().clear();
+	pGr->opCopy();
+	GUI* pUI = pControl->GetUI();
+	pUI->PrintMessage("The shape was copied!");
 
 }
  void Copy::Undo() {}

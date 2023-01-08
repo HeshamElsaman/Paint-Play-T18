@@ -189,6 +189,7 @@
     <ClCompile Include="Operations\opSave.cpp" />
     <ClCompile Include="Operations\opUndo.cpp" />
     <ClCompile Include="Operations\opSelect.cpp" />
+    <ClCompile Include="Operations\opPaste.cpp" />
     <ClCompile Include="Shapes&amp;Graph\Circle.cpp" />
     <ClCompile Include="Shapes&amp;Graph\Graph.cpp" />
     <ClCompile Include="Shapes&amp;Graph\Line.cpp" />
@@ -247,6 +248,7 @@
     <ClInclude Include="Operations\opSave.h" />
     <ClInclude Include="Operations\opUndo.h" />
     <ClInclude Include="Operations\opSelect.h" />
+    <ClInclude Include="Operations\opPaste.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Shapes&amp;Graph\Circle.h" />
     <ClInclude Include="Shapes&amp;Graph\Graph.h" />

@@ -8,6 +8,14 @@ Graph::Graph()
 
 Graph::~Graph()
 {
+	if (!(Clipboard.empty()))
+	{
+		for (shape* shapePointer : Clipboard)
+		{
+			delete shapePointer; shapePointer = nullptr;
+		}
+		Clipboard.clear();
+	}
 	if(!(cUndo.empty()))
 	{
 		for (auto opPointer : cUndo) {
@@ -121,16 +129,44 @@ void Graph::DeleteSelectedShapes()
 	ClearSelectedShapes();
 	
 }
-void Graph::Copy()
+vector <shape*> Graph::getClipboard()
 {
+	return Clipboard;
+}
+void Graph::opCopy()
+{
+	if (!(Clipboard.empty()))
+	{
+		for (shape* shapePointer : Clipboard)
+		{
+			delete shapePointer; shapePointer = nullptr;
+		}
+		Clipboard.clear();
+	}
+	
 	for (auto shapePointer : shapesList)
 	{
-		if (shapePointer->IsSelected())
+		if (shapePointer->IsSelected() && !(shapePointer->IsDeleted()))
 		{
 			Clipboard.push_back(shapePointer->getCopy());
 		}
 	}
 }
+void Graph::getPaste(int x,int y,int& size)
+{
+	if (Clipboard.size() == 0)
+	{
+		size = 0; return;
+	}
+	
+	Clipboard.back()->Paste(x,y);
+	
+	shapesList.push_back(Clipboard.back());
+
+	Clipboard.pop_back();
+	size = Clipboard.size();
+}
+
 
 void Graph::ChangeFillClr(color clr)
 {

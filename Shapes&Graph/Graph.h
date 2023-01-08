@@ -51,7 +51,9 @@ public:
 	void AddSelectedShape(shape*);
 	void ClearSelectedShapes();
 	void DeleteSelectedShapes();
-	void Copy();
+	vector <shape*> getClipboard();
+	void opCopy();
+	void getPaste(int,int,int&);
 	void ChangeFillClr(color);
 	void SetSelectedFillState(bool);
 	void ChangeDrawClr(color);

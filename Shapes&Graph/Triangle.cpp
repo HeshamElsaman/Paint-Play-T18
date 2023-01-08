@@ -93,6 +93,19 @@ shape* Triangle::getCopy()
 {
 	return new Triangle(Corner1, Corner2,Corner3, ShpGfxInfo);
 }
+void Triangle::Paste(int x,int y)
+{
+	ShpGfxInfo.isSelected = false;
+	int distx = Corner1.x - x;
+	int disty = Corner1.y - y;
+	Corner1.x = Corner1.x - distx;
+	Corner1.y = Corner1.y - disty;
+	Corner2.x = Corner2.x - distx;
+	Corner2.y = Corner2.y - disty;
+	Corner3.x = Corner3.x - distx;
+	Corner3.y = Corner3.y - disty;
+
+}
 
 
 void Triangle::setCorners(vector <Point> pts)
