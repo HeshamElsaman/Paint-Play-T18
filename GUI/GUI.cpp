@@ -7,8 +7,8 @@ GUI::GUI()
 	//InterfaceMode = MODE_DRAW;
 
 
-	width = 1500;
-	height = 750;
+	width = 1300;
+	height = 650;
 
 
 	wx = 5;
@@ -109,7 +109,11 @@ void GUI::StickImage(int img, int x, int y, int length, int width)
 	pWind->DrawImage(IMG, x, y, width, length);
 }
 ///////////////////////////////////////////////////////////////////////////////////
-
+void GUI::StickImage_(int x, int y, int length, int width)
+{
+	string IMG = "Images\\StickingImages\\" + to_string(1) + ".jpg";
+	pWind->DrawImage(IMG, x, y, width, length);
+}
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////
@@ -229,6 +233,9 @@ operationType GUI::GetUseroperation()
 			case ICON_ROTATE:
 				return ROTATE;
 
+			case ICON_RESIZE:
+				return RESIZE;
+
 			case ICON_UNDO:
 				return UNDO;
 
@@ -246,6 +253,16 @@ operationType GUI::GetUseroperation()
 
 			case ICON_LOAD:
 				return LOAD;
+
+			case ICON_ZOOM_IN:
+				return ZOOM_IN;
+
+			case ICON_ZOOM_OUT:
+				return ZOOM_OUT;
+
+			case ICON_DUBLICATE:
+				return DUBLICATE;
+		
 
 			case ICON_SWITCH_TO_PLAY:
 				return TO_PLAY;
@@ -294,6 +311,9 @@ operationType GUI::GetUseroperation()
 
 			case ICON_MATCH_SHAPES:
 				return MATCH_SHAPES;
+
+			case ICON_SCRAMBLE:
+				return SCRAMBLE;
 
 			case ICON_EXIT_PLAY:
 				return EXIT_PLAY;
@@ -374,11 +394,11 @@ window* GUI::CreateWind(int w, int h, int x, int y) const
 
 void GUI::CreateColorPalette()
 {
-	pPalette = CreateWind(400, 300, 200, 90);
-	pPalette->ChangeTitle("Color palette");
-	pPalette->DrawImage("Images\\MenuIcons\\Menu_ColorPalette.jpg", 50,50);
-	pPalette->SetBuffering(0);
-	pPalette->SetWaitClose(false);
+	
+	
+	pWind->DrawImage("Images\\MenuIcons\\Menu_ColorPalette.jpg", 100,200);
+	pWind->SetBuffering(0);
+	pWind->SetWaitClose(false);
 }
 
 void GUI::CreateChooseWind()
@@ -400,17 +420,11 @@ void GUI::DeleteChooseWind()
 	}
 }
 
-void GUI::DeleteColorPalette()
-{
-	if (pPalette)
-	{
-		delete pPalette; pPalette = nullptr;
-	}
-}
+
 
 void GUI::GetPalettePointClicked(int& x, int& y) const
 {
-	pPalette->WaitMouseClick(x, y);
+	pWind->WaitMouseClick(x, y);
 }
 
 void GUI::ChangeMode()
@@ -442,7 +456,7 @@ void GUI::ChangeMode()
 
 void GUI::GetPaletteColorClicked(int x, int y, color& clr) const
 {
-	clr = pPalette->GetColor(x, y);
+	clr = pWind->GetColor(x, y);
 }
 bool GUI::getSelectMode() const
 {
@@ -458,6 +472,10 @@ void GUI::CreateStatusBar() const
 	pWind->SetPen(StatusBarColor, 1);
 	pWind->SetBrush(StatusBarColor);
 	pWind->DrawRectangle(0, height - StatusBarHeight, width, height);
+}
+void GUI::CreateCards()
+{
+
 }
 //////////////////////////////////////////////////////////////////////////////////////////
 void GUI::ClearStatusBar() const
@@ -494,12 +512,17 @@ void GUI::CreateDrawToolBar()
 	MenuIconImages[ICON_CUT] = "images\\MenuIcons\\DrawMenu\\Menu_Cut.jpg";
 	MenuIconImages[ICON_PASTE] = "images\\MenuIcons\\DrawMenu\\Menu_Paste.jpg";
 	MenuIconImages[ICON_ROTATE] = "images\\MenuIcons\\DrawMenu\\Menu_Rotate90.jpg";
+	MenuIconImages[ICON_RESIZE] = "images\\MenuIcons\\DrawMenu\\Menu_Resize.jpg";
 	MenuIconImages[ICON_UNDO] = "images\\MenuIcons\\DrawMenu\\Menu_Undo.jpg";
 	MenuIconImages[ICON_REDO] = "images\\MenuIcons\\DrawMenu\\Menu_Redo.jpg";
 	MenuIconImages[ICON_STICK_IMG] = "images\\MenuIcons\\DrawMenu\\Menu_StickImage.jpg";
 	MenuIconImages[ICON_DEL] = "images\\MenuIcons\\DrawMenu\\Menu_Delete.jpg";
 	MenuIconImages[ICON_SAVE] = "images\\MenuIcons\\DrawMenu\\Menu_Save.jpg";
 	MenuIconImages[ICON_LOAD] = "images\\MenuIcons\\DrawMenu\\Menu_Load.jpg";
+	MenuIconImages[ICON_ZOOM_IN] = "images\\MenuIcons\\DrawMenu\\Menu_ZoomIn.jpg";
+	MenuIconImages[ICON_ZOOM_OUT] = "images\\MenuIcons\\DrawMenu\\Menu_ZoomOut.jpg";
+	MenuIconImages[ICON_SEND_TO_BACK] = "images\\MenuIcons\\DrawMenu\\Menu_SendToBack.jpg";
+	MenuIconImages[ICON_DUBLICATE] = "images\\MenuIcons\\DrawMenu\\Menu_Duplicate.jpg";
 	MenuIconImages[ICON_SWITCH_TO_PLAY] = "images\\MenuIcons\\DrawMenu\\Menu_Switch_To_PlayMode.jpg";
 	MenuIconImages[ICON_EXIT] = "images\\MenuIcons\\DrawMenu\\Menu_Exit.jpg";
 	
@@ -539,6 +562,7 @@ void GUI::CreatePlayToolBar()
 	MenuIconImages[ICON_HIDE] = "images\\MenuIcons\\PlayMenu\\Hide.jpg";
 	MenuIconImages[ICON_UNHIDE] = "images\\MenuIcons\\PlayMenu\\Unhide.jpg";
 	MenuIconImages[ICON_MATCH_SHAPES] = "images\\MenuIcons\\PlayMenu\\Match.jpg";
+	MenuIconImages[ICON_SCRAMBLE] = "images\\MenuIcons\\PlayMenu\\Scramble.jpg";
 	MenuIconImages[ICON_RESTART] = "images\\MenuIcons\\PlayMenu\\Restart.jpg";
 	//MenuIconImages[ICON_OVAL] = "images\\MenuIcons\\DrawMenu\\Oval.jpg";
 	//MenuIconImages[ICON_POLY] = "images\\MenuIcons\\DrawMenu\\Menu_Polygon.jpg";
@@ -837,6 +861,6 @@ void GUI::DrawRegPolygon(Point* verts, int vertn, GfxInfo RegPolygonGfxInfo) con
 GUI::~GUI()
 {
 	delete pWind;
-	if (pPalette) delete pPalette;
+
 }
 

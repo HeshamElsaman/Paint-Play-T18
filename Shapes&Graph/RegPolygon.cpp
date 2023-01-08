@@ -1,6 +1,5 @@
 #include "RegPolygon.h"
-#include <iostream>
-using namespace std;
+
 
 RegPolygon::RegPolygon(Point* P_, int vertNum, GfxInfo shapeGfxInfo) :shape(shapeGfxInfo)
 {
@@ -44,7 +43,34 @@ void RegPolygon::Draw(GUI* pUI) const
 {
 	//Call Output::DrawRegPolygon to draw a RegPolygon on the screen	
 	pUI->DrawRegPolygon(Verts, VertNum, ShpGfxInfo);
+
+   /* if (ShpGfxInfo.imgSticked)
+    {
+        int x = (Corner1.x <= Corner2.x) ? Corner1.x : Corner2.x; x += this->ShpGfxInfo.BorderWdth;
+        int y = (Corner1.y <= Corner2.y) ? Corner1.y : Corner2.y; y += this->ShpGfxInfo.BorderWdth;
+        int width = abs(Corner1.x - Corner2.x); width -= 2 * this->ShpGfxInfo.BorderWdth;
+        int length = abs(Corner1.y - Corner2.y); length -= 2 * this->ShpGfxInfo.BorderWdth;
+        pUI->StickImage(img, x, y, length, width);
+    }*/
+
 }
+
+void RegPolygon::Drawdouble(GUI* pUI) const
+{
+    //Call Output::DrawRegPolygon to draw a RegPolygon on the screen	
+    pUI->DrawRegPolygon(Verts, VertNum, ShpGfxInfo);
+
+    /* if (ShpGfxInfo.imgSticked)
+     {
+         int x = (Corner1.x <= Corner2.x) ? Corner1.x : Corner2.x; x += this->ShpGfxInfo.BorderWdth;
+         int y = (Corner1.y <= Corner2.y) ? Corner1.y : Corner2.y; y += this->ShpGfxInfo.BorderWdth;
+         int width = abs(Corner1.x - Corner2.x); width -= 2 * this->ShpGfxInfo.BorderWdth;
+         int length = abs(Corner1.y - Corner2.y); length -= 2 * this->ShpGfxInfo.BorderWdth;
+         pUI->StickImage(img, x, y, length, width);
+     }*/
+
+}
+
 double RegPolygon::polygonArea()
 {
     
@@ -93,6 +119,19 @@ void RegPolygon::Rotate(double theta = 2 * atan(1))
     }
 }
 
+void RegPolygon::Resize(double f)
+{
+    double d, delta;
+    for (int i = 0; i < VertNum; i++)
+    {
+        d = sqrt(pow((Verts[i].x - com.x), 2) + pow((com.y - Verts[i].y), 2));
+        delta = (f - 1) * d;
+        moveFurther(com, Verts[i], delta);
+      
+    
+    }
+}
+
 
 void RegPolygon::Move(int dx, int dy)
 {
@@ -103,6 +142,11 @@ void RegPolygon::Move(int dx, int dy)
         Verts[i].x += dx;
         Verts[i].y += dy;
     }
+}
+
+void RegPolygon::ToOnePixel()
+{
+    
 }
 
 shape* RegPolygon::getCopy()
@@ -137,3 +181,29 @@ void RegPolygon::getCorners(vector <Point>& pts)
         pts.push_back(Verts[i]);
     }
 }
+
+void RegPolygon::setCom(Point p)
+{
+    com = p;
+}
+Point RegPolygon::getCom()
+{
+    return com;
+}
+
+void RegPolygon::Hide(GUI* lolo)
+{
+
+        ShpGfxInfo.IsHidden = true;
+        img = 1;
+    
+}
+
+void RegPolygon::UnHide(GUI* lolo)
+{
+
+    ShpGfxInfo.IsHidden = false;
+    img = 1;
+
+}
+

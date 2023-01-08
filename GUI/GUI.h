@@ -2,17 +2,30 @@
 
 
 
-#include "..\CMUgraphicsLib\CMUgraphics.h"
+
 //#include "image.h"
 #include "..\Defs.h"
-
+#include "..\CMUgraphicsLib\CMUgraphics.h"
+//#include "..\Shapes&Graph\Shape.h"
 #include <string>
 using namespace std;
 
 struct Point	//To be used for shapes points
 {
 	int x, y;
+
+public:
+
+	void operator+ (int s)
+	{
+		x += s;
+		y += s;
+
+	}
+
 };
+
+
 
 struct GfxInfo	//Graphical info common for all shapes (you may add more members)
 {
@@ -21,6 +34,7 @@ struct GfxInfo	//Graphical info common for all shapes (you may add more members)
 	bool isFilled;	//shape Filled or not
 	int BorderWdth;	//Width of shape borders
 	bool isSelected;	//true if the shape is selected.
+	bool IsHidden = false;
 	bool isDeleted = false;		//true if the shape is deleted
 	bool imgSticked = false;
 };
@@ -55,12 +69,17 @@ class GUI
 		ICON_CUT,
 		ICON_PASTE,
 		ICON_ROTATE,
+		ICON_RESIZE,
 		ICON_UNDO,
 		ICON_REDO,
 		ICON_STICK_IMG,
 		ICON_DEL,
 		ICON_SAVE,
 		ICON_LOAD,
+		ICON_ZOOM_IN,
+		ICON_ZOOM_OUT,
+		ICON_SEND_TO_BACK,
+		ICON_DUBLICATE,
 		//TODO: Add more icons names here
 		ICON_SWITCH_TO_PLAY,
 		ICON_EXIT,		//Exit icon
@@ -77,6 +96,7 @@ class GUI
 		//TODO: Add more icons names here
 		ICON_HIDE,		//Recangle icon in menu
 		ICON_UNHIDE,
+		ICON_SCRAMBLE,
 		ICON_MATCH_SHAPES,
 		ICON_START,		//Circle icon in menu
 		ICON_RESTART,
@@ -118,7 +138,7 @@ class GUI
 
 	window* pWind;
 
-	window* pPalette = nullptr; // pointer for color pallete window only
+	//window* pPalette = nullptr; // pointer for color pallete window only
 	window* pChooseMode = nullptr;
 	
 
@@ -136,7 +156,13 @@ public:
 	clicktype GetOpLastPointClickedType() const;
 	keytype GetKeyPressed(char&) const;
 	void open();
+
+
+	
+
 	void StickImage(int,int,int,int,int);
+	void StickImage_(int x, int y, int length, int width);
+	
 	//void draw(GUI*);
 	string GetSrting() const;	 //Returns a string entered by the user
 	buttonstate GetButtonState(button, int&, int&) const;
@@ -159,6 +185,7 @@ public:
 	void CreateDrawToolBar();	//creates Draw mode toolbar & menu
 	void CreatePlayToolBar();	//creates Play mode toolbar & menu
 	void CreateStatusBar() const;	//create the status bar
+	void CreateCards();
 	void CreateColorPalette();
 	void DeleteColorPalette();
 	

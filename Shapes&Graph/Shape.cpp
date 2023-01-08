@@ -85,3 +85,46 @@ int shape::GetPenWidth() const
 	return ShpGfxInfo.BorderWdth;
 }
 
+void shape::moveFurther(const Point& cm, Point& v, double delta)
+{
+	double slope = double(v.y - cm.y) / (v.x - cm.x);
+	if (cm.x < v.x && cm.y < v.y) {
+		v.x = v.x + delta * cos(atan(slope));
+		v.y = v.y + delta * sin(atan(slope));
+	}
+	else if (cm.x > v.x && cm.y > v.y) {
+		v.x = v.x - delta * cos(atan(slope));
+		v.y = v.y - delta * sin(atan(slope));
+	}
+	else if (cm.x < v.x && cm.y > v.y) {
+		v.x = v.x + delta * cos(atan(-slope));
+		v.y = v.y - delta * sin(atan(-slope));
+	}
+	else if (cm.x > v.x && cm.y < v.y) {
+		v.x = v.x - delta * cos(atan(-slope));
+		v.y = v.y + delta * sin(atan(-slope));
+	}
+	else if (cm.x == v.x)
+	{
+		if (cm.y < v.y)
+		{
+			v.y = v.y + delta;
+		}
+		else
+		{
+			v.y = v.y - delta;
+		}
+	}
+	else if (cm.y == v.y)
+	{
+		if (cm.x < v.x)
+		{
+			v.x = v.x + delta;
+		}
+		else
+		{
+			v.x = v.x - delta;
+		}
+	}
+
+}

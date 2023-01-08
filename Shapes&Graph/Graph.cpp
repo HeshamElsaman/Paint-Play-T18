@@ -1,5 +1,7 @@
 #include "Graph.h"
 #include "../GUI/GUI.h"
+#include <iostream>
+using namespace std;
 
 Graph::Graph()
 {
@@ -45,7 +47,47 @@ void Graph::Addshape(shape* pFig)
 		globalID++;
 	}*/
 }
+
+
+
 ////////////////////////////////////////////////////////////////////////////////////
+
+
+////////////////////////////////////////////////////////////////////////
+void Graph::AddshapesToBack()
+{
+	//Add a new shape to the first of shapes vector
+	shape* shp = nullptr;//vector <shape*> hamo;
+	int i = shapesList.size() - 1;
+	bool run = false;
+	for(;i >= 0;i--)
+	{
+		if(shapesList[i]->IsSelected() && !(shapesList[i]->IsDeleted()))
+		{
+			shp = shapesList[i];
+			shapesList.erase(shapesList.begin() + i);
+			shapesList.insert(shapesList.begin(), shp);
+			run = !run;
+		}
+		if (shapesList[i]->getID() == 1)
+		{
+			if (shapesList[i]->IsSelected() && !(shapesList[i]->IsDeleted()))
+			{
+				shp = shapesList[i];
+				shapesList.erase(shapesList.begin() + i);
+				shapesList.insert(shapesList.begin(), shp);
+			}
+			break;
+		}
+		else if (run)
+		{
+			i++;
+			run = !run;
+		}
+	}
+	shp = nullptr;
+
+}
 //Draw all shapes on the user interface
 void Graph::Draw(GUI* pUI)
 {
@@ -63,6 +105,21 @@ void Graph::Draw(GUI* pUI)
 			{
 				shapesList[i]->Draw(pUI);
 				num++;
+			}
+		}
+	}
+	if (!(newshapesList.empty()))
+	{
+		for (int i = 0; i < newshapesList.size(); i++)
+		{
+			/*if (((shapesList[i])->getID()) != (i + 1)) {
+				(shapesList[i])->setID(i + 1);
+			}*/
+
+			if (!(newshapesList[i]->IsDeleted()))
+			{
+				newshapesList[i]->Draw(pUI);
+				//num++;
 			}
 		}
 	}
@@ -87,6 +144,35 @@ shape* Graph::Getshape(int x, int y) const
 
 	return nullptr;
 }
+
+shape* Graph::GetSelectedShape(vector <shape*>& slctdshps) const
+{
+	for (int i = 0; i <= slctdshps.size(); i++)
+	{
+		if (slctdshps[i]->IsSelected())
+		{
+			return slctdshps[i];
+		}
+	}
+
+}
+
+vector <shape*> Graph::GetShapesVector() const
+{
+	return shapesList;
+}
+
+vector <shape*> Graph::GetHiddenShapesVector()const
+{
+	return HiddenShapes;
+}
+
+vector <shape*>& Graph::GetNewShapesList()
+{
+	return newshapesList;
+}
+
+
 
 
 void Graph::GetSelectedShapes(vector <shape*>& slctdshps) const
@@ -290,6 +376,31 @@ void Graph::Save(ofstream& OutFile)
 	OutFile.close();
 }
 
+/*void Graph::Load(ofstream& OutFile)
+{
+	int temporalID = 0;
+	int actualID;
+	if (!(shapesList.empty()))
+	{
+		OutFile << shpnum << endl;
+		for (int i = 0; i < shapesList.size(); i++)
+		{
+			if (!((shapesList[i])->IsDeleted()))
+			{
+				temporalID++;
+				actualID = shapesList[i]->getID();
+				shapesList[i]->setID(temporalID);
+				shapesList[i]->Save(OutFile);
+				shapesList[i]->setID(actualID);
+			}
+		}
+	}
+	OutFile.close();
+}*/
+
+
+
+
 void Graph::ReleaseShapesMemory()
 {
 	if (!(shapesList.empty()))
@@ -300,6 +411,20 @@ void Graph::ReleaseShapesMemory()
 		}
 	}
 }
+
+
+
+vector <shape*> Graph::getshapelist() const
+{
+	return shapesList;
+}
+
+int Graph::GetShpnum() const
+{
+	return shpnum;
+}
+
+
 
 void Graph::StickImg(int img)
 {
@@ -328,6 +453,41 @@ void Graph::Rotate90(double theta = 2 * atan(1))
 			}
 		}
 	}
+}
+
+void Graph::Resize(double scale)
+{
+	if (!(shapesList.empty()))
+	{
+		for (shape* shapePointer : shapesList)
+		{
+			if (shapePointer->IsSelected() && !(shapePointer->IsDeleted()))
+			{
+				shapePointer->Resize(scale);
+			}
+		}
+	}
+}
+
+void Graph::ToOnePixel()
+{
+	if (!(shapesList.empty()))
+	{
+		for (shape* shapePointer : shapesList)
+		{
+			if (!(shapePointer->IsDeleted()))
+			{
+				shapePointer->ToOnePixel();
+			}
+		}
+	}
+}
+
+int Graph::grid()
+{
+	int sq_n = sqrt(shpnum);
+	int a = ((630 - 50 - 56) / sq_n);
+	return a;
 }
 
 

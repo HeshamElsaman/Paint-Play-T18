@@ -1,5 +1,5 @@
 #include "Polygon.h"
-#include <iostream>
+
 using namespace std;
 
 PolyGon::PolyGon(Point* P_, int vertNum, GfxInfo shapeGfxInfo) :shape(shapeGfxInfo)
@@ -45,6 +45,14 @@ void PolyGon::Draw(GUI* pUI) const
 	//Call Output::DrawPolygon to draw a polygon on the screen	
 	pUI->DrawPolygon(Verts, VertNum, ShpGfxInfo);
 }
+
+
+void PolyGon::Drawdouble(GUI* pUI) const
+{
+    //Call Output::DrawPolygon to draw a polygon on the screen	
+    pUI->DrawPolygon(Verts, VertNum, ShpGfxInfo);
+}
+
 double PolyGon::polyGonArea()
 {
 
@@ -77,7 +85,7 @@ bool PolyGon::isInside(int X, int Y)
     }
     if (triarea <= this->polyGonArea())
     {
-        cout << this->polyGonArea() << endl << triarea << endl << endl;
+        
         return true;
     }
     return false;
@@ -94,6 +102,17 @@ void PolyGon::Rotate(double theta = 2 * atan(1))
     }
 }
 
+void PolyGon::Resize(double f)
+{
+    double d, delta;
+    for (int i = 0; i < VertNum; i++)
+    {
+        d = sqrt(pow((Verts[i].x - com.x), 2) + pow((com.y - Verts[i].y), 2));
+        delta = (f - 1) * d;
+        moveFurther(com, Verts[i], delta);
+    }
+}
+
 
 void PolyGon::Move(int dx, int dy)
 {
@@ -104,6 +123,10 @@ void PolyGon::Move(int dx, int dy)
         Verts[i].x += dx;
         Verts[i].y += dy;
     }
+}
+
+void PolyGon::ToOnePixel()
+{
 }
 
 shape* PolyGon::getCopy()
@@ -138,4 +161,25 @@ void PolyGon::getCorners(vector <Point>& pts)
     {
         pts.push_back(Verts[i]);
     }
+}
+
+void PolyGon::setCom(Point p)
+{
+    com = p;
+}
+Point PolyGon::getCom()
+{
+    return com;
+}
+
+void PolyGon::Hide(GUI* lolo)
+{
+    ShpGfxInfo.IsHidden = true;
+    img = 1;
+}
+
+void PolyGon::UnHide(GUI* lolo)
+{
+    ShpGfxInfo.IsHidden = false;
+    img = 1;
 }

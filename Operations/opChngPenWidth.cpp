@@ -57,7 +57,7 @@ void opChngPenWidth::Execute()
 		pUI->setCrntPenWidth(stoi(KEY));
 		pControl->PopUndo();
 	}
-	pUI->DeleteColorPalette();
+	
 
 
 
