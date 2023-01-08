@@ -1,6 +1,5 @@
 #include "RegPolygon.h"
-#include <iostream>
-using namespace std;
+
 
 RegPolygon::RegPolygon(Point* P_, int vertNum, GfxInfo shapeGfxInfo) :shape(shapeGfxInfo)
 {
@@ -90,6 +89,19 @@ void RegPolygon::Rotate(double theta = 2 * atan(1))
         gen = Verts[i];
         Verts[i].x = cos(theta) * (gen.x - com.x) - sin(theta) * (gen.y - com.y) + com.x;
         Verts[i].y = sin(theta) * (gen.x - com.x) + cos(theta) * (gen.y - com.y) + com.y;
+    }
+}
+
+void RegPolygon::Resize(double f)
+{
+    double d, delta;
+    for (int i = 0; i < VertNum; i++)
+    {
+        d = sqrt(pow((Verts[i].x - com.x), 2) + pow((com.y - Verts[i].y), 2));
+        delta = (f - 1) * d;
+        moveFurther(com, Verts[i], delta);
+      
+    
     }
 }
 

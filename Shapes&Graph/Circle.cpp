@@ -45,6 +45,14 @@ bool Circle::isInside(int X, int Y)
 }
 
 
+void Circle::Resize(double f)
+{
+	double radius = pow((pow((Corner2.x - Corner1.x), 2) + pow((Corner2.y - Corner1.y), 2)), 0.5);
+	Corner2.x = Corner1.x + radius * f;
+
+}
+
+
 void Circle::setCorners(vector <Point> pts)
 {
 	Corner1 = pts[0];

@@ -1,5 +1,6 @@
 #include "Square.h"
-
+#include <iostream>
+using namespace std;
 Square::Square(Point P1, Point P2,/*Point P3,*/ GfxInfo shapeGfxInfo) :shape(shapeGfxInfo)
 {
 	Corner1 = P1;
@@ -58,6 +59,27 @@ void Square::Rotate(double theta = 2 * atan(1))
 	gen = Corner2;
 	Corner2.x = cos(theta) * (gen.x - com.x) - sin(theta) * (gen.y - com.y) + com.x;
 	Corner2.y = sin(theta) * (gen.x - com.x) + cos(theta) * (gen.y - com.y) + com.y;
+}
+
+void Square::Resize(double f)
+{
+
+	/*int width = abs(Corner1.x - Corner2.x);
+
+	Corner1.x = com.x + (width * f/ 2);
+	Corner1.y = com.y + (width * f / 2);
+	Corner2.x = abs((width * f / 2) - com.x);
+	Corner2.y = abs((width * f / 2) - com.y);*/
+	double d1 = pow((pow((Corner1.x - com.x), 2) + pow((com.y - Corner1.y), 2)), 0.5);
+	double d2 = pow((pow((Corner2.x - com.x), 2) + pow((com.y - Corner2.y), 2)), 0.5);
+	
+	double delta1 = (f - 1) * d1;
+	double delta2 = (f - 1) * d2;
+	
+
+
+	moveFurther(com, Corner1, delta1);
+	moveFurther(com, Corner2, delta2);
 }
 
 

@@ -1,5 +1,6 @@
 #include "Line.h"
-
+#include<iostream>
+using namespace std;
 Line::Line(Point P1, Point P2, GfxInfo shapeGfxInfo):shape(shapeGfxInfo)
 {
 	Corner1 = P1;
@@ -63,6 +64,29 @@ void Line::Rotate(double theta = 2 * atan(1))
 	Corner2.y = sin(theta) * (gen.x - com.x) + cos(theta) * (gen.y - com.y) + com.y;
 }
 
+void Line::Resize(double f)
+{
+	/*int length = sqrt(pow((Corner1.x - Corner2.x), 2) + pow((Corner1.y - Corner2.y), 2));
+	cout << length << endl;
+	Corner1.x = com.x + (0.5 * length * f);
+	Corner1.y = com.y + (0.5 * length * f);
+	Corner2.x = abs((0.5 * length * f) - com.x);
+	Corner2.y = abs((0.5 * length * f) - com.y );
+	length = sqrt(pow((Corner1.x - Corner2.x), 2) + pow((Corner1.y - Corner2.y), 2));
+	cout << length<< endl;*/
+
+	double d1 = pow((pow((Corner1.x - com.x), 2) + pow((com.y - Corner1.y), 2)), 0.5);
+	double d2 = pow((pow((Corner2.x - com.x), 2) + pow((com.y - Corner2.y), 2)), 0.5);
+
+	double delta1 = (f - 1) * d1;
+	double delta2 = (f - 1) * d2;
+
+
+
+	moveFurther(com, Corner1, delta1);
+	moveFurther(com, Corner2, delta2);
+
+}
 void Line::setCorners(vector <Point> pts)
 {
 	Corner1 = pts[0];
