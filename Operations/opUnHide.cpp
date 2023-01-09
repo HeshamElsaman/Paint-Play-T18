@@ -44,7 +44,7 @@ void opUnHide::Execute()
 		{
 			pGr->GetHiddenShapesVector()[i]->UnHide(pUI);
 
-		shapes[i]->Hide(pUI);
+		shapes[i]->UnHide(pUI);
 		}
 		
 			//shapes[i]->Hide(pUI);

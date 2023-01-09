@@ -272,6 +272,8 @@
     <ClCompile Include="Operations\opScramble.cpp" />
     <ClCompile Include="Operations\opSelect.cpp" />
     <ClCompile Include="Operations\opMatch.cpp" />
+    <ClCompile Include="..\..\MAIN\Paint-Play-T18\Operations\opZoomOut.cpp" />
+    <ClCompile Include="Operations\opZoomOut.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h" />

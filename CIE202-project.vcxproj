@@ -129,6 +129,7 @@
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\MAIN\Paint-Play-T18\Operations\opZoomOut.cpp" />
     <ClCompile Include="CMUgraphicsLib\auxil.cpp" />
     <ClCompile Include="CMUgraphicsLib\CMUgraphics.cpp" />
     <ClCompile Include="CMUgraphicsLib\colors.cpp" />
@@ -199,6 +200,7 @@
     <ClCompile Include="Operations\opUndo.cpp" />
     <ClCompile Include="Operations\opSelect.cpp" />
     <ClCompile Include="Operations\opPaste.cpp" />
+    <ClCompile Include="Operations\opZoomOut.cpp" />
     <ClCompile Include="Operations\opZoonIn.cpp" />
     <ClCompile Include="Operations\opUnHide.cpp" />
     <ClCompile Include="Shapes&amp;Graph\Circle.cpp" />
