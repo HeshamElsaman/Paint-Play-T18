@@ -32,37 +32,26 @@ void ZoomIn::Execute()
 	pUI->GetPointClicked(p.x, p.y);
 
 	//vector <shape*> shapes = pGraph->GetShapesVector();
-	pUI->PrintMessage(" Zooming Out ");
+	pUI->PrintMessage(" Zooming In ");
 
 	
 	for (int i = 0; i < pGraph->GetShapesVector().size(); i++)
 	{
-
-
 		Point P; P.x = 750; P.y = 325;
-		vector <Point> pts;
-		double f = 0.7142857143;
-		double d, delta;
+		double f = 1.4;
+		double d, delta, dx, dy;
 		Point comTemp; comTemp.x = 0; comTemp.y = 0;
-		pGraph->GetShapesVector()[i]->getCorners(pts);
-		for (int j = 0; j < pts.size(); j++)
-		{
-			d = sqrt(pow((pts[j].x - 750), 2) + pow((pts[j].y - 325), 2));
-			delta = (f - 1) * d;
-			pGraph->GetShapesVector()[i]->moveFurther(P, pts[j], delta);
-			comTemp.x += pts[j].x; comTemp.y += pts[j].y;
-		}
-		pGraph->GetShapesVector()[i]->setCorners(pts);
-		comTemp.x /= double(pts.size()); comTemp.y /= double(pts.size());
-		pGraph->GetShapesVector()[i]->setCom(comTemp);
+		Point before;
+		comTemp = pGraph->GetShapesVector()[i]->getCom();
+		before = comTemp;
+		d = sqrt(pow(750-comTemp.x, 2) + pow(325-comTemp.y, 2));
+		delta = (f - 1) * d;
+		pGraph->GetShapesVector()[i]->moveFurther(P, comTemp, delta);
+		dx = comTemp.x - before.x; dy = comTemp.y - before.y;
+
+		pGraph->GetShapesVector()[i]->Move(dx, dy);
+		pGraph->GetShapesVector()[i]->Resize(f);
 	}
-	
-	
-
-
-	
-
-	pUI->PrintMessage(" Zooming In ");
 
 	
 }

@@ -65,7 +65,6 @@
     <ClCompile Include="Operations\opSave.cpp" />
     <ClCompile Include="Operations\opUndo.cpp" />
     <ClCompile Include="Operations\opZoonIn.cpp" />
-    <ClCompile Include="Operations\opZoomOut.cpp" />
     <ClCompile Include="Operations\opUnHide.cpp" />
     <ClCompile Include="Shapes&amp;Graph\Circle.cpp" />
     <ClCompile Include="Shapes&amp;Graph\Graph.cpp" />
