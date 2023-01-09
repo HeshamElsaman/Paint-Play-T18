@@ -272,6 +272,7 @@
     <ClCompile Include="Operations\opStart.cpp" />
     <ClCompile Include="Operations\opScramble.cpp" />
     <ClCompile Include="Operations\opSelect.cpp" />
+    <ClCompile Include="Operations\opMatch.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h" />
@@ -349,6 +350,7 @@
     <ClInclude Include="Operations\Cut.h" />
     <ClInclude Include="Operations\opScramble.h" />
     <ClInclude Include="Operations\opSelect.h" />
+    <ClInclude Include="Operations\opMatch.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="CIE202-project.rc" />

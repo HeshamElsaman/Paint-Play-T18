@@ -19,6 +19,7 @@
 #include "Operations/opRedo.h"
 #include "Operations/opHide.h"
 #include "Operations/opUnHide.h"
+#include "Operations/opMatch.h"
 #include "Operations/opDuplicate.h"
 #include "Operations/opStart.h"
 #include "Operations/opRotate.h"

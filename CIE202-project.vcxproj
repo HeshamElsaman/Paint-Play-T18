@@ -173,6 +173,7 @@
     <ClCompile Include="Operations\opDrag.cpp" />
     <ClCompile Include="Operations\opDuplicate.cpp" />
     <ClCompile Include="Operations\opHide.cpp" />
+    <ClCompile Include="Operations\opMatch.cpp" />
     <ClCompile Include="Operations\opRedo.cpp" />
     <ClCompile Include="Operations\opResize.cpp" />
     <ClCompile Include="Operations\opRotate.cpp" />
@@ -241,6 +242,7 @@
     <ClInclude Include="Operations\opDrag.h" />
     <ClInclude Include="Operations\opDuplicate.h" />
     <ClInclude Include="Operations\opHide.h" />
+    <ClInclude Include="Operations\opMatch.h" />
     <ClInclude Include="Operations\opRedo.h" />
     <ClInclude Include="Operations\opResize.h" />
     <ClInclude Include="Operations\opRotate.h" />
